@@ -1,0 +1,133 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0;
+  padding: 0.7rem 0.9rem;
+  background-color: var(--color-primary);
+  border-bottom: 1px solid rgb(255 255 255 / 18%);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 18%);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-background);
+  text-decoration: none;
+}
+
+.brandBadge {
+  border: 1px solid color-mix(in srgb, var(--color-background) 50%, transparent);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.brandText {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.toggle {
+  display: inline-flex;
+  justify-self: end;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 1px solid color-mix(in srgb, var(--color-background) 42%, transparent);
+  border-radius: 0.55rem;
+  background-color: color-mix(in srgb, var(--color-background) 14%, transparent);
+  cursor: pointer;
+}
+
+.toggleLines,
+.toggleLines::before,
+.toggleLines::after {
+  display: block;
+  width: 1.05rem;
+  height: 2px;
+  background-color: var(--color-background);
+  content: '';
+  transition: transform 180ms ease;
+}
+
+.toggleLines::before {
+  transform: translateY(-0.3rem);
+}
+
+.toggleLines::after {
+  transform: translateY(0.2rem);
+}
+
+.menu {
+  grid-column: 1 / -1;
+  list-style: none;
+  display: none;
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: 0.65rem;
+  background-color: color-mix(in srgb, var(--color-background) 12%, transparent);
+}
+
+.menuOpen {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.link {
+  display: block;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  color: var(--color-background);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 160ms ease, color 160ms ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: color-mix(in srgb, var(--color-primary) 72%, transparent);
+    color: var(--color-background);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+.activeLink {
+  background-color: color-mix(in srgb, var(--color-background) 18%, transparent);
+  color: var(--color-background);
+}
+
+@media (width >= 880px) {
+  .nav {
+    grid-template-columns: auto 1fr;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .menu {
+    grid-column: auto;
+    display: flex;
+    justify-self: end;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0;
+    background-color: transparent;
+  }
+}

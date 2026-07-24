@@ -1,6 +1,9 @@
 import type { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
-import { TabsNav } from '../TabsNav';
+import { useLocation } from 'react-router-dom';
+import { HeroBackground } from '../HeroBackground';
+import { HeroCtaButton } from '../HeroCtaButton';
+import { NavBar } from '../NavBar';
 import styles from './SectionLayout.module.scss';
 
 interface SectionLayoutProps extends PropsWithChildren {
@@ -9,16 +12,30 @@ interface SectionLayoutProps extends PropsWithChildren {
 }
 
 export function SectionLayout({ children, sectionLabel, sectionPath }: SectionLayoutProps) {
+  const { pathname } = useLocation();
+  const isSectionHome = pathname === `${sectionPath}/klub` || pathname === sectionPath;
+
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <p className={styles.kicker}>Klub Siatkarski</p>
-        <h1 className={styles.title}>{sectionLabel}</h1>
-        <TabsNav sectionPath={sectionPath} />
-      </header>
-      <main className={styles.main}>{children}</main>
+      {isSectionHome ? (
+        <HeroBackground sectionLabel={sectionLabel}>
+          <header className={styles.header}>
+            <NavBar sectionLabel={sectionLabel} sectionPath={sectionPath} />
+          </header>
+          <div className={styles.ctaWrap}>
+            <HeroCtaButton label="Przejdź do treści" targetId="section-content" />
+          </div>
+        </HeroBackground>
+      ) : (
+        <header className={styles.headerInline}>
+          <NavBar sectionLabel={sectionLabel} sectionPath={sectionPath} />
+        </header>
+      )}
+      <main className={styles.main} id="section-content" tabIndex={-1}>
+        {children}
+      </main>
       <footer className={styles.footer}>
-        <Link className={styles['back-link']} to="/">
+        <Link className={styles.backLink} to="/">
           Powrót do wyboru sekcji
         </Link>
       </footer>

@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { appRoutes } from './router';
+
+afterEach(() => {
+  cleanup();
+});
 
 describe('app routing', () => {
   it('navigates from split screen to kobiety section', async () => {
@@ -13,7 +17,7 @@ describe('app routing', () => {
 
     await user.click(screen.getByRole('link', { name: 'Kobiety' }));
 
-    expect(await screen.findByRole('heading', { level: 1, name: 'Kobiety' })).toBeInTheDocument();
+    expect(await screen.findByRole('link', { name: 'TSW Kobiety' })).toBeInTheDocument();
   });
 
   it('switches tabs inside section', async () => {
@@ -33,8 +37,7 @@ describe('app routing', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(await screen.findByRole('heading', { level: 2, name: 'Klub' })).toBeInTheDocument();
-    expect(screen.getByText('MKS Siatkówka Mężczyźni')).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'MKS Siatkówka Mężczyźni' })).toBeInTheDocument();
   });
 
   it('renders kontakt data for mezczyzni', async () => {

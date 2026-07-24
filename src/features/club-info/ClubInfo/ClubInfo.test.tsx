@@ -12,11 +12,13 @@ const club: Club = {
 };
 
 describe('ClubInfo', () => {
-  it('renders club details', () => {
+  it('renders modern club layout with images and sponsors', () => {
     render(<ClubInfo club={club} />);
 
     expect(screen.getByText('Nazwa Klubu')).toBeInTheDocument();
     expect(screen.getByText('Historia klubu')).toBeInTheDocument();
-    expect(screen.getByText('Adres 1')).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /zdjęcie meczowe drużyny siatkarskiej w czerwonej tonacji/i })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /zdjęcie meczowe drużyny siatkarskiej w niebieskiej tonacji/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Sponsorzy' })).toBeInTheDocument();
   });
 });
