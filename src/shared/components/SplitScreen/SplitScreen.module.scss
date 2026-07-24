@@ -1,0 +1,58 @@
+.root {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr;
+
+  @media (width >= 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  isolation: isolate;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    opacity: 0.94;
+    transition:
+      transform 240ms ease,
+      opacity 240ms ease;
+    z-index: -1;
+  }
+
+  &[data-variant='kobiety']::before {
+    background: linear-gradient(145deg, #e30613 0%, #efbc7b 100%);
+  }
+
+  &[data-variant='mezczyzni']::before {
+    background: linear-gradient(145deg, #273583 0%, #efbc7b 100%);
+  }
+
+  &:hover::before,
+  &:focus-visible::before {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+
+  &:focus-visible {
+    outline: 3px solid #000;
+    outline-offset: -6px;
+  }
+}
+
+.label {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 2px 14px rgb(0 0 0 / 30%);
+}

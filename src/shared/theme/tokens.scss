@@ -1,0 +1,15 @@
+:root {
+  --font-family-base: 'Poppins', sans-serif;
+  --color-background: #fff;
+  --color-text: #404040;
+  --color-accent: #efbc7b;
+  --color-emphasis: #000;
+}
+
+[data-theme='kobiety'] {
+  --color-primary: #e30613;
+}
+
+[data-theme='mezczyzni'] {
+  --color-primary: #273583;
+}
