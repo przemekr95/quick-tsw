@@ -4,12 +4,15 @@
   --color-text: #404040;
   --color-accent: #efbc7b;
   --color-emphasis: #000;
+  --hero-background-image: none;
 }
 
 [data-theme='kobiety'] {
   --color-primary: #e30613;
+  --hero-background-image: url('/images/backgrounds/hero-k.jpg');
 }
 
 [data-theme='mezczyzni'] {
   --color-primary: #273583;
+  --hero-background-image: url('/images/backgrounds/hero-m.jpg');
 }
