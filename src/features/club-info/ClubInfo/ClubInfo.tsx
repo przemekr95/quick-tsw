@@ -148,7 +148,7 @@ export function ClubInfo({ club }: ClubInfoProps) {
         <div className={styles.sponsorIntro}>
           <p className={styles.panelIndex}>05</p>
           <h3 id="sponsors-heading">Sponsorzy</h3>
-          <p>Partnerzy, ktorzy wspieraja rozwoj zespolu i codzienna prace klubu.</p>
+          <p>Partnerzy, którzy wspierają rozwój zespołu i codzienną pracę klubu.</p>
         </div>
         <SponsorsCarousel sponsors={club.sponsors} />
       </section>
