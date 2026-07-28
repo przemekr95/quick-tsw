@@ -42,7 +42,7 @@ export function ClubInfo({ club }: ClubInfoProps) {
   const boardPreview = club.board.slice(0, 3);
 
   return (
-    <section aria-label="Sekcja klub" className={styles.root}>
+    <section aria-label="Zakładka Klub" className={styles.root}>
 
       <nav aria-label="Nawigacja sekcji klubu" className={styles.tabRail}>
         <ul>
