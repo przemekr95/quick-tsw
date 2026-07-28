@@ -66,4 +66,31 @@ describe('SponsorsCarousel', () => {
     expect(sponsorLink).toHaveAttribute('target', '_blank');
     expect(sponsorLink).toHaveAttribute('rel', 'noopener noreferrer');
   });
+
+  it('wraps to the last sponsor when previous is clicked on the first item', async () => {
+    const user = userEvent.setup();
+
+    render(<SponsorsCarousel sponsors={sponsors} />);
+
+    await user.click(screen.getByRole('button', { name: 'Poprzedni sponsor' }));
+
+    expect(screen.getByText('Sponsor F')).toBeInTheDocument();
+    expect(screen.getByText('Sponsor 6 / 6')).toBeInTheDocument();
+  });
+
+  it('returns null when sponsor names are empty after normalization', () => {
+    render(<SponsorsCarousel sponsors={[{ name: '[]' }, { name: '   ' }]} />);
+
+    expect(screen.queryByRole('region', { name: 'Karuzela logotypów sponsorów' })).not.toBeInTheDocument();
+  });
+
+  it('renders single sponsor without navigation buttons and shows code fallback without logo', () => {
+    render(<SponsorsCarousel sponsors={[{ name: 'Single Sponsor' }]} />);
+
+    expect(screen.getByText('Single Sponsor')).toBeInTheDocument();
+    expect(screen.getByText('SS')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Poprzedni sponsor' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Następny sponsor' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: /Odwiedź stronę sponsora/i })).not.toBeInTheDocument();
+  });
 });
