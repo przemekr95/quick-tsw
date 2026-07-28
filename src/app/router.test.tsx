@@ -37,7 +37,7 @@ describe('app routing', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(await screen.findByRole('heading', { name: 'MKS Siatkówka Mężczyźni' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'O klubie' })).toBeInTheDocument();
   });
 
   it('renders kontakt data for mezczyzni', async () => {

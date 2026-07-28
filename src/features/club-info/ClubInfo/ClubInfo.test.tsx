@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import type { Club } from '../../../shared/types/domain';
 import { ClubInfo } from './ClubInfo';
@@ -23,13 +24,17 @@ const club: Club = {
 };
 
 describe('ClubInfo', () => {
-  it('renders modern club layout with images and sponsors', () => {
-    render(<ClubInfo club={club} />);
+  it('renders club section headings and images', () => {
+    render(
+      <MemoryRouter>
+        <ClubInfo club={club} />
+      </MemoryRouter>,
+    );
 
-    expect(screen.getByText('Nazwa Klubu')).toBeInTheDocument();
-    expect(screen.getByText('Historia klubu')).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: /zdjęcie meczowe drużyny siatkarskiej w czerwonej tonacji/i })).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: /zdjęcie meczowe drużyny siatkarskiej w niebieskiej tonacji/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Sponsorzy' })).toBeInTheDocument();
+    expect(screen.getAllByRole('img', { name: /zdjęcie meczowe drużyny siatkarskiej w czerwonej tonacji/i }).length).toBeGreaterThan(0);
+    expect(screen.getByRole('heading', { name: 'O klubie' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Nasza drużyna' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Dołącz do nas' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Najbliższy mecz' })).toBeInTheDocument();
   });
 });

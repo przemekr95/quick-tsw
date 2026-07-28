@@ -27,6 +27,18 @@ describe('SectionLayout', () => {
     );
   });
 
+  it('renders a section heading on the home route', () => {
+    render(
+      <MemoryRouter initialEntries={['/kobiety/klub']}>
+        <SectionLayout sectionLabel="Kobiety" sectionPath="/kobiety">
+          <p>Zawartość</p>
+        </SectionLayout>
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('heading', { level: 1, name: 'Kobiety' })).toBeInTheDocument();
+  });
+
   it('does not render cta outside section home route', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/kontakt']}>
