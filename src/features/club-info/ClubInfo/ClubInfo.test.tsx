@@ -8,7 +8,18 @@ const club: Club = {
   history: 'Historia klubu',
   arenaAddress: 'Adres 1',
   board: ['A', 'B'],
-  sponsors: ['S1', 'S2'],
+  sponsors: [
+    {
+      name: 'S1',
+      logoSrc: '/images/sponsors/k/msit.png',
+      websiteUrl: 'https://example.com/s1',
+    },
+    {
+      name: 'S2',
+      logoSrc: '/images/sponsors/k/klub.png',
+      websiteUrl: 'https://example.com/s2',
+    },
+  ],
 };
 
 describe('ClubInfo', () => {

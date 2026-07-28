@@ -1,11 +1,17 @@
 export type SectionId = 'kobiety' | 'mezczyzni';
 
+export interface Sponsor {
+  name: string;
+  logoSrc?: string;
+  websiteUrl?: string;
+}
+
 export interface Club {
   name: string;
   history: string;
   arenaAddress: string;
   board: string[];
-  sponsors: string[];
+  sponsors: Sponsor[];
 }
 
 export interface Player {

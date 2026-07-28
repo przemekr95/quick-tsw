@@ -3,5 +3,26 @@
   "history": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet velit non ipsum finibus fermentum. Donec dictum magna sed urna luctus.",
   "arenaAddress": "ul. Sportowa 1, 00-000 Miasto",
   "board": ["[Prezes]", "[Trener główny]", "[Kierownik sekcji]"],
-  "sponsors": ["[Sponsor A]", "[Sponsor D]", "[Sponsor E]"]
+  "sponsors": [
+    {
+      "name": "Ministerstwo Sportu i Turystyki",
+      "logoSrc": "/images/sponsors/m/msit.png",
+      "websiteUrl": "https://www.gov.pl/web/sport"
+    },
+    {
+      "name": "Program KLUB",
+      "logoSrc": "/images/sponsors/m/klub.png",
+      "websiteUrl": "https://rzadowyprogramklub.pl/"
+    },
+    {
+      "name": "Polski Związek Piłki Siatkowej",
+      "logoSrc": "/images/sponsors/m/pzps.png",
+      "websiteUrl": "https://www.pzps.pl/"
+    },
+    {
+      "name": "Małopolski Związek Piłki Siatkowej",
+      "logoSrc": "/images/sponsors/m/mzps.png",
+      "websiteUrl": "https://mzps.pl/"
+    }
+  ]
 }
