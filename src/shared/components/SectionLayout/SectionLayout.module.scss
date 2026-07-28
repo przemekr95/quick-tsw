@@ -4,23 +4,69 @@
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto auto auto;
+  background-color: var(--color-background);
+}
+
+.heroInner {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--nav-height) + 1rem) 1.1rem 2rem;
 }
 
 .header {
   position: relative;
-  padding-top: var(--nav-height);
+  z-index: 1;
 }
 
 .headerInline {
-  padding-top: var(--nav-height);
+  padding: calc(var(--nav-height) + 1rem) 1.1rem 1rem;
   background-color: var(--color-background);
 }
 
-.ctaWrap {
-  position: absolute;
-  left: 50%;
-  bottom: 2rem;
-  transform: translateX(-50%);
+.heroContent {
+  display: grid;
+  gap: 1.5rem;
+  align-items: end;
+  padding-top: 2rem;
+}
+
+.heroCopy {
+  max-width: 40rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  margin: 0;
+  color: var(--color-background);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+.heroText {
+  margin: 0;
+  max-width: 32rem;
+  color: rgb(255 255 255 / 90%);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .main {
@@ -31,6 +77,12 @@
   background-color: var(--color-background);
 }
 
+.mainInner {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 72rem;
+}
+
 .footer {
   padding: 0 1.1rem 1.2rem;
   background-color: var(--color-background);
@@ -38,27 +90,38 @@
 
 .backLink {
   color: var(--color-primary);
-  font-weight: 500;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 160ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-emphasis);
+  }
 }
 
 @media (width >= 900px) {
   .page {
     --nav-height: 72px;
-
-    grid-template-rows: auto auto auto;
   }
 
-  .header {
-    padding-top: var(--nav-height);
+  .heroInner {
+    padding: calc(var(--nav-height) + 1.5rem) 1.8rem 2.5rem;
   }
 
   .headerInline {
-    padding-top: var(--nav-height);
+    padding: calc(var(--nav-height) + 1.5rem) 1.8rem 1.25rem;
+  }
+
+  .heroContent {
+    grid-template-columns: minmax(0, 1.2fr) auto;
+    align-items: end;
+    gap: 2rem;
   }
 
   .main,
   .footer {
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
   }
 }
