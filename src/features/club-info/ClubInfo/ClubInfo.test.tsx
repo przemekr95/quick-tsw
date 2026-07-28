@@ -24,7 +24,7 @@ const club: Club = {
 };
 
 describe('ClubInfo', () => {
-  it('renders club page with four Ferrari-style sections', () => {
+  it('renders club section headings and images', () => {
     render(
       <MemoryRouter>
         <ClubInfo club={club} />
