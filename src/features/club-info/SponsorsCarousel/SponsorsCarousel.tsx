@@ -12,11 +12,13 @@ function normalizeSponsorName(name: string) {
 
 function getSponsorMeta(sponsor: Sponsor) {
   const name = normalizeSponsorName(sponsor.name);
+  const rawWebsiteUrl = sponsor.websiteUrl?.trim() ?? '';
+  const websiteUrl = /^https?:\/\//iu.test(rawWebsiteUrl) ? rawWebsiteUrl : '';
 
   return {
     name,
     logoSrc: sponsor.logoSrc?.trim() ?? '',
-    websiteUrl: sponsor.websiteUrl?.trim() ?? '',
+    websiteUrl,
   };
 }
 
