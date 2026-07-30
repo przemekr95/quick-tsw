@@ -13,11 +13,25 @@ interface SectionLayoutProps extends PropsWithChildren {
 export function SectionLayout({ children, sectionLabel, sectionPath }: SectionLayoutProps) {
   const { pathname } = useLocation();
   const isSectionHome = pathname === `${sectionPath}/klub` || pathname === sectionPath;
+  const heroCopy =
+    sectionPath === '/mezczyzni'
+      ? {
+          eyebrow: 'Nasza drużyna',
+          title: 'Siła w każdym secie.',
+          text: 'Walczymy na najwyższym poziomie w każdym meczu.',
+          cta: 'Poznaj drużynę',
+        }
+      : {
+          eyebrow: `Sekcja ${sectionLabel}`,
+          title: sectionLabel,
+          text: 'Odkryj klub, zespół i najważniejsze informacje w jednym miejscu.',
+          cta: 'Przejdź do treści',
+        };
 
   return (
     <div className={styles.page}>
       {isSectionHome ? (
-        <HeroBackground sectionLabel={sectionLabel}>
+        <HeroBackground sectionLabel={sectionLabel} sectionPath={sectionPath}>
           <div className={styles.heroInner}>
             <header className={styles.header}>
               <NavBar sectionLabel={sectionLabel} sectionPath={sectionPath} />
@@ -25,15 +39,13 @@ export function SectionLayout({ children, sectionLabel, sectionPath }: SectionLa
 
             <div className={styles.heroContent}>
               <div className={styles.heroCopy}>
-                <p className={styles.eyebrow}>Sekcja {sectionLabel}</p>
-                <h1 className={styles.heroTitle}>{sectionLabel}</h1>
-                <p className={styles.heroText}>
-                  Odkryj klub, zespół i najważniejsze informacje w jednym miejscu.
-                </p>
+                <p className={styles.eyebrow}>{heroCopy.eyebrow}</p>
+                <h1 className={styles.heroTitle}>{heroCopy.title}</h1>
+                <p className={styles.heroText}>{heroCopy.text}</p>
               </div>
 
               <div className={styles.heroActions}>
-                <HeroCtaButton label="Przejdź do treści" targetId="section-content" />
+                <HeroCtaButton label={heroCopy.cta} targetId="section-content" />
               </div>
             </div>
           </div>

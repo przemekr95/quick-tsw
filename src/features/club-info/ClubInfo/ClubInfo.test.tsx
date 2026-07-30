@@ -23,18 +23,33 @@ const club: Club = {
   ],
 };
 
+const landingContent = {
+  rosterCards: [
+    {
+      name: 'Marco Rossi',
+      position: 'Atakujący',
+      number: '13',
+      stats: 'Skuteczność ataku: 94%',
+      imageSrc: '/images/backgrounds/hero-k.jpg',
+    },
+  ],
+  recruitmentPaths: ['Akademia Młodzieżowa - 10 do 17 lat'],
+  matchCountdown: [{ value: '16', label: 'Dni' }],
+  matchForm: ['W'],
+};
+
 describe('ClubInfo', () => {
   it('renders club section headings and images', () => {
     render(
       <MemoryRouter>
-        <ClubInfo club={club} />
+        <ClubInfo club={club} landingContent={landingContent} section="kobiety" />
       </MemoryRouter>,
     );
 
     expect(screen.getAllByRole('img', { name: /zdjęcie meczowe drużyny siatkarskiej w czerwonej tonacji/i }).length).toBeGreaterThan(0);
     expect(screen.getByRole('heading', { name: 'O klubie' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Nasza drużyna' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Dołącz do nas' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Poznaj drużynę.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Twoje miejsce jest na boisku.' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Najbliższy mecz' })).toBeInTheDocument();
   });
 });
