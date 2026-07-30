@@ -28,3 +28,23 @@ export interface ContactInfo {
   email: string;
   mapUrl: string;
 }
+
+export interface ClubRosterCard {
+  name: string;
+  position: string;
+  number: string;
+  stats: string;
+  imageSrc: string;
+}
+
+export interface ClubMatchCountdownItem {
+  value: string;
+  label: string;
+}
+
+export interface ClubLandingContent {
+  rosterCards: ClubRosterCard[];
+  recruitmentPaths: string[];
+  matchCountdown: ClubMatchCountdownItem[];
+  matchForm: string[];
+}

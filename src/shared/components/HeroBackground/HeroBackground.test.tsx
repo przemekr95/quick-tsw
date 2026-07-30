@@ -5,7 +5,7 @@ import { HeroBackground } from './HeroBackground';
 describe('HeroBackground', () => {
   it('renders labeled hero wrapper', () => {
     render(
-      <HeroBackground sectionLabel="Kobiety">
+      <HeroBackground sectionLabel="Kobiety" sectionPath="/kobiety">
         <p>Treść</p>
       </HeroBackground>,
     );
