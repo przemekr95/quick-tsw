@@ -22,13 +22,12 @@ export function NavBar({ sectionPath, sectionLabel }: NavBarProps) {
 
   return (
     <nav aria-label="Nawigacja sekcji" className={styles.nav}>
-      <Link aria-label="Volterra VC" className={styles.brand} onClick={closeMenu} to={`${sectionPath}/klub`}>
-        <span className={styles.brandBadge}>V</span>
-        <span className={styles.brandText}>
-          Volterra <span className={styles.brandTextAccent}>VC</span>
-        </span>
-        <span className={styles.sectionTag}>{sectionLabel}</span>
-      </Link>
+      <Link
+        aria-label={`Volterra VC — ${sectionLabel}`}
+        className={styles.brand}
+        onClick={closeMenu}
+        to={`${sectionPath}/klub`}
+      >
 
       <button
         aria-controls="section-nav-menu"
