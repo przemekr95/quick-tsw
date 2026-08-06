@@ -107,6 +107,7 @@ export function NavBar({ sectionPath }: NavBarProps) {
               aria-label="Aktualności na Facebooku"
               className={styles.link}
               href={FACEBOOK_NEWS_URL}
+              onClick={closeMenu}
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -140,6 +141,7 @@ export function NavBar({ sectionPath }: NavBarProps) {
               aria-label="Aktualności na Facebooku"
               className={styles.link}
               href={FACEBOOK_NEWS_URL}
+              onClick={closeMenu}
               rel="noopener noreferrer"
               target="_blank"
             >

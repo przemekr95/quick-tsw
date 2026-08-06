@@ -83,4 +83,30 @@ describe('useMenuFocusTrap', () => {
     expect(document.activeElement).toBe(dom.button);
     dom.cleanup();
   });
+
+  it('wraps focus on Tab and Shift+Tab boundaries', () => {
+    const dom = setupMenuDom();
+
+    renderHook(() =>
+      useMenuFocusTrap({
+        isOpen: true,
+        menuRef: { current: dom.menu },
+        primaryRef: { current: dom.button },
+        secondaryRef: { current: dom.brand },
+        onClose: vi.fn(),
+      }),
+    );
+
+    const menuLink = dom.menu.querySelector('a');
+    menuLink?.focus();
+    expect(document.activeElement).toBe(menuLink);
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    expect(document.activeElement).toBe(dom.button);
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true }));
+    expect(document.activeElement).toBe(menuLink);
+
+    dom.cleanup();
+  });
 });

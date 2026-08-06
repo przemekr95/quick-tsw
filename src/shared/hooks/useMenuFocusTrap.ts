@@ -26,6 +26,7 @@ export function useMenuFocusTrap({
       return;
     }
 
+    const primaryElement = primaryRef.current;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
@@ -95,6 +96,7 @@ export function useMenuFocusTrap({
     focusableElements[0]?.focus();
 
     return () => {
+      primaryElement?.focus();
       document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', handleKeyDown);
     };
