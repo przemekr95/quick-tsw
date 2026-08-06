@@ -60,7 +60,7 @@ describe('useMenuFocusTrap', () => {
     dom.cleanup();
   });
 
-  it('calls onClose on Escape', () => {
+  it('calls onClose on Escape and restores focus to trigger', () => {
     const dom = setupMenuDom();
     const onClose = vi.fn();
 
@@ -74,9 +74,13 @@ describe('useMenuFocusTrap', () => {
       }),
     );
 
+    dom.brand.focus();
+    expect(document.activeElement).toBe(dom.brand);
+
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
 
     expect(onClose).toHaveBeenCalledTimes(1);
+    expect(document.activeElement).toBe(dom.button);
     dom.cleanup();
   });
 });

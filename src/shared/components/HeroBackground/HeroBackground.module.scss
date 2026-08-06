@@ -26,7 +26,7 @@
 
   > * {
     position: relative;
-    z-index: 1;
+    z-index: 3;
   }
 }
 
@@ -62,7 +62,7 @@
   left: clamp(1.1rem, 6vw, 5.5rem);
   right: clamp(1.1rem, 6vw, 5.5rem);
   bottom: clamp(1rem, 4vh, 2rem);
-  z-index: 1;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;

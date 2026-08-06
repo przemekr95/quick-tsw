@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useMenuFocusTrap } from '../../hooks';
 import { FACEBOOK_NEWS_URL } from '../../utils/config';
@@ -36,6 +36,31 @@ export function NavBar({ sectionPath }: NavBarProps) {
     onClose: closeMenu,
   });
 
+  useEffect(() => {
+    if (!isMenuOpen || typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
+    const desktopMediaQuery = window.matchMedia('(min-width: 880px)');
+
+    if (desktopMediaQuery.matches) {
+      setIsMenuOpen(false);
+      return;
+    }
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    desktopMediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      desktopMediaQuery.removeEventListener('change', handleChange);
+    };
+  }, [isMenuOpen]);
+
   const navLinkClassName = ({ isActive }: { isActive: boolean }) =>
     joinClasses(styles.link, isActive && styles.activeLink);
 
@@ -57,7 +82,12 @@ export function NavBar({ sectionPath }: NavBarProps) {
         <button aria-label="Zamknij menu" className={styles.backdrop} onClick={closeMenu} type="button" />
       ) : null}
 
-      <div className={joinClasses(styles.modalShell, isMenuOpen && styles.modalShellOpen)}>
+      <div
+        aria-label={isMenuOpen ? 'Menu nawigacyjne' : undefined}
+        aria-modal={isMenuOpen ? 'true' : undefined}
+        className={joinClasses(styles.modalShell, isMenuOpen && styles.modalShellOpen)}
+        role={isMenuOpen ? 'dialog' : undefined}
+      >
         <nav aria-label="Nawigacja" className={styles.nav}>
           <Link
             aria-label="Towarzystwo Sportowe Wisła Kraków"
@@ -100,12 +130,10 @@ export function NavBar({ sectionPath }: NavBarProps) {
 
         <ul
           aria-hidden={!isMenuOpen}
-          aria-modal="true"
           className={joinClasses(styles.menu, isMenuOpen && styles.menuOpen)}
           hidden={!isMenuOpen}
           id="section-nav-menu"
           ref={menuRef}
-          role="dialog"
           tabIndex={-1}
         >
           <li>

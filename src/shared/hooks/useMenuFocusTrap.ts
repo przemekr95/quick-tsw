@@ -42,6 +42,7 @@ export function useMenuFocusTrap({
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault();
+        primaryRef.current?.focus();
         onClose();
         return;
       }

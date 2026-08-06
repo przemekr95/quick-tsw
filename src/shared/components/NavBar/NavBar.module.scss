@@ -153,7 +153,9 @@
   margin: 0;
   padding: 24px;
   list-style: none;
-  background: linear-gradient(180deg, rgb(0 0 0 / 30%) 5.05%, rgb(0 0 0 / 0%) 24.2%), linear-gradient(0deg, #121212 0%, #2C2C2C 100%);
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 30%) 5.05%, rgb(0 0 0 / 0%) 24.2%),
+    linear-gradient(0deg, var(--color-surface-start) 0%, var(--color-surface-end) 100%);
   border: 0;
 }
 
