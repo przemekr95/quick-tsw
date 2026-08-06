@@ -52,8 +52,10 @@ export function NavBar({ sectionPath }: NavBarProps) {
     ));
 
   return (
-    <header className={styles.header}>
-      {isMenuOpen ? <div aria-hidden="true" className={styles.backdrop} onClick={closeMenu} /> : null}
+    <div className={styles.header}>
+      {isMenuOpen ? (
+        <button aria-label="Zamknij menu" className={styles.backdrop} onClick={closeMenu} type="button" />
+      ) : null}
 
       <div className={joinClasses(styles.modalShell, isMenuOpen && styles.modalShellOpen)}>
         <nav aria-label="Nawigacja" className={styles.nav}>
@@ -126,6 +128,6 @@ export function NavBar({ sectionPath }: NavBarProps) {
           ))}
         </ul>
       </div>
-    </header>
+    </div>
   );
 }
