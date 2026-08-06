@@ -34,7 +34,7 @@ export function SectionLayout({ children, sectionLabel, sectionPath }: SectionLa
         <HeroBackground sectionLabel={sectionLabel} sectionPath={sectionPath}>
           <div className={styles.heroInner}>
             <header className={styles.header}>
-              <NavBar sectionLabel={sectionLabel} sectionPath={sectionPath} />
+              <NavBar sectionPath={sectionPath} />
             </header>
 
             <div className={styles.heroContent}>
@@ -52,7 +52,7 @@ export function SectionLayout({ children, sectionLabel, sectionPath }: SectionLa
         </HeroBackground>
       ) : (
         <header className={styles.headerInline}>
-          <NavBar sectionLabel={sectionLabel} sectionPath={sectionPath} />
+          <NavBar sectionPath={sectionPath} />
         </header>
       )}
 
