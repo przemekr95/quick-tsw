@@ -254,7 +254,7 @@
   }
 
   .menu {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
@@ -274,40 +274,6 @@
     display: flex;
     flex-direction: row;
     background: transparent;
-  }
-
-  .modalShellOpen .menu {
-    flex: 0 0 auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 0;
-    position: static;
-    margin-left: 0;
-  }
-
-  .modalShellOpen .menu .link {
-    font-size: 12px;
-    padding: 0;
-  }
-
-  .modalShellOpen .menu .activeLink {
-    padding-left: 0;
-  }
-
-  .modalShellOpen .menu .activeLink::before {
-    content: none;
-  }
-
-  .modalShellOpen .menu .activeLink::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 30px;
-    height: 2px;
-    transform: translateX(-50%);
-    background: var(--color-background);
   }
 
   .link {

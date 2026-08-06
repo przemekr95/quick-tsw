@@ -131,7 +131,6 @@ export function NavBar({ sectionPath }: NavBarProps) {
         <ul
           aria-hidden={!isMenuOpen}
           className={joinClasses(styles.menu, isMenuOpen && styles.menuOpen)}
-          hidden={!isMenuOpen}
           id="section-nav-menu"
           ref={menuRef}
           tabIndex={-1}

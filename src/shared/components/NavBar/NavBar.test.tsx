@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it } from 'vitest';
@@ -81,6 +81,9 @@ describe('NavBar', () => {
 
     await user.tab();
 
-    expect(screen.getAllByRole('link', { name: 'Aktualności na Facebooku' })[1]).toHaveFocus();
+    const dialog = screen.getByRole('dialog', { name: 'Menu nawigacyjne' });
+    const menuList = within(dialog).getByRole('list');
+
+    expect(within(menuList).getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveFocus();
   });
 });

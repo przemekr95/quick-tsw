@@ -29,14 +29,22 @@ export function useMenuFocusTrap({
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
+    const isFocusable = (element: HTMLElement | null | undefined): element is HTMLElement => {
+      if (!element) {
+        return false;
+      }
+
+      return !element.hasAttribute('disabled') && element.tabIndex !== -1;
+    };
+
     const getFocusableElements = () => {
       const menuItems = Array.from(
         menuRef.current?.querySelectorAll<HTMLElement>(focusableSelector) ?? [],
-      ).filter((element) => !element.hasAttribute('disabled') && element.tabIndex !== -1);
+      ).filter(isFocusable);
 
-      return [primaryRef.current, secondaryRef?.current, ...menuItems].filter(
-        (element): element is HTMLElement => Boolean(element),
-      );
+      const focusables = [primaryRef.current, secondaryRef?.current, ...menuItems].filter(isFocusable);
+
+      return Array.from(new Set(focusables));
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
