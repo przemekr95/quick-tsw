@@ -1,73 +1,162 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useMenuFocusTrap } from '../../hooks';
 import { FACEBOOK_NEWS_URL } from '../../utils/config';
 import styles from './NavBar.module.scss';
 
-interface NavBarProps {
-  sectionPath: '/kobiety' | '/mezczyzni';
-  sectionLabel: string;
+const SECTION_LINKS = [
+  { label: 'Klub', path: 'klub' },
+  { label: 'Drużyna', path: 'druzyna' },
+  { label: 'Kontakt', path: 'kontakt' },
+] as const;
+
+function joinClasses(...classNames: Array<string | false | null | undefined>): string {
+  return classNames.filter(Boolean).join(' ');
 }
 
-export function NavBar({ sectionPath, sectionLabel }: NavBarProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+interface NavBarProps {
+  sectionPath: '/kobiety' | '/mezczyzni';
+}
 
-  const menuClassName = [styles.menu, isMenuOpen ? styles.menuOpen : ''].join(' ').trim();
+export function NavBar({ sectionPath }: NavBarProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLUListElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const brandRef = useRef<HTMLAnchorElement>(null);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
+  useMenuFocusTrap({
+    isOpen: isMenuOpen,
+    menuRef,
+    primaryRef: buttonRef,
+    secondaryRef: brandRef,
+    onClose: closeMenu,
+  });
+
+  useEffect(() => {
+    if (!isMenuOpen || typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
+    const desktopMediaQuery = window.matchMedia('(min-width: 880px)');
+
+    if (desktopMediaQuery.matches) {
+      setIsMenuOpen(false);
+      return;
+    }
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    desktopMediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      desktopMediaQuery.removeEventListener('change', handleChange);
+    };
+  }, [isMenuOpen]);
+
   const navLinkClassName = ({ isActive }: { isActive: boolean }) =>
-    [styles.link, isActive ? styles.activeLink : ''].join(' ').trim();
+    joinClasses(styles.link, isActive && styles.activeLink);
+
+  const renderSectionLinks = () =>
+    SECTION_LINKS.map((link) => (
+      <NavLink
+        key={link.path}
+        className={navLinkClassName}
+        onClick={closeMenu}
+        to={`${sectionPath}/${link.path}`}
+      >
+        {link.label}
+      </NavLink>
+    ));
 
   return (
-    <nav aria-label="Nawigacja sekcji" className={styles.nav}>
-      <Link
-        aria-label={`Volterra VC — ${sectionLabel}`}
-        className={styles.brand}
-        onClick={closeMenu}
-        to={`${sectionPath}/klub`}
-      >
+    <div className={styles.header}>
+      {isMenuOpen ? (
+        <button aria-label="Zamknij menu" className={styles.backdrop} onClick={closeMenu} type="button" />
+      ) : null}
 
-      <button
-        aria-controls="section-nav-menu"
-        aria-expanded={isMenuOpen}
-        aria-label="Przełącz menu nawigacyjne"
-        className={styles.toggle}
-        onClick={() => setIsMenuOpen((value) => !value)}
-        type="button"
+      <div
+        aria-label={isMenuOpen ? 'Menu nawigacyjne' : undefined}
+        aria-modal={isMenuOpen ? 'true' : undefined}
+        className={joinClasses(styles.modalShell, isMenuOpen && styles.modalShellOpen)}
+        role={isMenuOpen ? 'dialog' : undefined}
       >
-        <span className={styles.toggleLines} />
-      </button>
-
-      <ul className={menuClassName} id="section-nav-menu">
-        <li>
-          <a
-            className={styles.link}
-            href={FACEBOOK_NEWS_URL}
-            aria-label="Aktualności na Facebooku"
-            rel="noopener noreferrer"
-            target="_blank"
+        <nav aria-label="Nawigacja" className={styles.nav}>
+          <Link
+            aria-label="Towarzystwo Sportowe Wisła Kraków"
+            className={styles.brand}
+            onClick={closeMenu}
+            ref={brandRef}
+            to="/"
           >
-            Aktualności
-          </a>
-        </li>
-        <li>
-          <NavLink className={navLinkClassName} onClick={closeMenu} to={`${sectionPath}/klub`}>
-            Klub
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={navLinkClassName} onClick={closeMenu} to={`${sectionPath}/druzyna`}>
-            Drużyna
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={navLinkClassName} onClick={closeMenu} to={`${sectionPath}/kontakt`}>
-            Kontakt
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+            <span aria-hidden="true" className={styles.brandMark}>
+              <img alt="" className={styles.brandLogo} src="/tsw-herb.png" />
+            </span>
+          </Link>
+
+          <div className={styles.desktopLinks}>
+            {renderSectionLinks()}
+            <a
+              aria-label="Aktualności na Facebooku"
+              className={styles.link}
+              href={FACEBOOK_NEWS_URL}
+              onClick={closeMenu}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Aktualności
+            </a>
+          </div>
+
+          <button
+            aria-controls="section-nav-menu"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Zamknij menu' : 'Otwórz menu'}
+            className={styles.toggle}
+            data-state={isMenuOpen ? 'open' : 'closed'}
+            onClick={() => setIsMenuOpen((value) => !value)}
+            ref={buttonRef}
+            type="button"
+          >
+            <span className={styles.toggleLines} />
+          </button>
+        </nav>
+
+        <ul
+          aria-hidden={!isMenuOpen}
+          className={joinClasses(styles.menu, isMenuOpen && styles.menuOpen)}
+          id="section-nav-menu"
+          ref={menuRef}
+          tabIndex={-1}
+        >
+          <li>
+            <a
+              aria-label="Aktualności na Facebooku"
+              className={styles.link}
+              href={FACEBOOK_NEWS_URL}
+              onClick={closeMenu}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Aktualności
+            </a>
+          </li>
+          {SECTION_LINKS.map((link) => (
+            <li key={link.path}>
+              <NavLink className={navLinkClassName} onClick={closeMenu} to={`${sectionPath}/${link.path}`}>
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }

@@ -17,7 +17,7 @@ describe('app routing', () => {
 
     await user.click(screen.getByRole('link', { name: 'Kobiety' }));
 
-    expect(await screen.findByRole('link', { name: 'Volterra VC' })).toBeInTheDocument();
+    expect(await screen.findByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' })).toBeInTheDocument();
   });
 
   it('switches tabs inside section', async () => {
