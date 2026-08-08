@@ -1,4 +1,11 @@
 {
+  "heroHeading": "Sekcja Kobiet",
+  "ctaLabel": "Przejdź do treści",
+  "heroSlides": [
+    { "id": "kobiety-1", "imageSrc": "/images/backgrounds/k/k-1.jpg", "imageAlt": "Zdjęcie sekcji kobiet podczas akcji meczowej", "title": "Pasja i determinacja", "text": "Gramy z sercem na każdym metrze boiska." },
+    { "id": "kobiety-2", "imageSrc": "/images/backgrounds/k/k-2.jpg", "imageAlt": "Zdjęcie sekcji kobiet na tle siatki meczowej", "title": "Razem silniejsze", "text": "Drużyna, która tworzy historię każdego sezonu." },
+    { "id": "kobiety-3", "imageSrc": "/images/backgrounds/k/k-3.jpg", "imageAlt": "Zdjęcie drużyny kobiet", "title": "Dołącz do nas", "text": "Treningi otwarte dla wszystkich poziomów zaawansowania." }
+  ],
   "rosterCards": [
     {
       "name": "Marco Rossi",

@@ -1,17 +1,30 @@
 import { cleanup, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it } from 'vitest';
+import type { HeroSlide } from '../../types/domain';
 import { SectionLayout } from './SectionLayout';
 
 afterEach(() => {
   cleanup();
 });
 
+const mockHeroSlides: HeroSlide[] = [
+  { id: 'k-1', imageSrc: '/images/backgrounds/k/k-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja i determinacja', text: 'Gramy z sercem na każdym metrze boiska.' },
+  { id: 'k-2', imageSrc: '/images/backgrounds/k/k-2.jpg', imageAlt: 'Slajd 2', title: 'Razem silniejsze', text: 'Drużyna, która tworzy historię każdego sezonu.' },
+];
+
 describe('SectionLayout', () => {
   it('renders cta on section home route', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/klub']}>
-        <SectionLayout sectionLabel="Kobiety" sectionPath="/kobiety">
+        <SectionLayout
+          ctaLabel="Przejdź do treści"
+          heroHeading="Sekcja Kobiet"
+          heroSlides={mockHeroSlides}
+          sectionLabel="Kobiety"
+          sectionPath="/kobiety"
+        >
           <p>Zawartość</p>
         </SectionLayout>
       </MemoryRouter>,
@@ -27,27 +40,83 @@ describe('SectionLayout', () => {
     );
   });
 
-  it('renders a section heading on the home route', () => {
+  it('renders section heading as h1 on the home route', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/klub']}>
-        <SectionLayout sectionLabel="Kobiety" sectionPath="/kobiety">
+        <SectionLayout
+          ctaLabel="Przejdź do treści"
+          heroHeading="Sekcja Kobiet"
+          heroSlides={mockHeroSlides}
+          sectionLabel="Kobiety"
+          sectionPath="/kobiety"
+        >
           <p>Zawartość</p>
         </SectionLayout>
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { level: 1, name: 'Kobiety' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Sekcja Kobiet' })).toBeInTheDocument();
   });
 
   it('does not render cta outside section home route', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/kontakt']}>
-        <SectionLayout sectionLabel="Kobiety" sectionPath="/kobiety">
+        <SectionLayout
+          ctaLabel="Przejdź do treści"
+          heroHeading="Sekcja Kobiet"
+          heroSlides={mockHeroSlides}
+          sectionLabel="Kobiety"
+          sectionPath="/kobiety"
+        >
           <p>Zawartość</p>
         </SectionLayout>
       </MemoryRouter>,
     );
 
     expect(screen.queryByRole('link', { name: 'Przejdź do treści' })).not.toBeInTheDocument();
+  });
+
+  it('renders pagination dots on section home route', () => {
+    render(
+      <MemoryRouter initialEntries={['/kobiety/klub']}>
+        <SectionLayout
+          ctaLabel="Przejdź do treści"
+          heroHeading="Sekcja Kobiet"
+          heroSlides={mockHeroSlides}
+          sectionLabel="Kobiety"
+          sectionPath="/kobiety"
+        >
+          <p>Zawartość</p>
+        </SectionLayout>
+      </MemoryRouter>,
+    );
+
+    const dots = screen.getAllByRole('button', { name: /Przejdź do slajdu/ });
+    expect(dots).toHaveLength(mockHeroSlides.length);
+  });
+
+  it('clicking a dot changes active slide', async () => {
+    render(
+      <MemoryRouter initialEntries={['/kobiety/klub']}>
+        <SectionLayout
+          ctaLabel="Przejdź do treści"
+          heroHeading="Sekcja Kobiet"
+          heroSlides={mockHeroSlides}
+          sectionLabel="Kobiety"
+          sectionPath="/kobiety"
+        >
+          <p>Zawartość</p>
+        </SectionLayout>
+      </MemoryRouter>,
+    );
+
+    const dots = screen.getAllByRole('button', { name: /Przejdź do slajdu/ });
+    expect(dots[0]).toHaveAttribute('aria-pressed', 'true');
+    expect(dots[1]).toHaveAttribute('aria-pressed', 'false');
+
+    await userEvent.click(dots[1]);
+
+    expect(dots[1]).toHaveAttribute('aria-pressed', 'true');
+    expect(dots[0]).toHaveAttribute('aria-pressed', 'false');
   });
 });

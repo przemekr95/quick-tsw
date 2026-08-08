@@ -1,14 +1,20 @@
-import { act, cleanup, render, screen, within } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { cleanup, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
+import type { HeroSlide } from '../../types/domain';
 import { HeroBackground } from './HeroBackground';
 
 afterEach(cleanup);
 
+const mockSlides: HeroSlide[] = [
+  { id: 'k-1', imageSrc: '/images/backgrounds/k/k-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja i determinacja', text: 'Gramy z sercem.' },
+  { id: 'k-2', imageSrc: '/images/backgrounds/k/k-2.jpg', imageAlt: 'Slajd 2', title: 'Razem silniejsze', text: 'Drużyna, która tworzy historię.' },
+  { id: 'k-3', imageSrc: '/images/backgrounds/k/k-3.jpg', imageAlt: 'Slajd 3', title: 'Dołącz do nas', text: 'Treningi otwarte.' },
+];
+
 describe('HeroBackground', () => {
   it('renders labeled hero wrapper', () => {
     render(
-      <HeroBackground sectionLabel="Kobiety" sectionPath="/kobiety">
+      <HeroBackground activeIndex={0} sectionLabel="Kobiety" slides={mockSlides}>
         <p>Treść</p>
       </HeroBackground>,
     );
@@ -17,46 +23,21 @@ describe('HeroBackground', () => {
     expect(screen.getByText('Treść')).toBeInTheDocument();
   });
 
-  it('clicking a pagination bullet makes it the active slide', async () => {
-    const { container } = render(<HeroBackground sectionLabel="Kobiety" sectionPath="/kobiety" />);
+  it('renders all slide images', () => {
+    const { container } = render(
+      <HeroBackground activeIndex={0} sectionLabel="Kobiety" slides={mockSlides} />,
+    );
 
-    const bullets = within(container).getAllByRole('button', { name: /Przejdź do slajdu/ });
-    expect(bullets).toHaveLength(2);
-
-    // Initially slide 1 is active — counter shows "01 / 02"
-    expect(within(container).getByText(/01 \/ 02/)).toBeInTheDocument();
-
-    // Click the second bullet
-    await userEvent.click(bullets[1]);
-
-    // Counter should now show "02 / 02"
-    expect(within(container).getByText(/02 \/ 02/)).toBeInTheDocument();
+    expect(container.querySelectorAll('img')).toHaveLength(mockSlides.length);
   });
 
-  describe('auto-advance interval', () => {
-    beforeEach(() => {
-      vi.useFakeTimers();
-    });
+  it('applies active class to the slide matching activeIndex', () => {
+    const { container } = render(
+      <HeroBackground activeIndex={1} sectionLabel="Kobiety" slides={mockSlides} />,
+    );
 
-    afterEach(() => {
-      vi.useRealTimers();
-    });
-
-    it('advances to the next slide after 6 seconds', () => {
-      const { container } = render(
-        <HeroBackground sectionLabel="Kobiety" sectionPath="/kobiety" />,
-      );
-
-      // Initially on slide 1
-      expect(within(container).getByText(/01 \/ 02/)).toBeInTheDocument();
-
-      // Advance fake clock by 6 seconds and flush React state updates
-      act(() => {
-        vi.advanceTimersByTime(6000);
-      });
-
-      // Should now be on slide 2
-      expect(within(container).getByText(/02 \/ 02/)).toBeInTheDocument();
-    });
+    const figures = container.querySelectorAll('figure');
+    expect(figures[1].className).toMatch(/slideActive/);
+    expect(figures[0].className).not.toMatch(/slideActive/);
   });
 });
