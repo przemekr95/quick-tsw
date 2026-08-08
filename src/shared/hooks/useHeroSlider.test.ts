@@ -6,9 +6,9 @@ import { HERO_SLIDE_DURATION_MS, useHeroSlider } from './useHeroSlider';
 afterEach(cleanup);
 
 const slides: HeroSlide[] = [
-  { id: 's-1', imageSrc: '/img/1.jpg', imageAlt: 'Slajd 1' },
-  { id: 's-2', imageSrc: '/img/2.jpg', imageAlt: 'Slajd 2' },
-  { id: 's-3', imageSrc: '/img/3.jpg', imageAlt: 'Slajd 3' },
+  { id: 's-1', imageSrc: '/img/1.jpg', imageAlt: 'Slajd 1', title: 'Tytuł 1', text: 'Opis 1' },
+  { id: 's-2', imageSrc: '/img/2.jpg', imageAlt: 'Slajd 2', title: 'Tytuł 2', text: 'Opis 2' },
+  { id: 's-3', imageSrc: '/img/3.jpg', imageAlt: 'Slajd 3', title: 'Tytuł 3', text: 'Opis 3' },
 ];
 
 describe('useHeroSlider', () => {

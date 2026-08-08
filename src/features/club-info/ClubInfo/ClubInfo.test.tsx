@@ -24,6 +24,11 @@ const club: Club = {
 };
 
 const landingContent = {
+  heroHeading: 'Sekcja Kobiet',
+  ctaLabel: 'Przejdź do treści',
+  heroSlides: [
+    { id: 'k-1', imageSrc: '/img/k-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja', text: 'Opis' },
+  ],
   rosterCards: [
     {
       name: 'Marco Rossi',
