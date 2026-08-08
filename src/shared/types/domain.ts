@@ -29,6 +29,14 @@ export interface ContactInfo {
   mapUrl: string;
 }
 
+export interface HeroSlide {
+  id: string;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  text: string;
+}
+
 export interface ClubRosterCard {
   name: string;
   position: string;
@@ -43,6 +51,9 @@ export interface ClubMatchCountdownItem {
 }
 
 export interface ClubLandingContent {
+  heroHeading: string;
+  ctaLabel: string;
+  heroSlides: HeroSlide[];
   rosterCards: ClubRosterCard[];
   recruitmentPaths: string[];
   matchCountdown: ClubMatchCountdownItem[];

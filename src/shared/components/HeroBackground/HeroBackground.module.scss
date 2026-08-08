@@ -28,7 +28,7 @@
     position: relative;
   }
 
-  > :not(.slides, .sliderUi) {
+  > :not(.slides) {
     z-index: 2;
   }
 }
@@ -58,88 +58,4 @@
   object-fit: cover;
   object-position: center;
   filter: saturate(1.1) contrast(1.04);
-}
-
-.sliderUi {
-  position: absolute;
-  left: clamp(1.1rem, 6vw, 5.5rem);
-  right: clamp(1.1rem, 6vw, 5.5rem);
-  bottom: clamp(1rem, 4vh, 2rem);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.pagination {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.paginationBullet {
-  width: 1.1rem;
-  height: 2px;
-  border: 0;
-  padding: 0;
-  background-color: rgb(255 255 255 / 35%);
-  cursor: pointer;
-}
-
-.paginationBulletActive {
-  width: 2.4rem;
-  background-color: var(--color-primary);
-}
-
-.paginationCounter {
-  margin: 0 0 0 0.7rem;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgb(255 255 255 / 46%);
-}
-
-.controls {
-  display: inline-flex;
-  gap: 0.45rem;
-}
-
-.controlButton {
-  width: 2.35rem;
-  height: 2.35rem;
-  border: 1px solid rgb(255 255 255 / 20%);
-  background-color: rgb(12 16 32 / 25%);
-  color: var(--color-background);
-  font-size: 1.2rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: border-color 160ms ease, background-color 160ms ease;
-
-  &:hover,
-  &:focus-visible {
-    border-color: rgb(255 255 255 / 50%);
-    background-color: rgb(255 255 255 / 11%);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-  }
-}
-
-@media (width <= 720px) {
-  .sliderUi {
-    bottom: 0.8rem;
-  }
-
-  .paginationCounter {
-    font-size: 0.56rem;
-    letter-spacing: 0.2em;
-  }
-
-  .controlButton {
-    width: 2.1rem;
-    height: 2.1rem;
-  }
 }

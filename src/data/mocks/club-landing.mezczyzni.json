@@ -1,4 +1,11 @@
 {
+  "heroHeading": "Sekcja Mężczyzn",
+  "ctaLabel": "Poznaj drużynę",
+  "heroSlides": [
+    { "id": "mezczyzni-1", "imageSrc": "/images/backgrounds/m/m-1.jpg", "imageAlt": "Zdjęcie sekcji mężczyzn podczas akcji meczowej", "title": "Siła w każdym secie", "text": "Walczymy na najwyższym poziomie każdego meczu." },
+    { "id": "mezczyzni-2", "imageSrc": "/images/backgrounds/m/m-2.jpg", "imageAlt": "Zdjęcie sekcji mężczyzn na tle siatki meczowej", "title": "Tradycja i ambicja", "text": "Lata doświadczenia budują naszą przewagę na boisku." },
+    { "id": "mezczyzni-3", "imageSrc": "/images/backgrounds/m/m-3.jpg", "imageAlt": "Zdjęcie drużyny mężczyzn", "title": "Twój klub", "text": "Dołącz do drużyny z charakterem i historią." }
+  ],
   "rosterCards": [
     {
       "name": "Marco Rossi",
