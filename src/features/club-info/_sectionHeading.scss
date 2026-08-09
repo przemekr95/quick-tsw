@@ -1,0 +1,45 @@
+@mixin shell($gap: 1.6rem, $divider: true) {
+  display: grid;
+  gap: $gap;
+  padding: clamp(3rem, 9vw, 5.5rem) clamp(1.25rem, 5vw, 3rem);
+  counter-increment: section;
+
+  @if $divider {
+    border-top: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
+  }
+}
+
+@mixin heading {
+  display: grid;
+  gap: 0.5rem;
+}
+
+@mixin index {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: color-mix(in srgb, currentcolor 38%, transparent);
+
+  &::before {
+    content: counter(section, decimal-leading-zero);
+  }
+}
+
+@mixin eyebrow {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+@mixin title {
+  margin: 0;
+  font-size: clamp(2.1rem, 5.4vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}

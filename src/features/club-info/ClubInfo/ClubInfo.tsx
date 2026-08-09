@@ -1,70 +1,53 @@
-import type { ClubLandingContent } from '../../../shared/types/domain';
-import type { SectionId } from '../../../shared/types/domain';
-import type { Club } from '../../../shared/types/domain';
-import { SponsorsCarousel } from '../SponsorsCarousel';
-import { AboutSection, JoinSpotlightSection, NextMatchSection, RosterSection } from './sections';
+import type { Club, ClubLandingContent, SectionId } from '../../../shared/types/domain';
+import { AboutSection } from '../AboutSection';
+import { JoinSection } from '../JoinSection';
+import { NextMatchSection } from '../NextMatchSection';
+import { RosterSection } from '../RosterSection';
+import { SectionNav } from '../SectionNav';
+import { SponsorsSection } from '../SponsorsSection';
 import styles from './ClubInfo.module.scss';
 
 interface ClubInfoProps {
-  club: Pick<Club, 'arenaAddress' | 'sponsors'>;
+  club: Pick<Club, 'name' | 'history' | 'arenaAddress' | 'sponsors'>;
   landingContent: ClubLandingContent;
   section: SectionId;
 }
 
-const clubImagesBySection: Record<SectionId, { heroSrc: string; detailSrc: string; alt: string }> = {
+const aboutImageBySection: Record<SectionId, { src: string; alt: string }> = {
   kobiety: {
-    heroSrc: '/images/backgrounds/hero-k.jpg',
-    detailSrc: '/images/backgrounds/hero-k.jpg',
+    src: '/images/backgrounds/hero-k.jpg',
     alt: 'Zdjęcie meczowe drużyny siatkarskiej w czerwonej tonacji',
   },
   mezczyzni: {
-    heroSrc: '/images/backgrounds/hero-m.jpg',
-    detailSrc: '/images/backgrounds/hero-m.jpg',
+    src: '/images/backgrounds/hero-m.jpg',
     alt: 'Zdjęcie meczowe drużyny siatkarskiej w niebieskiej tonacji',
   },
 };
 
-const sectionAnchors = [
-  { id: 'o-klubie', label: 'O klubie' },
-  { id: 'nasza-druzyna', label: 'Nasza drużyna' },
-  { id: 'dolacz-do-nas', label: 'Dołącz do nas' },
-  { id: 'najblizszy-mecz', label: 'Najbliższy mecz' },
-] as const;
-
 export function ClubInfo({ club, landingContent, section }: ClubInfoProps) {
-  const sectionVisual = clubImagesBySection[section];
+  const aboutImage = aboutImageBySection[section];
 
   return (
     <section aria-label="Zakładka Klub" className={styles.root}>
+      <div className={styles.stack}>
+        <AboutSection
+          arenaAddress={club.arenaAddress}
+          clubName={club.name}
+          history={club.history}
+          imageAlt={aboutImage.alt}
+          imageSrc={aboutImage.src}
+        />
 
-      <nav aria-label="Nawigacja sekcji klubu" className={styles.tabRail}>
-        <ul>
-          {sectionAnchors.map((anchor) => (
-            <li key={anchor.id}>
-              <a href={`#${anchor.id}`}>{anchor.label}</a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+        <RosterSection players={landingContent.rosterCards} />
 
-      <div className={styles.contentStack}>
-        <AboutSection arenaAddress={club.arenaAddress} imageAlt={sectionVisual.alt} imageSrc={sectionVisual.detailSrc} />
+        <JoinSection recruitmentPaths={landingContent.recruitmentPaths} />
 
-        <RosterSection rosterCards={landingContent.rosterCards} />
+        <NextMatchSection countdown={landingContent.matchCountdown} form={landingContent.matchForm} match={landingContent.nextMatch} />
 
-        <JoinSpotlightSection imageSrc={sectionVisual.heroSrc} recruitmentPaths={landingContent.recruitmentPaths} />
+        <SponsorsSection sponsors={club.sponsors} />
       </div>
 
-      <NextMatchSection matchCountdown={landingContent.matchCountdown} matchForm={landingContent.matchForm} />
-
-      <section aria-labelledby="sponsors-heading" className={styles.sponsorsBlock}>
-        <div className={styles.sponsorIntro}>
-          <p className={styles.blockIndex}>05</p>
-          <h3 id="sponsors-heading">Sponsorzy</h3>
-          <p>Partnerzy, którzy wspierają rozwój zespołu i codzienną pracę klubu.</p>
-        </div>
-        <SponsorsCarousel sponsors={club.sponsors} />
-      </section>
+      <SectionNav />
     </section>
   );
 }

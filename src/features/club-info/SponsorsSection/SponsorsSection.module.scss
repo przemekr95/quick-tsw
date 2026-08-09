@@ -1,0 +1,25 @@
+@use '../sectionHeading' as sh;
+
+.section {
+  @include sh.shell($gap: 1.4rem);
+}
+
+.heading {
+  @include sh.heading;
+}
+
+.index {
+  @include sh.index;
+}
+
+.eyebrow {
+  @include sh.eyebrow;
+}
+
+.title {
+  @include sh.title;
+
+  font-size: clamp(1.7rem, 3.8vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
