@@ -43,6 +43,12 @@
     "Weekendowe treningi otwarte",
     "Program siłowy i kondycyjny"
   ],
+  "nextMatch": {
+    "opponent": "AKS Blok Grodzisk",
+    "competition": "I liga mężczyzn",
+    "kickoffLabel": "15 sierpnia 2026, 19:00",
+    "venue": "Hala Sportowa, ul. Sportowa 1"
+  },
   "matchCountdown": [
     { "value": "16", "label": "Dni" },
     { "value": "20", "label": "Godz" },

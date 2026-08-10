@@ -162,8 +162,11 @@
 }
 
 .main {
+  --section-padding-block: 1.1rem;
+
   width: 100%;
-  padding: 1.1rem;
+  padding-block: var(--section-padding-block);
+  padding-inline: 1.1rem;
   scroll-margin-top: calc(var(--nav-height) + 0.8rem);
   color: var(--color-text);
   background-color: var(--color-background);
@@ -209,7 +212,10 @@
     gap: 1.4rem;
   }
 
-  .main,
+  .main {
+    padding-inline: 1.8rem;
+  }
+
   .footer {
     padding-left: 1.8rem;
     padding-right: 1.8rem;

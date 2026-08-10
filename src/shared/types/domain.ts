@@ -50,12 +50,20 @@ export interface ClubMatchCountdownItem {
   label: string;
 }
 
+export interface ClubNextMatch {
+  opponent: string;
+  competition: string;
+  kickoffLabel: string;
+  venue: string;
+}
+
 export interface ClubLandingContent {
   heroHeading: string;
   ctaLabel: string;
   heroSlides: HeroSlide[];
   rosterCards: ClubRosterCard[];
   recruitmentPaths: string[];
+  nextMatch: ClubNextMatch;
   matchCountdown: ClubMatchCountdownItem[];
   matchForm: string[];
 }

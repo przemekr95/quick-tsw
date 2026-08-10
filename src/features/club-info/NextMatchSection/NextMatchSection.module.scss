@@ -1,0 +1,129 @@
+@use '../sectionHeading' as sh;
+
+.section {
+  @include sh.shell($gap: 1.8rem, $divider: false);
+
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-primary) 82%, black) 0%,
+    color-mix(in srgb, var(--color-primary) 40%, black) 100%
+  );
+}
+
+.copy {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.heading {
+  @include sh.heading;
+}
+
+.index {
+  @include sh.index;
+}
+
+.eyebrow {
+  @include sh.eyebrow;
+
+  color: var(--color-accent);
+}
+
+.title {
+  @include sh.title;
+}
+
+.meta {
+  margin: 0;
+  color: color-mix(in srgb, currentcolor 74%, transparent);
+}
+
+.details {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.countdown {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.countdown li {
+  display: grid;
+  gap: 0.2rem;
+  place-items: center;
+  min-height: 96px;
+  border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+}
+
+.countdownValue {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.countdownLabel {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, currentcolor 55%, transparent);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.formLabel {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, currentcolor 55%, transparent);
+}
+
+.formList {
+  display: flex;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.formList li {
+  min-width: 1.9rem;
+  min-height: 1.9rem;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.win {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
+
+.loss {
+  background-color: color-mix(in srgb, currentcolor 16%, transparent);
+  color: color-mix(in srgb, currentcolor 55%, transparent);
+}
+
+@media (width >= 780px) {
+  .details {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .countdown {
+    grid-template-columns: repeat(4, minmax(90px, 1fr));
+  }
+}

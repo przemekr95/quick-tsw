@@ -17,7 +17,7 @@
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-background) 70%, var(--color-accent));
+  color: color-mix(in srgb, currentcolor 62%, transparent);
 }
 
 .counter {
@@ -26,7 +26,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 46%);
+  color: color-mix(in srgb, currentcolor 46%, transparent);
 }
 
 .buttons {
@@ -37,9 +37,9 @@
 .controlButton {
   width: 2.2rem;
   height: 2.2rem;
-  border: 1px solid rgb(255 255 255 / 28%);
+  border: 1px solid color-mix(in srgb, currentcolor 28%, transparent);
   background-color: transparent;
-  color: var(--color-background);
+  color: inherit;
   font-size: 1.1rem;
   line-height: 1;
   cursor: pointer;
@@ -59,8 +59,7 @@
 
 .viewport {
   overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 12%);
-  background: color-mix(in srgb, var(--color-emphasis) 90%, var(--color-primary));
+  border: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
 }
 
 .track {
@@ -95,7 +94,7 @@
   display: grid;
   place-items: center;
   min-height: 118px;
-  border: 1px solid rgb(255 255 255 / 14%);
+  border: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
   background-color: rgb(0 0 0 / 14%);
 }
 
@@ -112,17 +111,17 @@
   justify-content: center;
   min-width: 2rem;
   padding: 0.24rem 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--color-background) 28%, transparent);
+  border: 1px solid color-mix(in srgb, currentcolor 28%, transparent);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: color-mix(in srgb, var(--color-background) 80%, var(--color-primary));
+  color: color-mix(in srgb, currentcolor 80%, transparent);
 }
 
 .logoName {
   margin: 0;
   font-size: 0.95rem;
-  color: rgb(255 255 255 / 76%);
+  color: color-mix(in srgb, currentcolor 76%, transparent);
 }
 
 @media (width >= 900px) {
