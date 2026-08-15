@@ -178,7 +178,7 @@
   align-items: center;
   margin-inline: 24px;
   padding: 0.65rem 0;
-  color: var(--color-background);
+  color: color-mix(in srgb, var(--color-background) 62%, transparent);
   text-decoration: none;
   font-size: 12px;
   font-weight: 700;
@@ -186,6 +186,14 @@
   text-transform: uppercase;
   text-shadow: 0 1px 2px rgb(0 0 0 / 20%);
   min-height: 24px;
+  border-bottom: 2px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--color-background);
+  border-color: var(--color-primary);
 }
 
 .link:focus-visible {
@@ -200,22 +208,13 @@
 
 .activeLink {
   position: relative;
-}
-
-.activeLink::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 30px;
-  height: 2px;
-  transform: translateX(-50%);
-  background: var(--color-background);
-  box-shadow: 0 0 6px rgb(255 255 255 / 45%);
+  color: var(--color-background);
+  border-color: var(--color-primary);
 }
 
 .modalShellOpen .menu .activeLink {
   padding-left: 1.1rem;
+  border-bottom-color: transparent;
 }
 
 .modalShellOpen .menu .activeLink::before {
@@ -226,11 +225,7 @@
   width: 2px;
   height: 1.1em;
   transform: translateY(-50%);
-  background: var(--color-background);
-}
-
-.modalShellOpen .menu .activeLink::after {
-  content: none;
+  background: var(--color-primary);
 }
 
 @media (width >= 880px) {

@@ -1,21 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import type { SectionPath } from '../../types/domain';
 import { useMenuFocusTrap } from '../../hooks';
-import { FACEBOOK_NEWS_URL } from '../../utils/config';
+import { CLUB_BRAND_NAME, CLUB_CREST_SRC, FACEBOOK_NEWS_URL, SECTION_TAB_LINKS } from '../../utils/config';
 import styles from './NavBar.module.scss';
-
-const SECTION_LINKS = [
-  { label: 'Klub', path: 'klub' },
-  { label: 'Drużyna', path: 'druzyna' },
-  { label: 'Kontakt', path: 'kontakt' },
-] as const;
 
 function joinClasses(...classNames: Array<string | false | null | undefined>): string {
   return classNames.filter(Boolean).join(' ');
 }
 
 interface NavBarProps {
-  sectionPath: '/kobiety' | '/mezczyzni';
+  sectionPath: SectionPath;
 }
 
 export function NavBar({ sectionPath }: NavBarProps) {
@@ -65,7 +60,7 @@ export function NavBar({ sectionPath }: NavBarProps) {
     joinClasses(styles.link, isActive && styles.activeLink);
 
   const renderSectionLinks = () =>
-    SECTION_LINKS.map((link) => (
+    SECTION_TAB_LINKS.map((link) => (
       <NavLink
         key={link.path}
         className={navLinkClassName}
@@ -90,14 +85,14 @@ export function NavBar({ sectionPath }: NavBarProps) {
       >
         <nav aria-label="Nawigacja" className={styles.nav}>
           <Link
-            aria-label="Towarzystwo Sportowe Wisła Kraków"
+            aria-label={CLUB_BRAND_NAME}
             className={styles.brand}
             onClick={closeMenu}
             ref={brandRef}
             to="/"
           >
             <span aria-hidden="true" className={styles.brandMark}>
-              <img alt="" className={styles.brandLogo} src="/tsw-herb.png" />
+              <img alt="" className={styles.brandLogo} src={CLUB_CREST_SRC} />
             </span>
           </Link>
 
@@ -148,7 +143,7 @@ export function NavBar({ sectionPath }: NavBarProps) {
               Aktualności
             </a>
           </li>
-          {SECTION_LINKS.map((link) => (
+          {SECTION_TAB_LINKS.map((link) => (
             <li key={link.path}>
               <NavLink className={navLinkClassName} onClick={closeMenu} to={`${sectionPath}/${link.path}`}>
                 {link.label}

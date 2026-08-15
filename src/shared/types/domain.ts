@@ -1,5 +1,7 @@
 export type SectionId = 'kobiety' | 'mezczyzni';
 
+export type SectionPath = '/kobiety' | '/mezczyzni';
+
 export type SponsorTier = 1 | 2 | 3;
 
 export interface Sponsor {

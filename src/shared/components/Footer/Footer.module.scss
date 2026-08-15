@@ -1,0 +1,139 @@
+.footer {
+  background-color: var(--color-emphasis);
+  color: var(--color-background);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  padding: clamp(2rem, 6vw, 2.8rem) 1.1rem;
+  margin: 0 auto;
+  max-width: 72rem;
+}
+
+.crest {
+  width: 32px;
+  height: auto;
+  opacity: 0.85;
+}
+
+.nav {
+  order: 3;
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem 1.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  padding-bottom: 0.2rem;
+  color: color-mix(in srgb, var(--color-background) 62%, transparent);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-background);
+    border-color: var(--color-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+.navLinkActive {
+  color: var(--color-background);
+  border-color: var(--color-primary);
+}
+
+.backLink {
+  order: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-background);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-background) 35%, transparent);
+  padding-bottom: 0.2rem;
+  transition: color 160ms ease, border-color 160ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+}
+
+.backArrow {
+  display: inline-block;
+  transition: transform 160ms ease;
+
+  .backLink:hover &,
+  .backLink:focus-visible & {
+    transform: translateX(-3px);
+  }
+}
+
+.bottom {
+  border-top: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
+  padding: 1rem 1.1rem;
+}
+
+.copyright {
+  margin: 0 auto;
+  max-width: 72rem;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, currentcolor 52%, transparent);
+}
+
+@media (width >= 720px) {
+  .inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.4rem;
+  }
+
+  .nav {
+    order: 2;
+  }
+
+  .backLink {
+    order: 3;
+  }
+
+  .bottom {
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+  }
+}

@@ -3,7 +3,6 @@ import { AboutSection } from '../AboutSection';
 import { JoinSection } from '../JoinSection';
 import { NextMatchSection } from '../NextMatchSection';
 import { RosterSection } from '../RosterSection';
-import { SectionNav } from '../SectionNav';
 import { SponsorsSection } from '../SponsorsSection';
 import styles from './ClubInfo.module.scss';
 
@@ -46,8 +45,6 @@ export function ClubInfo({ club, landingContent, section }: ClubInfoProps) {
 
         <SponsorsSection clubName={club.name} sponsors={club.sponsors} />
       </div>
-
-      <SectionNav />
     </section>
   );
 }
