@@ -1,7 +1,10 @@
 export type SectionId = 'kobiety' | 'mezczyzni';
 
+export type SponsorTier = 1 | 2 | 3;
+
 export interface Sponsor {
   name: string;
+  tier: SponsorTier;
   logoSrc?: string;
   websiteUrl?: string;
 }
