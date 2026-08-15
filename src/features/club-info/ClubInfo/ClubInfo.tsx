@@ -44,7 +44,7 @@ export function ClubInfo({ club, landingContent, section }: ClubInfoProps) {
 
         <NextMatchSection countdown={landingContent.matchCountdown} form={landingContent.matchForm} match={landingContent.nextMatch} />
 
-        <SponsorsSection sponsors={club.sponsors} />
+        <SponsorsSection clubName={club.name} sponsors={club.sponsors} />
       </div>
 
       <SectionNav />

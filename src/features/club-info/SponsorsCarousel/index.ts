@@ -1,1 +1,0 @@
-export { SponsorsCarousel } from './SponsorsCarousel';

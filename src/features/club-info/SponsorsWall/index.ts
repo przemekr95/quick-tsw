@@ -1,0 +1,1 @@
+export { SponsorsWall } from './SponsorsWall';

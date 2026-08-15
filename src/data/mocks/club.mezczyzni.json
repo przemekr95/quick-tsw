@@ -6,21 +6,25 @@
   "sponsors": [
     {
       "name": "Ministerstwo Sportu i Turystyki",
+      "tier": 1,
       "logoSrc": "/images/sponsors/m/msit.png",
       "websiteUrl": "https://www.gov.pl/web/sport"
     },
     {
       "name": "Program KLUB",
+      "tier": 2,
       "logoSrc": "/images/sponsors/m/klub.png",
       "websiteUrl": "https://rzadowyprogramklub.pl/"
     },
     {
       "name": "Polski Związek Piłki Siatkowej",
+      "tier": 2,
       "logoSrc": "/images/sponsors/m/pzps.png",
       "websiteUrl": "https://www.pzps.pl/"
     },
     {
       "name": "Małopolski Związek Piłki Siatkowej",
+      "tier": 3,
       "logoSrc": "/images/sponsors/m/mzps.png",
       "websiteUrl": "https://mzps.pl/"
     }

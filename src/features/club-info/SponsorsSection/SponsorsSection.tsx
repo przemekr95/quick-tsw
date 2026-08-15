@@ -1,22 +1,17 @@
 import type { Sponsor } from '../../../shared/types/domain';
-import { SponsorsCarousel } from '../SponsorsCarousel';
+import { SponsorsWall } from '../SponsorsWall';
 import styles from './SponsorsSection.module.scss';
 
 interface SponsorsSectionProps {
+  clubName: string;
   sponsors: Sponsor[];
 }
 
-export function SponsorsSection({ sponsors }: SponsorsSectionProps) {
+export function SponsorsSection({ clubName, sponsors }: SponsorsSectionProps) {
   return (
-    <section aria-labelledby="sponsorzy-heading" className={styles.section} id="sponsorzy">
-      <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Sponsorzy</p>
-        <h2 className={styles.title} id="sponsorzy-heading">
-          Partnerzy klubu
-        </h2>
-      </div>
-      <SponsorsCarousel sponsors={sponsors} />
+    <section aria-label={`Sponsorzy klubu ${clubName}`} className={styles.section}>
+      <img alt={`Herb klubu ${clubName}`} className={styles.crest} src="/tsw-herb.png" />
+      <SponsorsWall sponsors={sponsors} />
     </section>
   );
 }
