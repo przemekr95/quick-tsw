@@ -1,17 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import type { Player, StaffMember } from '../../../shared/types/domain';
-import { TeamRoster } from './TeamRoster';
-
-const players: Player[] = [
-  {
-    firstName: 'Jan',
-    lastName: 'Kowalski',
-    number: 12,
-    position: 'Atakujący',
-    photoSrc: '/images/backgrounds/hero-m.jpg',
-  },
-];
+import type { StaffMember } from '../../../shared/types/domain';
+import { StaffSection } from './StaffSection';
 
 const staff: StaffMember[] = [
   {
@@ -30,14 +20,14 @@ const staff: StaffMember[] = [
   },
 ];
 
-describe('TeamRoster', () => {
-  it('renders the players and staff sections', () => {
-    render(<TeamRoster players={players} staff={staff} />);
+describe('StaffSection', () => {
+  it('renders a card for the coach and the stats analyst', () => {
+    render(<StaffSection staff={staff} />);
 
-    expect(screen.getByRole('heading', { name: 'Zawodnicy' })).toBeInTheDocument();
-    expect(screen.getByText('Jan Kowalski')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Sztab' })).toBeInTheDocument();
     expect(screen.getByText('Anna Nowak')).toBeInTheDocument();
+    expect(screen.getByText('Trener')).toBeInTheDocument();
     expect(screen.getByText('Piotr Wiśniewski')).toBeInTheDocument();
+    expect(screen.getByText('Statystyk')).toBeInTheDocument();
   });
 });

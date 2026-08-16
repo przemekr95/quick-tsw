@@ -1,28 +1,20 @@
-import type { Player } from '../../../shared/types/domain';
+import type { Player, StaffMember } from '../../../shared/types/domain';
+import { PlayersSection } from '../PlayersSection';
+import { StaffSection } from '../StaffSection';
 import styles from './TeamRoster.module.scss';
 
 interface TeamRosterProps {
   players: Player[];
+  staff: StaffMember[];
 }
 
-export function TeamRoster({ players }: TeamRosterProps) {
+export function TeamRoster({ players, staff }: TeamRosterProps) {
   return (
-    <section aria-labelledby="team-heading">
-      <h2 id="team-heading">Drużyna</h2>
-      <ul className={styles.grid}>
-        {players.map((player) => (
-          <li className={styles.card} key={`${player.number}-${player.lastName}`}>
-            <div aria-hidden="true" className={styles.photo}>
-              {player.photoPlaceholder}
-            </div>
-            <p className={styles.name}>
-              {player.firstName} {player.lastName}
-            </p>
-            <p>#{player.number}</p>
-            <p>{player.position}</p>
-          </li>
-        ))}
-      </ul>
+    <section aria-label="Zakładka Drużyna" className={styles.root}>
+      <div className={styles.stack}>
+        <StaffSection staff={staff} />
+        <PlayersSection players={players} />
+      </div>
     </section>
   );
 }

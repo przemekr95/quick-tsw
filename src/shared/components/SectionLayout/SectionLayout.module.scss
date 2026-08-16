@@ -1,5 +1,8 @@
 .page {
   --nav-height: 66px;
+  --header-inline-pad-top: calc(var(--nav-height) + 1rem);
+  --header-inline-pad-bottom: 1rem;
+  --header-inline-height: calc(var(--header-inline-pad-top) + var(--header-inline-pad-bottom));
 
   min-height: 100vh;
   display: grid;
@@ -21,7 +24,8 @@
 }
 
 .headerInline {
-  padding: calc(var(--nav-height) + 1rem) 1.1rem 1rem;
+  padding-block: var(--header-inline-pad-top) var(--header-inline-pad-bottom);
+  padding-inline: 1.1rem;
   background-color: var(--color-background);
 }
 
@@ -181,6 +185,8 @@
 @media (width >= 900px) {
   .page {
     --nav-height: 72px;
+    --header-inline-pad-top: calc(var(--nav-height) + 1.5rem);
+    --header-inline-pad-bottom: 1.25rem;
   }
 
   .heroInner {
@@ -188,7 +194,7 @@
   }
 
   .headerInline {
-    padding: calc(var(--nav-height) + 1.5rem) 1.8rem 1.25rem;
+    padding-inline: 1.8rem;
   }
 
   .heroContent {

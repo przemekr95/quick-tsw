@@ -29,7 +29,7 @@ describe('app routing', () => {
     const druzynaLinks = await screen.findAllByRole('link', { name: 'Drużyna' });
     await user.click(druzynaLinks[0]);
 
-    expect(await screen.findByRole('heading', { level: 2, name: 'Drużyna' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { level: 2, name: 'Zawodnicy' })).toBeInTheDocument();
   });
 
   it('redirects /mezczyzni to klub tab', async () => {
@@ -63,7 +63,8 @@ describe('app routing', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(await screen.findByRole('heading', { level: 2, name: 'Drużyna' })).toBeInTheDocument();
-    expect(screen.getAllByText('[Zdjęcie zawodnika]').length).toBeGreaterThan(0);
+    expect(await screen.findByRole('heading', { level: 2, name: 'Zawodnicy' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { level: 2, name: 'Sztab' })).toBeInTheDocument();
+    expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
 });
