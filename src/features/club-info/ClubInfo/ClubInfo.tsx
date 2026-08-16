@@ -29,17 +29,19 @@ export function ClubInfo({ club, landingContent, section }: ClubInfoProps) {
   return (
     <section aria-label="Zakładka Klub" className={styles.root}>
       <div className={styles.stack}>
-        <AboutSection
-          arenaAddress={club.arenaAddress}
-          clubName={club.name}
-          history={club.history}
-          imageAlt={aboutImage.alt}
-          imageSrc={aboutImage.src}
-        />
+        <div className={styles.introGroup}>
+          <AboutSection
+            arenaAddress={club.arenaAddress}
+            clubName={club.name}
+            history={club.history}
+            imageAlt={aboutImage.alt}
+            imageSrc={aboutImage.src}
+          />
 
-        <RosterSection players={landingContent.rosterCards} />
+          <RosterSection players={landingContent.rosterCards} />
 
-        <JoinSection recruitmentPaths={landingContent.recruitmentPaths} />
+          <JoinSection recruitmentPaths={landingContent.recruitmentPaths} />
+        </div>
 
         <NextMatchSection countdown={landingContent.matchCountdown} form={landingContent.matchForm} match={landingContent.nextMatch} />
 

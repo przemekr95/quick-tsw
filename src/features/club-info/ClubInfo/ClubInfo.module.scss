@@ -13,3 +13,12 @@
   display: grid;
   counter-reset: section;
 }
+
+.introGroup {
+  display: grid;
+  background:
+    radial-gradient(circle 42rem at 88% 8%, color-mix(in srgb, var(--color-primary) 10%, transparent) 0%, transparent 100%),
+    radial-gradient(circle 46rem at 4% 58%, color-mix(in srgb, var(--color-primary) 11%, transparent) 0%, transparent 100%),
+    radial-gradient(circle 44rem at 90% 92%, color-mix(in srgb, var(--color-primary) 12%, transparent) 0%, transparent 100%),
+    var(--color-surface-start);
+}
