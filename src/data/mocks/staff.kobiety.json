@@ -1,0 +1,16 @@
+[
+  {
+    "role": "Trener",
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko trenerki]",
+    "bio": "[Krótka nota biograficzna trenerki głównej drużyny kobiet]",
+    "photoSrc": "/images/backgrounds/hero-k.jpg"
+  },
+  {
+    "role": "Statystyk",
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko statystyczki]",
+    "bio": "[Krótka nota biograficzna statystyczki drużyny kobiet]",
+    "photoSrc": "/images/backgrounds/hero-k.jpg"
+  }
+]

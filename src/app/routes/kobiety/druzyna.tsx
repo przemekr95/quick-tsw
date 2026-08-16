@@ -1,12 +1,14 @@
 import { TeamRoster } from '../../../features/team-roster/TeamRoster';
+import { useStaffRoster } from '../../../shared/hooks/useStaffRoster';
 import { useTeamRoster } from '../../../shared/hooks/useTeamRoster';
 
 export default function KobietyDruzynaRoute() {
-  const { data, loading } = useTeamRoster('kobiety');
+  const { data: players, loading: playersLoading } = useTeamRoster('kobiety');
+  const { data: staff, loading: staffLoading } = useStaffRoster('kobiety');
 
-  if (loading) {
+  if (playersLoading || staffLoading) {
     return <p>Ładowanie składu...</p>;
   }
 
-  return <TeamRoster players={data} />;
+  return <TeamRoster players={players} staff={staff} />;
 }

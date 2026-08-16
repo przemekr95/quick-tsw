@@ -1,0 +1,16 @@
+[
+  {
+    "role": "Trener",
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko trenera]",
+    "bio": "[Krótka nota biograficzna trenera głównego drużyny mężczyzn]",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "role": "Statystyk",
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko statystyka]",
+    "bio": "[Krótka nota biograficzna statystyka drużyny mężczyzn]",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  }
+]

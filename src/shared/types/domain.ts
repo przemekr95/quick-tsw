@@ -24,7 +24,17 @@ export interface Player {
   lastName: string;
   number: number;
   position: string;
-  photoPlaceholder: string;
+  photoSrc: string;
+}
+
+export type StaffRole = 'Trener' | 'Statystyk';
+
+export interface StaffMember {
+  role: StaffRole;
+  firstName: string;
+  lastName: string;
+  bio: string;
+  photoSrc: string;
 }
 
 export interface ContactInfo {

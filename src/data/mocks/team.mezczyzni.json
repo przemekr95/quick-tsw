@@ -2,15 +2,141 @@
   {
     "firstName": "[Imię]",
     "lastName": "[Nazwisko 1]",
-    "number": 4,
-    "position": "Przyjmujący",
-    "photoPlaceholder": "[Zdjęcie zawodnika]"
+    "number": 1,
+    "position": "Rozgrywający",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
   },
   {
     "firstName": "[Imię]",
     "lastName": "[Nazwisko 2]",
-    "number": 9,
+    "number": 2,
+    "position": "Przyjmujący",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 3]",
+    "number": 3,
     "position": "Środkowy",
-    "photoPlaceholder": "[Zdjęcie zawodnika]"
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 4]",
+    "number": 4,
+    "position": "Atakujący",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 5]",
+    "number": 5,
+    "position": "Libero",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 6]",
+    "number": 6,
+    "position": "Rozgrywający",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 7]",
+    "number": 7,
+    "position": "Przyjmujący",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 8]",
+    "number": 8,
+    "position": "Środkowy",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 9]",
+    "number": 9,
+    "position": "Atakujący",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 10]",
+    "number": 10,
+    "position": "Libero",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 11]",
+    "number": 11,
+    "position": "Rozgrywający",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 12]",
+    "number": 12,
+    "position": "Przyjmujący",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 13]",
+    "number": 13,
+    "position": "Środkowy",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 14]",
+    "number": 14,
+    "position": "Atakujący",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 15]",
+    "number": 15,
+    "position": "Libero",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 16]",
+    "number": 16,
+    "position": "Rozgrywający",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 17]",
+    "number": 17,
+    "position": "Przyjmujący",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 18]",
+    "number": 18,
+    "position": "Środkowy",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 19]",
+    "number": 19,
+    "position": "Atakujący",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
+  },
+  {
+    "firstName": "[Imię]",
+    "lastName": "[Nazwisko 20]",
+    "number": 20,
+    "position": "Libero",
+    "photoSrc": "/images/backgrounds/hero-m.jpg"
   }
 ]

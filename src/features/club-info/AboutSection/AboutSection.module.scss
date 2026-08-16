@@ -1,4 +1,4 @@
-@use '../sectionHeading' as sh;
+@use '../../../shared/theme/sectionHeading' as sh;
 
 .section {
   @include sh.shell($gap: 2rem, $divider: false);
