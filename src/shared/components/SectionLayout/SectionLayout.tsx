@@ -1,7 +1,8 @@
 import type { PropsWithChildren } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import type { HeroSlide } from '../../types/domain';
+import { useLocation } from 'react-router-dom';
+import type { HeroSlide, SectionPath } from '../../types/domain';
 import { useHeroSlider } from '../../hooks/useHeroSlider';
+import { Footer } from '../Footer';
 import { HeroBackground } from '../HeroBackground';
 import { HeroCtaButton } from '../HeroCtaButton';
 import { NavBar } from '../NavBar';
@@ -9,7 +10,7 @@ import styles from './SectionLayout.module.scss';
 
 interface SectionLayoutProps extends PropsWithChildren {
   sectionLabel: string;
-  sectionPath: '/kobiety' | '/mezczyzni';
+  sectionPath: SectionPath;
   heroHeading: string;
   ctaLabel: string;
   heroSlides: HeroSlide[];
@@ -94,11 +95,7 @@ export function SectionLayout({ children, sectionLabel, sectionPath, heroHeading
         <div className={styles.mainInner}>{children}</div>
       </main>
 
-      <footer className={styles.footer}>
-        <Link className={styles.backLink} to="/">
-          Powrót do wyboru sekcji
-        </Link>
-      </footer>
+      <Footer sectionPath={sectionPath} />
     </div>
   );
 }

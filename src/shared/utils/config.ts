@@ -1,1 +1,11 @@
 export const FACEBOOK_NEWS_URL = 'https://facebook.com/twoj-klub-volley';
+
+export const CLUB_BRAND_NAME = 'Towarzystwo Sportowe Wisła Kraków';
+
+export const CLUB_CREST_SRC = '/tsw-herb.png';
+
+export const SECTION_TAB_LINKS = [
+  { label: 'Klub', path: 'klub' },
+  { label: 'Drużyna', path: 'druzyna' },
+  { label: 'Kontakt', path: 'kontakt' },
+] as const;
