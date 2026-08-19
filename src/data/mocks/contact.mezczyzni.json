@@ -2,5 +2,26 @@
   "address": "ul. Sportowa 1, 00-000 Miasto",
   "phone": "+48 000 000 002",
   "email": "mezczyzni@klub.pl",
-  "mapUrl": "https://maps.google.com/?q=Sportowa+1"
+  "mapUrl": "https://maps.google.com/?q=Sportowa+1",
+  "nip": "000-000-00-00",
+  "bankAccountNumber": "00 0000 0000 0000 0000 0000 0000",
+  "bankAccountHolder": "Towarzystwo Sportowe Wisła Kraków",
+  "coordinators": [
+    {
+      "role": "Koordynator sekcji",
+      "firstName": "[Imię]",
+      "lastName": "[Nazwisko koordynatora]",
+      "phone": "+48 000 000 003",
+      "email": "koordynator.mezczyzni@klub.pl",
+      "photoSrc": "/images/backgrounds/hero-m.jpg"
+    },
+    {
+      "role": "Zastępca koordynatora",
+      "firstName": "[Imię]",
+      "lastName": "[Nazwisko zastępcy]",
+      "phone": "+48 000 000 004",
+      "email": "zastepca.mezczyzni@klub.pl",
+      "photoSrc": "/images/backgrounds/hero-m.jpg"
+    }
+  ]
 }

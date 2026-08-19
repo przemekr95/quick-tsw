@@ -17,7 +17,9 @@ describe('app routing', () => {
 
     await user.click(screen.getByRole('link', { name: 'Kobiety' }));
 
-    expect(await screen.findByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' }),
+    ).toBeInTheDocument();
   });
 
   it('switches tabs inside section', async () => {
@@ -37,7 +39,9 @@ describe('app routing', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(await screen.findByRole('heading', { name: 'MKS Siatkówka Mężczyźni' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: 'MKS Siatkówka Mężczyźni' }),
+    ).toBeInTheDocument();
   });
 
   it('renders kontakt data for mezczyzni', async () => {
@@ -45,7 +49,12 @@ describe('app routing', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(await screen.findByRole('heading', { level: 2, name: 'Kontakt' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { level: 2, name: 'Koordynatorzy' }),
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { level: 2, name: 'Dane kontaktowe' }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'mezczyzni@klub.pl' })).toBeInTheDocument();
   });
 
@@ -54,7 +63,12 @@ describe('app routing', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(await screen.findByRole('heading', { level: 2, name: 'Kontakt' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { level: 2, name: 'Koordynatorzy' }),
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { level: 2, name: 'Dane kontaktowe' }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'kobiety@klub.pl' })).toBeInTheDocument();
   });
 
