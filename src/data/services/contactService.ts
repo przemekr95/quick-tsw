@@ -3,8 +3,8 @@ import contactKobiety from '../mocks/contact.kobiety.json';
 import contactMezczyzni from '../mocks/contact.mezczyzni.json';
 
 const contactBySection: Record<SectionId, ContactInfo> = {
-  kobiety: contactKobiety,
-  mezczyzni: contactMezczyzni,
+  kobiety: contactKobiety as ContactInfo,
+  mezczyzni: contactMezczyzni as ContactInfo,
 };
 
 export async function getContactData(section: SectionId): Promise<ContactInfo> {

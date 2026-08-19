@@ -37,11 +37,26 @@ export interface StaffMember {
   photoSrc: string;
 }
 
+export type CoordinatorRole = 'Koordynator sekcji' | 'Zastępca koordynatora';
+
+export interface SectionCoordinator {
+  role: CoordinatorRole;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  photoSrc: string;
+}
+
 export interface ContactInfo {
   address: string;
   phone: string;
   email: string;
   mapUrl: string;
+  nip: string;
+  bankAccountNumber: string;
+  bankAccountHolder: string;
+  coordinators: SectionCoordinator[];
 }
 
 export interface HeroSlide {
