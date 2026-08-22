@@ -11,7 +11,7 @@ describe('SplitScreen', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: 'Kobiety' })).toHaveAttribute('href', '/kobiety');
-    expect(screen.getByRole('link', { name: 'Mężczyźni' })).toHaveAttribute('href', '/mezczyzni');
+    expect(screen.getByRole('link', { name: 'Kobiet' })).toHaveAttribute('href', '/kobiety');
+    expect(screen.getByRole('link', { name: 'Mężczyzn' })).toHaveAttribute('href', '/mezczyzni');
   });
 });

@@ -15,7 +15,7 @@ describe('app routing', () => {
 
     render(<RouterProvider router={router} />);
 
-    await user.click(screen.getByRole('link', { name: 'Kobiety' }));
+    await user.click(screen.getByRole('link', { name: 'Kobiet' }));
 
     expect(
       await screen.findByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' }),
