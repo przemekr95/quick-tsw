@@ -24,7 +24,6 @@
   text-decoration: none;
   isolation: isolate;
 
-  // zdjęcie: odsycone i przyciemnione, żeby narzucony kolor klubu został wierny wytycznym
   &::before {
     position: absolute;
     inset: -4%;
@@ -37,7 +36,6 @@
     transition: transform 500ms ease;
   }
 
-  // czysty kolor klubu nałożony trybem "color" — zachowuje jasność zdjęcia, przejmuje barwę
   &::after {
     position: absolute;
     inset: 0;
@@ -73,7 +71,6 @@
   }
 }
 
-// przyciemnienie od dołu dla czytelności tekstu, bez wpływu na barwę zdjęcia
 .scrim {
   position: absolute;
   inset: 0;
@@ -133,7 +130,6 @@
   }
 }
 
-// gwiazda herbu klubu jako miękka poświata za herbem na styku sekcji
 .crestGlow {
   position: absolute;
   top: 50%;
