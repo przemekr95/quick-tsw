@@ -111,6 +111,8 @@ Niebieski, biały i czerwony są kolorami wiodącymi: białe tło i szary tekst 
 
 **Implementacja:** zmienne CSS (`--color-primary`, `--color-background`, `--color-text`, `--color-accent`, `--color-emphasis`, `--font-family-base`...) ustawiane na `[data-theme="kobiety"]` / `[data-theme="mezczyzni"]` na elemencie root layoutu danej sekcji. Komponenty **nigdy** nie hardkodują kolorów ani fontów — zawsze przez zmienne. Dodanie kolejnego motywu w przyszłości ma być zmianą w jednym pliku.
 
+**Wyjątek — ekran startowy (split-screen):** `--color-surface-start` / `--color-surface-end` (`#121212` → `#2c2c2c`) to celowo ciemne tło pod duotonowe zdjęcia na ekranie startowym (`src/shared/components/SplitScreen`), niezależne od `--color-background` (białego, wspólnego dla zakładek Klub/Drużyna/Kontakt). Nie mieszać tych dwóch tokenów: `--color-background` zostaje białe wszędzie poza tym jednym ekranem.
+
 ## 6. Warstwa danych (mock → przyszłe API)
 
 Na tym etapie dane pochodzą z plików JSON w `src/data/mocks/`. Dostęp do danych **zawsze** przez warstwę serwisów (`src/data/services/*.ts`) — nigdy przez bezpośredni import JSON w komponencie. Serwisy zwracają `Promise` (nawet czytając lokalny plik) i są typowane przez wspólne typy domenowe z `shared/types/`. Dzięki temu podmiana na prawdziwe API/CMS w kolejnym etapie wymaga zmiany tylko wewnątrz serwisu, nie w komponentach.
