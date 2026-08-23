@@ -3,6 +3,9 @@
   width: 100vw;
   margin-inline: calc(50% - 50vw);
   margin-block-start: calc(-1 * var(--section-padding-block, 1.1rem));
+
+  --color-eyebrow: var(--color-accent);
+
   background:
     radial-gradient(
       circle at 85% 0%,
