@@ -21,6 +21,8 @@ describe('PlayersSection', () => {
     expect(screen.getByText('Jan Kowalski')).toBeInTheDocument();
     expect(screen.getByText('Atakujący')).toBeInTheDocument();
     expect(screen.getByText('12')).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: 'Zdjęcie zawodnika Jan Kowalski' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', { name: 'Zdjęcie zawodnika nr 12, Jan Kowalski' }),
+    ).toBeInTheDocument();
   });
 });

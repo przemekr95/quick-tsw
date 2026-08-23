@@ -53,14 +53,24 @@
   background: linear-gradient(180deg, transparent 45%, rgb(0 0 0 / 78%) 100%);
 }
 
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 100% 0%, rgb(0 0 0 / 55%) 0%, transparent 60%);
+  pointer-events: none;
+}
+
 .number {
   position: absolute;
-  top: 0.85rem;
-  right: 0.9rem;
+  top: 0.6rem;
+  right: 0.75rem;
   z-index: 1;
-  font-size: 1.5rem;
+  font-size: 3.75rem;
   font-weight: 700;
-  color: rgb(255 255 255 / 85%);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
 }
 
 .meta {

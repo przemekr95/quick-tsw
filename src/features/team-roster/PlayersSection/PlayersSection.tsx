@@ -20,12 +20,14 @@ export function PlayersSection({ players }: PlayersSectionProps) {
         {players.map((player) => (
           <li className={styles.card} key={`${player.number}-${player.lastName}`}>
             <img
-              alt={`Zdjęcie zawodnika ${player.firstName} ${player.lastName}`}
+              alt={`Zdjęcie zawodnika nr ${player.number}, ${player.firstName} ${player.lastName}`}
               className={styles.image}
               loading="lazy"
               src={player.photoSrc}
             />
-            <span className={styles.number}>{player.number}</span>
+            <span aria-hidden="true" className={styles.number}>
+              {player.number}
+            </span>
             <div className={styles.meta}>
               <p className={styles.position}>{player.position}</p>
               <p className={styles.name}>

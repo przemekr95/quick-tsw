@@ -23,3 +23,10 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code local tooling / skill artifacts
+.claude/
+.github/agents/
+.github/hooks/
+.github/skills/
+.impeccable/
