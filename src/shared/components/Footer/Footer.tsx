@@ -1,10 +1,16 @@
 import { Link, NavLink } from 'react-router-dom';
 import type { SectionPath } from '../../types/domain';
-import { CLUB_BRAND_NAME, CLUB_CREST_SRC, FACEBOOK_NEWS_URL, SECTION_TAB_LINKS } from '../../utils/config';
+import {
+  CLUB_BRAND_NAME,
+  CLUB_CREST_SRC,
+  FACEBOOK_NEWS_URL,
+  MEDIA_LINK,
+  SECTION_TAB_LINKS,
+} from '../../utils/config';
 import styles from './Footer.module.scss';
 
 interface FooterProps {
-  sectionPath: SectionPath;
+  sectionPath?: SectionPath;
 }
 
 export function Footer({ sectionPath }: FooterProps) {
@@ -17,16 +23,19 @@ export function Footer({ sectionPath }: FooterProps) {
 
         <nav aria-label="Nawigacja sekcji klubu" className={styles.nav}>
           <ul className={styles.navList}>
-            {SECTION_TAB_LINKS.map((link) => (
-              <li key={link.path}>
-                <NavLink
-                  className={({ isActive }) => (isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink)}
-                  to={`${sectionPath}/${link.path}`}
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
+            {sectionPath &&
+              SECTION_TAB_LINKS.map((link) => (
+                <li key={link.path}>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
+                    }
+                    to={`${sectionPath}/${link.path}`}
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
             <li>
               <a
                 aria-label="Aktualności na Facebooku"
@@ -37,6 +46,16 @@ export function Footer({ sectionPath }: FooterProps) {
               >
                 Aktualności
               </a>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
+                }
+                to={MEDIA_LINK.path}
+              >
+                {MEDIA_LINK.label}
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -50,7 +69,9 @@ export function Footer({ sectionPath }: FooterProps) {
       </div>
 
       <div className={styles.bottom}>
-        <p className={styles.copyright}>© {currentYear} {CLUB_BRAND_NAME}. Wszelkie prawa zastrzeżone.</p>
+        <p className={styles.copyright}>
+          © {currentYear} {CLUB_BRAND_NAME}. Wszelkie prawa zastrzeżone.
+        </p>
       </div>
     </footer>
   );

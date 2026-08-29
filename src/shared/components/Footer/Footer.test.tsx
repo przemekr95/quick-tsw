@@ -15,7 +15,10 @@ describe('Footer', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: /Powrót do wyboru sekcji/ })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('link', { name: /Powrót do wyboru sekcji/ })).toHaveAttribute(
+      'href',
+      '/',
+    );
   });
 
   it('renders the club section navigation for the given section path', () => {
@@ -27,9 +30,18 @@ describe('Footer', () => {
 
     expect(screen.getByRole('navigation', { name: 'Nawigacja sekcji klubu' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/kobiety/klub');
-    expect(screen.getByRole('link', { name: 'Drużyna' })).toHaveAttribute('href', '/kobiety/druzyna');
-    expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute('href', '/kobiety/kontakt');
-    expect(screen.getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveAttribute('target', '_blank');
+    expect(screen.getByRole('link', { name: 'Drużyna' })).toHaveAttribute(
+      'href',
+      '/kobiety/druzyna',
+    );
+    expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute(
+      'href',
+      '/kobiety/kontakt',
+    );
+    expect(screen.getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveAttribute(
+      'target',
+      '_blank',
+    );
   });
 
   it('marks the active tab link', () => {
@@ -51,6 +63,30 @@ describe('Footer', () => {
 
     const currentYear = new Date().getFullYear().toString();
 
-    expect(screen.getByText(new RegExp(`© ${currentYear} Towarzystwo Sportowe Wisła Kraków`))).toBeInTheDocument();
+    expect(
+      screen.getByText(new RegExp(`© ${currentYear} Towarzystwo Sportowe Wisła Kraków`)),
+    ).toBeInTheDocument();
+  });
+
+  it('renders the Media link and no section tabs when no sectionPath is given', () => {
+    render(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
+    expect(screen.queryByRole('link', { name: 'Klub' })).not.toBeInTheDocument();
+  });
+
+  it('renders the Media link alongside the section tabs when a sectionPath is given', () => {
+    render(
+      <MemoryRouter>
+        <Footer sectionPath="/kobiety" />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
+    expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/kobiety/klub');
   });
 });
