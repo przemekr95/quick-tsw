@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import type { SectionPath } from '../../types/domain';
 import { useMenuFocusTrap } from '../../hooks';
-import { CLUB_BRAND_NAME, CLUB_CREST_SRC, FACEBOOK_NEWS_URL, SECTION_TAB_LINKS } from '../../utils/config';
+import {
+  CLUB_BRAND_NAME,
+  CLUB_CREST_SRC,
+  FACEBOOK_NEWS_URL,
+  SECTION_TAB_LINKS,
+} from '../../utils/config';
 import styles from './NavBar.module.scss';
 
 function joinClasses(...classNames: Array<string | false | null | undefined>): string {
@@ -10,7 +15,7 @@ function joinClasses(...classNames: Array<string | false | null | undefined>): s
 }
 
 interface NavBarProps {
-  sectionPath: SectionPath;
+  sectionPath?: SectionPath;
 }
 
 export function NavBar({ sectionPath }: NavBarProps) {
@@ -60,21 +65,28 @@ export function NavBar({ sectionPath }: NavBarProps) {
     joinClasses(styles.link, isActive && styles.activeLink);
 
   const renderSectionLinks = () =>
-    SECTION_TAB_LINKS.map((link) => (
-      <NavLink
-        key={link.path}
-        className={navLinkClassName}
-        onClick={closeMenu}
-        to={`${sectionPath}/${link.path}`}
-      >
-        {link.label}
-      </NavLink>
-    ));
+    sectionPath
+      ? SECTION_TAB_LINKS.map((link) => (
+          <NavLink
+            key={link.path}
+            className={navLinkClassName}
+            onClick={closeMenu}
+            to={`${sectionPath}/${link.path}`}
+          >
+            {link.label}
+          </NavLink>
+        ))
+      : null;
 
   return (
     <div className={styles.header}>
       {isMenuOpen ? (
-        <button aria-label="Zamknij menu" className={styles.backdrop} onClick={closeMenu} type="button" />
+        <button
+          aria-label="Zamknij menu"
+          className={styles.backdrop}
+          onClick={closeMenu}
+          type="button"
+        />
       ) : null}
 
       <div
@@ -143,13 +155,18 @@ export function NavBar({ sectionPath }: NavBarProps) {
               Aktualności
             </a>
           </li>
-          {SECTION_TAB_LINKS.map((link) => (
-            <li key={link.path}>
-              <NavLink className={navLinkClassName} onClick={closeMenu} to={`${sectionPath}/${link.path}`}>
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
+          {sectionPath &&
+            SECTION_TAB_LINKS.map((link) => (
+              <li key={link.path}>
+                <NavLink
+                  className={navLinkClassName}
+                  onClick={closeMenu}
+                  to={`${sectionPath}/${link.path}`}
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

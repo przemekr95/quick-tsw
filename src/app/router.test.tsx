@@ -81,4 +81,17 @@ describe('app routing', () => {
     expect(await screen.findByRole('heading', { level: 2, name: 'Sztab' })).toBeInTheDocument();
     expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
+
+  it('navigates to the Media tab from the footer', async () => {
+    const user = userEvent.setup();
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/kobiety/klub'] });
+
+    render(<RouterProvider router={router} />);
+
+    await user.click(await screen.findByRole('link', { name: 'Media' }));
+
+    expect(await screen.findByRole('heading', { name: 'Księga znaków' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Kolory klubu' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Składy zawodników' })).toBeInTheDocument();
+  });
 });

@@ -16,10 +16,19 @@ describe('NavBar', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' })).toHaveAttribute(
+      'href',
+      '/',
+    );
     expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/kobiety/klub');
-    expect(screen.getByRole('link', { name: 'Drużyna' })).toHaveAttribute('href', '/kobiety/druzyna');
-    expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute('href', '/kobiety/kontakt');
+    expect(screen.getByRole('link', { name: 'Drużyna' })).toHaveAttribute(
+      'href',
+      '/kobiety/druzyna',
+    );
+    expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute(
+      'href',
+      '/kobiety/kontakt',
+    );
     expect(screen.getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveAttribute(
       'target',
       '_blank',
@@ -58,7 +67,9 @@ describe('NavBar', () => {
     expect(button).toHaveAttribute('aria-expanded', 'true');
     expect(button).toHaveAttribute('data-state', 'open');
     expect(button).toHaveAttribute('aria-label', 'Zamknij menu');
-    expect(screen.getByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' }),
+    ).toBeInTheDocument();
   });
 
   it('keeps keyboard focus order consistent in the open menu', async () => {
@@ -85,5 +96,22 @@ describe('NavBar', () => {
     const menuList = within(dialog).getByRole('list');
 
     expect(within(menuList).getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveFocus();
+  });
+
+  it('renders without section tab links when no sectionPath is given', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <MemoryRouter>
+        <NavBar />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByRole('link', { name: 'Klub' })).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Aktualności na Facebooku' })).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Otwórz menu' }));
+
+    expect(screen.queryByRole('link', { name: 'Kontakt' })).not.toBeInTheDocument();
   });
 });

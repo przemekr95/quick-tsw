@@ -1,5 +1,6 @@
 import { createBrowserRouter, Navigate, type RouteObject } from 'react-router-dom';
 import HomeRoute from './routes';
+import MediaRoute from './routes/media';
 import KobietyKontaktRoute from './routes/kobiety/kontakt';
 import KobietyKlubRoute from './routes/kobiety/klub';
 import KobietyDruzynaRoute from './routes/kobiety/druzyna';
@@ -13,6 +14,10 @@ export const appRoutes: RouteObject[] = [
   {
     path: '/',
     element: <HomeRoute />,
+  },
+  {
+    path: '/media',
+    element: <MediaRoute />,
   },
   {
     path: '/kobiety',
