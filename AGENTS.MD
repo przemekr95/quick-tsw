@@ -6,9 +6,9 @@ Ten plik jest źródłem prawdy dla wszystkich decyzji technicznych w tym repozy
 
 Strona internetowa klubu siatkarskiego. Punkt wejścia to ekran podzielony na dwie połowy (split-screen): kliknięcie w lewą połowę przenosi do sekcji **Kobiety**, w prawą do sekcji **Mężczyźni**.
 
-Obie sekcje mają identyczną strukturę i funkcjonalność, różnią się wyłącznie motywem kolorystycznym. Każda sekcja ma 5 zakładek: **Klub**, **Drużyna**, **Kontakt**, **Ściana Wspierających**, **Aktualności** (link zewnętrzny do Facebooka, nie osobna podstrona).
+Obie sekcje mają identyczną strukturę i funkcjonalność, różnią się wyłącznie motywem kolorystycznym. Każda sekcja ma 5 zakładek: **Klub**, **Drużyna**, **Kontakt**, **Strefa Przyjaciół**, **Aktualności** (link zewnętrzny do Facebooka, nie osobna podstrona).
 
-Każda sekcja ma też podstronę **Media** (`/kobiety/media`, `/mezczyzni/media`) z materiałami wspólnymi dla obu sekcji: księga znaków, kolory klubu, pliki do pobrania. Dostępna wyłącznie z linku w stopce (nie jest osobną pozycją w głównej nawigacji zakładek) — celowo w motywie danej sekcji, nie osobnym neutralnym motywem, żeby zachować pełną nawigację (Klub/Drużyna/Kontakt/Ściana Wspierających) i spójność wizualną. Treść jest w 100% współdzielona przez jeden komponent (`features/media`) — różni się tylko layout/kolor, nie zawartość.
+Każda sekcja ma też podstronę **Media** (`/kobiety/media`, `/mezczyzni/media`) z materiałami wspólnymi dla obu sekcji: księga znaków, kolory klubu, pliki do pobrania. Dostępna wyłącznie z linku w stopce (nie jest osobną pozycją w głównej nawigacji zakładek) — celowo w motywie danej sekcji, nie osobnym neutralnym motywem, żeby zachować pełną nawigację (Klub/Drużyna/Kontakt/Strefa Przyjaciół) i spójność wizualną. Treść jest w 100% współdzielona przez jeden komponent (`features/media`) — różni się tylko layout/kolor, nie zawartość.
 
 To jest **etap 1 — szablon (template)**, który będzie rozwijany iteracyjnie w kolejnych etapach. Architektura musi to ułatwiać: dane mockowane dziś muszą dać się łatwo podmienić na prawdziwe API/CMS, a dodanie treści/funkcji w przyszłości nie powinno wymagać przebudowy struktury.
 
@@ -41,14 +41,14 @@ src/
         klub.tsx
         druzyna.tsx
         kontakt.tsx
-        sciana-wspierajacych.tsx
+        strefa-przyjaciol.tsx
         media.tsx                # podstrona Media w motywie kobiety
       mezczyzni/
         layout.tsx
         klub.tsx
         druzyna.tsx
         kontakt.tsx
-        sciana-wspierajacych.tsx
+        strefa-przyjaciol.tsx
         media.tsx                # podstrona Media w motywie mężczyzn
     router.tsx                  # definicja routera
     providers/
@@ -57,7 +57,7 @@ src/
     club-info/
     team-roster/
     contact/
-    patrons/                    # zakładka Ściana Wspierających
+    patrons/                    # zakładka Strefa Przyjaciół
     media/                      # zawartość podstrony Media (współdzielona przez obie sekcje)
   shared/
     components/                 # SplitScreen, Tabs, Layout, Button...
@@ -97,8 +97,8 @@ ComponentName/
 ## 4. Routing
 
 - `/` — ekran startowy (split-screen)
-- `/kobiety` — layout sekcji kobiet, zakładki jako nested routes: `/kobiety/klub`, `/kobiety/druzyna`, `/kobiety/kontakt`, `/kobiety/sciana-wspierajacych`, `/kobiety/media`
-- `/mezczyzni` — analogicznie: `/mezczyzni/klub`, `/mezczyzni/druzyna`, `/mezczyzni/kontakt`, `/mezczyzni/sciana-wspierajacych`, `/mezczyzni/media`
+- `/kobiety` — layout sekcji kobiet, zakładki jako nested routes: `/kobiety/klub`, `/kobiety/druzyna`, `/kobiety/kontakt`, `/kobiety/strefa-przyjaciol`, `/kobiety/media`
+- `/mezczyzni` — analogicznie: `/mezczyzni/klub`, `/mezczyzni/druzyna`, `/mezczyzni/kontakt`, `/mezczyzni/strefa-przyjaciol`, `/mezczyzni/media`
 - `/kobiety` i `/mezczyzni` bez podstrony przekierowują domyślnie na `/klub`
 - `/kobiety/media` i `/mezczyzni/media` renderują ten sam komponent treści (`features/media`) — tylko link w stopce, nie osobna pozycja w NavBar
 - Adresy URL są bez polskich znaków i małymi literami; w interfejsie (przyciski na ekranie startowym, nawigacja) wyświetlana etykieta to pełna, poprawna forma: **„Kobiety"** i **„Mężczyźni"**

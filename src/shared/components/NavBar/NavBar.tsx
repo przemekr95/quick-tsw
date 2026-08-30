@@ -107,7 +107,6 @@ export function NavBar({ sectionPath }: NavBarProps) {
           </Link>
 
           <div className={styles.desktopLinks}>
-            {renderSectionLinks()}
             <a
               aria-label="Aktualności na Facebooku"
               className={styles.link}
@@ -118,6 +117,7 @@ export function NavBar({ sectionPath }: NavBarProps) {
             >
               Aktualności
             </a>
+            {renderSectionLinks()}
           </div>
 
           <button

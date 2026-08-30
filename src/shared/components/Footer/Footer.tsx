@@ -23,6 +23,17 @@ export function Footer({ sectionPath }: FooterProps) {
 
         <nav aria-label="Nawigacja sekcji klubu" className={styles.nav}>
           <ul className={styles.navList}>
+            <li>
+              <a
+                aria-label="Aktualności na Facebooku"
+                className={styles.navLink}
+                href={FACEBOOK_NEWS_URL}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Aktualności
+              </a>
+            </li>
             {SECTION_TAB_LINKS.map((link) => (
               <li key={link.path}>
                 <NavLink
@@ -35,17 +46,6 @@ export function Footer({ sectionPath }: FooterProps) {
                 </NavLink>
               </li>
             ))}
-            <li>
-              <a
-                aria-label="Aktualności na Facebooku"
-                className={styles.navLink}
-                href={FACEBOOK_NEWS_URL}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Aktualności
-              </a>
-            </li>
             <li>
               <NavLink
                 className={({ isActive }) =>

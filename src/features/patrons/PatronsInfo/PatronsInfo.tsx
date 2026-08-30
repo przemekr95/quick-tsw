@@ -11,7 +11,7 @@ interface PatronsInfoProps {
 
 export function PatronsInfo({ patrons, clubName, sponsors }: PatronsInfoProps) {
   return (
-    <section aria-label="Zakładka Ściana Wspierających" className={styles.root}>
+    <section aria-label="Zakładka Strefa Przyjaciół" className={styles.root}>
       <div className={styles.stack}>
         <PatronsWallSection patrons={patrons} />
         <SponsorsSection clubName={clubName} sponsors={sponsors} />
