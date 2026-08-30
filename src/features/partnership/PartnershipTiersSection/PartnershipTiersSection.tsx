@@ -1,49 +1,9 @@
+import type { PartnershipTier, PartnershipTierKey } from '../../../shared/types/domain';
 import styles from './PartnershipTiersSection.module.scss';
 
-type PartnershipTierKey = 'primary' | 'secondary' | 'tertiary';
-
-interface PartnershipTier {
-  key: PartnershipTierKey;
-  name: string;
-  description: string;
-  perks: string[];
+interface PartnershipTiersSectionProps {
+  tiers: PartnershipTier[];
 }
-
-const PARTNERSHIP_TIERS: PartnershipTier[] = [
-  {
-    key: 'primary',
-    name: 'Partner Główny',
-    description:
-      'Twoja marka towarzyszy nam przez cały sezon - na strojach, na hali i we wszystkich materiałach klubu.',
-    perks: [
-      'Logo na strojach meczowych obu sekcji',
-      'Ekspozycja na hali podczas każdego meczu',
-      'Wyróżnione miejsce w materiałach i mediach klubu',
-    ],
-  },
-  {
-    key: 'secondary',
-    name: 'Partner',
-    description:
-      'Obecność podczas wybranych meczów i wydarzeń oraz stałe miejsce w komunikacji cyfrowej klubu.',
-    perks: [
-      'Logo na banerach podczas wybranych meczów',
-      'Wzmianki w mediach społecznościowych klubu',
-      'Zaproszenia na wydarzenia klubowe',
-    ],
-  },
-  {
-    key: 'tertiary',
-    name: 'Partner Wspierający',
-    description:
-      'Wsparcie jednorazowe lub rzeczowe z podziękowaniem widocznym dla całej społeczności klubu.',
-    perks: [
-      'Podziękowanie w Strefie Przyjaciół',
-      'Wzmianka w podsumowaniu sezonu',
-      'Możliwość rozwoju współpracy w przyszłości',
-    ],
-  },
-];
 
 const tierCellClassName: Record<PartnershipTierKey, string> = {
   primary: `${styles.cell} ${styles.cellFeatured}`,
@@ -51,7 +11,7 @@ const tierCellClassName: Record<PartnershipTierKey, string> = {
   tertiary: styles.cell,
 };
 
-export function PartnershipTiersSection() {
+export function PartnershipTiersSection({ tiers }: PartnershipTiersSectionProps) {
   return (
     <section
       aria-labelledby="pakiety-partnerskie-heading"
@@ -67,7 +27,7 @@ export function PartnershipTiersSection() {
       </div>
 
       <ul className={styles.grid}>
-        {PARTNERSHIP_TIERS.map((tier) => (
+        {tiers.map((tier) => (
           <li className={tierCellClassName[tier.key]} key={tier.key}>
             {tier.key === 'primary' ? <p className={styles.featuredBadge}>Polecane</p> : null}
             <p className={styles.tierName}>{tier.name}</p>

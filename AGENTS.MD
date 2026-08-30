@@ -78,11 +78,14 @@ src/
       contact.mezczyzni.json
       patrons.kobiety.json
       patrons.mezczyzni.json
+      partnership.kobiety.json
+      partnership.mezczyzni.json
     services/                   # warstwa dostępu do danych (repository pattern)
       clubService.ts
       teamService.ts
       contactService.ts
       patronService.ts
+      partnershipService.ts
   test/
     setup.ts
 ```
@@ -138,6 +141,7 @@ Sugerowany kształt danych (do rozbudowy w kolejnych etapach):
 - `Player` — imię, nazwisko, numer, pozycja, zdjęcie (placeholder)
 - `ContactInfo` — adres, telefon, e-mail, link do mapy
 - `Patron` — nazwa mecenasa/wspierającego, poziom wsparcia (`tier`: 1–3, analogicznie do `Sponsor`)
+- `PartnershipContent` — treść zakładki Zostań Partnerem: tekst wprowadzenia, lista korzyści, pakiety partnerskie (`PartnershipTier[]` — nazwa, opis, lista świadczeń), tekst i lista form współpracy
 
 `SponsorsSection` (loga sponsorów klubu) renderowany jest **raz, na poziomie `SectionLayout`** — tuż nad stopką, na każdej zakładce danej sekcji (Klub, Drużyna, Kontakt, Strefa Przyjaciół, Zostań Partnerem, Media). Dane klubu (`clubName`, `sponsors`) pobierane są w `routes/{kobiety,mezczyzni}/layout.tsx` przez `useClubData` i przekazywane do `SectionLayout`. Poszczególne zakładki (np. `ClubInfo`, `PatronsInfo`) **nie** renderują własnej kopii tego komponentu.
 

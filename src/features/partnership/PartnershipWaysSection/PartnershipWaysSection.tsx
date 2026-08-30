@@ -1,14 +1,12 @@
 import { ArrowLink } from '../../club-info/ArrowLink';
 import styles from './PartnershipWaysSection.module.scss';
 
-const WAYS = [
-  'Wsparcie finansowe - jednorazowe lub sezonowe',
-  'Wsparcie rzeczowe - sprzęt sportowy, catering, transport',
-  'Sponsoring wydarzenia - turniej, mecz wyjazdowy, obóz szkoleniowy',
-  'Patronat medialny - wspólne działania promocyjne',
-];
+interface PartnershipWaysSectionProps {
+  leadText: string;
+  ways: string[];
+}
 
-export function PartnershipWaysSection() {
+export function PartnershipWaysSection({ leadText, ways }: PartnershipWaysSectionProps) {
   return (
     <section
       aria-labelledby="formy-wspolpracy-heading"
@@ -23,14 +21,11 @@ export function PartnershipWaysSection() {
             Formy współpracy
           </h2>
         </div>
-        <p className={styles.lead}>
-          Każda firma jest inna - dlatego wspólnie ustalamy zakres współpracy dopasowany do Twoich
-          możliwości i celów.
-        </p>
+        <p className={styles.lead}>{leadText}</p>
       </div>
 
       <ul className={styles.list}>
-        {WAYS.map((way) => (
+        {ways.map((way) => (
           <li key={way}>{way}</li>
         ))}
       </ul>

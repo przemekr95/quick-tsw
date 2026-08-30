@@ -3,6 +3,7 @@ export { useClubLandingContent } from './useClubLandingContent';
 export { useContactInfo } from './useContactInfo';
 export { useHeroSlider } from './useHeroSlider';
 export { useMenuFocusTrap } from './useMenuFocusTrap';
+export { usePartnershipContent } from './usePartnershipContent';
 export { usePatrons } from './usePatrons';
 export { useSectionOutletContext } from './useSectionOutletContext';
 export type { SectionOutletContext } from './useSectionOutletContext';
