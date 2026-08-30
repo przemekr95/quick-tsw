@@ -17,7 +17,7 @@ describe('PatronsWallSection', () => {
   it('explains what the wall is and that every contribution counts', () => {
     render(<PatronsWallSection patrons={patrons} />);
 
-    expect(screen.getByRole('heading', { name: 'Ściana Wspierających' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Strefa Przyjaciół' })).toBeInTheDocument();
     expect(screen.getByText(/Nie ma tu wsparcia zbyt małego/)).toBeInTheDocument();
     expect(screen.getByText(/Dołączyć może każdy/)).toBeInTheDocument();
   });

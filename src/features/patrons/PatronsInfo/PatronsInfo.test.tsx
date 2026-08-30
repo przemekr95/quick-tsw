@@ -13,13 +13,11 @@ const sponsors: Sponsor[] = [
 ];
 
 describe('PatronsInfo', () => {
-  it('renders the patrons wall and the club sponsors wall inside the Ściana Wspierających tab region', () => {
+  it('renders the patrons wall and the club sponsors wall inside the Strefa Przyjaciół tab region', () => {
     render(<PatronsInfo clubName="MKS Siatkówka" patrons={patrons} sponsors={sponsors} />);
 
-    expect(
-      screen.getByRole('region', { name: 'Zakładka Ściana Wspierających' }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Ściana Wspierających' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Zakładka Strefa Przyjaciół' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Strefa Przyjaciół' })).toBeInTheDocument();
     expect(screen.getByText('Mecenas Honorowy A')).toBeInTheDocument();
     expect(
       screen.getByRole('region', { name: 'Sponsorzy klubu MKS Siatkówka' }),

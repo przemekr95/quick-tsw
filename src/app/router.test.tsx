@@ -82,31 +82,27 @@ describe('app routing', () => {
     expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
 
-  it('navigates to the Ściana Wspierających tab from the kobiety nav', async () => {
+  it('navigates to the Strefa Przyjaciół tab from the kobiety nav', async () => {
     const user = userEvent.setup();
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/kobiety/klub'] });
 
     render(<RouterProvider router={router} />);
 
-    const supportersLinks = await screen.findAllByRole('link', { name: 'Ściana Wspierających' });
+    const supportersLinks = await screen.findAllByRole('link', { name: 'Strefa Przyjaciół' });
     await user.click(supportersLinks[0]);
 
-    expect(
-      await screen.findByRole('heading', { name: 'Ściana Wspierających' }),
-    ).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Strefa Przyjaciół' })).toBeInTheDocument();
     expect(screen.getAllByText('Mecenas Honorowy').length).toBeGreaterThan(0);
   });
 
-  it('renders ściana wspierających for mezczyzni', async () => {
+  it('renders strefa przyjaciół for mezczyzni', async () => {
     const router = createMemoryRouter(appRoutes, {
-      initialEntries: ['/mezczyzni/sciana-wspierajacych'],
+      initialEntries: ['/mezczyzni/strefa-przyjaciol'],
     });
 
     render(<RouterProvider router={router} />);
 
-    expect(
-      await screen.findByRole('heading', { name: 'Ściana Wspierających' }),
-    ).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Strefa Przyjaciół' })).toBeInTheDocument();
     expect(screen.getAllByText('Przyjaciel Klubu').length).toBeGreaterThan(0);
     expect(await screen.findByRole('region', { name: /Sponsorzy klubu/ })).toBeInTheDocument();
   });
@@ -127,9 +123,9 @@ describe('app routing', () => {
       'href',
       '/kobiety/klub',
     );
-    expect(screen.getAllByRole('link', { name: 'Ściana Wspierających' })[0]).toHaveAttribute(
+    expect(screen.getAllByRole('link', { name: 'Strefa Przyjaciół' })[0]).toHaveAttribute(
       'href',
-      '/kobiety/sciana-wspierajacych',
+      '/kobiety/strefa-przyjaciol',
     );
   });
 

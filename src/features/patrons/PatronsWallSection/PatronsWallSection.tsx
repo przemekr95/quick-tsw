@@ -41,21 +41,20 @@ export function PatronsWallSection({ patrons }: PatronsWallSectionProps) {
 
   return (
     <section
-      aria-labelledby="sciana-wspierajacych-heading"
+      aria-labelledby="strefa-przyjaciol-heading"
       className={styles.section}
-      id="sciana-wspierajacych"
+      id="strefa-przyjaciol"
     >
       <div className={styles.heading}>
         <p aria-hidden="true" className={styles.index} />
         <p className={styles.eyebrow}>Wsparcie klubu</p>
-        <h2 className={styles.title} id="sciana-wspierajacych-heading">
-          Ściana Wspierających
+        <h2 className={styles.title} id="strefa-przyjaciol-heading">
+          Strefa Przyjaciół
         </h2>
         <p className={styles.lead}>
-          Wirtualna Ściana Wspierających to miejsce, w którym dziękujemy każdej osobie i firmie,
-          która zdecydowała się pomóc naszemu klubowi. Nie ma tu wsparcia zbyt małego - liczy się
-          każda złotówka i każdy gest. Dołączyć może każdy: kibic, rodzic, absolwent czy lokalna
-          firma.
+          Strefa Przyjaciół to miejsce, w którym dziękujemy każdej osobie i firmie, która
+          zdecydowała się pomóc naszemu klubowi. Nie ma tu wsparcia zbyt małego - liczy się każda
+          złotówka i każdy gest. Dołączyć może każdy: kibic, rodzic, absolwent czy lokalna firma.
         </p>
       </div>
 

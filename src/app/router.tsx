@@ -3,13 +3,13 @@ import HomeRoute from './routes';
 import KobietyKontaktRoute from './routes/kobiety/kontakt';
 import KobietyKlubRoute from './routes/kobiety/klub';
 import KobietyDruzynaRoute from './routes/kobiety/druzyna';
-import KobietyScianaWspierajacychRoute from './routes/kobiety/sciana-wspierajacych';
+import KobietyStrefaPrzyjaciolRoute from './routes/kobiety/strefa-przyjaciol';
 import KobietyMediaRoute from './routes/kobiety/media';
 import KobietyLayoutRoute from './routes/kobiety/layout';
 import MezczyzniKontaktRoute from './routes/mezczyzni/kontakt';
 import MezczyzniKlubRoute from './routes/mezczyzni/klub';
 import MezczyzniDruzynaRoute from './routes/mezczyzni/druzyna';
-import MezczyzniScianaWspierajacychRoute from './routes/mezczyzni/sciana-wspierajacych';
+import MezczyzniStrefaPrzyjaciolRoute from './routes/mezczyzni/strefa-przyjaciol';
 import MezczyzniMediaRoute from './routes/mezczyzni/media';
 import MezczyzniLayoutRoute from './routes/mezczyzni/layout';
 
@@ -26,7 +26,7 @@ export const appRoutes: RouteObject[] = [
       { path: 'klub', element: <KobietyKlubRoute /> },
       { path: 'druzyna', element: <KobietyDruzynaRoute /> },
       { path: 'kontakt', element: <KobietyKontaktRoute /> },
-      { path: 'sciana-wspierajacych', element: <KobietyScianaWspierajacychRoute /> },
+      { path: 'strefa-przyjaciol', element: <KobietyStrefaPrzyjaciolRoute /> },
       { path: 'media', element: <KobietyMediaRoute /> },
     ],
   },
@@ -38,7 +38,7 @@ export const appRoutes: RouteObject[] = [
       { path: 'klub', element: <MezczyzniKlubRoute /> },
       { path: 'druzyna', element: <MezczyzniDruzynaRoute /> },
       { path: 'kontakt', element: <MezczyzniKontaktRoute /> },
-      { path: 'sciana-wspierajacych', element: <MezczyzniScianaWspierajacychRoute /> },
+      { path: 'strefa-przyjaciol', element: <MezczyzniStrefaPrzyjaciolRoute /> },
       { path: 'media', element: <MezczyzniMediaRoute /> },
     ],
   },

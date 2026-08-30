@@ -97,4 +97,18 @@ describe('NavBar', () => {
 
     expect(within(menuList).getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveFocus();
   });
+
+  it('lists Aktualności before the section tabs in the desktop nav', () => {
+    render(
+      <MemoryRouter>
+        <NavBar sectionPath="/kobiety" />
+      </MemoryRouter>,
+    );
+
+    const nav = screen.getByRole('navigation', { name: 'Nawigacja' });
+    const links = within(nav).getAllByRole('link');
+
+    expect(links[0]).toHaveAccessibleName('Towarzystwo Sportowe Wisła Kraków');
+    expect(links[1]).toHaveAccessibleName('Aktualności na Facebooku');
+  });
 });

@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it } from 'vitest';
 import { Footer } from './Footer';
@@ -76,5 +76,18 @@ describe('Footer', () => {
     );
 
     expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/mezczyzni/media');
+  });
+
+  it('lists Aktualności first in the section navigation', () => {
+    render(
+      <MemoryRouter>
+        <Footer sectionPath="/kobiety" />
+      </MemoryRouter>,
+    );
+
+    const nav = screen.getByRole('navigation', { name: 'Nawigacja sekcji klubu' });
+    const links = within(nav).getAllByRole('link');
+
+    expect(links[0]).toHaveAccessibleName('Aktualności na Facebooku');
   });
 });
