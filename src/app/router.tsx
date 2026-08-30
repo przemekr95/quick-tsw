@@ -4,12 +4,14 @@ import KobietyKontaktRoute from './routes/kobiety/kontakt';
 import KobietyKlubRoute from './routes/kobiety/klub';
 import KobietyDruzynaRoute from './routes/kobiety/druzyna';
 import KobietyStrefaPrzyjaciolRoute from './routes/kobiety/strefa-przyjaciol';
+import KobietyZostanPartneremRoute from './routes/kobiety/zostan-partnerem';
 import KobietyMediaRoute from './routes/kobiety/media';
 import KobietyLayoutRoute from './routes/kobiety/layout';
 import MezczyzniKontaktRoute from './routes/mezczyzni/kontakt';
 import MezczyzniKlubRoute from './routes/mezczyzni/klub';
 import MezczyzniDruzynaRoute from './routes/mezczyzni/druzyna';
 import MezczyzniStrefaPrzyjaciolRoute from './routes/mezczyzni/strefa-przyjaciol';
+import MezczyzniZostanPartneremRoute from './routes/mezczyzni/zostan-partnerem';
 import MezczyzniMediaRoute from './routes/mezczyzni/media';
 import MezczyzniLayoutRoute from './routes/mezczyzni/layout';
 
@@ -27,6 +29,7 @@ export const appRoutes: RouteObject[] = [
       { path: 'druzyna', element: <KobietyDruzynaRoute /> },
       { path: 'kontakt', element: <KobietyKontaktRoute /> },
       { path: 'strefa-przyjaciol', element: <KobietyStrefaPrzyjaciolRoute /> },
+      { path: 'zostan-partnerem', element: <KobietyZostanPartneremRoute /> },
       { path: 'media', element: <KobietyMediaRoute /> },
     ],
   },
@@ -39,6 +42,7 @@ export const appRoutes: RouteObject[] = [
       { path: 'druzyna', element: <MezczyzniDruzynaRoute /> },
       { path: 'kontakt', element: <MezczyzniKontaktRoute /> },
       { path: 'strefa-przyjaciol', element: <MezczyzniStrefaPrzyjaciolRoute /> },
+      { path: 'zostan-partnerem', element: <MezczyzniZostanPartneremRoute /> },
       { path: 'media', element: <MezczyzniMediaRoute /> },
     ],
   },

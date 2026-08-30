@@ -105,3 +105,20 @@ export interface ClubLandingContent {
   matchCountdown: ClubMatchCountdownItem[];
   matchForm: string[];
 }
+
+export type PartnershipTierKey = 'primary' | 'secondary' | 'tertiary';
+
+export interface PartnershipTier {
+  key: PartnershipTierKey;
+  name: string;
+  description: string;
+  perks: string[];
+}
+
+export interface PartnershipContent {
+  leadText: string;
+  benefits: string[];
+  tiers: PartnershipTier[];
+  waysLeadText: string;
+  ways: string[];
+}

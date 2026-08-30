@@ -1,0 +1,101 @@
+@use '../../../shared/theme/sectionHeading' as sh;
+
+.section {
+  @include sh.shell($gap: 1.8rem);
+}
+
+.heading {
+  @include sh.heading;
+}
+
+.index {
+  @include sh.index;
+}
+
+.eyebrow {
+  @include sh.eyebrow;
+}
+
+.title {
+  @include sh.title;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cell {
+  display: grid;
+  gap: 0.7rem;
+  align-content: start;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+}
+
+.cellFeatured {
+  border-color: var(--color-accent);
+}
+
+.featuredBadge {
+  margin: 0;
+  width: fit-content;
+  padding: 0.2rem 0.55rem;
+  background-color: var(--color-accent);
+  color: var(--color-emphasis);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tierName {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: inherit;
+}
+
+.tierDescription {
+  margin: 0;
+  line-height: 1.6;
+  color: color-mix(in srgb, currentcolor 74%, transparent);
+}
+
+.perks {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.perks li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, currentcolor 82%, transparent);
+}
+
+.perks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.32rem;
+  height: 0.32rem;
+  background-color: var(--color-accent);
+}
+
+@media (width >= 780px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

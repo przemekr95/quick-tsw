@@ -1,14 +1,14 @@
 import { ClubInfo } from '../../../features/club-info/ClubInfo';
-import { useClubData } from '../../../shared/hooks/useClubData';
 import { useClubLandingContent } from '../../../shared/hooks/useClubLandingContent';
+import { useSectionOutletContext } from '../../../shared/hooks/useSectionOutletContext';
 
 export default function KobietyKlubRoute() {
-  const { data, loading } = useClubData('kobiety');
+  const { club } = useSectionOutletContext();
   const { data: landingContent, loading: landingLoading } = useClubLandingContent('kobiety');
 
-  if (loading || landingLoading || !data || !landingContent) {
+  if (landingLoading || !club || !landingContent) {
     return <p>Ładowanie danych klubu...</p>;
   }
 
-  return <ClubInfo club={data} landingContent={landingContent} section="kobiety" />;
+  return <ClubInfo club={club} landingContent={landingContent} section="kobiety" />;
 }

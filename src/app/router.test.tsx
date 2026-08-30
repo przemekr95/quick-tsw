@@ -70,6 +70,7 @@ describe('app routing', () => {
       await screen.findByRole('heading', { level: 2, name: 'Dane kontaktowe' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'kobiety@klub.pl' })).toBeInTheDocument();
+    expect(await screen.findByRole('region', { name: /Sponsorzy klubu/ })).toBeInTheDocument();
   });
 
   it('renders druzyna for mezczyzni', async () => {
@@ -105,6 +106,31 @@ describe('app routing', () => {
     expect(await screen.findByRole('heading', { name: 'Strefa Przyjaciół' })).toBeInTheDocument();
     expect(screen.getAllByText('Przyjaciel Klubu').length).toBeGreaterThan(0);
     expect(await screen.findByRole('region', { name: /Sponsorzy klubu/ })).toBeInTheDocument();
+  });
+
+  it('navigates to the Zostań Partnerem tab from the kobiety nav', async () => {
+    const user = userEvent.setup();
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/kobiety/klub'] });
+
+    render(<RouterProvider router={router} />);
+
+    const partnerLinks = await screen.findAllByRole('link', { name: 'Zostań Partnerem' });
+    await user.click(partnerLinks[0]);
+
+    expect(await screen.findByRole('heading', { name: 'Zostań Partnerem' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Pakiety partnerskie' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Formy współpracy' })).toBeInTheDocument();
+  });
+
+  it('renders zostań partnerem for mezczyzni', async () => {
+    const router = createMemoryRouter(appRoutes, {
+      initialEntries: ['/mezczyzni/zostan-partnerem'],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    expect(await screen.findByRole('heading', { name: 'Zostań Partnerem' })).toBeInTheDocument();
+    expect(screen.getByText('Partner Główny')).toBeInTheDocument();
   });
 
   it('navigates to the Media tab from the footer while keeping the section nav', async () => {

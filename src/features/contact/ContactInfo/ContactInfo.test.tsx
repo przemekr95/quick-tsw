@@ -1,7 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { cleanup, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
 import type { ContactInfo as ContactInfoType } from '../../../shared/types/domain';
 import { ContactInfo } from './ContactInfo';
+
+afterEach(() => {
+  cleanup();
+});
 
 const contact: ContactInfoType = {
   address: 'ul. Testowa 1, 00-000 Miasto',
@@ -35,5 +39,16 @@ describe('ContactInfo', () => {
       'href',
       'mailto:test@klub.pl',
     );
+  });
+
+  it('renders Dane kontaktowe above Koordynatorzy', () => {
+    render(<ContactInfo contact={contact} />);
+
+    const headings = screen.getAllByRole('heading', { level: 2 });
+
+    expect(headings.map((heading) => heading.textContent)).toEqual([
+      'Dane kontaktowe',
+      'Koordynatorzy',
+    ]);
   });
 });

@@ -11,8 +11,8 @@ export function ContactInfo({ contact }: ContactInfoProps) {
   return (
     <section aria-label="Zakładka Kontakt" className={styles.root}>
       <div className={styles.stack}>
-        <CoordinatorsSection coordinators={contact.coordinators} />
         <ContactDetailsSection contact={contact} />
+        <CoordinatorsSection coordinators={contact.coordinators} />
       </div>
     </section>
   );

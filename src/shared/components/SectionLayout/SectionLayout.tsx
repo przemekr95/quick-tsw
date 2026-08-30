@@ -1,7 +1,8 @@
 import type { PropsWithChildren } from 'react';
 import { useLocation } from 'react-router-dom';
-import type { HeroSlide, SectionPath } from '../../types/domain';
+import type { HeroSlide, SectionPath, Sponsor } from '../../types/domain';
 import { useHeroSlider } from '../../hooks/useHeroSlider';
+import { SponsorsSection } from '../../../features/club-info/SponsorsSection';
 import { Footer } from '../Footer';
 import { HeroBackground } from '../HeroBackground';
 import { HeroCtaButton } from '../HeroCtaButton';
@@ -14,12 +15,23 @@ interface SectionLayoutProps extends PropsWithChildren {
   heroHeading: string;
   ctaLabel: string;
   heroSlides: HeroSlide[];
+  clubName: string;
+  sponsors: Sponsor[];
 }
 
 const DOT_RADIUS = 7;
 const DOT_CIRCUMFERENCE = 2 * Math.PI * DOT_RADIUS;
 
-export function SectionLayout({ children, sectionLabel, sectionPath, heroHeading, ctaLabel, heroSlides }: SectionLayoutProps) {
+export function SectionLayout({
+  children,
+  sectionLabel,
+  sectionPath,
+  heroHeading,
+  ctaLabel,
+  heroSlides,
+  clubName,
+  sponsors,
+}: SectionLayoutProps) {
   const { pathname } = useLocation();
   const isSectionHome = pathname === `${sectionPath}/klub` || pathname === sectionPath;
 
@@ -58,11 +70,7 @@ export function SectionLayout({ children, sectionLabel, sectionPath, heroHeading
                       onClick={() => goTo(index)}
                       type="button"
                     >
-                      <svg
-                        aria-hidden="true"
-                        className={styles.dotSvg}
-                        viewBox="0 0 20 20"
-                      >
+                      <svg aria-hidden="true" className={styles.dotSvg} viewBox="0 0 20 20">
                         {index !== activeIndex && (
                           <circle className={styles.dotInner} cx="10" cy="10" r="2.5" />
                         )}
@@ -94,6 +102,8 @@ export function SectionLayout({ children, sectionLabel, sectionPath, heroHeading
       <main className={styles.main} id="section-content" tabIndex={-1}>
         <div className={styles.mainInner}>{children}</div>
       </main>
+
+      <SponsorsSection clubName={clubName} sponsors={sponsors} />
 
       <Footer sectionPath={sectionPath} />
     </div>

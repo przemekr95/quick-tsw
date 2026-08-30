@@ -90,4 +90,18 @@ describe('Footer', () => {
 
     expect(links[0]).toHaveAccessibleName('Aktualności na Facebooku');
   });
+
+  it('lists Kontakt last among the section tab links', () => {
+    render(
+      <MemoryRouter>
+        <Footer sectionPath="/kobiety" />
+      </MemoryRouter>,
+    );
+
+    const nav = screen.getByRole('navigation', { name: 'Nawigacja sekcji klubu' });
+    const links = within(nav).getAllByRole('link');
+    const tabNames = links.map((link) => link.textContent).filter((name) => name !== 'Media');
+
+    expect(tabNames[tabNames.length - 1]).toBe('Kontakt');
+  });
 });

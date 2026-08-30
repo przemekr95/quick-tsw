@@ -4,30 +4,18 @@ import { describe, expect, it } from 'vitest';
 import type { Club, ClubLandingContent } from '../../../shared/types/domain';
 import { ClubInfo } from './ClubInfo';
 
-const club: Pick<Club, 'name' | 'history' | 'arenaAddress' | 'sponsors'> = {
+const club: Pick<Club, 'name' | 'history' | 'arenaAddress'> = {
   name: 'Nazwa Klubu',
   history: 'Historia klubu',
   arenaAddress: 'Adres 1',
-  sponsors: [
-    {
-      name: 'S1',
-      tier: 1,
-      logoSrc: '/images/sponsors/k/msit.png',
-      websiteUrl: 'https://example.com/s1',
-    },
-    {
-      name: 'S2',
-      tier: 2,
-      logoSrc: '/images/sponsors/k/klub.png',
-      websiteUrl: 'https://example.com/s2',
-    },
-  ],
 };
 
 const landingContent: ClubLandingContent = {
   heroHeading: 'Sekcja Kobiet',
   ctaLabel: 'Przejdź do treści',
-  heroSlides: [{ id: 'k-1', imageSrc: '/img/k-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja', text: 'Opis' }],
+  heroSlides: [
+    { id: 'k-1', imageSrc: '/img/k-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja', text: 'Opis' },
+  ],
   rosterCards: [
     {
       name: 'Marco Rossi',
@@ -56,11 +44,16 @@ describe('ClubInfo', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getAllByRole('img', { name: /zdjęcie meczowe drużyny siatkarskiej w czerwonej tonacji/i }).length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByRole('img', {
+        name: /zdjęcie meczowe drużyny siatkarskiej w czerwonej tonacji/i,
+      }).length,
+    ).toBeGreaterThan(0);
     expect(screen.getByRole('heading', { name: 'Nazwa Klubu' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Poznaj drużynę' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Twoje miejsce jest na boisku' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Twoje miejsce jest na boisku' }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'MKS Set Nowa Wieś' })).toBeInTheDocument();
-    expect(screen.getByRole('region', { name: 'Sponsorzy klubu Nazwa Klubu' })).toBeInTheDocument();
   });
 });
