@@ -3,11 +3,10 @@ import { AboutSection } from '../AboutSection';
 import { JoinSection } from '../JoinSection';
 import { NextMatchSection } from '../NextMatchSection';
 import { RosterSection } from '../RosterSection';
-import { SponsorsSection } from '../SponsorsSection';
 import styles from './ClubInfo.module.scss';
 
 interface ClubInfoProps {
-  club: Pick<Club, 'name' | 'history' | 'arenaAddress' | 'sponsors'>;
+  club: Pick<Club, 'name' | 'history' | 'arenaAddress'>;
   landingContent: ClubLandingContent;
   section: SectionId;
 }
@@ -43,9 +42,11 @@ export function ClubInfo({ club, landingContent, section }: ClubInfoProps) {
           <JoinSection recruitmentPaths={landingContent.recruitmentPaths} />
         </div>
 
-        <NextMatchSection countdown={landingContent.matchCountdown} form={landingContent.matchForm} match={landingContent.nextMatch} />
-
-        <SponsorsSection clubName={club.name} sponsors={club.sponsors} />
+        <NextMatchSection
+          countdown={landingContent.matchCountdown}
+          form={landingContent.matchForm}
+          match={landingContent.nextMatch}
+        />
       </div>
     </section>
   );

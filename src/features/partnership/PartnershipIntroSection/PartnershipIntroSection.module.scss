@@ -1,0 +1,67 @@
+@use '../../../shared/theme/sectionHeading' as sh;
+
+.section {
+  @include sh.shell($gap: 1.6rem, $divider: false);
+}
+
+.copy {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.heading {
+  @include sh.heading;
+}
+
+.index {
+  @include sh.index;
+}
+
+.eyebrow {
+  @include sh.eyebrow;
+}
+
+.title {
+  @include sh.title;
+
+  max-width: 16ch;
+}
+
+.lead {
+  margin: 0;
+  max-width: 58ch;
+  line-height: 1.7;
+  color: color-mix(in srgb, currentcolor 74%, transparent);
+}
+
+.list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  position: relative;
+  padding-left: 1.1rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, currentcolor 78%, transparent);
+}
+
+.list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.32rem;
+  height: 0.32rem;
+  background-color: var(--color-primary);
+}
+
+@media (width >= 780px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem 1.5rem;
+  }
+}

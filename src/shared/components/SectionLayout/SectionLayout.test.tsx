@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it } from 'vitest';
-import type { HeroSlide } from '../../types/domain';
+import type { HeroSlide, Sponsor } from '../../types/domain';
 import { SectionLayout } from './SectionLayout';
 
 afterEach(() => {
@@ -10,8 +10,24 @@ afterEach(() => {
 });
 
 const mockHeroSlides: HeroSlide[] = [
-  { id: 'k-1', imageSrc: '/images/backgrounds/k/k-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja i determinacja', text: 'Gramy z sercem na każdym metrze boiska.' },
-  { id: 'k-2', imageSrc: '/images/backgrounds/k/k-2.jpg', imageAlt: 'Slajd 2', title: 'Razem silniejsze', text: 'Drużyna, która tworzy historię każdego sezonu.' },
+  {
+    id: 'k-1',
+    imageSrc: '/images/backgrounds/k/k-1.jpg',
+    imageAlt: 'Slajd 1',
+    title: 'Pasja i determinacja',
+    text: 'Gramy z sercem na każdym metrze boiska.',
+  },
+  {
+    id: 'k-2',
+    imageSrc: '/images/backgrounds/k/k-2.jpg',
+    imageAlt: 'Slajd 2',
+    title: 'Razem silniejsze',
+    text: 'Drużyna, która tworzy historię każdego sezonu.',
+  },
+];
+
+const mockSponsors: Sponsor[] = [
+  { name: 'Sponsor 1', tier: 1, logoSrc: '/logo.png', websiteUrl: 'https://example.com' },
 ];
 
 describe('SectionLayout', () => {
@@ -19,11 +35,13 @@ describe('SectionLayout', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/klub']}>
         <SectionLayout
+          clubName="MKS Siatkówka"
           ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Kobiet"
           heroSlides={mockHeroSlides}
           sectionLabel="Kobiety"
           sectionPath="/kobiety"
+          sponsors={mockSponsors}
         >
           <p>Zawartość</p>
         </SectionLayout>
@@ -44,11 +62,13 @@ describe('SectionLayout', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/klub']}>
         <SectionLayout
+          clubName="MKS Siatkówka"
           ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Kobiet"
           heroSlides={mockHeroSlides}
           sectionLabel="Kobiety"
           sectionPath="/kobiety"
+          sponsors={mockSponsors}
         >
           <p>Zawartość</p>
         </SectionLayout>
@@ -62,11 +82,13 @@ describe('SectionLayout', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/kontakt']}>
         <SectionLayout
+          clubName="MKS Siatkówka"
           ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Kobiet"
           heroSlides={mockHeroSlides}
           sectionLabel="Kobiety"
           sectionPath="/kobiety"
+          sponsors={mockSponsors}
         >
           <p>Zawartość</p>
         </SectionLayout>
@@ -80,11 +102,13 @@ describe('SectionLayout', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/klub']}>
         <SectionLayout
+          clubName="MKS Siatkówka"
           ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Kobiet"
           heroSlides={mockHeroSlides}
           sectionLabel="Kobiety"
           sectionPath="/kobiety"
+          sponsors={mockSponsors}
         >
           <p>Zawartość</p>
         </SectionLayout>
@@ -99,11 +123,13 @@ describe('SectionLayout', () => {
     render(
       <MemoryRouter initialEntries={['/kobiety/klub']}>
         <SectionLayout
+          clubName="MKS Siatkówka"
           ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Kobiet"
           heroSlides={mockHeroSlides}
           sectionLabel="Kobiety"
           sectionPath="/kobiety"
+          sponsors={mockSponsors}
         >
           <p>Zawartość</p>
         </SectionLayout>
@@ -118,5 +144,28 @@ describe('SectionLayout', () => {
 
     expect(dots[1]).toHaveAttribute('aria-pressed', 'true');
     expect(dots[0]).toHaveAttribute('aria-pressed', 'false');
+  });
+
+  it('renders the club sponsors wall above the footer on every tab', () => {
+    render(
+      <MemoryRouter initialEntries={['/kobiety/kontakt']}>
+        <SectionLayout
+          clubName="MKS Siatkówka"
+          ctaLabel="Przejdź do treści"
+          heroHeading="Sekcja Kobiet"
+          heroSlides={mockHeroSlides}
+          sectionLabel="Kobiety"
+          sectionPath="/kobiety"
+          sponsors={mockSponsors}
+        >
+          <p>Zawartość</p>
+        </SectionLayout>
+      </MemoryRouter>,
+    );
+
+    expect(
+      screen.getByRole('region', { name: 'Sponsorzy klubu MKS Siatkówka' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Logotyp sponsora Sponsor 1' })).toBeInTheDocument();
   });
 });
