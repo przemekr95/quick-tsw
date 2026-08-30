@@ -3,5 +3,6 @@ export { useClubLandingContent } from './useClubLandingContent';
 export { useContactInfo } from './useContactInfo';
 export { useHeroSlider } from './useHeroSlider';
 export { useMenuFocusTrap } from './useMenuFocusTrap';
+export { usePatrons } from './usePatrons';
 export { useStaffRoster } from './useStaffRoster';
 export { useTeamRoster } from './useTeamRoster';

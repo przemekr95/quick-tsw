@@ -8,6 +8,7 @@ export const SECTION_TAB_LINKS = [
   { label: 'Klub', path: 'klub' },
   { label: 'Drużyna', path: 'druzyna' },
   { label: 'Kontakt', path: 'kontakt' },
+  { label: 'Ściana Wspierających', path: 'sciana-wspierajacych' },
 ] as const;
 
 export const MEDIA_LINK = { label: 'Media', path: '/media' } as const;

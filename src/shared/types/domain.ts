@@ -19,6 +19,14 @@ export interface Club {
   sponsors: Sponsor[];
 }
 
+export type PatronTier = 1 | 2 | 3;
+
+export interface Patron {
+  name: string;
+  tier: PatronTier;
+  message?: string;
+}
+
 export interface Player {
   firstName: string;
   lastName: string;

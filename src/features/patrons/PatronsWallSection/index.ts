@@ -1,0 +1,1 @@
+export { PatronsWallSection } from './PatronsWallSection';
