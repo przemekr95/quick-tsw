@@ -15,7 +15,7 @@ function joinClasses(...classNames: Array<string | false | null | undefined>): s
 }
 
 interface NavBarProps {
-  sectionPath?: SectionPath;
+  sectionPath: SectionPath;
 }
 
 export function NavBar({ sectionPath }: NavBarProps) {
@@ -65,18 +65,16 @@ export function NavBar({ sectionPath }: NavBarProps) {
     joinClasses(styles.link, isActive && styles.activeLink);
 
   const renderSectionLinks = () =>
-    sectionPath
-      ? SECTION_TAB_LINKS.map((link) => (
-          <NavLink
-            key={link.path}
-            className={navLinkClassName}
-            onClick={closeMenu}
-            to={`${sectionPath}/${link.path}`}
-          >
-            {link.label}
-          </NavLink>
-        ))
-      : null;
+    SECTION_TAB_LINKS.map((link) => (
+      <NavLink
+        key={link.path}
+        className={navLinkClassName}
+        onClick={closeMenu}
+        to={`${sectionPath}/${link.path}`}
+      >
+        {link.label}
+      </NavLink>
+    ));
 
   return (
     <div className={styles.header}>
@@ -155,18 +153,17 @@ export function NavBar({ sectionPath }: NavBarProps) {
               Aktualności
             </a>
           </li>
-          {sectionPath &&
-            SECTION_TAB_LINKS.map((link) => (
-              <li key={link.path}>
-                <NavLink
-                  className={navLinkClassName}
-                  onClick={closeMenu}
-                  to={`${sectionPath}/${link.path}`}
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
+          {SECTION_TAB_LINKS.map((link) => (
+            <li key={link.path}>
+              <NavLink
+                className={navLinkClassName}
+                onClick={closeMenu}
+                to={`${sectionPath}/${link.path}`}
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

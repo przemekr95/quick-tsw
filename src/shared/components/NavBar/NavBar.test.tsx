@@ -97,21 +97,4 @@ describe('NavBar', () => {
 
     expect(within(menuList).getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveFocus();
   });
-
-  it('renders without section tab links when no sectionPath is given', async () => {
-    const user = userEvent.setup();
-
-    render(
-      <MemoryRouter>
-        <NavBar />
-      </MemoryRouter>,
-    );
-
-    expect(screen.queryByRole('link', { name: 'Klub' })).not.toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Aktualności na Facebooku' })).toBeInTheDocument();
-
-    await user.click(screen.getByRole('button', { name: 'Otwórz menu' }));
-
-    expect(screen.queryByRole('link', { name: 'Kontakt' })).not.toBeInTheDocument();
-  });
 });

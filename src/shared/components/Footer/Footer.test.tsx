@@ -68,25 +68,13 @@ describe('Footer', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders the Media link and no section tabs when no sectionPath is given', () => {
+  it('renders the Media link scoped to the current section', () => {
     render(
       <MemoryRouter>
-        <Footer />
+        <Footer sectionPath="/mezczyzni" />
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
-    expect(screen.queryByRole('link', { name: 'Klub' })).not.toBeInTheDocument();
-  });
-
-  it('renders the Media link alongside the section tabs when a sectionPath is given', () => {
-    render(
-      <MemoryRouter>
-        <Footer sectionPath="/kobiety" />
-      </MemoryRouter>,
-    );
-
-    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
-    expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/kobiety/klub');
+    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/mezczyzni/media');
   });
 });

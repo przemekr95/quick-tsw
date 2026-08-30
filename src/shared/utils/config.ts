@@ -11,7 +11,7 @@ export const SECTION_TAB_LINKS = [
   { label: 'Ściana Wspierających', path: 'sciana-wspierajacych' },
 ] as const;
 
-export const MEDIA_LINK = { label: 'Media', path: '/media' } as const;
+export const MEDIA_LINK = { label: 'Media', path: 'media' } as const;
 
 export const MEDIA_DOWNLOADS = {
   brandBook: CLUB_CREST_SRC,
