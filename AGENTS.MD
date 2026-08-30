@@ -6,7 +6,9 @@ Ten plik jest źródłem prawdy dla wszystkich decyzji technicznych w tym repozy
 
 Strona internetowa klubu siatkarskiego. Punkt wejścia to ekran podzielony na dwie połowy (split-screen): kliknięcie w lewą połowę przenosi do sekcji **Kobiety**, w prawą do sekcji **Mężczyźni**.
 
-Obie sekcje mają identyczną strukturę i funkcjonalność, różnią się wyłącznie motywem kolorystycznym. Każda sekcja ma 4 zakładki: **Klub**, **Drużyna**, **Kontakt**, **Aktualności** (link zewnętrzny do Facebooka, nie osobna podstrona).
+Obie sekcje mają identyczną strukturę i funkcjonalność, różnią się wyłącznie motywem kolorystycznym. Każda sekcja ma 5 zakładek: **Klub**, **Drużyna**, **Kontakt**, **Ściana Wspierających**, **Aktualności** (link zewnętrzny do Facebooka, nie osobna podstrona).
+
+Poza sekcjami Kobiety/Mężczyźni istnieje jedna wspólna, neutralna podstrona **`/media`** (dostępna z linku w stopce każdej sekcji) z materiałami wspólnymi dla obu sekcji: księga znaków, kolory klubu, pliki do pobrania. Nie ma własnego motywu kolorystycznego kobiety/mężczyzni — używa neutralnego motywu `media` (złoty jako `--color-primary`).
 
 To jest **etap 1 — szablon (template)**, który będzie rozwijany iteracyjnie w kolejnych etapach. Architektura musi to ułatwiać: dane mockowane dziś muszą dać się łatwo podmienić na prawdziwe API/CMS, a dodanie treści/funkcji w przyszłości nie powinno wymagać przebudowy struktury.
 
@@ -34,16 +36,19 @@ src/
   app/
     routes/
       index.tsx                # ekran startowy (split-screen)
+      media.tsx                 # wspólna podstrona /media (poza sekcjami)
       kobiety/
         layout.tsx              # layout sekcji + nawigacja po zakładkach
         klub.tsx
         druzyna.tsx
         kontakt.tsx
+        sciana-wspierajacych.tsx
       mezczyzni/
         layout.tsx
         klub.tsx
         druzyna.tsx
         kontakt.tsx
+        sciana-wspierajacych.tsx
     router.tsx                  # definicja routera
     providers/
       ThemeProvider.tsx
@@ -51,6 +56,8 @@ src/
     club-info/
     team-roster/
     contact/
+    patrons/                    # zakładka Ściana Wspierających
+    media/                      # zawartość wspólnej podstrony /media
   shared/
     components/                 # SplitScreen, Tabs, Layout, Button...
     hooks/
@@ -65,10 +72,13 @@ src/
       team.mezczyzni.json
       contact.kobiety.json
       contact.mezczyzni.json
+      patrons.kobiety.json
+      patrons.mezczyzni.json
     services/                   # warstwa dostępu do danych (repository pattern)
       clubService.ts
       teamService.ts
       contactService.ts
+      patronService.ts
   test/
     setup.ts
 ```
@@ -86,9 +96,10 @@ ComponentName/
 ## 4. Routing
 
 - `/` — ekran startowy (split-screen)
-- `/kobiety` — layout sekcji kobiet, zakładki jako nested routes: `/kobiety/klub`, `/kobiety/druzyna`, `/kobiety/kontakt`
-- `/mezczyzni` — analogicznie: `/mezczyzni/klub`, `/mezczyzni/druzyna`, `/mezczyzni/kontakt`
+- `/kobiety` — layout sekcji kobiet, zakładki jako nested routes: `/kobiety/klub`, `/kobiety/druzyna`, `/kobiety/kontakt`, `/kobiety/sciana-wspierajacych`
+- `/mezczyzni` — analogicznie: `/mezczyzni/klub`, `/mezczyzni/druzyna`, `/mezczyzni/kontakt`, `/mezczyzni/sciana-wspierajacych`
 - `/kobiety` i `/mezczyzni` bez podstrony przekierowują domyślnie na `/klub`
+- `/media` — jedna wspólna, neutralna podstrona (poza layoutem `/kobiety` i `/mezczyzni`, bez motywu sekcji), z linkiem w stopce każdej sekcji
 - Adresy URL są bez polskich znaków i małymi literami; w interfejsie (przyciski na ekranie startowym, nawigacja) wyświetlana etykieta to pełna, poprawna forma: **„Kobiety"** i **„Mężczyźni"**
 - „Aktualności" **nie jest trasą** — to zwykły `<a target="_blank" rel="noopener noreferrer">` do strony klubu na Facebooku (URL na razie jako placeholder w konfiguracji)
 
@@ -122,6 +133,7 @@ Sugerowany kształt danych (do rozbudowy w kolejnych etapach):
 - `Club` — nazwa, opis/historia, adres hali, zarząd, sponsorzy
 - `Player` — imię, nazwisko, numer, pozycja, zdjęcie (placeholder)
 - `ContactInfo` — adres, telefon, e-mail, link do mapy
+- `Patron` — nazwa mecenasa/wspierającego, poziom wsparcia (`tier`: 1–3, analogicznie do `Sponsor`)
 
 ## 7. Konwencje komponentów
 

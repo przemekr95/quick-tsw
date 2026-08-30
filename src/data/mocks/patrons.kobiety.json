@@ -1,0 +1,22 @@
+[
+  {
+    "name": "[Mecenas Honorowy 1]",
+    "tier": 1,
+    "message": "[Krótka wiadomość od mecenasa honorowego 1]"
+  },
+  {
+    "name": "[Mecenas Honorowy 2]",
+    "tier": 1,
+    "message": "[Krótka wiadomość od mecenasa honorowego 2]"
+  },
+  { "name": "[Mecenas 1]", "tier": 2, "message": "[Krótka wiadomość od mecenasa 1]" },
+  { "name": "[Mecenas 2]", "tier": 2 },
+  { "name": "[Mecenas 3]", "tier": 2, "message": "[Krótka wiadomość od mecenasa 3]" },
+  { "name": "[Mecenas 4]", "tier": 2 },
+  { "name": "[Przyjaciel Klubu 1]", "tier": 3, "message": "[Krótka wiadomość od przyjaciela 1]" },
+  { "name": "[Przyjaciel Klubu 2]", "tier": 3 },
+  { "name": "[Przyjaciel Klubu 3]", "tier": 3 },
+  { "name": "[Przyjaciel Klubu 4]", "tier": 3, "message": "[Krótka wiadomość od przyjaciela 4]" },
+  { "name": "[Przyjaciel Klubu 5]", "tier": 3 },
+  { "name": "[Przyjaciel Klubu 6]", "tier": 3 }
+]

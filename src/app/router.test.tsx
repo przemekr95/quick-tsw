@@ -82,6 +82,35 @@ describe('app routing', () => {
     expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
 
+  it('navigates to the Ściana Wspierających tab from the kobiety nav', async () => {
+    const user = userEvent.setup();
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/kobiety/klub'] });
+
+    render(<RouterProvider router={router} />);
+
+    const supportersLinks = await screen.findAllByRole('link', { name: 'Ściana Wspierających' });
+    await user.click(supportersLinks[0]);
+
+    expect(
+      await screen.findByRole('heading', { name: 'Ściana Wspierających' }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText('Mecenas Honorowy').length).toBeGreaterThan(0);
+  });
+
+  it('renders ściana wspierających for mezczyzni', async () => {
+    const router = createMemoryRouter(appRoutes, {
+      initialEntries: ['/mezczyzni/sciana-wspierajacych'],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    expect(
+      await screen.findByRole('heading', { name: 'Ściana Wspierających' }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText('Przyjaciel Klubu').length).toBeGreaterThan(0);
+    expect(await screen.findByRole('region', { name: /Sponsorzy klubu/ })).toBeInTheDocument();
+  });
+
   it('navigates to the Media tab from the footer', async () => {
     const user = userEvent.setup();
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/kobiety/klub'] });
