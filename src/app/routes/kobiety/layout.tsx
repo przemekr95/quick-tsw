@@ -18,7 +18,7 @@ export default function KobietyLayoutRoute() {
         sectionPath="/kobiety"
         sponsors={club?.sponsors ?? []}
       >
-        <Outlet />
+        <Outlet context={{ club }} />
       </SectionLayout>
     </ThemeProvider>
   );

@@ -4,5 +4,7 @@ export { useContactInfo } from './useContactInfo';
 export { useHeroSlider } from './useHeroSlider';
 export { useMenuFocusTrap } from './useMenuFocusTrap';
 export { usePatrons } from './usePatrons';
+export { useSectionOutletContext } from './useSectionOutletContext';
+export type { SectionOutletContext } from './useSectionOutletContext';
 export { useStaffRoster } from './useStaffRoster';
 export { useTeamRoster } from './useTeamRoster';
