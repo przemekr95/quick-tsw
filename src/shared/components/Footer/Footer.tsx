@@ -10,7 +10,7 @@ import {
 import styles from './Footer.module.scss';
 
 interface FooterProps {
-  sectionPath?: SectionPath;
+  sectionPath: SectionPath;
 }
 
 export function Footer({ sectionPath }: FooterProps) {
@@ -23,19 +23,18 @@ export function Footer({ sectionPath }: FooterProps) {
 
         <nav aria-label="Nawigacja sekcji klubu" className={styles.nav}>
           <ul className={styles.navList}>
-            {sectionPath &&
-              SECTION_TAB_LINKS.map((link) => (
-                <li key={link.path}>
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
-                    }
-                    to={`${sectionPath}/${link.path}`}
-                  >
-                    {link.label}
-                  </NavLink>
-                </li>
-              ))}
+            {SECTION_TAB_LINKS.map((link) => (
+              <li key={link.path}>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
+                  }
+                  to={`${sectionPath}/${link.path}`}
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
             <li>
               <a
                 aria-label="Aktualności na Facebooku"
@@ -52,7 +51,7 @@ export function Footer({ sectionPath }: FooterProps) {
                 className={({ isActive }) =>
                   isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
                 }
-                to={MEDIA_LINK.path}
+                to={`${sectionPath}/${MEDIA_LINK.path}`}
               >
                 {MEDIA_LINK.label}
               </NavLink>

@@ -111,7 +111,7 @@ describe('app routing', () => {
     expect(await screen.findByRole('region', { name: /Sponsorzy klubu/ })).toBeInTheDocument();
   });
 
-  it('navigates to the Media tab from the footer', async () => {
+  it('navigates to the Media tab from the footer while keeping the section nav', async () => {
     const user = userEvent.setup();
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/kobiety/klub'] });
 
@@ -122,5 +122,26 @@ describe('app routing', () => {
     expect(await screen.findByRole('heading', { name: 'Księga znaków' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Kolory klubu' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Składy zawodników' })).toBeInTheDocument();
+
+    expect(screen.getAllByRole('link', { name: 'Klub' })[0]).toHaveAttribute(
+      'href',
+      '/kobiety/klub',
+    );
+    expect(screen.getAllByRole('link', { name: 'Ściana Wspierających' })[0]).toHaveAttribute(
+      'href',
+      '/kobiety/sciana-wspierajacych',
+    );
+  });
+
+  it('renders the media tab directly for mezczyzni', async () => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/media'] });
+
+    render(<RouterProvider router={router} />);
+
+    expect(await screen.findByRole('heading', { name: 'Księga znaków' })).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: 'Klub' })[0]).toHaveAttribute(
+      'href',
+      '/mezczyzni/klub',
+    );
   });
 });

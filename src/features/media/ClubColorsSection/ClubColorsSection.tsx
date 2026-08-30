@@ -7,7 +7,6 @@ interface ClubColor {
   name: string;
   pantone: string;
   hex: string;
-  role: string;
 }
 
 const CLUB_COLORS: ClubColor[] = [
@@ -16,42 +15,36 @@ const CLUB_COLORS: ClubColor[] = [
     name: 'Niebieski',
     pantone: 'PANTONE 286 C',
     hex: '#273583',
-    role: 'Kolor przewodni sekcji Mężczyźni',
   },
   {
     key: 'white',
     name: 'Biały',
     pantone: 'PANTONE 000 C',
     hex: '#FFFFFF',
-    role: 'Wspólne tło obu sekcji',
   },
   {
     key: 'red',
     name: 'Czerwony',
     pantone: 'PANTONE 1795 C',
     hex: '#E30613',
-    role: 'Kolor przewodni sekcji Kobiety',
   },
   {
     key: 'gold',
     name: 'Złoty',
     pantone: 'PANTONE 7509 C',
     hex: '#EFBC7B',
-    role: 'Wspólny akcent dekoracyjny obu sekcji',
   },
   {
     key: 'gray',
     name: 'Szary',
     pantone: 'PANTONE Cool Gray 3 C',
     hex: '#404040',
-    role: 'Podstawowy kolor tekstu i obramowań',
   },
   {
     key: 'black',
     name: 'Czarny',
     pantone: 'PANTONE Process Black C',
     hex: '#000000',
-    role: 'Mocne akcenty, np. logo',
   },
 ];
 
@@ -85,7 +78,6 @@ export function ClubColorsSection() {
             <p className={styles.name}>{color.name}</p>
             <p className={styles.pantone}>{color.pantone}</p>
             <p className={styles.hex}>{color.hex}</p>
-            <p className={styles.role}>{color.role}</p>
           </li>
         ))}
       </ul>
