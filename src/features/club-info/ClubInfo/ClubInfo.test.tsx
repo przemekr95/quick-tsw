@@ -11,10 +11,10 @@ const club: Pick<Club, 'name' | 'history' | 'arenaAddress'> = {
 };
 
 const landingContent: ClubLandingContent = {
-  heroHeading: 'Sekcja Kobiet',
+  heroHeading: 'Sekcja Mężczyzn',
   ctaLabel: 'Przejdź do treści',
   heroSlides: [
-    { id: 'k-1', imageSrc: '/img/k-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja', text: 'Opis' },
+    { id: 'm-1', imageSrc: '/img/m-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja', text: 'Opis' },
   ],
   rosterCards: [
     {
@@ -22,13 +22,13 @@ const landingContent: ClubLandingContent = {
       position: 'Atakujący',
       number: '13',
       stats: 'Skuteczność ataku: 94%',
-      imageSrc: '/images/backgrounds/hero-k.jpg',
+      imageSrc: '/images/backgrounds/hero-m.jpg',
     },
   ],
   recruitmentPaths: ['Akademia Młodzieżowa - 10 do 17 lat'],
   nextMatch: {
     opponent: 'MKS Set Nowa Wieś',
-    competition: 'I liga kobiet',
+    competition: 'I liga mężczyzn',
     kickoffLabel: '15 sierpnia 2026, 19:00',
     venue: 'Hala Sportowa, ul. Sportowa 1',
   },
@@ -40,13 +40,13 @@ describe('ClubInfo', () => {
   it('renders club section headings and images', () => {
     render(
       <MemoryRouter>
-        <ClubInfo club={club} landingContent={landingContent} section="kobiety" />
+        <ClubInfo club={club} landingContent={landingContent} section="mezczyzni" />
       </MemoryRouter>,
     );
 
     expect(
       screen.getAllByRole('img', {
-        name: /zdjęcie meczowe drużyny siatkarskiej w czerwonej tonacji/i,
+        name: /zdjęcie meczowe drużyny siatkarskiej w niebieskiej tonacji/i,
       }).length,
     ).toBeGreaterThan(0);
     expect(screen.getByRole('heading', { name: 'Nazwa Klubu' })).toBeInTheDocument();

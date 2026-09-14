@@ -1,5 +1,10 @@
-import { SplitScreen } from '../../shared/components/SplitScreen';
+import { LoadingScreen } from '../../shared/components/LoadingScreen';
+import { ThemeProvider } from '../providers/ThemeProvider';
 
 export default function HomeRoute() {
-  return <SplitScreen />;
+  return (
+    <ThemeProvider theme="mezczyzni">
+      <LoadingScreen />
+    </ThemeProvider>
+  );
 }

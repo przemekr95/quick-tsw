@@ -2,9 +2,27 @@
   "heroHeading": "Sekcja Mężczyzn",
   "ctaLabel": "Poznaj drużynę",
   "heroSlides": [
-    { "id": "mezczyzni-1", "imageSrc": "/images/backgrounds/m/m-1.jpg", "imageAlt": "Zdjęcie sekcji mężczyzn podczas akcji meczowej", "title": "Siła w każdym secie", "text": "Walczymy na najwyższym poziomie każdego meczu." },
-    { "id": "mezczyzni-2", "imageSrc": "/images/backgrounds/m/m-2.jpg", "imageAlt": "Zdjęcie sekcji mężczyzn na tle siatki meczowej", "title": "Tradycja i ambicja", "text": "Lata doświadczenia budują naszą przewagę na boisku." },
-    { "id": "mezczyzni-3", "imageSrc": "/images/backgrounds/m/m-3.jpg", "imageAlt": "Zdjęcie drużyny mężczyzn", "title": "Twój klub", "text": "Dołącz do drużyny z charakterem i historią." }
+    {
+      "id": "mezczyzni-1",
+      "imageSrc": "/images/backgrounds/m/m-1.jpg",
+      "imageAlt": "Zdjęcie sekcji mężczyzn podczas akcji meczowej",
+      "title": "Siła w każdym secie",
+      "text": "Walczymy na najwyższym poziomie każdego meczu."
+    },
+    {
+      "id": "mezczyzni-2",
+      "imageSrc": "/images/backgrounds/m/m-2.jpg",
+      "imageAlt": "Zdjęcie sekcji mężczyzn na tle siatki meczowej",
+      "title": "Tradycja i ambicja",
+      "text": "Lata doświadczenia budują naszą przewagę na boisku."
+    },
+    {
+      "id": "mezczyzni-3",
+      "imageSrc": "/images/backgrounds/m/m-3.jpg",
+      "imageAlt": "Zdjęcie drużyny mężczyzn",
+      "title": "Twój klub",
+      "text": "Dołącz do drużyny z charakterem i historią."
+    }
   ],
   "rosterCards": [
     {
@@ -19,7 +37,7 @@
       "position": "Rozgrywająca",
       "number": "6",
       "stats": "Asysty: 18.4/set",
-      "imageSrc": "/images/backgrounds/hero-k.jpg"
+      "imageSrc": "/images/backgrounds/hero-m.jpg"
     },
     {
       "name": "Carlos Vega",
@@ -33,7 +51,7 @@
       "position": "Libero",
       "number": "13",
       "stats": "Przyjęcia: 6.1/set",
-      "imageSrc": "/images/backgrounds/hero-k.jpg"
+      "imageSrc": "/images/backgrounds/hero-m.jpg"
     }
   ],
   "recruitmentPaths": [

@@ -8,10 +8,6 @@ describe('RosterDownloadSection', () => {
 
     expect(screen.getByRole('heading', { name: 'Składy zawodników' })).toBeInTheDocument();
 
-    const kobietyLink = screen.getByRole('link', { name: /Pobierz skład - Kobiety/ });
-    expect(kobietyLink).toHaveAttribute('href', '/downloads/sklad-kobiety.pdf');
-    expect(kobietyLink).toHaveAttribute('download');
-
     const mezczyzniLink = screen.getByRole('link', { name: /Pobierz skład - Mężczyźni/ });
     expect(mezczyzniLink).toHaveAttribute('href', '/downloads/sklad-mezczyzni.pdf');
     expect(mezczyzniLink).toHaveAttribute('download');

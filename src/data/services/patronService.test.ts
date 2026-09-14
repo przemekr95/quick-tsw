@@ -2,12 +2,6 @@ import { describe, expect, it } from 'vitest';
 import { getPatronsData } from './patronService';
 
 describe('patronService', () => {
-  it('returns patrons data for kobiety', async () => {
-    const data = await getPatronsData('kobiety');
-
-    expect(data.length).toBeGreaterThan(0);
-  });
-
   it('returns patrons data for mezczyzni', async () => {
     const data = await getPatronsData('mezczyzni');
 

@@ -4,7 +4,7 @@ import { useContactInfo } from './useContactInfo';
 
 describe('useContactInfo', () => {
   it('loads contact data for selected section', async () => {
-    const { result } = renderHook(() => useContactInfo('kobiety'));
+    const { result } = renderHook(() => useContactInfo('mezczyzni'));
 
     await waitFor(() => expect(result.current.loading).toBe(false));
     expect(result.current.data?.email).toContain('@');

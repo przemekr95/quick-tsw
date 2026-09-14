@@ -45,7 +45,9 @@
   text-transform: uppercase;
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: color 160ms ease, border-color 160ms ease;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
 
   &:hover,
   &:focus-visible {
@@ -62,43 +64,6 @@
 .navLinkActive {
   color: var(--color-background);
   border-color: var(--color-primary);
-}
-
-.backLink {
-  order: 4;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--color-background);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-background) 35%, transparent);
-  padding-bottom: 0.2rem;
-  transition: color 160ms ease, border-color 160ms ease;
-
-  &:hover,
-  &:focus-visible {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-  }
-}
-
-.backArrow {
-  display: inline-block;
-  transition: transform 160ms ease;
-
-  .backLink:hover &,
-  .backLink:focus-visible & {
-    transform: translateX(-3px);
-  }
 }
 
 .bottom {
@@ -126,10 +91,6 @@
 
   .nav {
     order: 2;
-  }
-
-  .backLink {
-    order: 3;
   }
 
   .bottom {

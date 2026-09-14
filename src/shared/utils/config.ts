@@ -16,6 +16,5 @@ export const MEDIA_LINK = { label: 'Media', path: 'media' } as const;
 
 export const MEDIA_DOWNLOADS = {
   brandBook: CLUB_CREST_SRC,
-  rosterKobiety: '/downloads/sklad-kobiety.pdf',
   rosterMezczyzni: '/downloads/sklad-mezczyzni.pdf',
 } as const;

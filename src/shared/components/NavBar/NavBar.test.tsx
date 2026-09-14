@@ -12,7 +12,7 @@ describe('NavBar', () => {
   it('renders links and external aktualnosci', () => {
     render(
       <MemoryRouter>
-        <NavBar sectionPath="/kobiety" />
+        <NavBar sectionPath="/mezczyzni" />
       </MemoryRouter>,
     );
 
@@ -20,14 +20,14 @@ describe('NavBar', () => {
       'href',
       '/',
     );
-    expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/kobiety/klub');
+    expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/mezczyzni/klub');
     expect(screen.getByRole('link', { name: 'Drużyna' })).toHaveAttribute(
       'href',
-      '/kobiety/druzyna',
+      '/mezczyzni/druzyna',
     );
     expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute(
       'href',
-      '/kobiety/kontakt',
+      '/mezczyzni/kontakt',
     );
     expect(screen.getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveAttribute(
       'target',
@@ -41,8 +41,8 @@ describe('NavBar', () => {
 
   it('marks active tab link', () => {
     render(
-      <MemoryRouter initialEntries={['/kobiety/klub']}>
-        <NavBar sectionPath="/kobiety" />
+      <MemoryRouter initialEntries={['/mezczyzni/klub']}>
+        <NavBar sectionPath="/mezczyzni" />
       </MemoryRouter>,
     );
 
@@ -54,7 +54,7 @@ describe('NavBar', () => {
 
     render(
       <MemoryRouter>
-        <NavBar sectionPath="/kobiety" />
+        <NavBar sectionPath="/mezczyzni" />
       </MemoryRouter>,
     );
 
@@ -77,7 +77,7 @@ describe('NavBar', () => {
 
     render(
       <MemoryRouter>
-        <NavBar sectionPath="/kobiety" />
+        <NavBar sectionPath="/mezczyzni" />
       </MemoryRouter>,
     );
 
@@ -101,7 +101,7 @@ describe('NavBar', () => {
   it('lists Aktualności before the section tabs in the desktop nav', () => {
     render(
       <MemoryRouter>
-        <NavBar sectionPath="/kobiety" />
+        <NavBar sectionPath="/mezczyzni" />
       </MemoryRouter>,
     );
 

@@ -4,12 +4,6 @@ import styles from './RosterDownloadSection.module.scss';
 
 const ROSTER_DOWNLOADS = [
   {
-    id: 'kobiety',
-    label: 'Kobiety',
-    description: 'Aktualny skład zawodniczek sekcji kobiecej w formacie PDF.',
-    href: MEDIA_DOWNLOADS.rosterKobiety,
-  },
-  {
     id: 'mezczyzni',
     label: 'Mężczyźni',
     description: 'Aktualny skład zawodników sekcji męskiej w formacie PDF.',

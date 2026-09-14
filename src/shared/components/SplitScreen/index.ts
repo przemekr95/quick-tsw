@@ -1,1 +1,0 @@
-export { SplitScreen } from './SplitScreen';

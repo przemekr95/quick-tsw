@@ -1,6 +1,6 @@
-export type SectionId = 'kobiety' | 'mezczyzni';
+export type SectionId = 'mezczyzni';
 
-export type SectionPath = '/kobiety' | '/mezczyzni';
+export type SectionPath = '/mezczyzni';
 
 export type SponsorTier = 1 | 2 | 3;
 

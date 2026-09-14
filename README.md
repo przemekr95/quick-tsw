@@ -1,6 +1,6 @@
 # Quick TSW - Etap 1 (Template)
 
-Szablon SPA dla strony klubu siatkarskiego z podziałem na sekcje Kobiety i Mężczyźni.
+Szablon SPA dla strony sekcji mężczyzn klubu siatkarskiego.
 
 Założenia projektu i konwencje zespołu są opisane w pliku [AGENTS.MD](AGENTS.MD).
 
@@ -42,8 +42,8 @@ npm run test:coverage
 
 ## Architektura
 
-- `src/app/router.tsx` definiuje routing i nested routes dla `/kobiety/*` oraz `/mezczyzni/*`.
-- `src/app/routes/index.tsx` renderuje ekran startowy split-screen.
+- `src/app/router.tsx` definiuje routing i nested routes dla `/mezczyzni/*`.
+- `src/app/routes/index.tsx` renderuje ekran startowy (loading screen) z automatycznym przekierowaniem do `/mezczyzni`.
 - `src/shared/theme/tokens.scss` trzyma wszystkie tokeny motywu i kolory sekcji.
 - `src/data/mocks/*.json` zawiera dane placeholderowe.
 - `src/data/services/*.ts` to warstwa abstrakcji danych (Promise-ready pod API/CMS).
