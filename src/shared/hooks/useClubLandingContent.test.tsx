@@ -4,7 +4,7 @@ import { useClubLandingContent } from './useClubLandingContent';
 
 describe('useClubLandingContent', () => {
   it('loads landing content for selected section', async () => {
-    const { result } = renderHook(() => useClubLandingContent('kobiety'));
+    const { result } = renderHook(() => useClubLandingContent('mezczyzni'));
 
     await waitFor(() => expect(result.current.loading).toBe(false));
     expect(result.current.data?.rosterCards.length).toBe(4);

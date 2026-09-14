@@ -15,7 +15,7 @@ export default function MezczyzniLayoutRoute() {
         heroHeading={data?.heroHeading ?? ''}
         heroSlides={data?.heroSlides ?? []}
         sectionLabel="Mężczyźni"
-        sectionPath="/mezczyzni"
+        sectionPath=""
         sponsors={club?.sponsors ?? []}
       >
         <Outlet context={{ club }} />

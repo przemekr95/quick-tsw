@@ -8,35 +8,22 @@ afterEach(() => {
 });
 
 describe('Footer', () => {
-  it('renders the back-to-section-picker link', () => {
-    render(
-      <MemoryRouter>
-        <Footer sectionPath="/kobiety" />
-      </MemoryRouter>,
-    );
-
-    expect(screen.getByRole('link', { name: /Powrót do wyboru sekcji/ })).toHaveAttribute(
-      'href',
-      '/',
-    );
-  });
-
   it('renders the club section navigation for the given section path', () => {
     render(
       <MemoryRouter>
-        <Footer sectionPath="/kobiety" />
+        <Footer sectionPath="" />
       </MemoryRouter>,
     );
 
     expect(screen.getByRole('navigation', { name: 'Nawigacja sekcji klubu' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/kobiety/klub');
+    expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/klub');
     expect(screen.getByRole('link', { name: 'Drużyna' })).toHaveAttribute(
       'href',
-      '/kobiety/druzyna',
+      '/druzyna',
     );
     expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute(
       'href',
-      '/kobiety/kontakt',
+      '/kontakt',
     );
     expect(screen.getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveAttribute(
       'target',
@@ -46,8 +33,8 @@ describe('Footer', () => {
 
   it('marks the active tab link', () => {
     render(
-      <MemoryRouter initialEntries={['/mezczyzni/kontakt']}>
-        <Footer sectionPath="/mezczyzni" />
+      <MemoryRouter initialEntries={['/kontakt']}>
+        <Footer sectionPath="" />
       </MemoryRouter>,
     );
 
@@ -57,7 +44,7 @@ describe('Footer', () => {
   it('renders a copyright line with the current year and brand name', () => {
     render(
       <MemoryRouter>
-        <Footer sectionPath="/kobiety" />
+        <Footer sectionPath="" />
       </MemoryRouter>,
     );
 
@@ -71,17 +58,17 @@ describe('Footer', () => {
   it('renders the Media link scoped to the current section', () => {
     render(
       <MemoryRouter>
-        <Footer sectionPath="/mezczyzni" />
+        <Footer sectionPath="" />
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/mezczyzni/media');
+    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
   });
 
   it('lists Aktualności first in the section navigation', () => {
     render(
       <MemoryRouter>
-        <Footer sectionPath="/kobiety" />
+        <Footer sectionPath="" />
       </MemoryRouter>,
     );
 
@@ -94,7 +81,7 @@ describe('Footer', () => {
   it('lists Kontakt last among the section tab links', () => {
     render(
       <MemoryRouter>
-        <Footer sectionPath="/kobiety" />
+        <Footer sectionPath="" />
       </MemoryRouter>,
     );
 

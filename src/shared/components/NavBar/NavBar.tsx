@@ -99,7 +99,7 @@ export function NavBar({ sectionPath }: NavBarProps) {
             className={styles.brand}
             onClick={closeMenu}
             ref={brandRef}
-            to="/"
+            to="/klub"
           >
             <span aria-hidden="true" className={styles.brandMark}>
               <img alt="" className={styles.brandLogo} src={CLUB_CREST_SRC} />

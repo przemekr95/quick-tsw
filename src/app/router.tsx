@@ -1,12 +1,5 @@
-import { createBrowserRouter, Navigate, type RouteObject } from 'react-router-dom';
+import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import HomeRoute from './routes';
-import KobietyKontaktRoute from './routes/kobiety/kontakt';
-import KobietyKlubRoute from './routes/kobiety/klub';
-import KobietyDruzynaRoute from './routes/kobiety/druzyna';
-import KobietyStrefaPrzyjaciolRoute from './routes/kobiety/strefa-przyjaciol';
-import KobietyZostanPartneremRoute from './routes/kobiety/zostan-partnerem';
-import KobietyMediaRoute from './routes/kobiety/media';
-import KobietyLayoutRoute from './routes/kobiety/layout';
 import MezczyzniKontaktRoute from './routes/mezczyzni/kontakt';
 import MezczyzniKlubRoute from './routes/mezczyzni/klub';
 import MezczyzniDruzynaRoute from './routes/mezczyzni/druzyna';
@@ -21,23 +14,8 @@ export const appRoutes: RouteObject[] = [
     element: <HomeRoute />,
   },
   {
-    path: '/kobiety',
-    element: <KobietyLayoutRoute />,
-    children: [
-      { index: true, element: <Navigate replace to="klub" /> },
-      { path: 'klub', element: <KobietyKlubRoute /> },
-      { path: 'druzyna', element: <KobietyDruzynaRoute /> },
-      { path: 'kontakt', element: <KobietyKontaktRoute /> },
-      { path: 'strefa-przyjaciol', element: <KobietyStrefaPrzyjaciolRoute /> },
-      { path: 'zostan-partnerem', element: <KobietyZostanPartneremRoute /> },
-      { path: 'media', element: <KobietyMediaRoute /> },
-    ],
-  },
-  {
-    path: '/mezczyzni',
     element: <MezczyzniLayoutRoute />,
     children: [
-      { index: true, element: <Navigate replace to="klub" /> },
       { path: 'klub', element: <MezczyzniKlubRoute /> },
       { path: 'druzyna', element: <MezczyzniDruzynaRoute /> },
       { path: 'kontakt', element: <MezczyzniKontaktRoute /> },

@@ -5,11 +5,11 @@ import { ThemeProvider } from './ThemeProvider';
 describe('ThemeProvider', () => {
   it('sets data-theme attribute', () => {
     render(
-      <ThemeProvider theme="kobiety">
+      <ThemeProvider theme="mezczyzni">
         <span>Test</span>
       </ThemeProvider>,
     );
 
-    expect(screen.getByText('Test').parentElement).toHaveAttribute('data-theme', 'kobiety');
+    expect(screen.getByText('Test').parentElement).toHaveAttribute('data-theme', 'mezczyzni');
   });
 });

@@ -6,7 +6,7 @@ import { NextMatchSection } from './NextMatchSection';
 
 const match: ClubNextMatch = {
   opponent: 'MKS Set Nowa Wieś',
-  competition: 'I liga kobiet',
+  competition: 'I liga mężczyzn',
   kickoffLabel: '15 sierpnia 2026, 19:00',
   venue: 'Hala Sportowa, ul. Sportowa 1',
 };
@@ -15,7 +15,11 @@ describe('NextMatchSection', () => {
   it('renders match details, countdown and form', () => {
     render(
       <MemoryRouter>
-        <NextMatchSection countdown={[{ value: '16', label: 'Dni' }]} form={['W', 'L']} match={match} />
+        <NextMatchSection
+          countdown={[{ value: '16', label: 'Dni' }]}
+          form={['W', 'L']}
+          match={match}
+        />
       </MemoryRouter>,
     );
 

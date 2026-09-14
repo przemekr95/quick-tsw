@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import type { SectionPath } from '../../types/domain';
 import {
   CLUB_BRAND_NAME,
@@ -58,13 +58,6 @@ export function Footer({ sectionPath }: FooterProps) {
             </li>
           </ul>
         </nav>
-
-        <Link className={styles.backLink} to="/">
-          <span aria-hidden="true" className={styles.backArrow}>
-            ←
-          </span>
-          Powrót do wyboru sekcji
-        </Link>
       </div>
 
       <div className={styles.bottom}>

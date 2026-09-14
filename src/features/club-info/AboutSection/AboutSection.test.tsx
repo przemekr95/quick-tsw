@@ -7,14 +7,14 @@ describe('AboutSection', () => {
     render(
       <AboutSection
         arenaAddress="ul. Sportowa 1, 00-000 Miasto"
-        clubName="MKS Siatkówka Kobiety"
+        clubName="MKS Siatkówka Mężczyźni"
         history="Historia klubu opisana w kilku zdaniach."
         imageAlt="Zdjęcie klubowe"
-        imageSrc="/images/backgrounds/hero-k.jpg"
+        imageSrc="/images/backgrounds/hero-m.jpg"
       />,
     );
 
-    expect(screen.getByRole('heading', { name: 'MKS Siatkówka Kobiety' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'MKS Siatkówka Mężczyźni' })).toBeInTheDocument();
     expect(screen.getByText('Historia klubu opisana w kilku zdaniach.')).toBeInTheDocument();
     expect(screen.getByText(/ul\. Sportowa 1, 00-000 Miasto/)).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Zdjęcie klubowe' })).toBeInTheDocument();
