@@ -25,22 +25,22 @@ describe('LoadingScreen', () => {
     expect(screen.getByRole('status')).toHaveTextContent('Ładowanie');
   });
 
-  it('redirects to the mezczyzni section after the delay', () => {
+  it('redirects to the klub tab after the delay', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <Routes>
           <Route element={<LoadingScreen />} path="/" />
-          <Route element={<div>Sekcja mężczyzn</div>} path="/mezczyzni" />
+          <Route element={<div>Zakładka Klub</div>} path="/klub" />
         </Routes>
       </MemoryRouter>,
     );
 
-    expect(screen.queryByText('Sekcja mężczyzn')).not.toBeInTheDocument();
+    expect(screen.queryByText('Zakładka Klub')).not.toBeInTheDocument();
 
     act(() => {
       vi.advanceTimersByTime(LOADING_SCREEN_REDIRECT_DELAY_MS);
     });
 
-    expect(screen.getByText('Sekcja mężczyzn')).toBeInTheDocument();
+    expect(screen.getByText('Zakładka Klub')).toBeInTheDocument();
   });
 });

@@ -33,7 +33,7 @@ export function SectionLayout({
   sponsors,
 }: SectionLayoutProps) {
   const { pathname } = useLocation();
-  const isSectionHome = pathname === `${sectionPath}/klub` || pathname === sectionPath;
+  const isSectionHome = pathname === `${sectionPath}/klub`;
 
   const { activeIndex, slideKey, goTo } = useHeroSlider(heroSlides);
 

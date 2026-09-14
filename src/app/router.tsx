@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, type RouteObject } from 'react-router-dom';
+import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import HomeRoute from './routes';
 import MezczyzniKontaktRoute from './routes/mezczyzni/kontakt';
 import MezczyzniKlubRoute from './routes/mezczyzni/klub';
@@ -14,10 +14,8 @@ export const appRoutes: RouteObject[] = [
     element: <HomeRoute />,
   },
   {
-    path: '/mezczyzni',
     element: <MezczyzniLayoutRoute />,
     children: [
-      { index: true, element: <Navigate replace to="klub" /> },
       { path: 'klub', element: <MezczyzniKlubRoute /> },
       { path: 'druzyna', element: <MezczyzniDruzynaRoute /> },
       { path: 'kontakt', element: <MezczyzniKontaktRoute /> },

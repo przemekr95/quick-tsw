@@ -11,7 +11,7 @@ afterEach(() => {
 });
 
 describe('app routing', () => {
-  it('shows a loading screen at / and redirects to the mezczyzni section', () => {
+  it('shows a loading screen at / and redirects to the klub tab', () => {
     vi.useFakeTimers();
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/'] });
 
@@ -30,7 +30,7 @@ describe('app routing', () => {
 
   it('switches tabs inside section', async () => {
     const user = userEvent.setup();
-    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/klub'] });
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/klub'] });
 
     render(<RouterProvider router={router} />);
 
@@ -40,18 +40,8 @@ describe('app routing', () => {
     expect(await screen.findByRole('heading', { level: 2, name: 'Zawodnicy' })).toBeInTheDocument();
   });
 
-  it('redirects /mezczyzni to klub tab', async () => {
-    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni'] });
-
-    render(<RouterProvider router={router} />);
-
-    expect(
-      await screen.findByRole('heading', { name: 'MKS Siatkówka Mężczyźni' }),
-    ).toBeInTheDocument();
-  });
-
   it('renders kontakt data for mezczyzni', async () => {
-    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/kontakt'] });
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/kontakt'] });
 
     render(<RouterProvider router={router} />);
 
@@ -65,7 +55,7 @@ describe('app routing', () => {
   });
 
   it('renders druzyna for mezczyzni', async () => {
-    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/druzyna'] });
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/druzyna'] });
 
     render(<RouterProvider router={router} />);
 
@@ -76,7 +66,7 @@ describe('app routing', () => {
 
   it('navigates to the Strefa Przyjaciół tab from the mezczyzni nav', async () => {
     const user = userEvent.setup();
-    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/klub'] });
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/klub'] });
 
     render(<RouterProvider router={router} />);
 
@@ -89,7 +79,7 @@ describe('app routing', () => {
 
   it('renders strefa przyjaciół for mezczyzni', async () => {
     const router = createMemoryRouter(appRoutes, {
-      initialEntries: ['/mezczyzni/strefa-przyjaciol'],
+      initialEntries: ['/strefa-przyjaciol'],
     });
 
     render(<RouterProvider router={router} />);
@@ -101,7 +91,7 @@ describe('app routing', () => {
 
   it('navigates to the Zostań Partnerem tab from the mezczyzni nav', async () => {
     const user = userEvent.setup();
-    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/klub'] });
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/klub'] });
 
     render(<RouterProvider router={router} />);
 
@@ -115,7 +105,7 @@ describe('app routing', () => {
 
   it('renders zostań partnerem for mezczyzni', async () => {
     const router = createMemoryRouter(appRoutes, {
-      initialEntries: ['/mezczyzni/zostan-partnerem'],
+      initialEntries: ['/zostan-partnerem'],
     });
 
     render(<RouterProvider router={router} />);
@@ -126,7 +116,7 @@ describe('app routing', () => {
 
   it('navigates to the Media tab from the footer while keeping the section nav', async () => {
     const user = userEvent.setup();
-    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/klub'] });
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/klub'] });
 
     render(<RouterProvider router={router} />);
 
@@ -136,25 +126,19 @@ describe('app routing', () => {
     expect(screen.getByRole('heading', { name: 'Kolory klubu' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Składy zawodników' })).toBeInTheDocument();
 
-    expect(screen.getAllByRole('link', { name: 'Klub' })[0]).toHaveAttribute(
-      'href',
-      '/mezczyzni/klub',
-    );
+    expect(screen.getAllByRole('link', { name: 'Klub' })[0]).toHaveAttribute('href', '/klub');
     expect(screen.getAllByRole('link', { name: 'Strefa Przyjaciół' })[0]).toHaveAttribute(
       'href',
-      '/mezczyzni/strefa-przyjaciol',
+      '/strefa-przyjaciol',
     );
   });
 
   it('renders the media tab directly for mezczyzni', async () => {
-    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/media'] });
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/media'] });
 
     render(<RouterProvider router={router} />);
 
     expect(await screen.findByRole('heading', { name: 'Księga znaków' })).toBeInTheDocument();
-    expect(screen.getAllByRole('link', { name: 'Klub' })[0]).toHaveAttribute(
-      'href',
-      '/mezczyzni/klub',
-    );
+    expect(screen.getAllByRole('link', { name: 'Klub' })[0]).toHaveAttribute('href', '/klub');
   });
 });

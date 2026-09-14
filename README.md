@@ -42,8 +42,8 @@ npm run test:coverage
 
 ## Architektura
 
-- `src/app/router.tsx` definiuje routing i nested routes dla `/mezczyzni/*`.
-- `src/app/routes/index.tsx` renderuje ekran startowy (loading screen) z automatycznym przekierowaniem do `/mezczyzni`.
+- `src/app/router.tsx` definiuje routing; zakładki sekcji żyją bez prefiksu bezpośrednio pod root (`/klub`, `/druzyna`, ...).
+- `src/app/routes/index.tsx` renderuje ekran startowy (loading screen) z automatycznym przekierowaniem do `/klub`.
 - `src/shared/theme/tokens.scss` trzyma wszystkie tokeny motywu i kolory sekcji.
 - `src/data/mocks/*.json` zawiera dane placeholderowe.
 - `src/data/services/*.ts` to warstwa abstrakcji danych (Promise-ready pod API/CMS).

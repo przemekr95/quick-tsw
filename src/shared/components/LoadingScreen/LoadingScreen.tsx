@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CLUB_BRAND_NAME, CLUB_CREST_SRC } from '../../utils/config';
 import styles from './LoadingScreen.module.scss';
 
-export const LOADING_SCREEN_REDIRECT_PATH = '/mezczyzni';
+export const LOADING_SCREEN_REDIRECT_PATH = '/klub';
 export const LOADING_SCREEN_REDIRECT_DELAY_MS = 900;
 
 export function LoadingScreen() {

@@ -7,7 +7,7 @@ function setupMenuDom() {
   menu.tabIndex = -1;
 
   const menuLink = document.createElement('a');
-  menuLink.href = '/mezczyzni/klub';
+  menuLink.href = '/klub';
   menuLink.textContent = 'Klub';
   menu.append(menuLink);
 
