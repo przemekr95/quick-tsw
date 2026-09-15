@@ -5,6 +5,6 @@ describe('clubService', () => {
   it('returns club data for mezczyzni', async () => {
     const data = await getClubData('mezczyzni');
 
-    expect(data.name).toContain('Mężczyźni');
+    expect(data.name).toContain('Wisła');
   });
 });

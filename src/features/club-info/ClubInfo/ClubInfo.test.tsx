@@ -4,19 +4,25 @@ import { describe, expect, it } from 'vitest';
 import type { Club, ClubLandingContent, Player } from '../../../shared/types/domain';
 import { ClubInfo } from './ClubInfo';
 
-const club: Pick<Club, 'name' | 'history' | 'arenaAddress'> = {
+const club: Pick<Club, 'name' | 'history'> = {
   name: 'Nazwa Klubu',
   history: 'Historia klubu',
-  arenaAddress: 'Adres 1',
 };
 
 const landingContent: ClubLandingContent = {
   heroHeading: 'Sekcja Mężczyzn',
-  ctaLabel: 'Przejdź do treści',
   heroSlides: [
-    { id: 'm-1', imageSrc: '/img/m-1.jpg', imageAlt: 'Slajd 1', title: 'Pasja', text: 'Opis' },
+    {
+      id: 'm-1',
+      imageSrc: '/img/m-1.jpg',
+      imageAlt: 'Slajd 1',
+      title: 'Pasja',
+      text: 'Opis',
+      ctaLabel: 'Przejdź do treści',
+      ctaHref: '#section-content',
+    },
   ],
-  recruitmentPaths: ['Akademia Młodzieżowa - 10 do 17 lat'],
+  recruitmentPaths: ['Minisiatkówka - roczniki 2014-2016'],
   nextMatch: {
     opponent: 'MKS Set Nowa Wieś',
     competition: 'I liga mężczyzn',

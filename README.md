@@ -52,5 +52,4 @@ npm run test:coverage
 
 ## Punkty do przeglądu
 
-- Link do "Aktualności" używa placeholdera Facebook URL i wymaga podmiany na docelowy adres.
 - Sekcja Kontakt jest obecnie statyczna (bez formularza), zgodnie z najprostszą interpretacją etapu 1.

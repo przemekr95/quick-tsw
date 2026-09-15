@@ -14,7 +14,6 @@ export interface Sponsor {
 export interface Club {
   name: string;
   history: string;
-  arenaAddress: string;
   board: string[];
   sponsors: Sponsor[];
 }
@@ -72,6 +71,8 @@ export interface HeroSlide {
   imageAlt: string;
   title: string;
   text: string;
+  ctaLabel: string;
+  ctaHref: string;
 }
 
 export interface ClubMatchCountdownItem {
@@ -90,7 +91,6 @@ export type MatchFormResult = 'W' | 'P' | '-';
 
 export interface ClubLandingContent {
   heroHeading: string;
-  ctaLabel: string;
   heroSlides: HeroSlide[];
   recruitmentPaths: string[];
   nextMatch: ClubNextMatch;

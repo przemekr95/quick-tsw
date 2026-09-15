@@ -1,4 +1,4 @@
-export const FACEBOOK_NEWS_URL = 'https://facebook.com/twoj-klub-volley';
+export const FACEBOOK_NEWS_URL = 'https://www.facebook.com/Tswsiatkowkamezczyzn';
 
 export const CLUB_BRAND_NAME = 'Towarzystwo Sportowe Wisła Kraków';
 

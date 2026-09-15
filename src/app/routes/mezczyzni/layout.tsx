@@ -11,7 +11,6 @@ export default function MezczyzniLayoutRoute() {
     <ThemeProvider theme="mezczyzni">
       <SectionLayout
         clubName={club?.name ?? ''}
-        ctaLabel={data?.ctaLabel ?? ''}
         heroHeading={data?.heroHeading ?? ''}
         heroSlides={data?.heroSlides ?? []}
         sectionLabel="Mężczyźni"

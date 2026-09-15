@@ -16,6 +16,8 @@ const mockHeroSlides: HeroSlide[] = [
     imageAlt: 'Slajd 1',
     title: 'Pasja i determinacja',
     text: 'Gramy z sercem na każdym metrze boiska.',
+    ctaLabel: 'Przejdź do treści',
+    ctaHref: '#section-content',
   },
   {
     id: 'k-2',
@@ -23,6 +25,8 @@ const mockHeroSlides: HeroSlide[] = [
     imageAlt: 'Slajd 2',
     title: 'Razem silniejsze',
     text: 'Drużyna, która tworzy historię każdego sezonu.',
+    ctaLabel: 'Zostań partnerem',
+    ctaHref: '../zostan-partnerem',
   },
 ];
 
@@ -36,7 +40,6 @@ describe('SectionLayout', () => {
       <MemoryRouter initialEntries={['/klub']}>
         <SectionLayout
           clubName="MKS Siatkówka"
-          ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
@@ -59,7 +62,6 @@ describe('SectionLayout', () => {
       <MemoryRouter initialEntries={['/klub']}>
         <SectionLayout
           clubName="MKS Siatkówka"
-          ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
@@ -79,7 +81,6 @@ describe('SectionLayout', () => {
       <MemoryRouter initialEntries={['/kontakt']}>
         <SectionLayout
           clubName="MKS Siatkówka"
-          ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
@@ -99,7 +100,6 @@ describe('SectionLayout', () => {
       <MemoryRouter initialEntries={['/klub']}>
         <SectionLayout
           clubName="MKS Siatkówka"
-          ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
@@ -120,7 +120,6 @@ describe('SectionLayout', () => {
       <MemoryRouter initialEntries={['/klub']}>
         <SectionLayout
           clubName="MKS Siatkówka"
-          ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
@@ -140,6 +139,7 @@ describe('SectionLayout', () => {
 
     expect(dots[1]).toHaveAttribute('aria-pressed', 'true');
     expect(dots[0]).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('link', { name: 'Zostań partnerem' })).toBeInTheDocument();
   });
 
   it('renders the club sponsors wall above the footer on every tab', () => {
@@ -147,7 +147,6 @@ describe('SectionLayout', () => {
       <MemoryRouter initialEntries={['/kontakt']}>
         <SectionLayout
           clubName="MKS Siatkówka"
-          ctaLabel="Przejdź do treści"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"

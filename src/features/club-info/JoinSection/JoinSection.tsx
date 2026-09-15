@@ -17,9 +17,9 @@ export function JoinSection({ recruitmentPaths }: JoinSectionProps) {
           </h2>
         </div>
         <p className={styles.lead}>
-          Zapraszamy zawodników na każdym poziomie - od młodych adeptów po doświadczonych rywalizatorów.
-          Oferujemy usystematyzowane treningi, ligi rozgrywkowe i społeczność, która wydobędzie z Ciebie
-          to, co najlepsze.
+          Budujemy męską sekcję siatkówki od podstaw - zapraszamy chłopców z roczników 2010-2016 na
+          treningi w grupach minisiatkówki, młodzika i kadeta. Dołącz do Białej Gwiazdy i trenuj z
+          nami!
         </p>
       </div>
 

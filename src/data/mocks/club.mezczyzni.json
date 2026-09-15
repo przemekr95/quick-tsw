@@ -1,7 +1,6 @@
 {
-  "name": "MKS Siatkówka Mężczyźni",
-  "history": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet velit non ipsum finibus fermentum. Donec dictum magna sed urna luctus.",
-  "arenaAddress": "ul. Reymonta 22, 30-059 Kraków",
+  "name": "TS Wisła Kraków",
+  "history": "Sekcja siatkówki mężczyzn Wisły Kraków powstała w 1927 roku i już na przełomie lat 20. i 30. zdobywała wicemistrzostwo okręgu krakowskiego. Jej największym sukcesem było brązowe mistrzostwo Polski w sezonie 1945/46 - pierwszy powojenny medal Wisły w grach zespołowych. W 1954 roku sekcja została rozwiązana. Po 72 latach przerwy, 19 czerwca 2026 roku, Towarzystwo Sportowe Wisła Kraków reaktywowało siatkówkę mężczyzn - kontynuując historię sięgającą niemal stu lat.",
   "board": ["[Prezes]", "[Trener główny]", "[Kierownik sekcji]"],
   "sponsors": [
     {
