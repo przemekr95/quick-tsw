@@ -1,142 +1,135 @@
 [
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 1]",
-    "number": 1,
+    "firstName": "Wiktor",
+    "lastName": "Bylica",
+    "number": 17,
     "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "photoSrc": "/images/backgrounds/avatar.png"
   },
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 2]",
-    "number": 2,
-    "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 3]",
-    "number": 3,
-    "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 4]",
-    "number": 4,
-    "position": "Atakujący",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 5]",
-    "number": 5,
-    "position": "Libero",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 6]",
+    "firstName": "Maciej",
+    "lastName": "Chodur",
     "number": 6,
-    "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "position": "Środkowy",
+    "photoSrc": "/images/backgrounds/avatar.png"
   },
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 7]",
+    "firstName": "Wojciech",
+    "lastName": "Filarecki",
     "number": 7,
-    "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 8]",
-    "number": 8,
     "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "photoSrc": "/images/backgrounds/avatar.png"
   },
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 9]",
-    "number": 9,
-    "position": "Atakujący",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 10]",
-    "number": 10,
-    "position": "Libero",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 11]",
-    "number": 11,
-    "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 12]",
-    "number": 12,
-    "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 13]",
+    "firstName": "Michał",
+    "lastName": "Florek",
     "number": 13,
-    "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "position": "Rozgrywający",
+    "photoSrc": "/images/backgrounds/avatar.png"
   },
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 14]",
-    "number": 14,
-    "position": "Atakujący",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 15]",
+    "firstName": "Jacek",
+    "lastName": "Gackowski",
     "number": 15,
     "position": "Libero",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "photoSrc": "/images/backgrounds/avatar.png"
   },
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 16]",
-    "number": 16,
-    "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
-  },
-  {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 17]",
-    "number": 17,
+    "firstName": "Wiktor",
+    "lastName": "Gałczyński",
+    "number": 80,
     "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "photoSrc": "/images/backgrounds/avatar.png"
   },
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 18]",
-    "number": 18,
+    "firstName": "Wojciech",
+    "lastName": "Kaspera",
+    "number": 5,
+    "position": "Rozgrywający",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Szymon",
+    "lastName": "Łukasiewicz",
+    "number": 1,
     "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "photoSrc": "/images/backgrounds/avatar.png"
   },
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 19]",
-    "number": 19,
+    "firstName": "Andrzej",
+    "lastName": "Łychowski",
+    "number": 33,
     "position": "Atakujący",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "photoSrc": "/images/backgrounds/avatar.png"
   },
   {
-    "firstName": "[Imię]",
-    "lastName": "[Nazwisko 20]",
-    "number": 20,
+    "firstName": "Kamil",
+    "lastName": "Maksymowicz",
+    "number": 23,
+    "position": "Atakujący",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Łukasz",
+    "lastName": "Nalepa",
+    "number": 2,
+    "position": "Przyjmujący",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Grzegorz",
+    "lastName": "Rubacha",
+    "number": 55,
+    "position": "Rozgrywający",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Wojciech",
+    "lastName": "Rubacha",
+    "number": 8,
+    "position": "Atakujący",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Przemysław",
+    "lastName": "Rura",
+    "number": 10,
+    "position": "Przyjmujący",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Karol",
+    "lastName": "Sala",
+    "number": 11,
+    "position": "Przyjmujący",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Krzysztof",
+    "lastName": "Stalmach",
+    "number": 21,
+    "position": "Przyjmujący",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Patryk",
+    "lastName": "Wółkiewicz",
+    "number": 14,
     "position": "Libero",
-    "photoSrc": "/images/backgrounds/hero-m.jpg"
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Szymon",
+    "lastName": "Zych",
+    "number": 99,
+    "position": "Środkowy",
+    "photoSrc": "/images/backgrounds/avatar.png"
+  },
+  {
+    "firstName": "Iwo",
+    "lastName": "Żakowski",
+    "number": 16,
+    "position": "Libero",
+    "photoSrc": "/images/backgrounds/avatar.png"
   }
 ]

@@ -35,7 +35,6 @@ export function StaffSection({ staff }: StaffSectionProps) {
               <p className={styles.name}>
                 {member.firstName} {member.lastName}
               </p>
-              <p className={styles.bio}>{member.bio}</p>
             </div>
           </li>
         ))}

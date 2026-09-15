@@ -18,14 +18,12 @@ const staff: StaffMember[] = [
     role: 'Trener',
     firstName: 'Anna',
     lastName: 'Nowak',
-    bio: 'Trener główny z wieloletnim doświadczeniem.',
     photoSrc: '/images/backgrounds/hero-m.jpg',
   },
   {
     role: 'Statystyk',
     firstName: 'Piotr',
     lastName: 'Wiśniewski',
-    bio: 'Odpowiada za analizę statystyczną drużyny.',
     photoSrc: '/images/backgrounds/hero-m.jpg',
   },
 ];

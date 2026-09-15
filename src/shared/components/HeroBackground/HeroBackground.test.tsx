@@ -8,21 +8,21 @@ afterEach(cleanup);
 const mockSlides: HeroSlide[] = [
   {
     id: 'm-1',
-    imageSrc: '/images/backgrounds/m/m-1.jpg',
+    imageSrc: '/images/backgrounds/m-1.jpg',
     imageAlt: 'Slajd 1',
     title: 'Pasja i determinacja',
     text: 'Gramy z sercem.',
   },
   {
     id: 'm-2',
-    imageSrc: '/images/backgrounds/m/m-2.jpg',
+    imageSrc: '/images/backgrounds/m-2.jpg',
     imageAlt: 'Slajd 2',
     title: 'Razem silniejsze',
     text: 'Drużyna, która tworzy historię.',
   },
   {
     id: 'm-3',
-    imageSrc: '/images/backgrounds/m/m-3.jpg',
+    imageSrc: '/images/backgrounds/m-3.jpg',
     imageAlt: 'Slajd 3',
     title: 'Dołącz do nas',
     text: 'Treningi otwarte.',

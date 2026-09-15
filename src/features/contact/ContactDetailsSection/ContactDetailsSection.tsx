@@ -1,5 +1,4 @@
 import type { ContactInfo } from '../../../shared/types/domain';
-import { toTelHref } from '../../../shared/utils/phone';
 import styles from './ContactDetailsSection.module.scss';
 
 interface ContactDetailsSectionProps {
@@ -23,17 +22,28 @@ export function ContactDetailsSection({ contact }: ContactDetailsSectionProps) {
 
       <dl className={styles.grid}>
         <div className={styles.cell}>
+          <dt className={styles.label}>Odbiorca</dt>
+          <dd className={styles.value}>{contact.bankAccountHolder}</dd>
+        </div>
+
+        <div className={styles.cell}>
           <dt className={styles.label}>Adres</dt>
           <dd className={styles.value}>{contact.address}</dd>
         </div>
 
         <div className={styles.cell}>
-          <dt className={styles.label}>Telefon</dt>
-          <dd className={styles.value}>
-            <a className={styles.link} href={toTelHref(contact.phone)}>
-              {contact.phone}
-            </a>
-          </dd>
+          <dt className={styles.label}>NIP</dt>
+          <dd className={styles.value}>{contact.nip}</dd>
+        </div>
+
+        <div className={styles.cell}>
+          <dt className={styles.label}>KRS</dt>
+          <dd className={styles.value}>{contact.krs}</dd>
+        </div>
+
+        <div className={styles.cell}>
+          <dt className={styles.label}>Numer konta</dt>
+          <dd className={styles.value}>{contact.bankAccountNumber}</dd>
         </div>
 
         <div className={styles.cell}>
@@ -43,21 +53,6 @@ export function ContactDetailsSection({ contact }: ContactDetailsSectionProps) {
               {contact.email}
             </a>
           </dd>
-        </div>
-
-        <div className={styles.cell}>
-          <dt className={styles.label}>NIP</dt>
-          <dd className={styles.value}>{contact.nip}</dd>
-        </div>
-
-        <div className={styles.cell}>
-          <dt className={styles.label}>Numer konta</dt>
-          <dd className={styles.value}>{contact.bankAccountNumber}</dd>
-        </div>
-
-        <div className={styles.cell}>
-          <dt className={styles.label}>Odbiorca</dt>
-          <dd className={styles.value}>{contact.bankAccountHolder}</dd>
         </div>
       </dl>
 

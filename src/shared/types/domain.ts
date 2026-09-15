@@ -41,7 +41,6 @@ export interface StaffMember {
   role: StaffRole;
   firstName: string;
   lastName: string;
-  bio: string;
   photoSrc: string;
 }
 
@@ -58,10 +57,10 @@ export interface SectionCoordinator {
 
 export interface ContactInfo {
   address: string;
-  phone: string;
   email: string;
   mapUrl: string;
   nip: string;
+  krs: string;
   bankAccountNumber: string;
   bankAccountHolder: string;
   coordinators: SectionCoordinator[];

@@ -1,26 +1,26 @@
 {
-  "address": "ul. Sportowa 1, 00-000 Miasto",
-  "phone": "+48 000 000 002",
-  "email": "mezczyzni@klub.pl",
-  "mapUrl": "https://maps.google.com/?q=Sportowa+1",
-  "nip": "000-000-00-00",
+  "address": "ul. Reymonta 22, 30-059 Kraków",
+  "email": "siatkowkamezczyzn@tswisla.pl",
+  "mapUrl": "https://www.google.com/maps/search/?api=1&query=ul.+Reymonta+22%2C+30-059+Krak%C3%B3w",
+  "nip": "677-005-24-67",
+  "krs": "0000127464",
   "bankAccountNumber": "00 0000 0000 0000 0000 0000 0000",
   "bankAccountHolder": "Towarzystwo Sportowe Wisła Kraków",
   "coordinators": [
     {
       "role": "Koordynator sekcji",
-      "firstName": "[Imię]",
-      "lastName": "[Nazwisko koordynatora]",
-      "phone": "+48 000 000 003",
-      "email": "koordynator.mezczyzni@klub.pl",
+      "firstName": "Przemysław",
+      "lastName": "Rura",
+      "phone": "+48 665 195 871",
+      "email": "przemek.rura@tswisla.pl",
       "photoSrc": "/images/backgrounds/hero-m.jpg"
     },
     {
       "role": "Zastępca koordynatora",
-      "firstName": "[Imię]",
-      "lastName": "[Nazwisko zastępcy]",
-      "phone": "+48 000 000 004",
-      "email": "zastepca.mezczyzni@klub.pl",
+      "firstName": "Wojciech",
+      "lastName": "Kaspera",
+      "phone": "+48 662 358 937",
+      "email": "wojciech.kaspera@tswisla.pl",
       "photoSrc": "/images/backgrounds/hero-m.jpg"
     }
   ]
