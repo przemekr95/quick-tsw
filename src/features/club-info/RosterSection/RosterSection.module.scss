@@ -73,7 +73,7 @@
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 80%);
+  color: var(--color-accent);
 }
 
 .name {
@@ -86,12 +86,6 @@
   color: #fff;
 }
 
-.stats {
-  margin: 0;
-  font-size: 0.82rem;
-  color: rgb(255 255 255 / 62%);
-}
-
 .number {
   position: absolute;
   top: 0.85rem;
@@ -99,7 +93,7 @@
   z-index: 1;
   font-size: 1.5rem;
   font-weight: 700;
-  color: rgb(255 255 255 / 85%);
+  color: var(--color-accent);
 }
 
 @media (width >= 780px) {

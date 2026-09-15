@@ -17,7 +17,7 @@ describe('NextMatchSection', () => {
       <MemoryRouter>
         <NextMatchSection
           countdown={[{ value: '16', label: 'Dni' }]}
-          form={['W', 'L']}
+          form={['W', 'P', '-']}
           match={match}
         />
       </MemoryRouter>,
@@ -27,7 +27,7 @@ describe('NextMatchSection', () => {
     expect(screen.getByText(/15 sierpnia 2026, 19:00/)).toBeInTheDocument();
     expect(screen.getByText('16')).toBeInTheDocument();
     expect(screen.getByText('W')).toBeInTheDocument();
-    expect(screen.getByText('L')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /zapytaj o bilety/i })).toBeInTheDocument();
+    expect(screen.getByText('P')).toBeInTheDocument();
+    expect(screen.getByText('-')).toBeInTheDocument();
   });
 });
