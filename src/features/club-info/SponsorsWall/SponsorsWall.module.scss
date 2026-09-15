@@ -54,7 +54,7 @@
   object-fit: contain;
 
   .tierRowPrimary & {
-    max-height: clamp(56px, 7.5vw, 80px);
+    max-height: clamp(50px, 7vw, 74px);
   }
 
   .tierRowSecondary & {

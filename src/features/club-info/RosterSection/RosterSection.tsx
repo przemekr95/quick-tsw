@@ -1,9 +1,9 @@
-import type { ClubRosterCard } from '../../../shared/types/domain';
+import type { Player } from '../../../shared/types/domain';
 import { ArrowLink } from '../ArrowLink';
 import styles from './RosterSection.module.scss';
 
 interface RosterSectionProps {
-  players: ClubRosterCard[];
+  players: Player[];
 }
 
 export function RosterSection({ players }: RosterSectionProps) {
@@ -23,11 +23,16 @@ export function RosterSection({ players }: RosterSectionProps) {
       <div className={styles.grid}>
         {players.map((player) => (
           <article className={styles.card} key={player.number}>
-            <img alt={`Zdjęcie zawodnika ${player.name}`} className={styles.image} src={player.imageSrc} />
+            <img
+              alt={`Zdjęcie zawodnika ${player.firstName} ${player.lastName}`}
+              className={styles.image}
+              src={player.photoSrc}
+            />
             <div className={styles.meta}>
               <p className={styles.position}>{player.position}</p>
-              <p className={styles.name}>{player.name}</p>
-              <p className={styles.stats}>{player.stats}</p>
+              <p className={styles.name}>
+                {player.firstName} {player.lastName}
+              </p>
             </div>
             <span aria-hidden="true" className={styles.number}>
               {player.number}

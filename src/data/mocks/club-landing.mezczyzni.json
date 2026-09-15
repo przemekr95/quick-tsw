@@ -24,36 +24,6 @@
       "text": "Dołącz do drużyny z charakterem i historią."
     }
   ],
-  "rosterCards": [
-    {
-      "name": "Marco Rossi",
-      "position": "Atakujący",
-      "number": "13",
-      "stats": "Skuteczność ataku: 94%",
-      "imageSrc": "/images/backgrounds/hero-m.jpg"
-    },
-    {
-      "name": "Lena Schmidt",
-      "position": "Rozgrywająca",
-      "number": "6",
-      "stats": "Asysty: 18.4/set",
-      "imageSrc": "/images/backgrounds/hero-m.jpg"
-    },
-    {
-      "name": "Carlos Vega",
-      "position": "Środkowy",
-      "number": "1",
-      "stats": "Bloki: 2.8/set",
-      "imageSrc": "/images/backgrounds/hero-m.jpg"
-    },
-    {
-      "name": "Aiko Tanaka",
-      "position": "Libero",
-      "number": "13",
-      "stats": "Przyjęcia: 6.1/set",
-      "imageSrc": "/images/backgrounds/hero-m.jpg"
-    }
-  ],
   "recruitmentPaths": [
     "Akademia Młodzieżowa - 10 do 17 lat",
     "Liga Rekreacyjna dla Dorosłych",
@@ -62,10 +32,10 @@
     "Program siłowy i kondycyjny"
   ],
   "nextMatch": {
-    "opponent": "AKS Blok Grodzisk",
-    "competition": "I liga mężczyzn",
-    "kickoffLabel": "15 sierpnia 2026, 19:00",
-    "venue": "Hala Sportowa, ul. Sportowa 1"
+    "opponent": "FOTONLAB GRYF Miechów",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "kickoffLabel": "7 listopada 2026, 18:00",
+    "venue": "Miechów, ul. Konopnickiej 2"
   },
   "matchCountdown": [
     { "value": "16", "label": "Dni" },
@@ -73,5 +43,5 @@
     { "value": "21", "label": "Min" },
     { "value": "49", "label": "Sek" }
   ],
-  "matchForm": ["W", "W", "L", "W", "W"]
+  "matchForm": ["-", "-", "-", "-", "-"]
 }

@@ -54,7 +54,7 @@
 
 .countdown li {
   display: grid;
-  gap: 0.2rem;
+  padding: 16px;
   place-items: center;
   min-height: 96px;
   border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
@@ -115,6 +115,11 @@
 .loss {
   background-color: color-mix(in srgb, currentcolor 16%, transparent);
   color: color-mix(in srgb, currentcolor 55%, transparent);
+}
+
+.none {
+  border: 1px dashed color-mix(in srgb, currentcolor 30%, transparent);
+  color: color-mix(in srgb, currentcolor 40%, transparent);
 }
 
 @media (width >= 780px) {

@@ -74,14 +74,6 @@ export interface HeroSlide {
   text: string;
 }
 
-export interface ClubRosterCard {
-  name: string;
-  position: string;
-  number: string;
-  stats: string;
-  imageSrc: string;
-}
-
 export interface ClubMatchCountdownItem {
   value: string;
   label: string;
@@ -94,15 +86,16 @@ export interface ClubNextMatch {
   venue: string;
 }
 
+export type MatchFormResult = 'W' | 'P' | '-';
+
 export interface ClubLandingContent {
   heroHeading: string;
   ctaLabel: string;
   heroSlides: HeroSlide[];
-  rosterCards: ClubRosterCard[];
   recruitmentPaths: string[];
   nextMatch: ClubNextMatch;
   matchCountdown: ClubMatchCountdownItem[];
-  matchForm: string[];
+  matchForm: MatchFormResult[];
 }
 
 export type PartnershipTierKey = 'primary' | 'secondary' | 'tertiary';

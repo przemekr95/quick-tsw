@@ -1,16 +1,29 @@
-import type { ClubMatchCountdownItem, ClubNextMatch } from '../../../shared/types/domain';
-import { ArrowLink } from '../ArrowLink';
+import type {
+  ClubMatchCountdownItem,
+  ClubNextMatch,
+  MatchFormResult,
+} from '../../../shared/types/domain';
 import styles from './NextMatchSection.module.scss';
 
 interface NextMatchSectionProps {
   match: ClubNextMatch;
   countdown: ClubMatchCountdownItem[];
-  form: string[];
+  form: MatchFormResult[];
 }
+
+const formResultClassName: Record<MatchFormResult, string> = {
+  W: styles.win,
+  P: styles.loss,
+  '-': styles.none,
+};
 
 export function NextMatchSection({ match, countdown, form }: NextMatchSectionProps) {
   return (
-    <section aria-labelledby="najblizszy-mecz-heading" className={styles.section} id="najblizszy-mecz">
+    <section
+      aria-labelledby="najblizszy-mecz-heading"
+      className={styles.section}
+      id="najblizszy-mecz"
+    >
       <div className={styles.copy}>
         <div className={styles.heading}>
           <p aria-hidden="true" className={styles.index} />
@@ -38,15 +51,13 @@ export function NextMatchSection({ match, countdown, form }: NextMatchSectionPro
           <p className={styles.formLabel}>Forma</p>
           <ul className={styles.formList}>
             {form.map((result, index) => (
-              <li className={result === 'L' ? styles.loss : styles.win} key={`${result}-${index}`}>
+              <li className={formResultClassName[result]} key={`${result}-${index}`}>
                 {result}
               </li>
             ))}
           </ul>
         </div>
       </div>
-
-      <ArrowLink to="../kontakt">Zapytaj o bilety</ArrowLink>
     </section>
   );
 }

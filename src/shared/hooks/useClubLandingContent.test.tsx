@@ -7,6 +7,6 @@ describe('useClubLandingContent', () => {
     const { result } = renderHook(() => useClubLandingContent('mezczyzni'));
 
     await waitFor(() => expect(result.current.loading).toBe(false));
-    expect(result.current.data?.rosterCards.length).toBe(4);
+    expect(result.current.data?.heroSlides.length).toBeGreaterThan(0);
   });
 });
