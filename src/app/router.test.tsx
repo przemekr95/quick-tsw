@@ -51,7 +51,7 @@ describe('app routing', () => {
     expect(
       await screen.findByRole('heading', { level: 2, name: 'Dane kontaktowe' }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'mezczyzni@klub.pl' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'siatkowkamezczyzn@tswisla.pl' })).toBeInTheDocument();
   });
 
   it('renders druzyna for mezczyzni', async () => {

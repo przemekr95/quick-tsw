@@ -9,10 +9,10 @@ afterEach(() => {
 
 const contact: ContactInfoType = {
   address: 'ul. Testowa 1, 00-000 Miasto',
-  phone: '+48 123',
   email: 'test@klub.pl',
   mapUrl: 'https://example.com',
   nip: '000-000-00-00',
+  krs: '0000000000',
   bankAccountNumber: '00 0000 0000 0000 0000 0000 0000',
   bankAccountHolder: 'Towarzystwo Sportowe Wisła Kraków',
   coordinators: [

@@ -12,14 +12,14 @@ afterEach(() => {
 const mockHeroSlides: HeroSlide[] = [
   {
     id: 'k-1',
-    imageSrc: '/images/backgrounds/m/m-1.jpg',
+    imageSrc: '/images/backgrounds/m-1.jpg',
     imageAlt: 'Slajd 1',
     title: 'Pasja i determinacja',
     text: 'Gramy z sercem na każdym metrze boiska.',
   },
   {
     id: 'k-2',
-    imageSrc: '/images/backgrounds/m/m-2.jpg',
+    imageSrc: '/images/backgrounds/m-2.jpg',
     imageAlt: 'Slajd 2',
     title: 'Razem silniejsze',
     text: 'Drużyna, która tworzy historię każdego sezonu.',

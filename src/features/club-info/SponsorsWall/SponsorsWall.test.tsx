@@ -11,25 +11,25 @@ const sponsors: Sponsor[] = [
   {
     name: 'Sponsor A',
     tier: 1,
-    logoSrc: '/images/sponsors/m/msit.png',
+    logoSrc: '/images/sponsors/msit.png',
     websiteUrl: 'https://example.com/a',
   },
   {
     name: 'Sponsor B',
     tier: 2,
-    logoSrc: '/images/sponsors/m/klub.png',
+    logoSrc: '/images/sponsors/klub.png',
     websiteUrl: 'https://example.com/b',
   },
   {
     name: 'Sponsor C',
     tier: 2,
-    logoSrc: '/images/sponsors/m/pzps.png',
+    logoSrc: '/images/sponsors/pzps.png',
     websiteUrl: 'https://example.com/c',
   },
   {
     name: 'Sponsor D',
     tier: 3,
-    logoSrc: '/images/sponsors/m/mzps.png',
+    logoSrc: '/images/sponsors/mzps.png',
     websiteUrl: 'https://example.com/d',
   },
 ];
