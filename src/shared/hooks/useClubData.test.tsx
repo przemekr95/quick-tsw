@@ -7,6 +7,6 @@ describe('useClubData', () => {
     const { result } = renderHook(() => useClubData('mezczyzni'));
 
     await waitFor(() => expect(result.current.loading).toBe(false));
-    expect(result.current.data?.name).toContain('Mężczyźni');
+    expect(result.current.data?.name).toContain('Wisła');
   });
 });

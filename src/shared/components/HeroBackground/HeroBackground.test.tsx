@@ -12,6 +12,8 @@ const mockSlides: HeroSlide[] = [
     imageAlt: 'Slajd 1',
     title: 'Pasja i determinacja',
     text: 'Gramy z sercem.',
+    ctaLabel: 'Przejdź do treści',
+    ctaHref: '#section-content',
   },
   {
     id: 'm-2',
@@ -19,6 +21,8 @@ const mockSlides: HeroSlide[] = [
     imageAlt: 'Slajd 2',
     title: 'Razem silniejsze',
     text: 'Drużyna, która tworzy historię.',
+    ctaLabel: 'Przejdź do treści',
+    ctaHref: '#section-content',
   },
   {
     id: 'm-3',
@@ -26,6 +30,8 @@ const mockSlides: HeroSlide[] = [
     imageAlt: 'Slajd 3',
     title: 'Dołącz do nas',
     text: 'Treningi otwarte.',
+    ctaLabel: 'Przejdź do treści',
+    ctaHref: '#section-content',
   },
 ];
 

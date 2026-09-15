@@ -13,7 +13,6 @@ interface SectionLayoutProps extends PropsWithChildren {
   sectionLabel: string;
   sectionPath: SectionPath;
   heroHeading: string;
-  ctaLabel: string;
   heroSlides: HeroSlide[];
   clubName: string;
   sponsors: Sponsor[];
@@ -27,7 +26,6 @@ export function SectionLayout({
   sectionLabel,
   sectionPath,
   heroHeading,
-  ctaLabel,
   heroSlides,
   clubName,
   sponsors,
@@ -56,7 +54,10 @@ export function SectionLayout({
               </div>
 
               <div className={styles.heroActions}>
-                <HeroCtaButton label={ctaLabel} targetId="section-content" />
+                <HeroCtaButton
+                  href={currentSlide?.ctaHref ?? '#section-content'}
+                  label={currentSlide?.ctaLabel ?? ''}
+                />
               </div>
 
               {heroSlides.length > 1 && (

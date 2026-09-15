@@ -3,12 +3,11 @@ import styles from './AboutSection.module.scss';
 interface AboutSectionProps {
   clubName: string;
   history: string;
-  arenaAddress: string;
   imageSrc: string;
   imageAlt: string;
 }
 
-export function AboutSection({ clubName, history, arenaAddress, imageSrc, imageAlt }: AboutSectionProps) {
+export function AboutSection({ clubName, history, imageSrc, imageAlt }: AboutSectionProps) {
   return (
     <section aria-labelledby="o-klubie-heading" className={styles.section} id="o-klubie">
       <div className={styles.copy}>
@@ -20,9 +19,6 @@ export function AboutSection({ clubName, history, arenaAddress, imageSrc, imageA
           </h2>
         </div>
         <p className={styles.history}>{history}</p>
-        <p className={styles.arena}>
-          Trenujemy i gramy w hali przy <strong>{arenaAddress}</strong>.
-        </p>
       </div>
 
       <figure className={styles.figure}>

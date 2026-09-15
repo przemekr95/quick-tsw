@@ -1,35 +1,38 @@
 {
-  "heroHeading": "Sekcja Mężczyzn",
-  "ctaLabel": "Poznaj drużynę",
+  "heroHeading": "Pierwsi w grze",
   "heroSlides": [
     {
       "id": "mezczyzni-1",
       "imageSrc": "/images/backgrounds/m-1.jpg",
       "imageAlt": "Zdjęcie sekcji mężczyzn podczas akcji meczowej",
-      "title": "Siła w każdym secie",
-      "text": "Walczymy na najwyższym poziomie każdego meczu."
+      "title": "Bądź na bieżąco",
+      "text": "Wyniki, zdjęcia z meczów i życie klubu - śledź nas na Facebooku.",
+      "ctaLabel": "Zobacz aktualności",
+      "ctaHref": "https://www.facebook.com/Tswsiatkowkamezczyzn"
     },
     {
       "id": "mezczyzni-2",
       "imageSrc": "/images/backgrounds/m-2.jpg",
       "imageAlt": "Zdjęcie sekcji mężczyzn na tle siatki meczowej",
-      "title": "Tradycja i ambicja",
-      "text": "Lata doświadczenia budują naszą przewagę na boisku."
+      "title": "Zbuduj z nami sekcję",
+      "text": "Szukamy firm i osób, które chcą być częścią naszej historii.",
+      "ctaLabel": "Zostań partnerem",
+      "ctaHref": "../zostan-partnerem"
     },
     {
       "id": "mezczyzni-3",
       "imageSrc": "/images/backgrounds/m-3.jpg",
       "imageAlt": "Zdjęcie drużyny mężczyzn",
-      "title": "Twój klub",
-      "text": "Dołącz do drużyny z charakterem i historią."
+      "title": "Masz pytania?",
+      "text": "Napisz albo zadzwoń - odpowiemy i pomożemy znaleźć twoje miejsce w klubie.",
+      "ctaLabel": "Skontaktuj się z nami",
+      "ctaHref": "../kontakt"
     }
   ],
   "recruitmentPaths": [
-    "Akademia Młodzieżowa - 10 do 17 lat",
-    "Liga Rekreacyjna dla Dorosłych",
-    "Drużyny Rywalizacyjne A i B",
-    "Weekendowe treningi otwarte",
-    "Program siłowy i kondycyjny"
+    "Minisiatkówka - roczniki 2014-2016",
+    "Młodzik - roczniki 2012-2013",
+    "Kadet - roczniki 2010-2011"
   ],
   "nextMatch": {
     "opponent": "FOTONLAB GRYF Miechów",

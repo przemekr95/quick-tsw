@@ -10,7 +10,7 @@ import styles from './ClubInfo.module.scss';
 const ROSTER_PREVIEW_SIZE = 4;
 
 interface ClubInfoProps {
-  club: Pick<Club, 'name' | 'history' | 'arenaAddress'>;
+  club: Pick<Club, 'name' | 'history'>;
   landingContent: ClubLandingContent;
   players: Player[];
   section: SectionId;
@@ -32,7 +32,6 @@ export function ClubInfo({ club, landingContent, players, section }: ClubInfoPro
       <div className={styles.stack}>
         <div className={styles.introGroup}>
           <AboutSection
-            arenaAddress={club.arenaAddress}
             clubName={club.name}
             history={club.history}
             imageAlt={aboutImage.alt}

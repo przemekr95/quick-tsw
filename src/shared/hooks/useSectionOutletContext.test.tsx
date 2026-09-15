@@ -7,7 +7,6 @@ import { useSectionOutletContext } from './useSectionOutletContext';
 const club: Club = {
   name: 'Nazwa Klubu',
   history: 'Historia',
-  arenaAddress: 'Adres',
   board: [],
   sponsors: [],
 };
