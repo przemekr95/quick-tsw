@@ -2,7 +2,7 @@ import type { ContactInfo } from '../../../shared/types/domain';
 import styles from './ContactDetailsSection.module.scss';
 
 interface ContactDetailsSectionProps {
-  contact: Omit<ContactInfo, 'coordinators'>;
+  contact: Omit<ContactInfo, 'coordinators' | 'trainingGroups'>;
 }
 
 export function ContactDetailsSection({ contact }: ContactDetailsSectionProps) {

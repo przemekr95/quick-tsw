@@ -25,6 +25,15 @@ const contact: ContactInfoType = {
       photoSrc: '/images/backgrounds/hero-m.jpg',
     },
   ],
+  trainingGroups: [
+    {
+      name: 'Senior',
+      venue: 'Hala testowa',
+      address: 'ul. Sportowa 5, 00-000 Miasto',
+      mapUrl: 'https://example.com',
+      sessions: [{ day: 'Wtorek', time: '19:00 - 21:00' }],
+    },
+  ],
 };
 
 describe('ContactInfo', () => {
@@ -41,7 +50,7 @@ describe('ContactInfo', () => {
     );
   });
 
-  it('renders Dane kontaktowe above Koordynatorzy', () => {
+  it('renders Dane kontaktowe, Koordynatorzy and Treningi in this order', () => {
     render(<ContactInfo contact={contact} />);
 
     const headings = screen.getAllByRole('heading', { level: 2 });
@@ -49,6 +58,7 @@ describe('ContactInfo', () => {
     expect(headings.map((heading) => heading.textContent)).toEqual([
       'Dane kontaktowe',
       'Koordynatorzy',
+      'Treningi',
     ]);
   });
 });

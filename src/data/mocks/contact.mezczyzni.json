@@ -23,5 +23,37 @@
       "email": "wojciech.kaspera@tswisla.pl",
       "photoSrc": "/images/backgrounds/hero-m.jpg"
     }
+  ],
+  "trainingGroups": [
+    {
+      "name": "Senior",
+      "venue": "Hala treningowa",
+      "address": "ul. Reymonta 22, 30-059 Kraków",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=ul.+Reymonta+22%2C+30-059+Krak%C3%B3w",
+      "sessions": [
+        { "day": "Wtorek", "time": "21:30 - 23:30" },
+        { "day": "Czwartek", "time": "22:00 - 24:00" }
+      ]
+    },
+    {
+      "name": "Kadeci",
+      "venue": "Szkoła Podstawowa nr 93",
+      "address": "ul. Szlachtowskiego, Kraków",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Szko%C5%82a+Podstawowa+nr+93%2C+ul.+Szlachtowskiego%2C+Krak%C3%B3w",
+      "sessions": [
+        { "day": "Wtorek", "time": "19:15 - 20:45" },
+        { "day": "Piątek", "time": "19:30 - 21:00" }
+      ]
+    },
+    {
+      "name": "Minisiatkówka",
+      "venue": "Szkoła Podstawowa nr 12",
+      "address": "ul. Kijowska 3, Kraków",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Szko%C5%82a+Podstawowa+nr+12%2C+ul.+Kijowska+3%2C+Krak%C3%B3w",
+      "sessions": [
+        { "day": "Poniedziałek", "time": "17:30 - 19:00" },
+        { "day": "Piątek", "time": "17:30 - 19:00" }
+      ]
+    }
   ]
 }

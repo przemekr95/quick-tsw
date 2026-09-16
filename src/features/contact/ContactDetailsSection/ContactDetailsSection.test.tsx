@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import type { ContactInfo } from '../../../shared/types/domain';
 import { ContactDetailsSection } from './ContactDetailsSection';
 
-const contact: Omit<ContactInfo, 'coordinators'> = {
+const contact: Omit<ContactInfo, 'coordinators' | 'trainingGroups'> = {
   address: 'ul. Sportowa 1, 00-000 Miasto',
   email: 'test@klub.pl',
   mapUrl: 'https://example.com',
