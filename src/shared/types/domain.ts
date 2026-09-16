@@ -54,6 +54,19 @@ export interface SectionCoordinator {
   photoSrc: string;
 }
 
+export interface TrainingSession {
+  day: string;
+  time: string;
+}
+
+export interface TrainingGroup {
+  name: string;
+  venue: string;
+  address: string;
+  mapUrl: string;
+  sessions: TrainingSession[];
+}
+
 export interface ContactInfo {
   address: string;
   email: string;
@@ -63,6 +76,7 @@ export interface ContactInfo {
   bankAccountNumber: string;
   bankAccountHolder: string;
   coordinators: SectionCoordinator[];
+  trainingGroups: TrainingGroup[];
 }
 
 export interface HeroSlide {

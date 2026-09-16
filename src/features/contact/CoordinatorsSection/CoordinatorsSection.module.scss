@@ -1,7 +1,7 @@
 @use '../../../shared/theme/sectionHeading' as sh;
 
 .section {
-  @include sh.shell($gap: 1.6rem, $divider: false);
+  @include sh.shell($gap: 1.6rem);
 }
 
 .heading {

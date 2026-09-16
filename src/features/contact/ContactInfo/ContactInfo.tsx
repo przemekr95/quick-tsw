@@ -1,6 +1,7 @@
 import type { ContactInfo as ContactInfoType } from '../../../shared/types/domain';
 import { ContactDetailsSection } from '../ContactDetailsSection';
 import { CoordinatorsSection } from '../CoordinatorsSection';
+import { TrainingScheduleSection } from '../TrainingScheduleSection';
 import styles from './ContactInfo.module.scss';
 
 interface ContactInfoProps {
@@ -13,6 +14,7 @@ export function ContactInfo({ contact }: ContactInfoProps) {
       <div className={styles.stack}>
         <ContactDetailsSection contact={contact} />
         <CoordinatorsSection coordinators={contact.coordinators} />
+        <TrainingScheduleSection trainingGroups={contact.trainingGroups} />
       </div>
     </section>
   );
