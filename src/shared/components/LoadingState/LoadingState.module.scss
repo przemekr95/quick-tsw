@@ -1,0 +1,7 @@
+.root {
+  margin: 0;
+  padding: clamp(3rem, 9vw, 5.5rem) clamp(1.25rem, 5vw, 3rem);
+  color: color-mix(in srgb, currentcolor 60%, transparent);
+  font-size: 0.95rem;
+  text-align: center;
+}

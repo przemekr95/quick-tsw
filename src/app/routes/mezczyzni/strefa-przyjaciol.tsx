@@ -1,11 +1,12 @@
 import { PatronsInfo } from '../../../features/patrons/PatronsInfo';
-import { usePatrons } from '../../../shared/hooks/usePatrons';
+import { LoadingState } from '../../../shared/components/LoadingState';
+import { usePatrons } from '../../../shared/hooks';
 
 export default function MezczyzniStrefaPrzyjaciolRoute() {
   const { data: patrons, loading } = usePatrons('mezczyzni');
 
   if (loading) {
-    return <p>Ładowanie strefy przyjaciół...</p>;
+    return <LoadingState label="Ładowanie strefy przyjaciół..." />;
   }
 
   return <PatronsInfo patrons={patrons} />;

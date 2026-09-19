@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
-import type { Club } from '../types/domain';
+import type { Club, ClubLandingContent } from '../types/domain';
 import { useSectionOutletContext } from './useSectionOutletContext';
 
 const club: Club = {
@@ -11,8 +11,22 @@ const club: Club = {
   sponsors: [],
 };
 
+const landingContent: ClubLandingContent = {
+  heroHeading: 'Mężczyźni',
+  heroSlides: [],
+  recruitmentPaths: [],
+  matchCountdown: [],
+  matchForm: [],
+  nextMatch: {
+    opponent: 'Przeciwnik',
+    competition: 'Liga',
+    kickoffLabel: 'Sobota, 18:00',
+    venue: 'Hala testowa',
+  },
+};
+
 function LayoutRoute() {
-  return <Outlet context={{ club }} />;
+  return <Outlet context={{ club, landingContent }} />;
 }
 
 function ChildRoute() {

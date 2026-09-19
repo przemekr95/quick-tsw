@@ -1,0 +1,110 @@
+// Shared "dark premium" chrome used by every content tab's `.root`/`.stack`
+// (ClubInfo, ContactInfo, TeamRoster, PatronsInfo, PartnershipInfo, MediaInfo).
+// Keeping this in one place means the shared visual language changes in one
+// file instead of N hand-copied ones.
+
+@mixin root($with-nav-offset: true) {
+  display: block;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+
+  @if $with-nav-offset {
+    margin-block: calc(-1 * (var(--header-inline-height, 0px) + var(--section-padding-block, 1.1rem)))
+      calc(-1 * var(--section-padding-block, 1.1rem));
+  } @else {
+    margin-block-start: calc(-1 * var(--section-padding-block, 1.1rem));
+  }
+
+  --color-eyebrow: var(--color-accent);
+
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      color-mix(in srgb, var(--color-primary) 22%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(180deg, var(--color-surface-start) 0%, var(--color-surface-end) 100%);
+  color: var(--color-background);
+}
+
+@mixin glow-layer($secondary: true) {
+  position: relative;
+  z-index: 0;
+  display: grid;
+
+  @if $secondary {
+    background:
+      radial-gradient(
+        circle 46rem at 4% 58%,
+        color-mix(in srgb, var(--color-primary) 11%, transparent) 0%,
+        transparent 100%
+      ),
+      radial-gradient(
+        circle 44rem at 90% 92%,
+        color-mix(in srgb, var(--color-primary) 12%, transparent) 0%,
+        transparent 100%
+      ),
+      var(--color-surface-start);
+  } @else {
+    background:
+      radial-gradient(
+        circle 46rem at 4% 58%,
+        color-mix(in srgb, var(--color-primary) 11%, transparent) 0%,
+        transparent 100%
+      ),
+      var(--color-surface-start);
+  }
+}
+
+@mixin surface($secondary-glow: true) {
+  @include glow-layer($secondary-glow);
+
+  counter-reset: section;
+}
+
+@mixin glow-blob($top: null, $right: null, $bottom: null, $left: null) {
+  @media (width >= 900px) {
+    &::before {
+      content: '';
+      position: absolute;
+
+      @if $top {
+        top: $top;
+      }
+
+      @if $right {
+        right: $right;
+      }
+
+      @if $bottom {
+        bottom: $bottom;
+      }
+
+      @if $left {
+        left: $left;
+      }
+
+      z-index: -1;
+      width: 32rem;
+      height: 32rem;
+      background: radial-gradient(
+        circle at 50% 50%,
+        color-mix(in srgb, var(--color-primary) 8%, transparent) 0%,
+        transparent 100%
+      );
+      clip-path: polygon(
+        50% 0%,
+        61.23% 34.55%,
+        97.55% 34.55%,
+        68.17% 55.9%,
+        79.39% 90.45%,
+        50% 69.1%,
+        20.61% 90.45%,
+        31.83% 55.9%,
+        2.45% 34.55%,
+        38.77% 34.55%
+      );
+      filter: blur(95px);
+    }
+  }
+}

@@ -2,11 +2,11 @@ import type { PropsWithChildren } from 'react';
 import { useLocation } from 'react-router-dom';
 import type { HeroSlide, SectionPath, Sponsor } from '../../types/domain';
 import { useHeroSlider } from '../../hooks/useHeroSlider';
-import { SponsorsSection } from '../../../features/club-info/SponsorsSection';
 import { Footer } from '../Footer';
 import { HeroBackground } from '../HeroBackground';
 import { HeroCtaButton } from '../HeroCtaButton';
 import { NavBar } from '../NavBar';
+import { SponsorsSection } from '../SponsorsSection';
 import styles from './SectionLayout.module.scss';
 
 interface SectionLayoutProps extends PropsWithChildren {
