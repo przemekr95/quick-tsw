@@ -4,132 +4,132 @@
     "lastName": "Bylica",
     "number": 17,
     "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png"
   },
   {
     "firstName": "Maciej",
     "lastName": "Chodur",
     "number": 6,
     "position": "Środkowy",
-    "photoSrc": "/images/team/maciej_chodur.jpg"
+    "photoSrc": "/quick-tsw/images/team/maciej_chodur.jpg"
   },
   {
     "firstName": "Wojciech",
     "lastName": "Filarecki",
     "number": 7,
     "position": "Środkowy",
-    "photoSrc": "/images/team/wojciech_filarecki.jpg"
+    "photoSrc": "/quick-tsw/images/team/wojciech_filarecki.jpg"
   },
   {
     "firstName": "Michał",
     "lastName": "Florek",
     "number": 13,
     "position": "Rozgrywający",
-    "photoSrc": "/images/team/michal_florek.jpg"
+    "photoSrc": "/quick-tsw/images/team/michal_florek.jpg"
   },
   {
     "firstName": "Jacek",
     "lastName": "Gackowski",
     "number": 15,
     "position": "Libero",
-    "photoSrc": "/images/team/jacek_gackowski.jpg"
+    "photoSrc": "/quick-tsw/images/team/jacek_gackowski.jpg"
   },
   {
     "firstName": "Wiktor",
     "lastName": "Gałczyński",
     "number": 80,
     "position": "Przyjmujący",
-    "photoSrc": "/images/team/wiktor_galczynski.jpg"
+    "photoSrc": "/quick-tsw/images/team/wiktor_galczynski.jpg"
   },
   {
     "firstName": "Wojciech",
     "lastName": "Kaspera",
     "number": 5,
     "position": "Rozgrywający",
-    "photoSrc": "/images/team/wojciech_kaspera.jpg"
+    "photoSrc": "/quick-tsw/images/team/wojciech_kaspera.jpg"
   },
   {
     "firstName": "Szymon",
     "lastName": "Łukasiewicz",
     "number": 1,
     "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png"
   },
   {
     "firstName": "Andrzej",
     "lastName": "Łychowski",
     "number": 33,
     "position": "Atakujący",
-    "photoSrc": "/images/team/andrzej_lychowski.jpg"
+    "photoSrc": "/quick-tsw/images/team/andrzej_lychowski.jpg"
   },
   {
     "firstName": "Kamil",
     "lastName": "Maksymowicz",
     "number": 23,
     "position": "Atakujący",
-    "photoSrc": "/images/team/kamil_maksymowicz.jpg"
+    "photoSrc": "/quick-tsw/images/team/kamil_maksymowicz.jpg"
   },
   {
     "firstName": "Łukasz",
     "lastName": "Nalepa",
     "number": 2,
     "position": "Przyjmujący",
-    "photoSrc": "/images/team/lukasz_nalepa.jpg"
+    "photoSrc": "/quick-tsw/images/team/lukasz_nalepa.jpg"
   },
   {
     "firstName": "Grzegorz",
     "lastName": "Rubacha",
     "number": 55,
     "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png"
   },
   {
     "firstName": "Wojciech",
     "lastName": "Rubacha",
     "number": 8,
     "position": "Atakujący",
-    "photoSrc": "/images/team/wojciech_rubacha.jpg"
+    "photoSrc": "/quick-tsw/images/team/wojciech_rubacha.jpg"
   },
   {
     "firstName": "Przemysław",
     "lastName": "Rura",
     "number": 10,
     "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png"
   },
   {
     "firstName": "Karol",
     "lastName": "Sala",
     "number": 11,
     "position": "Przyjmujący",
-    "photoSrc": "/images/team/karol_sala.jpg"
+    "photoSrc": "/quick-tsw/images/team/karol_sala.jpg"
   },
   {
     "firstName": "Krzysztof",
     "lastName": "Stalmach",
     "number": 21,
     "position": "Przyjmujący",
-    "photoSrc": "/images/team/krzysztof_stalmach.jpg"
+    "photoSrc": "/quick-tsw/images/team/krzysztof_stalmach.jpg"
   },
   {
     "firstName": "Patryk",
     "lastName": "Wółkiewicz",
     "number": 14,
     "position": "Libero",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png"
   },
   {
     "firstName": "Szymon",
     "lastName": "Zych",
     "number": 99,
     "position": "Środkowy",
-    "photoSrc": "/images/team/szymon_zych.jpg"
+    "photoSrc": "/quick-tsw/images/team/szymon_zych.jpg"
   },
   {
     "firstName": "Iwo",
     "lastName": "Żakowski",
     "number": 16,
     "position": "Libero",
-    "photoSrc": "/images/team/iwo_zakowski.jpg"
+    "photoSrc": "/quick-tsw/images/team/iwo_zakowski.jpg"
   }
 ]

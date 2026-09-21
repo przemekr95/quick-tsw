@@ -3,7 +3,7 @@
   "heroSlides": [
     {
       "id": "mezczyzni-1",
-      "imageSrc": "/images/backgrounds/m-1.jpg",
+      "imageSrc": "/quick-tsw/images/backgrounds/m-1.jpg",
       "imageAlt": "Zdjęcie sekcji mężczyzn podczas akcji meczowej",
       "title": "Bądź na bieżąco",
       "text": "Wyniki, zdjęcia z meczów i życie klubu - śledź nas na Facebooku.",
@@ -12,7 +12,7 @@
     },
     {
       "id": "mezczyzni-2",
-      "imageSrc": "/images/backgrounds/m-2.jpg",
+      "imageSrc": "/quick-tsw/images/backgrounds/m-2.jpg",
       "imageAlt": "Zdjęcie sekcji mężczyzn na tle siatki meczowej",
       "title": "Zbuduj z nami sekcję",
       "text": "Szukamy firm i osób, które chcą być częścią naszej historii.",
@@ -21,7 +21,7 @@
     },
     {
       "id": "mezczyzni-3",
-      "imageSrc": "/images/backgrounds/m-3.jpg",
+      "imageSrc": "/quick-tsw/images/backgrounds/m-3.jpg",
       "imageAlt": "Zdjęcie drużyny mężczyzn",
       "title": "Masz pytania?",
       "text": "Napisz albo zadzwoń - odpowiemy i pomożemy znaleźć twoje miejsce w klubie.",

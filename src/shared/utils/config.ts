@@ -4,7 +4,7 @@ export const INSTAGRAM_URL = 'https://www.instagram.com/tswisla_siatkowkamezczyz
 
 export const CLUB_BRAND_NAME = 'Towarzystwo Sportowe Wisła Kraków';
 
-export const CLUB_CREST_SRC = '/tsw-herb.png';
+export const CLUB_CREST_SRC = '/quick-tsw/tsw-herb.png';
 
 export const SECTION_TAB_LINKS = [
   { label: 'Klub', path: 'klub' },
@@ -21,5 +21,5 @@ export const FOOTER_LINKS = [
 
 export const MEDIA_DOWNLOADS = {
   brandBook: CLUB_CREST_SRC,
-  rosterMezczyzni: '/downloads/sklad-mezczyzni.pdf',
+  rosterMezczyzni: '/quick-tsw/downloads/sklad-mezczyzni.pdf',
 } as const;
