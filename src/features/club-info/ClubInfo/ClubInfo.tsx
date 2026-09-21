@@ -18,7 +18,7 @@ interface ClubInfoProps {
 
 const aboutImageBySection: Record<SectionId, { src: string; alt: string }> = {
   mezczyzni: {
-    src: '/images/backgrounds/hero-m.jpg',
+    src: '/quick-tsw/images/backgrounds/hero-m.jpg',
     alt: 'Zdjęcie meczowe drużyny siatkarskiej w niebieskiej tonacji',
   },
 };

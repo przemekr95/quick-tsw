@@ -9,7 +9,7 @@ describe('RosterDownloadSection', () => {
     expect(screen.getByRole('heading', { name: 'Składy zawodników' })).toBeInTheDocument();
 
     const mezczyzniLink = screen.getByRole('link', { name: /Pobierz skład - Mężczyźni/ });
-    expect(mezczyzniLink).toHaveAttribute('href', '/downloads/sklad-mezczyzni.pdf');
+    expect(mezczyzniLink).toHaveAttribute('href', '/quick-tsw/downloads/sklad-mezczyzni.pdf');
     expect(mezczyzniLink).toHaveAttribute('download');
   });
 });

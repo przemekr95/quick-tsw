@@ -10,7 +10,7 @@ interface SponsorsSectionProps {
 export function SponsorsSection({ clubName, sponsors }: SponsorsSectionProps) {
   return (
     <section aria-label={`Sponsorzy klubu ${clubName}`} className={styles.section}>
-      <img alt={`Herb klubu ${clubName}`} className={styles.crest} src="/tsw-herb.png" />
+      <img alt={`Herb klubu ${clubName}`} className={styles.crest} src="/quick-tsw/tsw-herb.png" />
       <SponsorsWall sponsors={sponsors} />
     </section>
   );

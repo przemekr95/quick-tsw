@@ -13,6 +13,6 @@ describe('TeamPhotoSection', () => {
     });
 
     expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute('src', '/images/backgrounds/team.jpg');
+    expect(image).toHaveAttribute('src', '/quick-tsw/images/backgrounds/team.jpg');
   });
 });
