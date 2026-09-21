@@ -4,7 +4,7 @@
     "lastName": "Bylica",
     "number": 17,
     "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/avatar.png",
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Wiktor_Bylica"
   },
   {
@@ -12,7 +12,7 @@
     "lastName": "Chodur",
     "number": 6,
     "position": "Środkowy",
-    "photoSrc": "/images/team/maciej_chodur.jpg",
+    "photoSrc": "/quick-tsw/images/team/maciej_chodur.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Maciej_Chodur"
   },
   {
@@ -20,7 +20,7 @@
     "lastName": "Filarecki",
     "number": 7,
     "position": "Środkowy",
-    "photoSrc": "/images/team/wojciech_filarecki.jpg",
+    "photoSrc": "/quick-tsw/images/team/wojciech_filarecki.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Wojciech_Filarecki"
   },
   {
@@ -28,7 +28,7 @@
     "lastName": "Florek",
     "number": 13,
     "position": "Rozgrywający",
-    "photoSrc": "/images/team/michal_florek.jpg",
+    "photoSrc": "/quick-tsw/images/team/michal_florek.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Micha%C5%82_Florek_%28siatk%C3%B3wka%29"
   },
   {
@@ -36,7 +36,7 @@
     "lastName": "Gackowski",
     "number": 15,
     "position": "Libero",
-    "photoSrc": "/images/team/jacek_gackowski.jpg",
+    "photoSrc": "/quick-tsw/images/team/jacek_gackowski.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Jacek_Gackowski"
   },
   {
@@ -44,7 +44,7 @@
     "lastName": "Gałczyński",
     "number": 80,
     "position": "Przyjmujący",
-    "photoSrc": "/images/team/wiktor_galczynski.jpg",
+    "photoSrc": "/quick-tsw/images/team/wiktor_galczynski.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Wiktor_Ga%C5%82czy%C5%84ski"
   },
   {
@@ -52,7 +52,7 @@
     "lastName": "Kaspera",
     "number": 5,
     "position": "Rozgrywający",
-    "photoSrc": "/images/team/wojciech_kaspera.jpg",
+    "photoSrc": "/quick-tsw/images/team/wojciech_kaspera.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Wojciech_Kaspera"
   },
   {
@@ -60,7 +60,7 @@
     "lastName": "Łukasiewicz",
     "number": 1,
     "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/avatar.png",
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Szymon_%C5%81ukasiewicz"
   },
   {
@@ -68,7 +68,7 @@
     "lastName": "Łychowski",
     "number": 33,
     "position": "Atakujący",
-    "photoSrc": "/images/team/andrzej_lychowski.jpg",
+    "photoSrc": "/quick-tsw/images/team/andrzej_lychowski.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Andrzej_%C5%81ychowski"
   },
   {
@@ -76,7 +76,7 @@
     "lastName": "Maksymowicz",
     "number": 23,
     "position": "Atakujący",
-    "photoSrc": "/images/team/kamil_maksymowicz.jpg",
+    "photoSrc": "/quick-tsw/images/team/kamil_maksymowicz.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Kamil_Maksymowicz"
   },
   {
@@ -84,7 +84,7 @@
     "lastName": "Nalepa",
     "number": 2,
     "position": "Przyjmujący",
-    "photoSrc": "/images/team/lukasz_nalepa.jpg",
+    "photoSrc": "/quick-tsw/images/team/lukasz_nalepa.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=%C5%81ukasz_Nalepa"
   },
   {
@@ -92,7 +92,7 @@
     "lastName": "Rubacha",
     "number": 55,
     "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/avatar.png",
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Grzegorz_Rubacha"
   },
   {
@@ -100,7 +100,7 @@
     "lastName": "Rubacha",
     "number": 8,
     "position": "Atakujący",
-    "photoSrc": "/images/team/wojciech_rubacha.jpg",
+    "photoSrc": "/quick-tsw/images/team/wojciech_rubacha.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Wojciech_Rubacha"
   },
   {
@@ -108,7 +108,7 @@
     "lastName": "Rura",
     "number": 10,
     "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/avatar.png",
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Przemys%C5%82aw_Rura"
   },
   {
@@ -116,7 +116,7 @@
     "lastName": "Sala",
     "number": 11,
     "position": "Przyjmujący",
-    "photoSrc": "/images/team/karol_sala.jpg",
+    "photoSrc": "/quick-tsw/images/team/karol_sala.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Karol_Sala"
   },
   {
@@ -124,7 +124,7 @@
     "lastName": "Stalmach",
     "number": 21,
     "position": "Przyjmujący",
-    "photoSrc": "/images/team/krzysztof_stalmach.jpg",
+    "photoSrc": "/quick-tsw/images/team/krzysztof_stalmach.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Krzysztof_Stalmach"
   },
   {
@@ -132,7 +132,7 @@
     "lastName": "Wółkiewicz",
     "number": 14,
     "position": "Libero",
-    "photoSrc": "/images/backgrounds/avatar.png",
+    "photoSrc": "/quick-tsw/images/backgrounds/avatar.png",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Patryk_W%C3%B3%C5%82kiewicz"
   },
   {
@@ -140,7 +140,7 @@
     "lastName": "Zych",
     "number": 99,
     "position": "Środkowy",
-    "photoSrc": "/images/team/szymon_zych.jpg",
+    "photoSrc": "/quick-tsw/images/team/szymon_zych.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Szymon_Zych"
   },
   {
@@ -148,7 +148,7 @@
     "lastName": "Żakowski",
     "number": 16,
     "position": "Libero",
-    "photoSrc": "/images/team/iwo_zakowski.jpg",
+    "photoSrc": "/quick-tsw/images/team/iwo_zakowski.jpg",
     "profileUrl": "https://historiawisly.pl/wiki/index.php?title=Iwo_%C5%BBakowski"
   }
 ]

@@ -18,7 +18,7 @@ export function SponsorsSection({ clubName, sponsors }: SponsorsSectionProps) {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <img alt={`Herb klubu ${clubName}`} className={styles.crest} src="/tsw-herb.png" />
+        <img alt={`Herb klubu ${clubName}`} className={styles.crest} src="/quick-tsw/tsw-herb.png" />
       </a>
       <SponsorsWall sponsors={sponsors} />
     </section>
