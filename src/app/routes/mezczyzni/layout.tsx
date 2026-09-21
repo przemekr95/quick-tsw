@@ -17,7 +17,7 @@ export default function MezczyzniLayoutRoute() {
         sectionPath=""
         sponsors={club?.sponsors ?? []}
       >
-        <Outlet context={{ club }} />
+        <Outlet context={{ club, landingContent: data }} />
       </SectionLayout>
     </ThemeProvider>
   );

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
-import type { Club } from '../types/domain';
+import type { Club, ClubLandingContent } from '../types/domain';
 import { useSectionOutletContext } from './useSectionOutletContext';
 
 const club: Club = {
@@ -11,18 +11,36 @@ const club: Club = {
   sponsors: [],
 };
 
+const landingContent: ClubLandingContent = {
+  heroHeading: 'Mężczyźni',
+  heroSlides: [],
+  recruitmentPaths: [],
+  matchCountdown: [],
+  matchForm: [],
+  nextMatch: {
+    opponent: 'Przeciwnik',
+    competition: 'Liga',
+    kickoffLabel: 'Sobota, 18:00',
+    venue: 'Hala testowa',
+  },
+};
+
 function LayoutRoute() {
-  return <Outlet context={{ club }} />;
+  return <Outlet context={{ club, landingContent }} />;
 }
 
 function ChildRoute() {
-  const { club: contextClub } = useSectionOutletContext();
+  const { club: contextClub, landingContent: contextLandingContent } = useSectionOutletContext();
 
-  return <p>{contextClub?.name}</p>;
+  return (
+    <p>
+      {contextClub?.name} / {contextLandingContent?.heroHeading}
+    </p>
+  );
 }
 
 describe('useSectionOutletContext', () => {
-  it('reads the club data provided by the parent layout route', () => {
+  it('reads the club and landing content data provided by the parent layout route', () => {
     const router = createMemoryRouter(
       [
         {
@@ -36,6 +54,6 @@ describe('useSectionOutletContext', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(screen.getByText('Nazwa Klubu')).toBeInTheDocument();
+    expect(screen.getByText('Nazwa Klubu / Mężczyźni')).toBeInTheDocument();
   });
 });

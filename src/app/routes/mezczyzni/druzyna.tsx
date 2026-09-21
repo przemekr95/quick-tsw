@@ -1,13 +1,13 @@
 import { TeamRoster } from '../../../features/team-roster/TeamRoster';
-import { useStaffRoster } from '../../../shared/hooks/useStaffRoster';
-import { useTeamRoster } from '../../../shared/hooks/useTeamRoster';
+import { LoadingState } from '../../../shared/components/LoadingState';
+import { useStaffRoster, useTeamRoster } from '../../../shared/hooks';
 
 export default function MezczyzniDruzynaRoute() {
   const { data: players, loading: playersLoading } = useTeamRoster('mezczyzni');
   const { data: staff, loading: staffLoading } = useStaffRoster('mezczyzni');
 
   if (playersLoading || staffLoading) {
-    return <p>Ładowanie składu...</p>;
+    return <LoadingState label="Ładowanie składu..." />;
   }
 
   return <TeamRoster players={players} staff={staff} />;
