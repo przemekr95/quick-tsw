@@ -26,4 +26,9 @@ export const appRoutes: RouteObject[] = [
   },
 ];
 
-export const router = createBrowserRouter(appRoutes);
+// Vite's `base` only rewrites asset URLs; react-router needs its own basename
+// so route matching accounts for the app being served under a subpath
+// (e.g. GitHub Pages' /quick-tsw/).
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+
+export const router = createBrowserRouter(appRoutes, { basename });
