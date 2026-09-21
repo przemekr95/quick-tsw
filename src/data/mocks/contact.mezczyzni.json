@@ -13,7 +13,7 @@
       "lastName": "Rura",
       "phone": "+48 665 195 871",
       "email": "przemek.rura@tswisla.pl",
-      "photoSrc": "/images/backgrounds/hero-m.jpg"
+      "photoSrc": "/quick-tsw/images/backgrounds/hero-m.jpg"
     },
     {
       "role": "Zastępca koordynatora",
@@ -21,7 +21,7 @@
       "lastName": "Kaspera",
       "phone": "+48 662 358 937",
       "email": "wojciech.kaspera@tswisla.pl",
-      "photoSrc": "/images/backgrounds/hero-m.jpg"
+      "photoSrc": "/quick-tsw/images/backgrounds/hero-m.jpg"
     }
   ],
   "trainingGroups": [

@@ -16,7 +16,7 @@ export function TeamPhotoSection() {
           alt="Drużyna siatkarska podczas wspólnego zdjęcia zespołowego"
           className={styles.image}
           loading="lazy"
-          src="/images/backgrounds/team.jpg"
+          src="/quick-tsw/images/backgrounds/team.jpg"
         />
       </figure>
     </section>
