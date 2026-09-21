@@ -30,13 +30,17 @@ function LayoutRoute() {
 }
 
 function ChildRoute() {
-  const { club: contextClub } = useSectionOutletContext();
+  const { club: contextClub, landingContent: contextLandingContent } = useSectionOutletContext();
 
-  return <p>{contextClub?.name}</p>;
+  return (
+    <p>
+      {contextClub?.name} / {contextLandingContent?.heroHeading}
+    </p>
+  );
 }
 
 describe('useSectionOutletContext', () => {
-  it('reads the club data provided by the parent layout route', () => {
+  it('reads the club and landing content data provided by the parent layout route', () => {
     const router = createMemoryRouter(
       [
         {
@@ -50,6 +54,6 @@ describe('useSectionOutletContext', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(screen.getByText('Nazwa Klubu')).toBeInTheDocument();
+    expect(screen.getByText('Nazwa Klubu / Mężczyźni')).toBeInTheDocument();
   });
 });
