@@ -65,10 +65,12 @@ function getNextWarsawMidnight(now: Date): Date {
   const { year, month, day } = getWarsawWallClock(now);
   const naiveNextMidnightUtc = Date.UTC(year, month - 1, day + 1, 0, 0, 0);
 
-  // Przybliżenie: przesunięcie strefy liczone dla `now`, nie dla samej
-  // północy — niedokładne tylko w noc zmiany czasu w Warszawie, i tylko o
-  // godzinę, a harmonogram i tak przeliczy się ponownie przy najbliższej okazji.
-  return new Date(naiveNextMidnightUtc - getWarsawOffsetMinutes(now) * 60_000);
+  // Przesunięcie strefy liczone dla `now` może się różnić od przesunięcia
+  // obowiązującego dokładnie o północy (w noc zmiany czasu w Warszawie) —
+  // policz je jeszcze raz dla kandydata, żeby trafić w rzeczywistą północ.
+  const candidate = new Date(naiveNextMidnightUtc - getWarsawOffsetMinutes(now) * 60_000);
+
+  return new Date(naiveNextMidnightUtc - getWarsawOffsetMinutes(candidate) * 60_000);
 }
 
 function formatOffset(offsetMinutes: number): string {

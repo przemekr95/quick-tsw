@@ -203,6 +203,16 @@ describe('getScheduleCutoff', () => {
     expect(getScheduleCutoff(schedule, now)).toBe(new Date('2026-11-08T00:00:00+01:00').getTime());
   });
 
+  it('resolves the actual local midnight across the Warsaw spring DST change', () => {
+    // Regression: using `now`'s offset (+01:00, before the 02:00 CET -> 03:00
+    // CEST jump) for the whole calculation would land an hour late, at
+    // 2027-03-29T01:00 CEST instead of the real midnight, 2027-03-29T00:00 CEST.
+    const now = new Date('2027-03-28T00:30:00+01:00');
+    const schedule = [buildMatch({ matchDate: '2027-03-28', kickoffTime: null })];
+
+    expect(getScheduleCutoff(schedule, now)).toBe(new Date('2027-03-29T00:00:00+02:00').getTime());
+  });
+
   it('returns null when the schedule is empty', () => {
     expect(getScheduleCutoff([], new Date('2026-11-07T10:00:00+01:00'))).toBeNull();
   });
