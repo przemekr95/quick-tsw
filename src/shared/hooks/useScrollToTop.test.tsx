@@ -1,12 +1,11 @@
 import { act, cleanup, render, screen } from '@testing-library/react';
-import { createMemoryRouter, RouterProvider, useNavigate } from 'react-router-dom';
+import { Outlet, createMemoryRouter, RouterProvider, useNavigate } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { useScrollToTop } from './useScrollToTop';
 
 afterEach(cleanup);
 
 function PageA() {
-  useScrollToTop();
   const navigate = useNavigate();
 
   return (
@@ -17,9 +16,13 @@ function PageA() {
 }
 
 function PageB() {
+  return <p>Strona B</p>;
+}
+
+function Layout() {
   useScrollToTop();
 
-  return <p>Strona B</p>;
+  return <Outlet />;
 }
 
 describe('useScrollToTop', () => {
@@ -28,8 +31,14 @@ describe('useScrollToTop', () => {
 
     const router = createMemoryRouter(
       [
-        { path: '/a', element: <PageA /> },
-        { path: '/b', element: <PageB /> },
+        {
+          path: '/',
+          element: <Layout />,
+          children: [
+            { path: 'a', element: <PageA /> },
+            { path: 'b', element: <PageB /> },
+          ],
+        },
       ],
       { initialEntries: ['/a'] },
     );
