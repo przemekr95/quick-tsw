@@ -53,6 +53,26 @@ describe('useMatchCountdown', () => {
     ]);
   });
 
+  it('returns a zero countdown and does not start a timer for an invalid kickoffAt', () => {
+    const setIntervalSpy = vi.spyOn(window, 'setInterval');
+
+    const { result } = renderHook(() => useMatchCountdown('not-a-date'));
+
+    expect(result.current).toEqual([
+      { value: '00', label: 'Dni' },
+      { value: '00', label: 'Godz' },
+      { value: '00', label: 'Min' },
+      { value: '00', label: 'Sek' },
+    ]);
+    expect(setIntervalSpy).not.toHaveBeenCalled();
+  });
+
+  it('returns a zero countdown for an empty kickoffAt', () => {
+    const { result } = renderHook(() => useMatchCountdown(''));
+
+    expect(result.current.every((item) => item.value === '00')).toBe(true);
+  });
+
   it('does not start a timer when the kickoff is already in the past', () => {
     vi.setSystemTime(new Date('2026-08-16T00:00:00+02:00'));
     const setIntervalSpy = vi.spyOn(window, 'setInterval');

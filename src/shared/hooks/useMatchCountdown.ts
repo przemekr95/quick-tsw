@@ -11,7 +11,11 @@ function pad(value: number): string {
 }
 
 function getRemainingMs(kickoffAt: string): number {
-  return Math.max(0, new Date(kickoffAt).getTime() - Date.now());
+  const kickoffMs = new Date(kickoffAt).getTime();
+
+  if (Number.isNaN(kickoffMs)) return 0;
+
+  return Math.max(0, kickoffMs - Date.now());
 }
 
 function toCountdownItems(remainingMs: number): ClubMatchCountdownItem[] {
