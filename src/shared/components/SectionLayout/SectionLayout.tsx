@@ -2,6 +2,7 @@ import type { PropsWithChildren } from 'react';
 import { useLocation } from 'react-router-dom';
 import type { HeroSlide, SectionPath, Sponsor } from '../../types/domain';
 import { useHeroSlider } from '../../hooks/useHeroSlider';
+import { useScrollToTop } from '../../hooks/useScrollToTop';
 import { Footer } from '../Footer';
 import { HeroBackground } from '../HeroBackground';
 import { HeroCtaButton } from '../HeroCtaButton';
@@ -32,6 +33,8 @@ export function SectionLayout({
 }: SectionLayoutProps) {
   const { pathname } = useLocation();
   const isSectionHome = pathname === `${sectionPath}/klub`;
+
+  useScrollToTop();
 
   const { activeIndex, slideKey, goTo } = useHeroSlider(heroSlides);
 
