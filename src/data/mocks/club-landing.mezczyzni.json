@@ -38,13 +38,8 @@
     "opponent": "FOTONLAB GRYF Miechów",
     "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
     "kickoffLabel": "7 listopada 2026, 18:00",
+    "kickoffAt": "2026-11-07T18:00:00+01:00",
     "venue": "Miechów, ul. Konopnickiej 2"
   },
-  "matchCountdown": [
-    { "value": "16", "label": "Dni" },
-    { "value": "20", "label": "Godz" },
-    { "value": "21", "label": "Min" },
-    { "value": "49", "label": "Sek" }
-  ],
   "matchForm": ["-", "-", "-", "-", "-"]
 }

@@ -1,13 +1,9 @@
-import type {
-  ClubMatchCountdownItem,
-  ClubNextMatch,
-  MatchFormResult,
-} from '../../../shared/types/domain';
+import { useMatchCountdown } from '../../../shared/hooks';
+import type { ClubNextMatch, MatchFormResult } from '../../../shared/types/domain';
 import styles from './NextMatchSection.module.scss';
 
 interface NextMatchSectionProps {
   match: ClubNextMatch;
-  countdown: ClubMatchCountdownItem[];
   form: MatchFormResult[];
 }
 
@@ -17,7 +13,9 @@ const formResultClassName: Record<MatchFormResult, string> = {
   '-': styles.none,
 };
 
-export function NextMatchSection({ match, countdown, form }: NextMatchSectionProps) {
+export function NextMatchSection({ match, form }: NextMatchSectionProps) {
+  const countdown = useMatchCountdown(match.kickoffAt);
+
   return (
     <section
       aria-labelledby="najblizszy-mecz-heading"

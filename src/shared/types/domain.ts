@@ -98,6 +98,7 @@ export interface ClubNextMatch {
   opponent: string;
   competition: string;
   kickoffLabel: string;
+  kickoffAt: string;
   venue: string;
 }
 
@@ -108,7 +109,6 @@ export interface ClubLandingContent {
   heroSlides: HeroSlide[];
   recruitmentPaths: string[];
   nextMatch: ClubNextMatch;
-  matchCountdown: ClubMatchCountdownItem[];
   matchForm: MatchFormResult[];
 }
 

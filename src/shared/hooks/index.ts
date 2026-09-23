@@ -2,6 +2,7 @@ export { useClubData } from './useClubData';
 export { useClubLandingContent } from './useClubLandingContent';
 export { useContactInfo } from './useContactInfo';
 export { useHeroSlider } from './useHeroSlider';
+export { useMatchCountdown } from './useMatchCountdown';
 export { useMenuFocusTrap } from './useMenuFocusTrap';
 export { usePartnershipContent } from './usePartnershipContent';
 export { usePatrons } from './usePatrons';

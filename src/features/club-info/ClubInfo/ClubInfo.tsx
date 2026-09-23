@@ -43,11 +43,7 @@ export function ClubInfo({ club, landingContent, players, section }: ClubInfoPro
           <JoinSection recruitmentPaths={landingContent.recruitmentPaths} />
         </div>
 
-        <NextMatchSection
-          countdown={landingContent.matchCountdown}
-          form={landingContent.matchForm}
-          match={landingContent.nextMatch}
-        />
+        <NextMatchSection form={landingContent.matchForm} match={landingContent.nextMatch} />
       </div>
     </section>
   );
