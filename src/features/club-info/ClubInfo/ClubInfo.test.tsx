@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
-import type { Club, ClubLandingContent, Player } from '../../../shared/types/domain';
+import type { Club, ClubLandingContent, Player, UpcomingMatch } from '../../../shared/types/domain';
 import { ClubInfo } from './ClubInfo';
 
 const club: Pick<Club, 'name' | 'history'> = {
@@ -43,6 +43,28 @@ const players: Player[] = [
   },
 ];
 
+const FAR_FUTURE_MATCH_DATE = '2999-08-15';
+const FAR_FUTURE_MATCH_DATE_LATER = '2999-08-22';
+
+const matches: UpcomingMatch[] = [
+  {
+    round: 1,
+    opponent: 'MKS Set Nowa Wieś',
+    competition: 'I liga mężczyzn',
+    location: 'away',
+    matchDate: FAR_FUTURE_MATCH_DATE,
+    kickoffTime: '19:00',
+  },
+  {
+    round: 2,
+    opponent: 'UKS Set Kraków',
+    competition: 'I liga mężczyzn',
+    location: 'home',
+    matchDate: FAR_FUTURE_MATCH_DATE_LATER,
+    kickoffTime: null,
+  },
+];
+
 describe('ClubInfo', () => {
   it('renders club section headings and images', () => {
     render(
@@ -50,6 +72,7 @@ describe('ClubInfo', () => {
         <ClubInfo
           club={club}
           landingContent={landingContent}
+          matches={matches}
           players={players}
           section="mezczyzni"
         />
@@ -68,5 +91,7 @@ describe('ClubInfo', () => {
       screen.getByRole('heading', { name: 'Twoje miejsce jest na boisku' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'MKS Set Nowa Wieś' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Kolejne mecze' })).toBeInTheDocument();
+    expect(screen.getByText('UKS Set Kraków')).toBeInTheDocument();
   });
 });
