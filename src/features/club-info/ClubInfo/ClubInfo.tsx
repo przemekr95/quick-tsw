@@ -6,7 +6,7 @@ import type {
   SectionId,
   UpcomingMatch,
 } from '../../../shared/types/domain';
-import { getSeasonSchedule } from '../../../shared/utils/matchSchedule';
+import { useSeasonSchedule } from '../../../shared/hooks';
 import { pickRandomItems } from '../../../shared/utils/random';
 import { AboutSection } from '../AboutSection';
 import { JoinSection } from '../JoinSection';
@@ -35,7 +35,7 @@ const aboutImageBySection: Record<SectionId, { src: string; alt: string }> = {
 export function ClubInfo({ club, landingContent, players, matches, section }: ClubInfoProps) {
   const aboutImage = aboutImageBySection[section];
   const rosterPreview = useMemo(() => pickRandomItems(players, ROSTER_PREVIEW_SIZE), [players]);
-  const schedule = useMemo(() => getSeasonSchedule(matches), [matches]);
+  const schedule = useSeasonSchedule(matches);
   const [nextMatch, ...remainingMatches] = schedule;
 
   return (

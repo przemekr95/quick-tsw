@@ -7,6 +7,7 @@ export { useMenuFocusTrap } from './useMenuFocusTrap';
 export { usePartnershipContent } from './usePartnershipContent';
 export { usePatrons } from './usePatrons';
 export { useScrollToTop } from './useScrollToTop';
+export { useSeasonSchedule } from './useSeasonSchedule';
 export { useSectionOutletContext } from './useSectionOutletContext';
 export type { SectionOutletContext } from './useSectionOutletContext';
 export { useStaffRoster } from './useStaffRoster';

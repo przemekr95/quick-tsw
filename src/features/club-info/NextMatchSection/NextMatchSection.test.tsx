@@ -25,8 +25,9 @@ const matchWithoutKickoffTime: UpcomingMatch = {
 describe('NextMatchSection', () => {
   beforeEach(() => {
     vi.useFakeTimers();
-    // Dokładnie 1 dzień, 2 godziny, 5 minut i 4 sekundy przed kickoffem (2026-08-15T19:00:00+01:00).
-    vi.setSystemTime(new Date('2026-08-14T16:54:56+01:00'));
+    // Dokładnie 1 dzień, 2 godziny, 5 minut i 4 sekundy przed kickoffem
+    // (2026-08-15T19:00:00+02:00 — sierpień to czas letni w Polsce).
+    vi.setSystemTime(new Date('2026-08-14T16:54:56+02:00'));
   });
 
   afterEach(() => {

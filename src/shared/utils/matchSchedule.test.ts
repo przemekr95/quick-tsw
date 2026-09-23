@@ -4,6 +4,7 @@ import {
   formatKickoffLabel,
   getNextMatch,
   getRemainingMatches,
+  getScheduleCutoff,
   getSeasonSchedule,
   toKickoffIso,
 } from './matchSchedule';
@@ -110,6 +111,40 @@ describe('getSeasonSchedule', () => {
 
     expect(getSeasonSchedule(matches, now).map((match) => match.opponent)).toEqual(['A', 'B']);
   });
+
+  it('excludes a same-day match once its known kickoff time has passed', () => {
+    // Regression: a date-only filter would keep an 18:00 fixture "upcoming"
+    // for the rest of that calendar day even after it has actually started.
+    const matches = [
+      buildMatch({ opponent: 'Already started', matchDate: '2026-11-07', kickoffTime: '18:00' }),
+      buildMatch({ opponent: 'Next week', matchDate: '2026-11-14' }),
+    ];
+    const justAfterKickoff = new Date('2026-11-07T18:05:00+01:00');
+
+    expect(getSeasonSchedule(matches, justAfterKickoff).map((match) => match.opponent)).toEqual([
+      'Next week',
+    ]);
+  });
+
+  it('keeps a same-day match upcoming right until its known kickoff time', () => {
+    const matches = [
+      buildMatch({ opponent: 'Later today', matchDate: '2026-11-07', kickoffTime: '18:00' }),
+    ];
+    const justBeforeKickoff = new Date('2026-11-07T17:59:59+01:00');
+
+    expect(getSeasonSchedule(matches, justBeforeKickoff).map((match) => match.opponent)).toEqual([
+      'Later today',
+    ]);
+  });
+
+  it('keeps a same-day TBD match upcoming for the whole day, since no exact time is known', () => {
+    const matches = [buildMatch({ opponent: 'TBD today', matchDate: '2026-11-07', kickoffTime: null })];
+    const lateInTheDay = new Date('2026-11-07T23:59:00+01:00');
+
+    expect(getSeasonSchedule(matches, lateInTheDay).map((match) => match.opponent)).toEqual([
+      'TBD today',
+    ]);
+  });
 });
 
 describe('getNextMatch', () => {
@@ -132,16 +167,44 @@ describe('getNextMatch', () => {
 });
 
 describe('toKickoffIso', () => {
-  it('builds an ISO datetime when the kickoff time is known', () => {
+  it('uses the +01:00 winter offset outside daylight saving time', () => {
     const match = buildMatch({ matchDate: '2026-11-07', kickoffTime: '18:00' });
 
     expect(toKickoffIso(match)).toBe('2026-11-07T18:00:00+01:00');
+  });
+
+  it('uses the +02:00 summer offset during Polish daylight saving time', () => {
+    // Regression: a hard-coded +01:00 offset would convert this kickoff an
+    // hour late — Poland observes CEST (+02:00) from late March to late October.
+    const match = buildMatch({ matchDate: '2026-08-15', kickoffTime: '19:00' });
+
+    expect(toKickoffIso(match)).toBe('2026-08-15T19:00:00+02:00');
   });
 
   it('returns null when the kickoff time is TBD', () => {
     const match = buildMatch({ kickoffTime: null });
 
     expect(toKickoffIso(match)).toBeNull();
+  });
+});
+
+describe('getScheduleCutoff', () => {
+  it('returns the kickoff instant when the next match has a known time', () => {
+    const now = new Date('2026-11-07T10:00:00+01:00');
+    const schedule = [buildMatch({ matchDate: '2026-11-07', kickoffTime: '18:00' })];
+
+    expect(getScheduleCutoff(schedule, now)).toBe(new Date('2026-11-07T18:00:00+01:00').getTime());
+  });
+
+  it('returns the next local midnight when the next match time is TBD', () => {
+    const now = new Date('2026-11-07T10:30:00+01:00');
+    const schedule = [buildMatch({ matchDate: '2026-11-07', kickoffTime: null })];
+
+    expect(getScheduleCutoff(schedule, now)).toBe(new Date('2026-11-08T00:00:00+01:00').getTime());
+  });
+
+  it('returns null when the schedule is empty', () => {
+    expect(getScheduleCutoff([], new Date('2026-11-07T10:00:00+01:00'))).toBeNull();
   });
 });
 
