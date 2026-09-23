@@ -16,13 +16,6 @@ const landingContent: ClubLandingContent = {
   heroSlides: [],
   recruitmentPaths: [],
   matchForm: [],
-  nextMatch: {
-    opponent: 'Przeciwnik',
-    competition: 'Liga',
-    kickoffLabel: 'Sobota, 18:00',
-    kickoffAt: '2026-01-10T18:00:00+01:00',
-    venue: 'Hala testowa',
-  },
 };
 
 function LayoutRoute() {

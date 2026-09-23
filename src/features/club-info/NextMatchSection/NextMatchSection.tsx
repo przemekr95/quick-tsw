@@ -1,9 +1,14 @@
 import { useMatchCountdown } from '../../../shared/hooks';
-import type { ClubNextMatch, MatchFormResult } from '../../../shared/types/domain';
+import type { MatchFormResult, UpcomingMatch } from '../../../shared/types/domain';
+import {
+  formatKickoffLabel,
+  MATCH_LOCATION_LABEL,
+  toKickoffIso,
+} from '../../../shared/utils/matchSchedule';
 import styles from './NextMatchSection.module.scss';
 
 interface NextMatchSectionProps {
-  match: ClubNextMatch;
+  match: UpcomingMatch;
   form: MatchFormResult[];
 }
 
@@ -14,7 +19,7 @@ const formResultClassName: Record<MatchFormResult, string> = {
 };
 
 export function NextMatchSection({ match, form }: NextMatchSectionProps) {
-  const countdown = useMatchCountdown(match.kickoffAt);
+  const countdown = useMatchCountdown(toKickoffIso(match));
 
   return (
     <section
@@ -31,19 +36,23 @@ export function NextMatchSection({ match, form }: NextMatchSectionProps) {
           </h2>
         </div>
         <p className={styles.meta}>
-          {match.kickoffLabel} · {match.venue}
+          {formatKickoffLabel(match)} · {MATCH_LOCATION_LABEL[match.location]}
         </p>
       </div>
 
       <div className={styles.details}>
-        <ul className={styles.countdown}>
-          {countdown.map((item) => (
-            <li key={item.label}>
-              <p className={styles.countdownValue}>{item.value}</p>
-              <span className={styles.countdownLabel}>{item.label}</span>
-            </li>
-          ))}
-        </ul>
+        {countdown ? (
+          <ul className={styles.countdown}>
+            {countdown.map((item) => (
+              <li key={item.label}>
+                <p className={styles.countdownValue}>{item.value}</p>
+                <span className={styles.countdownLabel}>{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className={styles.countdownPending}>Godzina meczu zostanie ogłoszona wkrótce.</p>
+        )}
 
         <div className={styles.form}>
           <p className={styles.formLabel}>Forma</p>

@@ -37,7 +37,7 @@ describe('useMatchCountdown', () => {
       vi.advanceTimersByTime(1000);
     });
 
-    expect(result.current.find((item) => item.label === 'Sek')?.value).toBe('03');
+    expect(result.current?.find((item) => item.label === 'Sek')?.value).toBe('03');
   });
 
   it('clamps to zero once the kickoff has passed', () => {
@@ -67,10 +67,10 @@ describe('useMatchCountdown', () => {
     expect(setIntervalSpy).not.toHaveBeenCalled();
   });
 
-  it('returns a zero countdown for an empty kickoffAt', () => {
+  it('returns null for an empty kickoffAt, same as an unknown one', () => {
     const { result } = renderHook(() => useMatchCountdown(''));
 
-    expect(result.current.every((item) => item.value === '00')).toBe(true);
+    expect(result.current).toBeNull();
   });
 
   it('does not start a timer when the kickoff is already in the past', () => {
@@ -91,13 +91,55 @@ describe('useMatchCountdown', () => {
       vi.advanceTimersByTime(2000);
     });
 
-    expect(result.current.every((item) => item.value === '00')).toBe(true);
+    expect(result.current?.every((item) => item.value === '00')).toBe(true);
     expect(vi.getTimerCount()).toBe(0);
 
     act(() => {
       vi.advanceTimersByTime(5000);
     });
 
-    expect(result.current.every((item) => item.value === '00')).toBe(true);
+    expect(result.current?.every((item) => item.value === '00')).toBe(true);
+  });
+
+  it('returns null and does not start a timer when the kickoff time is unknown', () => {
+    const setIntervalSpy = vi.spyOn(window, 'setInterval');
+
+    const { result } = renderHook(() => useMatchCountdown(null));
+
+    expect(result.current).toBeNull();
+    expect(setIntervalSpy).not.toHaveBeenCalled();
+  });
+
+  it('starts counting down once a null kickoff becomes known', () => {
+    vi.setSystemTime(new Date('2026-08-14T16:54:56+02:00'));
+
+    const { result, rerender } = renderHook(({ value }) => useMatchCountdown(value), {
+      initialProps: { value: null as string | null },
+    });
+
+    expect(result.current).toBeNull();
+
+    rerender({ value: kickoffAt });
+
+    expect(result.current).toEqual([
+      { value: '01', label: 'Dni' },
+      { value: '02', label: 'Godz' },
+      { value: '05', label: 'Min' },
+      { value: '04', label: 'Sek' },
+    ]);
+  });
+
+  it('clears the countdown back to null when the kickoff time becomes unknown', () => {
+    vi.setSystemTime(new Date('2026-08-14T16:54:56+02:00'));
+
+    const { result, rerender } = renderHook(({ value }) => useMatchCountdown(value), {
+      initialProps: { value: kickoffAt as string | null },
+    });
+
+    expect(result.current).not.toBeNull();
+
+    rerender({ value: null });
+
+    expect(result.current).toBeNull();
   });
 });

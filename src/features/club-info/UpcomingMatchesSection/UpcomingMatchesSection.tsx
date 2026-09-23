@@ -1,14 +1,10 @@
-import type { MatchLocation, UpcomingMatch } from '../../../shared/types/domain';
+import type { UpcomingMatch } from '../../../shared/types/domain';
+import { MATCH_LOCATION_LABEL } from '../../../shared/utils/matchSchedule';
 import styles from './UpcomingMatchesSection.module.scss';
 
 interface UpcomingMatchesSectionProps {
   matches: UpcomingMatch[];
 }
-
-const locationLabel: Record<MatchLocation, string> = {
-  home: 'U siebie',
-  away: 'Wyjazd',
-};
 
 function formatMatchDate(matchDate: string): string {
   const [year, month, day] = matchDate.split('-');
@@ -41,7 +37,7 @@ export function UpcomingMatchesSection({ matches }: UpcomingMatchesSectionProps)
               <span
                 className={`${styles.location} ${match.location === 'home' ? styles.locationHome : ''}`}
               >
-                {locationLabel[match.location]}
+                {MATCH_LOCATION_LABEL[match.location]}
               </span>
               <span className={styles.time}>{match.kickoffTime ?? 'TBD'}</span>
             </li>

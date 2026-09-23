@@ -6,7 +6,7 @@ import type {
   SectionId,
   UpcomingMatch,
 } from '../../../shared/types/domain';
-import { getRemainingMatches } from '../../../shared/utils/matchSchedule';
+import { getSeasonSchedule } from '../../../shared/utils/matchSchedule';
 import { pickRandomItems } from '../../../shared/utils/random';
 import { AboutSection } from '../AboutSection';
 import { JoinSection } from '../JoinSection';
@@ -35,7 +35,8 @@ const aboutImageBySection: Record<SectionId, { src: string; alt: string }> = {
 export function ClubInfo({ club, landingContent, players, matches, section }: ClubInfoProps) {
   const aboutImage = aboutImageBySection[section];
   const rosterPreview = useMemo(() => pickRandomItems(players, ROSTER_PREVIEW_SIZE), [players]);
-  const remainingMatches = useMemo(() => getRemainingMatches(matches), [matches]);
+  const schedule = useMemo(() => getSeasonSchedule(matches), [matches]);
+  const [nextMatch, ...remainingMatches] = schedule;
 
   return (
     <section aria-label="Zakładka Klub" className={styles.root}>
@@ -53,7 +54,7 @@ export function ClubInfo({ club, landingContent, players, matches, section }: Cl
           <JoinSection recruitmentPaths={landingContent.recruitmentPaths} />
         </div>
 
-        <NextMatchSection form={landingContent.matchForm} match={landingContent.nextMatch} />
+        {nextMatch && <NextMatchSection form={landingContent.matchForm} match={nextMatch} />}
 
         <UpcomingMatchesSection matches={remainingMatches} />
       </div>

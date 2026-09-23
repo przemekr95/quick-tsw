@@ -23,13 +23,6 @@ const landingContent: ClubLandingContent = {
     },
   ],
   recruitmentPaths: ['Minisiatkówka - roczniki 2014-2016'],
-  nextMatch: {
-    opponent: 'MKS Set Nowa Wieś',
-    competition: 'I liga mężczyzn',
-    kickoffLabel: '15 sierpnia 2026, 19:00',
-    kickoffAt: '2026-08-15T19:00:00+02:00',
-    venue: 'Hala Sportowa, ul. Sportowa 1',
-  },
   matchForm: ['W'],
 };
 
@@ -93,5 +86,22 @@ describe('ClubInfo', () => {
     expect(screen.getByRole('heading', { name: 'MKS Set Nowa Wieś' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Kolejne mecze' })).toBeInTheDocument();
     expect(screen.getByText('UKS Set Kraków')).toBeInTheDocument();
+  });
+
+  it('hides the next-match hero once the season has no fixtures left', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <ClubInfo
+          club={club}
+          landingContent={landingContent}
+          matches={[]}
+          players={players}
+          section="mezczyzni"
+        />
+      </MemoryRouter>,
+    );
+
+    expect(container.querySelector('#najblizszy-mecz')).not.toBeInTheDocument();
+    expect(screen.getByText('Kolejne terminy zostaną ogłoszone wkrótce.')).toBeInTheDocument();
   });
 });

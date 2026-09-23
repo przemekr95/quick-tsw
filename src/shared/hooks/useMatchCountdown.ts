@@ -32,10 +32,21 @@ function toCountdownItems(remainingMs: number): ClubMatchCountdownItem[] {
   ];
 }
 
-export function useMatchCountdown(kickoffAt: string): ClubMatchCountdownItem[] {
-  const [countdown, setCountdown] = useState(() => toCountdownItems(getRemainingMs(kickoffAt)));
+/**
+ * Odliczanie do kickoffu. Zwraca `null`, gdy godzina meczu nie jest jeszcze
+ * znana (TBD) — nie da się rzetelnie liczyć czasu do nieznanego momentu.
+ */
+export function useMatchCountdown(kickoffAt: string | null): ClubMatchCountdownItem[] | null {
+  const [countdown, setCountdown] = useState<ClubMatchCountdownItem[] | null>(() =>
+    kickoffAt ? toCountdownItems(getRemainingMs(kickoffAt)) : null,
+  );
 
   useEffect(() => {
+    if (!kickoffAt) {
+      setCountdown(null);
+      return;
+    }
+
     const tick = (): number => {
       const remainingMs = getRemainingMs(kickoffAt);
       setCountdown(toCountdownItems(remainingMs));
