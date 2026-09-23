@@ -10,9 +10,11 @@ function pad(value: number): string {
   return value.toString().padStart(2, '0');
 }
 
-function buildCountdown(kickoffAt: string): ClubMatchCountdownItem[] {
-  const remainingMs = Math.max(0, new Date(kickoffAt).getTime() - Date.now());
+function getRemainingMs(kickoffAt: string): number {
+  return Math.max(0, new Date(kickoffAt).getTime() - Date.now());
+}
 
+function toCountdownItems(remainingMs: number): ClubMatchCountdownItem[] {
   const days = Math.floor(remainingMs / MS_PER_DAY);
   const hours = Math.floor((remainingMs % MS_PER_DAY) / MS_PER_HOUR);
   const minutes = Math.floor((remainingMs % MS_PER_HOUR) / MS_PER_MINUTE);
@@ -27,13 +29,21 @@ function buildCountdown(kickoffAt: string): ClubMatchCountdownItem[] {
 }
 
 export function useMatchCountdown(kickoffAt: string): ClubMatchCountdownItem[] {
-  const [countdown, setCountdown] = useState(() => buildCountdown(kickoffAt));
+  const [countdown, setCountdown] = useState(() => toCountdownItems(getRemainingMs(kickoffAt)));
 
   useEffect(() => {
-    setCountdown(buildCountdown(kickoffAt));
+    const tick = (): number => {
+      const remainingMs = getRemainingMs(kickoffAt);
+      setCountdown(toCountdownItems(remainingMs));
+      return remainingMs;
+    };
+
+    if (tick() <= 0) return;
 
     const timer = window.setInterval(() => {
-      setCountdown(buildCountdown(kickoffAt));
+      if (tick() <= 0) {
+        window.clearInterval(timer);
+      }
     }, MS_PER_SECOND);
 
     return () => {

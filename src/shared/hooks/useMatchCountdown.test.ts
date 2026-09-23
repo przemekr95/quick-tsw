@@ -52,4 +52,32 @@ describe('useMatchCountdown', () => {
       { value: '00', label: 'Sek' },
     ]);
   });
+
+  it('does not start a timer when the kickoff is already in the past', () => {
+    vi.setSystemTime(new Date('2026-08-16T00:00:00+02:00'));
+    const setIntervalSpy = vi.spyOn(window, 'setInterval');
+
+    renderHook(() => useMatchCountdown(kickoffAt));
+
+    expect(setIntervalSpy).not.toHaveBeenCalled();
+  });
+
+  it('stops ticking once the countdown reaches zero', () => {
+    vi.setSystemTime(new Date('2026-08-15T18:59:58+02:00'));
+
+    const { result } = renderHook(() => useMatchCountdown(kickoffAt));
+
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+
+    expect(result.current.every((item) => item.value === '00')).toBe(true);
+    expect(vi.getTimerCount()).toBe(0);
+
+    act(() => {
+      vi.advanceTimersByTime(5000);
+    });
+
+    expect(result.current.every((item) => item.value === '00')).toBe(true);
+  });
 });
