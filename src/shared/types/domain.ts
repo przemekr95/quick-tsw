@@ -99,14 +99,11 @@ export type MatchFormResult = 'W' | 'P' | '-';
 export type MatchLocation = 'home' | 'away';
 
 export interface UpcomingMatch {
-  /** Numer kolejki ligowej (1-14 w sezonie 2026/2027). */
   round: number;
   opponent: string;
   competition: string;
   location: MatchLocation;
-  /** Data meczu w formacie ISO (YYYY-MM-DD). */
   matchDate: string;
-  /** Godzina w formacie HH:mm, lub null, gdy termin nie został jeszcze ustalony (TBD). */
   kickoffTime: string | null;
 }
 

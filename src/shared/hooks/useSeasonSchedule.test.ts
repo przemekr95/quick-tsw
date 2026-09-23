@@ -74,9 +74,6 @@ describe('useSeasonSchedule', () => {
   });
 
   it('clamps the scheduled delay instead of overflowing setTimeout for a far-future kickoff', () => {
-    // Regression: setTimeout silently overflows past ~24.8 days (32-bit ms)
-    // and fires almost immediately instead of waiting, which would otherwise
-    // spin the schedule/effect in a tight re-render loop for a distant match.
     vi.setSystemTime(new Date('2026-11-07T10:00:00+01:00'));
     const setTimeoutSpy = vi.spyOn(window, 'setTimeout');
     const matches = [buildMatch({ matchDate: '2999-01-01', kickoffTime: '18:00' })];

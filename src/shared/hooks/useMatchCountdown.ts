@@ -32,10 +32,6 @@ function toCountdownItems(remainingMs: number): ClubMatchCountdownItem[] {
   ];
 }
 
-/**
- * Odliczanie do kickoffu. Zwraca `null`, gdy godzina meczu nie jest jeszcze
- * znana (TBD) — nie da się rzetelnie liczyć czasu do nieznanego momentu.
- */
 export function useMatchCountdown(kickoffAt: string | null): ClubMatchCountdownItem[] | null {
   const [countdown, setCountdown] = useState<ClubMatchCountdownItem[] | null>(() =>
     kickoffAt ? toCountdownItems(getRemainingMs(kickoffAt)) : null,

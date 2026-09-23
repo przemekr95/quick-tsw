@@ -82,9 +82,6 @@ describe('getRemainingMatches', () => {
   });
 
   it('never lets the hero match (getNextMatch) and the list (getRemainingMatches) disagree once a fixture has passed', () => {
-    // Regression: the hero and the list must be derived from the exact same
-    // schedule, otherwise advancing past the first fixture's date can drop
-    // the wrong match from the list (see getSeasonSchedule).
     const matches = [
       buildMatch({ opponent: 'Round 1', matchDate: '2026-11-07' }),
       buildMatch({ opponent: 'Round 2', matchDate: '2026-11-14' }),
@@ -113,8 +110,6 @@ describe('getSeasonSchedule', () => {
   });
 
   it('excludes a same-day match once its known kickoff time has passed', () => {
-    // Regression: a date-only filter would keep an 18:00 fixture "upcoming"
-    // for the rest of that calendar day even after it has actually started.
     const matches = [
       buildMatch({ opponent: 'Already started', matchDate: '2026-11-07', kickoffTime: '18:00' }),
       buildMatch({ opponent: 'Next week', matchDate: '2026-11-14' }),
@@ -174,8 +169,6 @@ describe('toKickoffIso', () => {
   });
 
   it('uses the +02:00 summer offset during Polish daylight saving time', () => {
-    // Regression: a hard-coded +01:00 offset would convert this kickoff an
-    // hour late — Poland observes CEST (+02:00) from late March to late October.
     const match = buildMatch({ matchDate: '2026-08-15', kickoffTime: '19:00' });
 
     expect(toKickoffIso(match)).toBe('2026-08-15T19:00:00+02:00');
@@ -204,9 +197,6 @@ describe('getScheduleCutoff', () => {
   });
 
   it('resolves the actual local midnight across the Warsaw spring DST change', () => {
-    // Regression: using `now`'s offset (+01:00, before the 02:00 CET -> 03:00
-    // CEST jump) for the whole calculation would land an hour late, at
-    // 2027-03-29T01:00 CEST instead of the real midnight, 2027-03-29T00:00 CEST.
     const now = new Date('2027-03-28T00:30:00+01:00');
     const schedule = [buildMatch({ matchDate: '2027-03-28', kickoffTime: null })];
 
