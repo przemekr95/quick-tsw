@@ -27,9 +27,9 @@ const landingContent: ClubLandingContent = {
     opponent: 'MKS Set Nowa Wieś',
     competition: 'I liga mężczyzn',
     kickoffLabel: '15 sierpnia 2026, 19:00',
+    kickoffAt: '2026-08-15T19:00:00+02:00',
     venue: 'Hala Sportowa, ul. Sportowa 1',
   },
-  matchCountdown: [{ value: '16', label: 'Dni' }],
   matchForm: ['W'],
 };
 
