@@ -1,7 +1,9 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { cleanup, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
 import type { UpcomingMatch } from '../../../shared/types/domain';
 import { UpcomingMatchesSection } from './UpcomingMatchesSection';
+
+afterEach(cleanup);
 
 const matches: UpcomingMatch[] = [
   {
@@ -44,5 +46,16 @@ describe('UpcomingMatchesSection', () => {
     render(<UpcomingMatchesSection matches={[]} />);
 
     expect(screen.getByText('Kolejne terminy zostaną ogłoszone wkrótce.')).toBeInTheDocument();
+  });
+
+  it('exposes the scrollable fixture list as a keyboard-focusable, labelled region', () => {
+    render(<UpcomingMatchesSection matches={matches} />);
+
+    const scrollRegion = screen.getByRole('region', { name: 'Lista kolejnych meczów' });
+    expect(scrollRegion).toHaveAttribute('tabIndex', '0');
+    expect(scrollRegion.querySelector('ul')).toBeInTheDocument();
+
+    scrollRegion.focus();
+    expect(scrollRegion).toHaveFocus();
   });
 });

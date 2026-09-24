@@ -179,6 +179,26 @@ describe('toKickoffIso', () => {
 
     expect(toKickoffIso(match)).toBeNull();
   });
+
+  it('resolves a wall-clock time shortly after the autumn DST change to +02:00, not +01:00', () => {
+    const match = buildMatch({ matchDate: '2027-10-31', kickoffTime: '01:30' });
+
+    const iso = toKickoffIso(match);
+    expect(iso).toBe('2027-10-31T01:30:00+02:00');
+    expect(new Date(iso!).getTime()).toBe(new Date('2027-10-30T23:30:00Z').getTime());
+  });
+
+  it('resolves an ambiguous, repeated wall-clock time to its earlier (CEST) occurrence', () => {
+    const match = buildMatch({ matchDate: '2027-10-31', kickoffTime: '02:30' });
+
+    expect(toKickoffIso(match)).toBe('2027-10-31T02:30:00+02:00');
+  });
+
+  it('resolves a nonexistent, spring-gap wall-clock time to the post-transition (CEST) offset', () => {
+    const match = buildMatch({ matchDate: '2027-03-28', kickoffTime: '02:30' });
+
+    expect(toKickoffIso(match)).toBe('2027-03-28T02:30:00+02:00');
+  });
 });
 
 describe('getScheduleCutoff', () => {

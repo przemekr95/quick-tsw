@@ -26,23 +26,31 @@ export function UpcomingMatchesSection({ matches }: UpcomingMatchesSectionProps)
       {matches.length === 0 ? (
         <p className={styles.empty}>Kolejne terminy zostaną ogłoszone wkrótce.</p>
       ) : (
-        <ul className={styles.list}>
-          {matches.map((match) => (
-            <li className={styles.row} key={`${match.matchDate}-${match.opponent}`}>
-              <div className={styles.date}>
-                <span className={styles.round}>Kolejka {match.round}</span>
-                <span className={styles.day}>{formatMatchDate(match.matchDate)}</span>
-              </div>
-              <span className={styles.opponent}>{match.opponent}</span>
-              <span
-                className={`${styles.location} ${match.location === 'home' ? styles.locationHome : ''}`}
-              >
-                {MATCH_LOCATION_LABEL[match.location]}
-              </span>
-              <span className={styles.time}>{match.kickoffTime ?? 'TBD'}</span>
-            </li>
-          ))}
-        </ul>
+        <div
+          aria-label="Lista kolejnych meczów"
+          className={styles.listScroll}
+          role="region"
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- keyboard-focusable scroll region (WCAG SCR29)
+          tabIndex={0}
+        >
+          <ul className={styles.list}>
+            {matches.map((match) => (
+              <li className={styles.row} key={`${match.matchDate}-${match.opponent}`}>
+                <div className={styles.date}>
+                  <span className={styles.round}>Kolejka {match.round}</span>
+                  <span className={styles.day}>{formatMatchDate(match.matchDate)}</span>
+                </div>
+                <span className={styles.opponent}>{match.opponent}</span>
+                <span
+                  className={`${styles.location} ${match.location === 'home' ? styles.locationHome : ''}`}
+                >
+                  {MATCH_LOCATION_LABEL[match.location]}
+                </span>
+                <span className={styles.time}>{match.kickoffTime ?? 'TBD'}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </section>
   );

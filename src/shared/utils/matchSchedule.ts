@@ -54,12 +54,42 @@ function getWarsawOffsetMinutes(instant: Date): number {
   return Math.round((asIfUtc - instant.getTime()) / 60_000);
 }
 
+const WARSAW_WINTER_OFFSET_MINUTES = getWarsawOffsetMinutes(new Date(Date.UTC(2020, 0, 15)));
+const WARSAW_SUMMER_OFFSET_MINUTES = getWarsawOffsetMinutes(new Date(Date.UTC(2020, 6, 15)));
+
+function resolveWarsawOffsetMinutes(naiveUtcMs: number): number {
+  const candidates = [WARSAW_WINTER_OFFSET_MINUTES, WARSAW_SUMMER_OFFSET_MINUTES];
+  const isSelfConsistent = (offset: number): boolean =>
+    getWarsawOffsetMinutes(new Date(naiveUtcMs - offset * 60_000)) === offset;
+  const resolvable = [...new Set(candidates)].filter(isSelfConsistent);
+
+  if (resolvable.length === 1) return resolvable[0];
+
+  return Math.max(...candidates);
+}
+
+interface ResolvedWarsawInstant {
+  instantMs: number;
+  offsetMinutes: number;
+}
+
+function resolveWarsawWallClock(
+  year: number,
+  month: number,
+  day: number,
+  hour: number,
+  minute: number,
+): ResolvedWarsawInstant {
+  const naiveUtcMs = Date.UTC(year, month - 1, day, hour, minute, 0);
+  const offsetMinutes = resolveWarsawOffsetMinutes(naiveUtcMs);
+
+  return { instantMs: naiveUtcMs - offsetMinutes * 60_000, offsetMinutes };
+}
+
 function getNextWarsawMidnight(now: Date): Date {
   const { year, month, day } = getWarsawWallClock(now);
-  const naiveNextMidnightUtc = Date.UTC(year, month - 1, day + 1, 0, 0, 0);
-  const candidate = new Date(naiveNextMidnightUtc - getWarsawOffsetMinutes(now) * 60_000);
 
-  return new Date(naiveNextMidnightUtc - getWarsawOffsetMinutes(candidate) * 60_000);
+  return new Date(resolveWarsawWallClock(year, month, day + 1, 0, 0).instantMs);
 }
 
 function formatOffset(offsetMinutes: number): string {
@@ -74,10 +104,11 @@ function formatOffset(offsetMinutes: number): string {
 export function toKickoffIso(match: UpcomingMatch): string | null {
   if (!match.kickoffTime) return null;
 
-  const anchor = new Date(`${match.matchDate}T${match.kickoffTime}:00Z`);
-  const offset = formatOffset(getWarsawOffsetMinutes(anchor));
+  const [year, month, day] = match.matchDate.split('-').map(Number);
+  const [hour, minute] = match.kickoffTime.split(':').map(Number);
+  const { offsetMinutes } = resolveWarsawWallClock(year, month, day, hour, minute);
 
-  return `${match.matchDate}T${match.kickoffTime}:00${offset}`;
+  return `${match.matchDate}T${match.kickoffTime}:00${formatOffset(offsetMinutes)}`;
 }
 
 function hasKickedOff(match: UpcomingMatch, now: Date): boolean {

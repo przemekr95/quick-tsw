@@ -27,24 +27,33 @@
   color: color-mix(in srgb, currentcolor 68%, transparent);
 }
 
+.listScroll {
+  max-height: 26rem;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, currentcolor 35%, transparent) transparent;
+  border-radius: 2px;
+}
+
+.listScroll:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.listScroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.listScroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, currentcolor 35%, transparent);
+}
+
 .list {
   display: grid;
   margin: 0;
   padding: 0 0.5rem 0 0;
-  max-height: 26rem;
-  overflow-y: auto;
   list-style: none;
-  scrollbar-gutter: stable;
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, currentcolor 35%, transparent) transparent;
-}
-
-.list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.list::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, currentcolor 35%, transparent);
 }
 
 .row {
