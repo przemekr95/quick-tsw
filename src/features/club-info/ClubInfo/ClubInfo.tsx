@@ -7,10 +7,12 @@ import type {
   UpcomingMatch,
 } from '../../../shared/types/domain';
 import { useSeasonSchedule } from '../../../shared/hooks';
+import { getRecentResults } from '../../../shared/utils/matchSchedule';
 import { pickRandomItems } from '../../../shared/utils/random';
 import { AboutSection } from '../AboutSection';
 import { JoinSection } from '../JoinSection';
 import { NextMatchSection } from '../NextMatchSection';
+import { RecentResultsSection } from '../RecentResultsSection';
 import { RosterSection } from '../RosterSection';
 import { UpcomingMatchesSection } from '../UpcomingMatchesSection';
 import styles from './ClubInfo.module.scss';
@@ -37,6 +39,7 @@ export function ClubInfo({ club, landingContent, players, matches, section }: Cl
   const rosterPreview = useMemo(() => pickRandomItems(players, ROSTER_PREVIEW_SIZE), [players]);
   const schedule = useSeasonSchedule(matches);
   const [nextMatch, ...remainingMatches] = schedule;
+  const recentResults = useMemo(() => getRecentResults(matches), [matches]);
 
   return (
     <section aria-label="Zakładka Klub" className={styles.root}>
@@ -57,6 +60,8 @@ export function ClubInfo({ club, landingContent, players, matches, section }: Cl
         {nextMatch && <NextMatchSection form={landingContent.matchForm} match={nextMatch} />}
 
         <UpcomingMatchesSection matches={remainingMatches} />
+
+        <RecentResultsSection results={recentResults} />
       </div>
     </section>
   );

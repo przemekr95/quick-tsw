@@ -40,6 +40,7 @@ describe('NextMatchSection', () => {
     );
 
     expect(screen.getByRole('heading', { name: 'MKS Set Nowa Wieś' })).toBeInTheDocument();
+    expect(screen.getByText('I liga mężczyzn · Kolejka 1')).toBeInTheDocument();
     expect(screen.getByText(/15 sierpnia 2026, 19:00/)).toBeInTheDocument();
     expect(screen.getByText(/Wyjazd/)).toBeInTheDocument();
     expect(screen.getByText('01')).toBeInTheDocument();
@@ -78,6 +79,19 @@ describe('NextMatchSection', () => {
 
     expect(screen.getByText(/Miechów, ul\. Konopnickiej 2/)).toBeInTheDocument();
     expect(screen.queryByText(/Wyjazd/)).not.toBeInTheDocument();
+  });
+
+  it('shows just the competition name, with no round, for a friendly with no league round', () => {
+    const friendly: UpcomingMatch = { ...match, round: undefined, competition: 'Sparing' };
+
+    render(
+      <MemoryRouter>
+        <NextMatchSection form={[]} match={friendly} />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText('Sparing')).toBeInTheDocument();
+    expect(screen.queryByText(/Kolejka/)).not.toBeInTheDocument();
   });
 
   it('shows a pending message instead of a countdown when the kickoff time is not yet known', () => {

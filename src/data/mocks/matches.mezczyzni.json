@@ -1,5 +1,22 @@
 [
   {
+    "opponent": "FOTONLAB GRYF Miechów",
+    "competition": "Sparing",
+    "location": "away",
+    "matchDate": "2026-09-10",
+    "kickoffTime": "19:00",
+    "venue": "Miechów, ul. Konopnickiej 2",
+    "result": {
+      "sets": [
+        { "scored": 18, "conceded": 25 },
+        { "scored": 25, "conceded": 23 },
+        { "scored": 25, "conceded": 22 },
+        { "scored": 19, "conceded": 25 },
+        { "scored": 13, "conceded": 25 }
+      ]
+    }
+  },
+  {
     "round": 1,
     "opponent": "FOTONLAB GRYF Miechów",
     "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",

@@ -1,0 +1,154 @@
+@use '../../../shared/theme/sectionHeading' as sh;
+
+.section {
+  @include sh.shell($gap: 1.4rem);
+}
+
+.heading {
+  @include sh.heading;
+}
+
+.index {
+  @include sh.index;
+}
+
+.eyebrow {
+  @include sh.eyebrow;
+
+  color: var(--color-accent);
+}
+
+.title {
+  @include sh.title;
+}
+
+.empty {
+  margin: 0;
+  color: color-mix(in srgb, currentcolor 68%, transparent);
+}
+
+.list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    'date location'
+    'opponent result';
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  padding: 1rem 0.25rem;
+  border-bottom: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.date {
+  grid-area: date;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.round {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, currentcolor 68%, transparent);
+}
+
+.day {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.opponent {
+  grid-area: opponent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.location {
+  grid-area: location;
+  justify-self: end;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid color-mix(in srgb, currentcolor 40%, transparent);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, currentcolor 68%, transparent);
+}
+
+.locationHome {
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  color: var(--color-accent);
+}
+
+.result {
+  grid-area: result;
+  display: grid;
+  justify-items: end;
+  gap: 0.2rem;
+}
+
+.resultSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.win,
+.loss {
+  min-width: 1.6rem;
+  min-height: 1.6rem;
+  display: grid;
+  place-items: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.win {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
+
+.loss {
+  background-color: color-mix(in srgb, currentcolor 16%, transparent);
+  color: color-mix(in srgb, currentcolor 55%, transparent);
+}
+
+.score {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.sets {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.68rem;
+  color: color-mix(in srgb, currentcolor 60%, transparent);
+  text-align: right;
+}
+
+@media (width >= 780px) {
+  .row {
+    grid-template-columns: 7rem minmax(0, 1fr) auto auto;
+    grid-template-areas: 'date opponent location result';
+    gap: 1rem;
+  }
+
+  .location {
+    justify-self: start;
+  }
+}
