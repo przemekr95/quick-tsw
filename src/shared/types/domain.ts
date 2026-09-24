@@ -122,6 +122,18 @@ export interface PlayedMatch extends UpcomingMatch {
   result: MatchResult;
 }
 
+export interface StandingsRow {
+  position: number;
+  team: string;
+  played: number;
+  wins: number;
+  losses: number;
+  setsWon: number;
+  setsLost: number;
+  points: number;
+  isOwnTeam?: boolean;
+}
+
 export interface ClubLandingContent {
   heroHeading: string;
   heroSlides: HeroSlide[];

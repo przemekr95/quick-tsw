@@ -1,0 +1,137 @@
+@use '../../../shared/theme/sectionHeading' as sh;
+
+.section {
+  @include sh.shell($gap: 1.4rem);
+
+  position: relative;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-accent) 12%, transparent) 0%,
+    transparent 50%
+  );
+}
+
+@media (width >= 900px) {
+  .section::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    right: -4%;
+    bottom: -8%;
+    width: 28rem;
+    aspect-ratio: 3 / 2;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect x='20' y='100' width='70' height='100' fill='white'/%3E%3Crect x='115' y='60' width='70' height='140' fill='white'/%3E%3Crect x='210' y='130' width='70' height='70' fill='white'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.heading {
+  @include sh.heading;
+}
+
+.index {
+  @include sh.index;
+}
+
+.eyebrow {
+  @include sh.eyebrow;
+
+  color: var(--color-accent);
+}
+
+.title {
+  @include sh.title;
+}
+
+.empty {
+  margin: 0;
+  color: color-mix(in srgb, currentcolor 68%, transparent);
+}
+
+.tableScroll {
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, currentcolor 35%, transparent) transparent;
+  border-radius: 2px;
+}
+
+.tableScroll:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.tableScroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tableScroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, currentcolor 35%, transparent);
+}
+
+.table {
+  width: 100%;
+  min-width: 32rem;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
+}
+
+.table thead th {
+  padding-top: 0;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, currentcolor 68%, transparent);
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.position {
+  width: 2.5rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: color-mix(in srgb, currentcolor 68%, transparent);
+}
+
+.team {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: 0.9rem;
+}
+
+.stat {
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, currentcolor 74%, transparent);
+}
+
+.points {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.ownTeam {
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+.ownTeam .position {
+  color: var(--color-accent);
+}
+
+.ownTeam .team {
+  color: var(--color-accent);
+}

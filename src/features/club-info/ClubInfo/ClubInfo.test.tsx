@@ -1,7 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
-import type { Club, ClubLandingContent, Player, UpcomingMatch } from '../../../shared/types/domain';
+import type {
+  Club,
+  ClubLandingContent,
+  Player,
+  StandingsRow,
+  UpcomingMatch,
+} from '../../../shared/types/domain';
 import { ClubInfo } from './ClubInfo';
 
 const club: Pick<Club, 'name' | 'history'> = {
@@ -75,6 +81,30 @@ const matches: UpcomingMatch[] = [
   },
 ];
 
+const standings: StandingsRow[] = [
+  {
+    position: 1,
+    team: 'MUKS ISKIERKA Tarnów',
+    played: 4,
+    wins: 4,
+    losses: 0,
+    setsWon: 12,
+    setsLost: 2,
+    points: 12,
+  },
+  {
+    position: 6,
+    team: 'TS WISŁA Kraków',
+    played: 4,
+    wins: 2,
+    losses: 2,
+    setsWon: 8,
+    setsLost: 7,
+    points: 6,
+    isOwnTeam: true,
+  },
+];
+
 describe('ClubInfo', () => {
   it('renders club section headings and images', () => {
     render(
@@ -85,6 +115,7 @@ describe('ClubInfo', () => {
           matches={matches}
           players={players}
           section="mezczyzni"
+          standings={standings}
         />
       </MemoryRouter>,
     );
@@ -106,6 +137,9 @@ describe('ClubInfo', () => {
     expect(screen.getByRole('heading', { name: 'Ostatnie wyniki' })).toBeInTheDocument();
     expect(screen.getByText('AZS AGH Kraków')).toBeInTheDocument();
     expect(screen.getByText('3:2')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Tabela ligowa' })).toBeInTheDocument();
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.getByText('MUKS ISKIERKA Tarnów')).toBeInTheDocument();
   });
 
   it('hides the next-match hero once the season has no fixtures left', () => {
@@ -117,12 +151,16 @@ describe('ClubInfo', () => {
           matches={[]}
           players={players}
           section="mezczyzni"
+          standings={[]}
         />
       </MemoryRouter>,
     );
 
     expect(container.querySelector('#najblizszy-mecz')).not.toBeInTheDocument();
     expect(screen.getByText('Brak kolejnych meczów w terminarzu.')).toBeInTheDocument();
+    expect(
+      screen.getByText('Tabela ligowa pojawi się po rozpoczęciu sezonu.'),
+    ).toBeInTheDocument();
     expect(screen.getByText('Brak rozegranych meczów w tym sezonie.')).toBeInTheDocument();
   });
 });
