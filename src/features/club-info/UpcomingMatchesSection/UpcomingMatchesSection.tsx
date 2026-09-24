@@ -24,7 +24,7 @@ export function UpcomingMatchesSection({ matches }: UpcomingMatchesSectionProps)
       </div>
 
       {matches.length === 0 ? (
-        <p className={styles.empty}>Kolejne terminy zostaną ogłoszone wkrótce.</p>
+        <p className={styles.empty}>Brak kolejnych meczów w terminarzu.</p>
       ) : (
         <div
           aria-label="Lista kolejnych meczów"

@@ -6,6 +6,10 @@ describe('matchService', () => {
     const data = await getUpcomingMatches('mezczyzni');
 
     expect(data.length).toBeGreaterThan(0);
-    expect(data[0]).toMatchObject({ opponent: 'FOTONLAB GRYF Miechów', kickoffTime: '18:00' });
+    expect(data[0]).toMatchObject({
+      opponent: 'FOTONLAB GRYF Miechów',
+      kickoffTime: '18:00',
+      venue: 'Miechów, ul. Konopnickiej 2',
+    });
   });
 });

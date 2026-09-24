@@ -36,7 +36,7 @@ export function NextMatchSection({ match, form }: NextMatchSectionProps) {
           </h2>
         </div>
         <p className={styles.meta}>
-          {formatKickoffLabel(match)} · {MATCH_LOCATION_LABEL[match.location]}
+          {formatKickoffLabel(match)} · {match.venue ?? MATCH_LOCATION_LABEL[match.location]}
         </p>
       </div>
 

@@ -102,6 +102,6 @@ describe('ClubInfo', () => {
     );
 
     expect(container.querySelector('#najblizszy-mecz')).not.toBeInTheDocument();
-    expect(screen.getByText('Kolejne terminy zostaną ogłoszone wkrótce.')).toBeInTheDocument();
+    expect(screen.getByText('Brak kolejnych meczów w terminarzu.')).toBeInTheDocument();
   });
 });

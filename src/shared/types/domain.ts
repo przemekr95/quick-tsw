@@ -105,6 +105,7 @@ export interface UpcomingMatch {
   location: MatchLocation;
   matchDate: string;
   kickoffTime: string | null;
+  venue?: string;
 }
 
 export interface ClubLandingContent {

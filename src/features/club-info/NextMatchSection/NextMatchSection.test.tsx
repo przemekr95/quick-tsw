@@ -67,6 +67,19 @@ describe('NextMatchSection', () => {
     expect(screen.getByText('03')).toBeInTheDocument();
   });
 
+  it('shows the exact venue address when known, instead of the home/away label', () => {
+    const matchWithVenue: UpcomingMatch = { ...match, venue: 'Miechów, ul. Konopnickiej 2' };
+
+    render(
+      <MemoryRouter>
+        <NextMatchSection form={[]} match={matchWithVenue} />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText(/Miechów, ul\. Konopnickiej 2/)).toBeInTheDocument();
+    expect(screen.queryByText(/Wyjazd/)).not.toBeInTheDocument();
+  });
+
   it('shows a pending message instead of a countdown when the kickoff time is not yet known', () => {
     render(
       <MemoryRouter>

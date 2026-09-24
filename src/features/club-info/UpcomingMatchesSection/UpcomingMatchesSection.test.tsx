@@ -45,7 +45,7 @@ describe('UpcomingMatchesSection', () => {
   it('renders a placeholder message when there are no more matches left', () => {
     render(<UpcomingMatchesSection matches={[]} />);
 
-    expect(screen.getByText('Kolejne terminy zostaną ogłoszone wkrótce.')).toBeInTheDocument();
+    expect(screen.getByText('Brak kolejnych meczów w terminarzu.')).toBeInTheDocument();
   });
 
   it('exposes the scrollable fixture list as a keyboard-focusable, labelled region', () => {
