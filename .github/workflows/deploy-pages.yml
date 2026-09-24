@@ -3,7 +3,7 @@ name: Deploy GitHub Pages (test)
 on:
   push:
     branches:
-      - ghp_v0.1
+      - ghp_v0.2
   workflow_dispatch:
 
 permissions:
