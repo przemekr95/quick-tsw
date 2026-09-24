@@ -60,6 +60,13 @@
   border: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
 }
 
+.countdownPending {
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed color-mix(in srgb, currentcolor 30%, transparent);
+  color: color-mix(in srgb, currentcolor 74%, transparent);
+}
+
 .countdownValue {
   margin: 0;
   font-size: clamp(1.7rem, 4vw, 2.4rem);

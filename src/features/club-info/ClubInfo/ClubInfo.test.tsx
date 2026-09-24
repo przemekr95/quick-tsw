@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
-import type { Club, ClubLandingContent, Player } from '../../../shared/types/domain';
+import type { Club, ClubLandingContent, Player, UpcomingMatch } from '../../../shared/types/domain';
 import { ClubInfo } from './ClubInfo';
 
 const club: Pick<Club, 'name' | 'history'> = {
@@ -23,13 +23,6 @@ const landingContent: ClubLandingContent = {
     },
   ],
   recruitmentPaths: ['Minisiatkówka - roczniki 2014-2016'],
-  nextMatch: {
-    opponent: 'MKS Set Nowa Wieś',
-    competition: 'I liga mężczyzn',
-    kickoffLabel: '15 sierpnia 2026, 19:00',
-    kickoffAt: '2026-08-15T19:00:00+02:00',
-    venue: 'Hala Sportowa, ul. Sportowa 1',
-  },
   matchForm: ['W'],
 };
 
@@ -43,6 +36,28 @@ const players: Player[] = [
   },
 ];
 
+const FAR_FUTURE_MATCH_DATE = '2999-08-15';
+const FAR_FUTURE_MATCH_DATE_LATER = '2999-08-22';
+
+const matches: UpcomingMatch[] = [
+  {
+    round: 1,
+    opponent: 'MKS Set Nowa Wieś',
+    competition: 'I liga mężczyzn',
+    location: 'away',
+    matchDate: FAR_FUTURE_MATCH_DATE,
+    kickoffTime: '19:00',
+  },
+  {
+    round: 2,
+    opponent: 'UKS Set Kraków',
+    competition: 'I liga mężczyzn',
+    location: 'home',
+    matchDate: FAR_FUTURE_MATCH_DATE_LATER,
+    kickoffTime: null,
+  },
+];
+
 describe('ClubInfo', () => {
   it('renders club section headings and images', () => {
     render(
@@ -50,6 +65,7 @@ describe('ClubInfo', () => {
         <ClubInfo
           club={club}
           landingContent={landingContent}
+          matches={matches}
           players={players}
           section="mezczyzni"
         />
@@ -68,5 +84,24 @@ describe('ClubInfo', () => {
       screen.getByRole('heading', { name: 'Twoje miejsce jest na boisku' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'MKS Set Nowa Wieś' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Kolejne mecze' })).toBeInTheDocument();
+    expect(screen.getByText('UKS Set Kraków')).toBeInTheDocument();
+  });
+
+  it('hides the next-match hero once the season has no fixtures left', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <ClubInfo
+          club={club}
+          landingContent={landingContent}
+          matches={[]}
+          players={players}
+          section="mezczyzni"
+        />
+      </MemoryRouter>,
+    );
+
+    expect(container.querySelector('#najblizszy-mecz')).not.toBeInTheDocument();
+    expect(screen.getByText('Brak kolejnych meczów w terminarzu.')).toBeInTheDocument();
   });
 });

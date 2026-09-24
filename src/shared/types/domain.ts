@@ -94,21 +94,24 @@ export interface ClubMatchCountdownItem {
   label: string;
 }
 
-export interface ClubNextMatch {
+export type MatchFormResult = 'W' | 'P' | '-';
+
+export type MatchLocation = 'home' | 'away';
+
+export interface UpcomingMatch {
+  round: number;
   opponent: string;
   competition: string;
-  kickoffLabel: string;
-  kickoffAt: string;
-  venue: string;
+  location: MatchLocation;
+  matchDate: string;
+  kickoffTime: string | null;
+  venue?: string;
 }
-
-export type MatchFormResult = 'W' | 'P' | '-';
 
 export interface ClubLandingContent {
   heroHeading: string;
   heroSlides: HeroSlide[];
   recruitmentPaths: string[];
-  nextMatch: ClubNextMatch;
   matchForm: MatchFormResult[];
 }
 

@@ -1,0 +1,115 @@
+[
+  {
+    "round": 1,
+    "opponent": "FOTONLAB GRYF Miechów",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "away",
+    "matchDate": "2026-11-07",
+    "kickoffTime": "18:00",
+    "venue": "Miechów, ul. Konopnickiej 2"
+  },
+  {
+    "round": 2,
+    "opponent": "KS HUTNIK Kraków",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "home",
+    "matchDate": "2026-11-14",
+    "kickoffTime": null
+  },
+  {
+    "round": 3,
+    "opponent": "MUKS SOKÓŁ Gumniska Tarnów",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "away",
+    "matchDate": "2026-11-21",
+    "kickoffTime": null
+  },
+  {
+    "round": 4,
+    "opponent": "KS DALIN Myślenice",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "away",
+    "matchDate": "2026-11-28",
+    "kickoffTime": null
+  },
+  {
+    "round": 5,
+    "opponent": "HUTNIK Kraków",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "home",
+    "matchDate": "2026-12-05",
+    "kickoffTime": null
+  },
+  {
+    "round": 6,
+    "opponent": "MUKS ISKIERKA Tarnów",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "away",
+    "matchDate": "2026-12-12",
+    "kickoffTime": null
+  },
+  {
+    "round": 7,
+    "opponent": "PROJEKT Myślenice",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "home",
+    "matchDate": "2026-12-19",
+    "kickoffTime": null
+  },
+  {
+    "round": 8,
+    "opponent": "FOTONLAB GRYF Miechów",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "home",
+    "matchDate": "2027-01-09",
+    "kickoffTime": null
+  },
+  {
+    "round": 9,
+    "opponent": "KS HUTNIK Kraków",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "away",
+    "matchDate": "2027-01-16",
+    "kickoffTime": null
+  },
+  {
+    "round": 10,
+    "opponent": "MUKS SOKÓŁ Gumniska Tarnów",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "home",
+    "matchDate": "2027-01-30",
+    "kickoffTime": null
+  },
+  {
+    "round": 11,
+    "opponent": "KS DALIN Myślenice",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "home",
+    "matchDate": "2027-02-13",
+    "kickoffTime": null
+  },
+  {
+    "round": 12,
+    "opponent": "HUTNIK Kraków",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "away",
+    "matchDate": "2027-02-20",
+    "kickoffTime": null
+  },
+  {
+    "round": 13,
+    "opponent": "MUKS ISKIERKA Tarnów",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "home",
+    "matchDate": "2027-02-27",
+    "kickoffTime": null
+  },
+  {
+    "round": 14,
+    "opponent": "PROJEKT Myślenice",
+    "competition": "II LIGA MAŁOPOLSKA MĘŻCZYZN",
+    "location": "away",
+    "matchDate": "2027-03-06",
+    "kickoffTime": null
+  }
+]
