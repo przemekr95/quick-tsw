@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import type { UpcomingMatch } from '../types/domain';
+import type { MatchResult, UpcomingMatch } from '../types/domain';
 import {
+  formatCompetitionLabel,
   formatKickoffLabel,
+  formatRoundLabel,
   getNextMatch,
+  getRecentResults,
   getRemainingMatches,
   getScheduleCutoff,
   getSeasonSchedule,
+  getSetsWon,
   toKickoffIso,
 } from './matchSchedule';
 
@@ -20,6 +24,12 @@ function buildMatch(overrides: Partial<UpcomingMatch>): UpcomingMatch {
     ...overrides,
   };
 }
+
+function buildResult(...setScores: Array<[number, number]>): MatchResult {
+  return { sets: setScores.map(([scored, conceded]) => ({ scored, conceded })) };
+}
+
+const STRAIGHT_SETS_WIN = buildResult([25, 20], [25, 18], [25, 22]);
 
 describe('getRemainingMatches', () => {
   const now = new Date('2026-11-10T12:00:00+01:00');
@@ -239,5 +249,110 @@ describe('formatKickoffLabel', () => {
     const match = buildMatch({ matchDate: '2026-11-07', kickoffTime: null });
 
     expect(formatKickoffLabel(match)).toBe('7 listopada 2026, godzina TBD');
+  });
+});
+
+describe('getRecentResults', () => {
+  it('only includes played matches, most recent first', () => {
+    const matches = [
+      buildMatch({ opponent: 'Upcoming', matchDate: '2026-12-19' }),
+      buildMatch({ opponent: 'A', matchDate: '2026-11-14', result: STRAIGHT_SETS_WIN }),
+      buildMatch({ opponent: 'B', matchDate: '2026-11-28', result: STRAIGHT_SETS_WIN }),
+    ];
+
+    expect(getRecentResults(matches).map((match) => match.opponent)).toEqual(['B', 'A']);
+  });
+
+  it('caps the result at the given limit', () => {
+    const matches = Array.from({ length: 8 }, (_, index) =>
+      buildMatch({
+        opponent: `Round ${index}`,
+        matchDate: `2026-11-${String(7 + index).padStart(2, '0')}`,
+        result: STRAIGHT_SETS_WIN,
+      }),
+    );
+
+    expect(getRecentResults(matches, 3)).toHaveLength(3);
+    expect(getRecentResults(matches, 3).map((match) => match.opponent)).toEqual([
+      'Round 7',
+      'Round 6',
+      'Round 5',
+    ]);
+  });
+
+  it('defaults to the last 5 results', () => {
+    const matches = Array.from({ length: 8 }, (_, index) =>
+      buildMatch({
+        opponent: `Round ${index}`,
+        matchDate: `2026-11-${String(7 + index).padStart(2, '0')}`,
+        result: STRAIGHT_SETS_WIN,
+      }),
+    );
+
+    expect(getRecentResults(matches)).toHaveLength(5);
+  });
+
+  it('returns an empty array when no matches have been played', () => {
+    const matches = [buildMatch({ matchDate: '2026-12-19' })];
+
+    expect(getRecentResults(matches)).toEqual([]);
+  });
+
+  it('does not mutate the source array', () => {
+    const matches = [
+      buildMatch({ opponent: 'A', matchDate: '2026-11-14', result: STRAIGHT_SETS_WIN }),
+      buildMatch({ opponent: 'B', matchDate: '2026-11-28', result: STRAIGHT_SETS_WIN }),
+    ];
+    const copy = [...matches];
+
+    getRecentResults(matches);
+
+    expect(matches).toEqual(copy);
+  });
+});
+
+describe('getSetsWon', () => {
+  it('counts sets where the club scored more points than it conceded', () => {
+    expect(getSetsWon(STRAIGHT_SETS_WIN)).toBe(3);
+  });
+
+  it('counts a mixed result correctly', () => {
+    const result = buildResult([25, 20], [20, 25], [25, 18], [22, 25], [15, 12]);
+
+    expect(getSetsWon(result)).toBe(3);
+  });
+
+  it('returns 0 when every set was lost', () => {
+    const result = buildResult([20, 25], [18, 25], [22, 25]);
+
+    expect(getSetsWon(result)).toBe(0);
+  });
+});
+
+describe('formatRoundLabel', () => {
+  it('formats a league round number', () => {
+    const match = buildMatch({ round: 5 });
+
+    expect(formatRoundLabel(match)).toBe('Kolejka 5');
+  });
+
+  it('falls back to the competition name when there is no round, e.g. a friendly', () => {
+    const match = buildMatch({ round: undefined, competition: 'Sparing' });
+
+    expect(formatRoundLabel(match)).toBe('Sparing');
+  });
+});
+
+describe('formatCompetitionLabel', () => {
+  it('combines the competition name with the league round number', () => {
+    const match = buildMatch({ competition: 'II liga małopolska mężczyzn', round: 5 });
+
+    expect(formatCompetitionLabel(match)).toBe('II liga małopolska mężczyzn · Kolejka 5');
+  });
+
+  it('is just the competition name when there is no round, e.g. a friendly', () => {
+    const match = buildMatch({ round: undefined, competition: 'Sparing' });
+
+    expect(formatCompetitionLabel(match)).toBe('Sparing');
   });
 });

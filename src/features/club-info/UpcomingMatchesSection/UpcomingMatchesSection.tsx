@@ -1,15 +1,13 @@
 import type { UpcomingMatch } from '../../../shared/types/domain';
-import { MATCH_LOCATION_LABEL } from '../../../shared/utils/matchSchedule';
+import {
+  formatMatchDate,
+  formatRoundLabel,
+  MATCH_LOCATION_LABEL,
+} from '../../../shared/utils/matchSchedule';
 import styles from './UpcomingMatchesSection.module.scss';
 
 interface UpcomingMatchesSectionProps {
   matches: UpcomingMatch[];
-}
-
-function formatMatchDate(matchDate: string): string {
-  const [year, month, day] = matchDate.split('-');
-
-  return `${day}.${month}.${year}`;
 }
 
 export function UpcomingMatchesSection({ matches }: UpcomingMatchesSectionProps) {
@@ -37,7 +35,7 @@ export function UpcomingMatchesSection({ matches }: UpcomingMatchesSectionProps)
             {matches.map((match) => (
               <li className={styles.row} key={`${match.matchDate}-${match.opponent}`}>
                 <div className={styles.date}>
-                  <span className={styles.round}>Kolejka {match.round}</span>
+                  <span className={styles.round}>{formatRoundLabel(match)}</span>
                   <span className={styles.day}>{formatMatchDate(match.matchDate)}</span>
                 </div>
                 <span className={styles.opponent}>{match.opponent}</span>

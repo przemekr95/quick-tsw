@@ -1,0 +1,1 @@
+export { RecentResultsSection } from './RecentResultsSection';

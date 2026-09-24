@@ -56,6 +56,23 @@ const matches: UpcomingMatch[] = [
     matchDate: FAR_FUTURE_MATCH_DATE_LATER,
     kickoffTime: null,
   },
+  {
+    round: 0,
+    opponent: 'AZS AGH Kraków',
+    competition: 'I liga mężczyzn',
+    location: 'away',
+    matchDate: '2020-01-01',
+    kickoffTime: '18:00',
+    result: {
+      sets: [
+        { scored: 25, conceded: 20 },
+        { scored: 20, conceded: 25 },
+        { scored: 25, conceded: 22 },
+        { scored: 22, conceded: 25 },
+        { scored: 15, conceded: 12 },
+      ],
+    },
+  },
 ];
 
 describe('ClubInfo', () => {
@@ -86,6 +103,9 @@ describe('ClubInfo', () => {
     expect(screen.getByRole('heading', { name: 'MKS Set Nowa Wieś' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Kolejne mecze' })).toBeInTheDocument();
     expect(screen.getByText('UKS Set Kraków')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Ostatnie wyniki' })).toBeInTheDocument();
+    expect(screen.getByText('AZS AGH Kraków')).toBeInTheDocument();
+    expect(screen.getByText('3:2')).toBeInTheDocument();
   });
 
   it('hides the next-match hero once the season has no fixtures left', () => {
@@ -103,5 +123,6 @@ describe('ClubInfo', () => {
 
     expect(container.querySelector('#najblizszy-mecz')).not.toBeInTheDocument();
     expect(screen.getByText('Brak kolejnych meczów w terminarzu.')).toBeInTheDocument();
+    expect(screen.getByText('Brak rozegranych meczów w tym sezonie.')).toBeInTheDocument();
   });
 });

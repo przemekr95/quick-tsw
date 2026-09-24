@@ -1,4 +1,4 @@
-import type { MatchLocation, UpcomingMatch } from '../types/domain';
+import type { MatchLocation, MatchResult, PlayedMatch, UpcomingMatch } from '../types/domain';
 
 const WARSAW_TIME_ZONE = 'Europe/Warsaw';
 
@@ -135,6 +135,22 @@ export function getRemainingMatches(matches: UpcomingMatch[], now: Date = new Da
   return getSeasonSchedule(matches, now).slice(1);
 }
 
+const RECENT_RESULTS_LIMIT = 5;
+
+export function getRecentResults(
+  matches: UpcomingMatch[],
+  limit: number = RECENT_RESULTS_LIMIT,
+): PlayedMatch[] {
+  return [...matches]
+    .filter((match): match is PlayedMatch => match.result !== undefined)
+    .sort((a, b) => b.matchDate.localeCompare(a.matchDate))
+    .slice(0, limit);
+}
+
+export function getSetsWon(result: MatchResult): number {
+  return result.sets.filter((set) => set.scored > set.conceded).length;
+}
+
 export function getScheduleCutoff(schedule: UpcomingMatch[], now: Date): number | null {
   const nextMatch = schedule[0];
   if (!nextMatch) return null;
@@ -158,4 +174,18 @@ export function formatKickoffLabel(match: UpcomingMatch): string {
   const dateLabel = MONTH_FORMATTER.format(new Date(year, month - 1, day));
 
   return match.kickoffTime ? `${dateLabel}, ${match.kickoffTime}` : `${dateLabel}, godzina TBD`;
+}
+
+export function formatMatchDate(matchDate: string): string {
+  const [year, month, day] = matchDate.split('-');
+
+  return `${day}.${month}.${year}`;
+}
+
+export function formatRoundLabel(match: UpcomingMatch): string {
+  return match.round !== undefined ? `Kolejka ${match.round}` : match.competition;
+}
+
+export function formatCompetitionLabel(match: UpcomingMatch): string {
+  return match.round !== undefined ? `${match.competition} · Kolejka ${match.round}` : match.competition;
 }

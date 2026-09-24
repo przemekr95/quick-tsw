@@ -48,6 +48,21 @@ describe('UpcomingMatchesSection', () => {
     expect(screen.getByText('Brak kolejnych meczów w terminarzu.')).toBeInTheDocument();
   });
 
+  it('falls back to the competition name when a fixture has no league round, e.g. a friendly', () => {
+    const friendly: UpcomingMatch = {
+      opponent: 'FOTONLAB GRYF Miechów',
+      competition: 'Sparing',
+      location: 'away',
+      matchDate: '2999-09-10',
+      kickoffTime: null,
+    };
+
+    render(<UpcomingMatchesSection matches={[friendly]} />);
+
+    expect(screen.getByText('Sparing')).toBeInTheDocument();
+    expect(screen.queryByText(/^Kolejka/)).not.toBeInTheDocument();
+  });
+
   it('exposes the scrollable fixture list as a keyboard-focusable, labelled region', () => {
     render(<UpcomingMatchesSection matches={matches} />);
 

@@ -98,14 +98,28 @@ export type MatchFormResult = 'W' | 'P' | '-';
 
 export type MatchLocation = 'home' | 'away';
 
+export interface SetScore {
+  scored: number;
+  conceded: number;
+}
+
+export interface MatchResult {
+  sets: SetScore[];
+}
+
 export interface UpcomingMatch {
-  round: number;
+  round?: number;
   opponent: string;
   competition: string;
   location: MatchLocation;
   matchDate: string;
   kickoffTime: string | null;
   venue?: string;
+  result?: MatchResult;
+}
+
+export interface PlayedMatch extends UpcomingMatch {
+  result: MatchResult;
 }
 
 export interface ClubLandingContent {
