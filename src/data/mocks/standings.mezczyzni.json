@@ -1,0 +1,10 @@
+[
+  { "position": 1, "team": "MUKS ISKIERKA Tarnów", "played": 0, "wins": 0, "losses": 0, "setsWon": 0, "setsLost": 0, "points": 0 },
+  { "position": 2, "team": "PROJEKT Myślenice", "played": 0, "wins": 0, "losses": 0, "setsWon": 0, "setsLost": 0, "points": 0 },
+  { "position": 3, "team": "FOTONLAB GRYF Miechów", "played": 0, "wins": 0, "losses": 0, "setsWon": 0, "setsLost": 0, "points": 0 },
+  { "position": 4, "team": "KS HUTNIK Kraków", "played": 0, "wins": 0, "losses": 0, "setsWon": 0, "setsLost": 0, "points": 0 },
+  { "position": 5, "team": "MUKS SOKÓŁ Gumniska Tarnów", "played": 0, "wins": 0, "losses": 0, "setsWon": 0, "setsLost": 0, "points": 0 },
+  { "position": 6, "team": "TS WISŁA Kraków", "played": 0, "wins": 0, "losses": 0, "setsWon": 0, "setsLost": 0, "points": 0, "isOwnTeam": true },
+  { "position": 7, "team": "HUTNIK Kraków", "played": 0, "wins": 0, "losses": 0, "setsWon": 0, "setsLost": 0, "points": 0 },
+  { "position": 8, "team": "KS DALIN Myślenice", "played": 0, "wins": 0, "losses": 0, "setsWon": 0, "setsLost": 0, "points": 0 }
+]

@@ -10,6 +10,7 @@ export { useScrollToTop } from './useScrollToTop';
 export { useSeasonSchedule } from './useSeasonSchedule';
 export { useSectionOutletContext } from './useSectionOutletContext';
 export type { SectionOutletContext } from './useSectionOutletContext';
+export { useStandings } from './useStandings';
 export { useStaffRoster } from './useStaffRoster';
 export { useTeamRoster } from './useTeamRoster';
 export { useUpcomingMatches } from './useUpcomingMatches';

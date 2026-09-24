@@ -4,6 +4,7 @@ import type {
   ClubLandingContent,
   Player,
   SectionId,
+  StandingsRow,
   UpcomingMatch,
 } from '../../../shared/types/domain';
 import { useSeasonSchedule } from '../../../shared/hooks';
@@ -14,6 +15,7 @@ import { JoinSection } from '../JoinSection';
 import { NextMatchSection } from '../NextMatchSection';
 import { RecentResultsSection } from '../RecentResultsSection';
 import { RosterSection } from '../RosterSection';
+import { StandingsSection } from '../StandingsSection';
 import { UpcomingMatchesSection } from '../UpcomingMatchesSection';
 import styles from './ClubInfo.module.scss';
 
@@ -24,6 +26,7 @@ interface ClubInfoProps {
   landingContent: ClubLandingContent;
   players: Player[];
   matches: UpcomingMatch[];
+  standings: StandingsRow[];
   section: SectionId;
 }
 
@@ -34,7 +37,14 @@ const aboutImageBySection: Record<SectionId, { src: string; alt: string }> = {
   },
 };
 
-export function ClubInfo({ club, landingContent, players, matches, section }: ClubInfoProps) {
+export function ClubInfo({
+  club,
+  landingContent,
+  players,
+  matches,
+  standings,
+  section,
+}: ClubInfoProps) {
   const aboutImage = aboutImageBySection[section];
   const rosterPreview = useMemo(() => pickRandomItems(players, ROSTER_PREVIEW_SIZE), [players]);
   const schedule = useSeasonSchedule(matches);
@@ -62,6 +72,8 @@ export function ClubInfo({ club, landingContent, players, matches, section }: Cl
         <UpcomingMatchesSection matches={remainingMatches} />
 
         <RecentResultsSection results={recentResults} />
+
+        <StandingsSection standings={standings} />
       </div>
     </section>
   );
