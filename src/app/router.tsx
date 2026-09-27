@@ -1,4 +1,4 @@
-import { createBrowserRouter, type RouteObject } from 'react-router-dom';
+import { createBrowserRouter, Navigate, type RouteObject } from 'react-router-dom';
 import HomeRoute from './routes';
 import MezczyzniKontaktRoute from './routes/mezczyzni/kontakt';
 import MezczyzniKlubRoute from './routes/mezczyzni/klub';
@@ -12,6 +12,11 @@ export const appRoutes: RouteObject[] = [
   {
     path: '/',
     element: <HomeRoute />,
+  },
+  // Legacy URL of the Przyjaciele tab, kept so old links still land on the page.
+  {
+    path: 'strefa-przyjaciol',
+    element: <Navigate replace to="/przyjaciele" />,
   },
   {
     element: <MezczyzniLayoutRoute />,

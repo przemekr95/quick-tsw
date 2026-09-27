@@ -93,6 +93,17 @@ describe('app routing', () => {
     expect(await screen.findByRole('region', { name: /Sponsorzy klubu/ })).toBeInTheDocument();
   });
 
+  it('redirects the legacy /strefa-przyjaciol URL to /przyjaciele', async () => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/strefa-przyjaciol'] });
+
+    render(<RouterProvider router={router} />);
+
+    expect(
+      await screen.findByRole('heading', { name: 'Przyjaciele Białej Gwiazdy' }),
+    ).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe('/przyjaciele');
+  });
+
   it('navigates to the Zostań Partnerem tab from the mezczyzni nav', async () => {
     const user = userEvent.setup();
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/klub'] });
