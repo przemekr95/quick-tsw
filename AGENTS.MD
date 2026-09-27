@@ -8,9 +8,9 @@ Strona internetowa klubu siatkarskiego. Obecnie repozytorium obejmuje wyłączni
 
 > **Historia:** do września 2026 serwis miał dwie równoległe sekcje — **Kobiety** i **Mężczyźni** — wybierane z ekranu startowego typu split-screen. Prace nad sekcją kobiet zostały wstrzymane, a `develop` uproszczono do samej sekcji mężczyzn. Pełny, dwusekcyjny stan (split-screen, `/kobiety/*`, motyw czerwony, mocki i serwisy dla obu sekcji) jest zachowany na gałęzi `archive/kobiety-mezczyzni` i posłuży jako punkt wyjścia, gdy prace nad sekcją kobiet zostaną wznowione. Architektura danych (patrz sekcja 6) celowo pozostała parametryczna przez `SectionId`/`SectionPath` — przywrócenie drugiej sekcji to rozszerzenie tych typów i serwisów o kolejną gałąź, a nie przebudowa struktury.
 
-Sekcja ma 6 zakładek, w tej kolejności w nawigacji: **Aktualności** (link zewnętrzny do Facebooka, nie osobna podstrona), **Klub**, **Drużyna**, **Strefa Przyjaciół**, **Zostań Partnerem**, **Kontakt**.
+Sekcja ma 6 zakładek, w tej kolejności w nawigacji: **Aktualności** (link zewnętrzny do Facebooka, nie osobna podstrona), **Klub**, **Drużyna**, **Przyjaciele** (tytuł strony: „Przyjaciele Białej Gwiazdy”), **Zostań Partnerem**, **Kontakt**.
 
-Sekcja ma też podstronę **Media** (`/media`) z materiałami klubowymi: księga znaków, kolory klubu (oba historyczne kolory klubu — niebieski i czerwony, patrz sekcja 5), pliki do pobrania. Dostępna wyłącznie z linku w stopce (nie jest osobną pozycją w głównej nawigacji zakładek) — celowo w motywie sekcji, nie osobnym neutralnym motywem, żeby zachować pełną nawigację (Klub/Drużyna/Kontakt/Strefa Przyjaciół/Zostań Partnerem) i spójność wizualną. Treść żyje w komponencie `features/media`, zaprojektowanym tak, by dało się go współdzielić z kolejną sekcją bez zmian w zawartości.
+Sekcja ma też podstronę **Media** (`/media`) z materiałami klubowymi: księga znaków, kolory klubu (oba historyczne kolory klubu — niebieski i czerwony, patrz sekcja 5), pliki do pobrania. Dostępna wyłącznie z linku w stopce (nie jest osobną pozycją w głównej nawigacji zakładek) — celowo w motywie sekcji, nie osobnym neutralnym motywem, żeby zachować pełną nawigację (Klub/Drużyna/Kontakt/Przyjaciele/Zostań Partnerem) i spójność wizualną. Treść żyje w komponencie `features/media`, zaprojektowanym tak, by dało się go współdzielić z kolejną sekcją bez zmian w zawartości.
 
 To jest **etap 1 — szablon (template)**, który będzie rozwijany iteracyjnie w kolejnych etapach. Architektura musi to ułatwiać: dane mockowane dziś muszą dać się łatwo podmienić na prawdziwe API/CMS, a dodanie treści/funkcji w przyszłości nie powinno wymagać przebudowy struktury.
 
@@ -43,7 +43,7 @@ src/
         klub.tsx
         druzyna.tsx
         kontakt.tsx
-        strefa-przyjaciol.tsx
+        przyjaciele.tsx
         zostan-partnerem.tsx
         media.tsx                # podstrona Media w motywie mężczyzn
     router.tsx                  # definicja routera
@@ -53,7 +53,7 @@ src/
     club-info/
     team-roster/
     contact/
-    patrons/                    # zakładka Strefa Przyjaciół
+    patrons/                    # zakładka Przyjaciele (Białej Gwiazdy)
     partnership/                 # zakładka Zostań Partnerem
     media/                      # zawartość podstrony Media
   shared/
@@ -92,12 +92,13 @@ ComponentName/
 ## 4. Routing
 
 - `/` — ekran startowy (loading screen), automatycznie przekierowuje (`useNavigate`, po krótkim opóźnieniu) do `/klub`
-- Zakładki sekcji żyją **bez żadnego prefiksu** bezpośrednio pod root: `/klub`, `/druzyna`, `/kontakt`, `/strefa-przyjaciol`, `/zostan-partnerem`, `/media` — w `router.tsx` layout sekcji (`MezczyzniLayoutRoute`) jest zamontowany jako *pathless route* (bez własnego `path`, tylko `children`), więc nie dodaje żadnego segmentu do URL. Skoro istnieje tylko jedna sekcja, prefiks typu `/mezczyzni/*` byłby czystym szumem w adresie — folder `routes/mezczyzni/` to wyłącznie organizacja plików, nie odzwierciedla się w URL.
+- Zakładki sekcji żyją **bez żadnego prefiksu** bezpośrednio pod root: `/klub`, `/druzyna`, `/kontakt`, `/przyjaciele`, `/zostan-partnerem`, `/media` — w `router.tsx` layout sekcji (`MezczyzniLayoutRoute`) jest zamontowany jako *pathless route* (bez własnego `path`, tylko `children`), więc nie dodaje żadnego segmentu do URL. Skoro istnieje tylko jedna sekcja, prefiks typu `/mezczyzni/*` byłby czystym szumem w adresie — folder `routes/mezczyzni/` to wyłącznie organizacja plików, nie odzwierciedla się w URL.
 - `SectionPath` (`shared/types/domain.ts`) odzwierciedla to jako pusty string (`''`) — `NavBar`/`Footer` budują linki jako `` `${sectionPath}/${link.path}` ``, co przy pustym `sectionPath` daje wprost `/klub` itd. Przy ewentualnym przywróceniu drugiej sekcji z prefiksem (patrz `archive/kobiety-mezczyzni`) wystarczy nadać `SectionPath` realną wartość taką jak `/mezczyzni` ponownie.
+- `/strefa-przyjaciol` — dawny adres zakładki Przyjaciele; zostaje jako przekierowanie (`<Navigate replace>`) do `/przyjaciele`, żeby stare linki nie trafiały w pustkę
 - `/media` renderuje treść ze wspólnego komponentu `features/media` — tylko link w stopce, nie osobna pozycja w NavBar
-- Stopka (`shared/components/Footer`) celowo **nie powtarza** zakładek z NavBar — pasek nawigacji jest przypięty (`position: fixed`) i zawsze widoczny, więc pełna lista na dole byłaby duplikatem. Stopka to nazwa sekcji (pełna forma, np. „Siatkówka mężczyzn", przekazywana z layoutu jako `sectionName`), krótka lista linków z `FOOTER_LINKS` w `shared/utils/config.ts` (Media, Kontakt), ikony Facebooka i Instagrama, a pod nią linia copyright. Nazwa klubu pada tylko w copyright — bez osobnego logotypu/napisu, żeby się nie dublowała
-- Adresy URL są bez polskich znaków i małymi literami; w interfejsie (nawigacja) wyświetlana etykieta to pełna, poprawna forma: **„Mężczyźni"**
-- „Aktualności" **nie jest trasą** — to zwykły `<a target="_blank" rel="noopener noreferrer">` do strony klubu na Facebooku (URL na razie jako placeholder w konfiguracji)
+- Stopka (`shared/components/Footer`) celowo **nie powtarza** zakładek z NavBar — pasek nawigacji jest przypięty (`position: fixed`) i zawsze widoczny, więc pełna lista na dole byłaby duplikatem. Stopka to nazwa sekcji (pełna forma, np. „Siatkówka mężczyzn”, przekazywana z layoutu jako `sectionName`), krótka lista linków z `FOOTER_LINKS` w `shared/utils/config.ts` (Media, Kontakt), ikony Facebooka i Instagrama, a pod nią linia copyright. Nazwa klubu pada tylko w copyright — bez osobnego logotypu/napisu, żeby się nie dublowała
+- Adresy URL są bez polskich znaków i małymi literami; w interfejsie (nawigacja) wyświetlana etykieta to pełna, poprawna forma: **„Mężczyźni”**
+- „Aktualności” **nie jest trasą** — to zwykły `<a target="_blank" rel="noopener noreferrer">` do strony klubu na Facebooku (URL na razie jako placeholder w konfiguracji)
 
 ## 5. Motyw wizualny (design tokens)
 
@@ -129,15 +130,15 @@ Sugerowany kształt danych (do rozbudowy w kolejnych etapach):
 - `Club` — nazwa, opis/historia, adres hali, zarząd, sponsorzy
 - `Player` — imię, nazwisko, numer, pozycja, zdjęcie (placeholder)
 - `ContactInfo` — adres, telefon, e-mail, link do mapy
-- `Patron` — nazwa mecenasa/wspierającego, poziom wsparcia (`tier`: 1–3, analogicznie do `Sponsor`)
+- `Patron` — nazwa wspierającego, poziom wsparcia (`tier`: 1 — Mecenas, 2 — Darczyńca, 3 — Przyjaciel Klubu; analogicznie do `Sponsor`), opcjonalna krótka wiadomość
 - `PartnershipContent` — treść zakładki Zostań Partnerem: tekst wprowadzenia, lista korzyści, pakiety partnerskie (`PartnershipTier[]` — nazwa, opis, lista świadczeń), tekst i lista form współpracy
 
-`SponsorsSection` (loga sponsorów klubu) renderowany jest **raz, na poziomie `SectionLayout`** — tuż nad stopką, na każdej zakładce sekcji (Klub, Drużyna, Kontakt, Strefa Przyjaciół, Zostań Partnerem, Media). Dane klubu (`clubName`, `sponsors`) pobierane są w `routes/mezczyzni/layout.tsx` (pathless layout route, patrz sekcja 4) przez `useClubData` i przekazywane do `SectionLayout`. Poszczególne zakładki (np. `ClubInfo`, `PatronsInfo`) **nie** renderują własnej kopii tego komponentu.
+`SponsorsSection` (loga sponsorów klubu) renderowany jest **raz, na poziomie `SectionLayout`** — tuż nad stopką, na każdej zakładce sekcji (Klub, Drużyna, Kontakt, Przyjaciele, Zostań Partnerem, Media). Dane klubu (`clubName`, `sponsors`) pobierane są w `routes/mezczyzni/layout.tsx` (pathless layout route, patrz sekcja 4) przez `useClubData` i przekazywane do `SectionLayout`. Poszczególne zakładki (np. `ClubInfo`, `PatronsInfo`) **nie** renderują własnej kopii tego komponentu.
 
 ## 7. Konwencje komponentów
 
 - Komponenty funkcyjne, bez class components, bez `React.FC` (zwykła funkcja z typowanym argumentem `ComponentNameProps`)
-- Komponenty „głupie" (prezentacyjne, `shared/components`) nie znają się na danych/serwisach — dostają dane przez propsy
+- Komponenty „głupie” (prezentacyjne, `shared/components`) nie znają się na danych/serwisach — dostają dane przez propsy
 - Logika pobierania danych żyje w hookach (`useClubData`, `useTeamRoster`...) lub loaderach tras, nie w komponentach prezentacyjnych
 - Dostępność: semantyczny HTML, `alt` na obrazkach, widoczny focus, `aria-*` tam gdzie potrzebne — cel: WCAG AA
 - Mobile-first, responsywność jako podstawowy wymóg (nie dodatek)
@@ -181,4 +182,4 @@ Pre-commit (Husky + lint-staged): `eslint --fix`, `stylelint --fix`, `prettier -
 ## 12. Otwarte decyzje do potwierdzenia przez klub/zespół
 
 - Docelowy hosting (wpłynie na konfigurację builda)
-- Zakres zakładki „Kontakt" (czy ma być formularz, czy tylko dane statyczne)
+- Zakres zakładki „Kontakt” (czy ma być formularz, czy tylko dane statyczne)

@@ -1,4 +1,5 @@
 import type { Patron, PatronTier } from '../../../shared/types/domain';
+import { ArrowLink } from '../../club-info/ArrowLink';
 import styles from './PatronsWallSection.module.scss';
 
 interface PatronsWallSectionProps {
@@ -8,74 +9,75 @@ interface PatronsWallSectionProps {
 const tierOrder: PatronTier[] = [1, 2, 3];
 
 const tierLabel: Record<PatronTier, string> = {
-  1: 'Mecenas Honorowy',
-  2: 'Mecenas',
-  3: 'Przyjaciel Klubu',
+  1: 'Mecenasi',
+  2: 'Darczyńcy',
+  3: 'Przyjaciele Klubu',
 };
 
-const tierBadgeClassName: Record<PatronTier, string> = {
-  1: styles.badgePrimary,
-  2: styles.badgeSecondary,
-  3: styles.badgeTertiary,
+const tierClassName: Record<PatronTier, string> = {
+  1: styles.tierPrimary,
+  2: styles.tierSecondary,
+  3: styles.tierTertiary,
 };
 
-function getInitials(name: string): string {
-  const initials = name
-    .replace(/[[\]]/g, '')
-    .split(/\s+/)
-    .filter(Boolean)
-    .map((word) => word[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase();
-
-  return initials || '?';
-}
-
-function sortByTier(patrons: Patron[]): Patron[] {
-  return [...patrons].sort((a, b) => tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier));
+function groupByTier(patrons: Patron[]): Array<{ tier: PatronTier; patrons: Patron[] }> {
+  return tierOrder
+    .map((tier) => ({ tier, patrons: patrons.filter((patron) => patron.tier === tier) }))
+    .filter((group) => group.patrons.length > 0);
 }
 
 export function PatronsWallSection({ patrons }: PatronsWallSectionProps) {
-  const orderedPatrons = sortByTier(patrons);
+  const groups = groupByTier(patrons);
 
   return (
-    <section
-      aria-labelledby="strefa-przyjaciol-heading"
-      className={styles.section}
-      id="strefa-przyjaciol"
-    >
+    <section aria-labelledby="przyjaciele-heading" className={styles.section} id="przyjaciele">
       <div className={styles.heading}>
         <p aria-hidden="true" className={styles.index} />
         <p className={styles.eyebrow}>Wsparcie klubu</p>
-        <h2 className={styles.title} id="strefa-przyjaciol-heading">
-          Strefa Przyjaciół
+        <h2 className={styles.title} id="przyjaciele-heading">
+          Przyjaciele Białej Gwiazdy
         </h2>
         <p className={styles.lead}>
-          Strefa Przyjaciół to miejsce, w którym dziękujemy każdej osobie i firmie, która
-          zdecydowała się pomóc naszemu klubowi. Nie ma tu wsparcia zbyt małego - liczy się każda
-          złotówka i każdy gest. Dołączyć może każdy: kibic, rodzic, absolwent czy lokalna firma.
+          Dziękujemy każdej osobie i firmie, która zdecydowała się pomóc naszemu klubowi. Nie ma tu
+          wsparcia zbyt małego - liczy się każda złotówka i każdy gest.
         </p>
       </div>
 
-      <ul className={styles.feed}>
-        {orderedPatrons.map((patron, index) => (
-          <li className={styles.comment} key={`${patron.name}-${index}`}>
-            <span aria-hidden="true" className={styles.avatar}>
-              {getInitials(patron.name)}
-            </span>
-            <div className={styles.commentBody}>
-              <div className={styles.commentHead}>
-                <p className={styles.name}>{patron.name}</p>
-                <span className={`${styles.badge} ${tierBadgeClassName[patron.tier]}`}>
-                  {tierLabel[patron.tier]}
-                </span>
-              </div>
-              {patron.message ? <p className={styles.message}>{patron.message}</p> : null}
-            </div>
-          </li>
+      <div className={styles.ledger}>
+        {groups.length === 0 ? (
+          <p className={styles.empty}>Lista dopiero powstaje - pierwsze miejsce czeka na Ciebie.</p>
+        ) : null}
+
+        {groups.map((group) => (
+          <div className={`${styles.row} ${tierClassName[group.tier]}`} key={group.tier}>
+            <h3 className={styles.rowTitle} id={`patroni-poziom-${group.tier}`}>
+              {tierLabel[group.tier]}
+            </h3>
+            <ul aria-labelledby={`patroni-poziom-${group.tier}`} className={styles.entries}>
+              {group.patrons.map((patron, index) => (
+                <li className={styles.entry} key={`${patron.name}-${index}`}>
+                  <p className={styles.name}>{patron.name}</p>
+                  {patron.message ? (
+                    <p className={styles.message}>
+                      <q>{patron.message}</q>
+                    </p>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
-      </ul>
+
+        <div className={styles.row}>
+          <h3 className={styles.rowTitle}>Dołącz</h3>
+          <div className={styles.join}>
+            <p className={styles.joinText}>
+              Dołączyć może każdy: kibic, rodzic, absolwent czy lokalna firma.
+            </p>
+            <ArrowLink to="../kontakt">Napisz do nas</ArrowLink>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -20,7 +20,7 @@ const tiers: PartnershipTier[] = [
     key: 'tertiary',
     name: 'Partner Wspierający',
     description: 'Opis pakietu trzeciego.',
-    perks: ['Podziękowanie w Strefie Przyjaciół'],
+    perks: ['Podziękowanie w gronie Przyjaciół Białej Gwiazdy'],
   },
 ];
 
@@ -33,6 +33,8 @@ describe('PartnershipTiersSection', () => {
     expect(screen.getByText('Partner')).toBeInTheDocument();
     expect(screen.getByText('Partner Wspierający')).toBeInTheDocument();
     expect(screen.getByText('Polecane')).toBeInTheDocument();
-    expect(screen.getByText('Podziękowanie w Strefie Przyjaciół')).toBeInTheDocument();
+    expect(
+      screen.getByText('Podziękowanie w gronie Przyjaciół Białej Gwiazdy'),
+    ).toBeInTheDocument();
   });
 });

@@ -64,29 +64,44 @@ describe('app routing', () => {
     expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
 
-  it('navigates to the Strefa Przyjaciół tab from the mezczyzni nav', async () => {
+  it('navigates to the Przyjaciele tab from the mezczyzni nav', async () => {
     const user = userEvent.setup();
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/klub'] });
 
     render(<RouterProvider router={router} />);
 
-    const supportersLinks = await screen.findAllByRole('link', { name: 'Strefa Przyjaciół' });
+    const supportersLinks = await screen.findAllByRole('link', { name: 'Przyjaciele' });
     await user.click(supportersLinks[0]);
 
-    expect(await screen.findByRole('heading', { name: 'Strefa Przyjaciół' })).toBeInTheDocument();
-    expect(screen.getAllByText('Przyjaciel Klubu').length).toBeGreaterThan(0);
+    expect(
+      await screen.findByRole('heading', { name: 'Przyjaciele Białej Gwiazdy' }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText('Przyjaciele Klubu').length).toBeGreaterThan(0);
   });
 
-  it('renders strefa przyjaciół for mezczyzni', async () => {
+  it('renders przyjaciele for mezczyzni', async () => {
     const router = createMemoryRouter(appRoutes, {
-      initialEntries: ['/strefa-przyjaciol'],
+      initialEntries: ['/przyjaciele'],
     });
 
     render(<RouterProvider router={router} />);
 
-    expect(await screen.findByRole('heading', { name: 'Strefa Przyjaciół' })).toBeInTheDocument();
-    expect(screen.getAllByText('Przyjaciel Klubu').length).toBeGreaterThan(0);
+    expect(
+      await screen.findByRole('heading', { name: 'Przyjaciele Białej Gwiazdy' }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText('Przyjaciele Klubu').length).toBeGreaterThan(0);
     expect(await screen.findByRole('region', { name: /Sponsorzy klubu/ })).toBeInTheDocument();
+  });
+
+  it('redirects the legacy /strefa-przyjaciol URL to /przyjaciele', async () => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/strefa-przyjaciol'] });
+
+    render(<RouterProvider router={router} />);
+
+    expect(
+      await screen.findByRole('heading', { name: 'Przyjaciele Białej Gwiazdy' }),
+    ).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe('/przyjaciele');
   });
 
   it('navigates to the Zostań Partnerem tab from the mezczyzni nav', async () => {
@@ -127,9 +142,9 @@ describe('app routing', () => {
     expect(screen.getByRole('heading', { name: 'Składy zawodników' })).toBeInTheDocument();
 
     expect(screen.getAllByRole('link', { name: 'Klub' })[0]).toHaveAttribute('href', '/klub');
-    expect(screen.getAllByRole('link', { name: 'Strefa Przyjaciół' })[0]).toHaveAttribute(
+    expect(screen.getAllByRole('link', { name: 'Przyjaciele' })[0]).toHaveAttribute(
       'href',
-      '/strefa-przyjaciol',
+      '/przyjaciele',
     );
   });
 
