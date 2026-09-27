@@ -43,6 +43,7 @@ describe('SectionLayout', () => {
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
           sectionPath=""
           sponsors={mockSponsors}
         >
@@ -65,6 +66,7 @@ describe('SectionLayout', () => {
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
           sectionPath=""
           sponsors={mockSponsors}
         >
@@ -84,6 +86,7 @@ describe('SectionLayout', () => {
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
           sectionPath=""
           sponsors={mockSponsors}
         >
@@ -103,6 +106,7 @@ describe('SectionLayout', () => {
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
           sectionPath=""
           sponsors={mockSponsors}
         >
@@ -123,6 +127,7 @@ describe('SectionLayout', () => {
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
           sectionPath=""
           sponsors={mockSponsors}
         >
@@ -150,6 +155,7 @@ describe('SectionLayout', () => {
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
           sectionPath=""
           sponsors={mockSponsors}
         >
