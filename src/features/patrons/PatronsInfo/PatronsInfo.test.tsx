@@ -1,19 +1,26 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import type { Patron } from '../../../shared/types/domain';
 import { PatronsInfo } from './PatronsInfo';
 
 const patrons: Patron[] = [
-  { name: 'Mecenas Honorowy A', tier: 1 },
-  { name: 'Mecenas B', tier: 2 },
+  { name: 'Mecenas A', tier: 1 },
+  { name: 'Darczyńca B', tier: 2 },
 ];
 
 describe('PatronsInfo', () => {
-  it('renders the patrons wall inside the Strefa Przyjaciół tab region', () => {
-    render(<PatronsInfo patrons={patrons} />);
+  it('renders the patrons wall inside the Przyjaciele Białej Gwiazdy tab region', () => {
+    render(
+      <MemoryRouter>
+        <PatronsInfo patrons={patrons} />
+      </MemoryRouter>,
+    );
 
-    expect(screen.getByRole('region', { name: 'Zakładka Strefa Przyjaciół' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Strefa Przyjaciół' })).toBeInTheDocument();
-    expect(screen.getByText('Mecenas Honorowy A')).toBeInTheDocument();
+    expect(
+      screen.getByRole('region', { name: 'Zakładka Przyjaciele Białej Gwiazdy' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Przyjaciele Białej Gwiazdy' })).toBeInTheDocument();
+    expect(screen.getByText('Mecenas A')).toBeInTheDocument();
   });
 });

@@ -9,7 +9,7 @@ export const CLUB_CREST_SRC = '/tsw-herb.png';
 export const SECTION_TAB_LINKS = [
   { label: 'Klub', path: 'klub' },
   { label: 'Drużyna', path: 'druzyna' },
-  { label: 'Strefa Przyjaciół', path: 'strefa-przyjaciol' },
+  { label: 'Przyjaciele', path: 'przyjaciele' },
   { label: 'Zostań Partnerem', path: 'zostan-partnerem' },
   { label: 'Kontakt', path: 'kontakt' },
 ] as const;
