@@ -7,88 +7,79 @@ afterEach(() => {
   cleanup();
 });
 
-describe('Footer', () => {
-  it('renders the club section navigation for the given section path', () => {
-    render(
-      <MemoryRouter>
-        <Footer sectionPath="" />
-      </MemoryRouter>,
-    );
+function renderFooter(initialEntry = '/klub') {
+  render(
+    <MemoryRouter initialEntries={[initialEntry]}>
+      <Footer sectionName="Siatkówka mężczyzn" sectionPath="" />
+    </MemoryRouter>,
+  );
+}
 
-    expect(screen.getByRole('navigation', { name: 'Nawigacja sekcji klubu' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/klub');
-    expect(screen.getByRole('link', { name: 'Drużyna' })).toHaveAttribute(
-      'href',
-      '/druzyna',
-    );
-    expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute(
-      'href',
-      '/kontakt',
-    );
-    expect(screen.getByRole('link', { name: 'Aktualności na Facebooku' })).toHaveAttribute(
-      'target',
-      '_blank',
-    );
+describe('Footer', () => {
+  it('signs off with the full section name', () => {
+    renderFooter();
+
+    expect(screen.getByText('Siatkówka mężczyzn')).toBeInTheDocument();
   });
 
-  it('marks the active tab link', () => {
-    render(
-      <MemoryRouter initialEntries={['/kontakt']}>
-        <Footer sectionPath="" />
-      </MemoryRouter>,
+  it('links to Media and then Kontakt, scoped to the current section', () => {
+    renderFooter();
+
+    const nav = screen.getByRole('navigation', { name: 'Nawigacja w stopce' });
+    const links = within(nav).getAllByRole('link');
+
+    expect(links.map((link) => link.textContent)).toEqual(['Media', 'Kontakt']);
+
+    expect(within(nav).getByRole('link', { name: 'Kontakt' })).toHaveAttribute('href', '/kontakt');
+    expect(within(nav).getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
+  });
+
+  it('does not repeat the primary tabs already in the fixed nav bar', () => {
+    renderFooter();
+
+    const nav = screen.getByRole('navigation', { name: 'Nawigacja w stopce' });
+
+    expect(within(nav).getAllByRole('link')).toHaveLength(2);
+    expect(within(nav).queryByRole('link', { name: 'Drużyna' })).not.toBeInTheDocument();
+  });
+
+  it('opens Facebook and Instagram in a new tab and announces it', () => {
+    renderFooter();
+
+    const socials = screen.getByRole('list', { name: 'Media społecznościowe' });
+    const facebookLink = within(socials).getByRole('link', {
+      name: 'Facebook (otwiera się w nowej karcie)',
+    });
+    const instagramLink = within(socials).getByRole('link', {
+      name: 'Instagram (otwiera się w nowej karcie)',
+    });
+
+    expect(facebookLink).toHaveAttribute('href', 'https://www.facebook.com/Tswsiatkowkamezczyzn');
+    expect(instagramLink).toHaveAttribute(
+      'href',
+      'https://www.instagram.com/tswisla_siatkowkamezczyzn/',
     );
 
-    expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute('aria-current', 'page');
+    for (const link of [facebookLink, instagramLink]) {
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    }
+  });
+
+  it('marks the Media link as the current page on the Media tab', () => {
+    renderFooter('/media');
+
+    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('link', { name: 'Kontakt' })).not.toHaveAttribute('aria-current');
   });
 
   it('renders a copyright line with the current year and brand name', () => {
-    render(
-      <MemoryRouter>
-        <Footer sectionPath="" />
-      </MemoryRouter>,
-    );
+    renderFooter();
 
     const currentYear = new Date().getFullYear().toString();
 
     expect(
-      screen.getByText(new RegExp(`© ${currentYear} Towarzystwo Sportowe Wisła Kraków`)),
+      screen.getByText(`© ${currentYear} Towarzystwo Sportowe Wisła Kraków`),
     ).toBeInTheDocument();
-  });
-
-  it('renders the Media link scoped to the current section', () => {
-    render(
-      <MemoryRouter>
-        <Footer sectionPath="" />
-      </MemoryRouter>,
-    );
-
-    expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
-  });
-
-  it('lists Aktualności first in the section navigation', () => {
-    render(
-      <MemoryRouter>
-        <Footer sectionPath="" />
-      </MemoryRouter>,
-    );
-
-    const nav = screen.getByRole('navigation', { name: 'Nawigacja sekcji klubu' });
-    const links = within(nav).getAllByRole('link');
-
-    expect(links[0]).toHaveAccessibleName('Aktualności na Facebooku');
-  });
-
-  it('lists Kontakt last among the section tab links', () => {
-    render(
-      <MemoryRouter>
-        <Footer sectionPath="" />
-      </MemoryRouter>,
-    );
-
-    const nav = screen.getByRole('navigation', { name: 'Nawigacja sekcji klubu' });
-    const links = within(nav).getAllByRole('link');
-    const tabNames = links.map((link) => link.textContent).filter((name) => name !== 'Media');
-
-    expect(tabNames[tabNames.length - 1]).toBe('Kontakt');
   });
 });

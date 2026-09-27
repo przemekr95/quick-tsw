@@ -14,6 +14,7 @@ export default function MezczyzniLayoutRoute() {
         heroHeading={data?.heroHeading ?? ''}
         heroSlides={data?.heroSlides ?? []}
         sectionLabel="Mężczyźni"
+        sectionName="Siatkówka mężczyzn"
         sectionPath=""
         sponsors={club?.sponsors ?? []}
       >

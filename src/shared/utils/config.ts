@@ -1,5 +1,7 @@
 export const FACEBOOK_NEWS_URL = 'https://www.facebook.com/Tswsiatkowkamezczyzn';
 
+export const INSTAGRAM_URL = 'https://www.instagram.com/tswisla_siatkowkamezczyzn/';
+
 export const CLUB_BRAND_NAME = 'Towarzystwo Sportowe Wisła Kraków';
 
 export const CLUB_CREST_SRC = '/tsw-herb.png';
@@ -12,7 +14,10 @@ export const SECTION_TAB_LINKS = [
   { label: 'Kontakt', path: 'kontakt' },
 ] as const;
 
-export const MEDIA_LINK = { label: 'Media', path: 'media' } as const;
+export const FOOTER_LINKS = [
+  { label: 'Media', path: 'media' },
+  { label: 'Kontakt', path: 'kontakt' },
+] as const;
 
 export const MEDIA_DOWNLOADS = {
   brandBook: CLUB_CREST_SRC,

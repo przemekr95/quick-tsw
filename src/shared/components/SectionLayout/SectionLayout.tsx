@@ -12,6 +12,7 @@ import styles from './SectionLayout.module.scss';
 
 interface SectionLayoutProps extends PropsWithChildren {
   sectionLabel: string;
+  sectionName: string;
   sectionPath: SectionPath;
   heroHeading: string;
   heroSlides: HeroSlide[];
@@ -25,6 +26,7 @@ const DOT_CIRCUMFERENCE = 2 * Math.PI * DOT_RADIUS;
 export function SectionLayout({
   children,
   sectionLabel,
+  sectionName,
   sectionPath,
   heroHeading,
   heroSlides,
@@ -109,7 +111,7 @@ export function SectionLayout({
 
       <SponsorsSection clubName={clubName} sponsors={sponsors} />
 
-      <Footer sectionPath={sectionPath} />
+      <Footer sectionName={sectionName} sectionPath={sectionPath} />
     </div>
   );
 }
