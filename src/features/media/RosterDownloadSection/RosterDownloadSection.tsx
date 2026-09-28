@@ -5,8 +5,8 @@ import styles from './RosterDownloadSection.module.scss';
 const ROSTER_DOWNLOADS = [
   {
     id: 'mezczyzni',
-    label: 'Mężczyźni',
-    description: 'Aktualny skład zawodników sekcji męskiej w formacie PDF.',
+    label: 'Seniorzy',
+    description: 'Aktualny skład zawodników sekcji męskiej seniorów w formacie PDF.',
     href: MEDIA_DOWNLOADS.rosterMezczyzni,
   },
 ] as const;

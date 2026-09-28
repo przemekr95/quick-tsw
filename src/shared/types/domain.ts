@@ -26,11 +26,13 @@ export interface Patron {
   message?: string;
 }
 
+export type PlayerPosition = 'Rozgrywający' | 'Atakujący' | 'Przyjmujący' | 'Środkowy' | 'Libero';
+
 export interface Player {
   firstName: string;
   lastName: string;
   number: number;
-  position: string;
+  position: PlayerPosition;
   photoSrc: string;
 }
 
