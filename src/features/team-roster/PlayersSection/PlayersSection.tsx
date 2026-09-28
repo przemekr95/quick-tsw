@@ -1,11 +1,50 @@
-import type { Player } from '../../../shared/types/domain';
+import type { Player, PlayerPosition } from '../../../shared/types/domain';
 import styles from './PlayersSection.module.scss';
 
 interface PlayersSectionProps {
   players: Player[];
 }
 
+const positionOrder: PlayerPosition[] = [
+  'Rozgrywający',
+  'Atakujący',
+  'Przyjmujący',
+  'Środkowy',
+  'Libero',
+];
+
+const positionGroupLabel: Record<PlayerPosition, string> = {
+  Rozgrywający: 'Rozgrywający',
+  Atakujący: 'Atakujący',
+  Przyjmujący: 'Przyjmujący',
+  Środkowy: 'Środkowi',
+  Libero: 'Libero',
+};
+
+const positionSlug: Record<PlayerPosition, string> = {
+  Rozgrywający: 'rozgrywajacy',
+  Atakujący: 'atakujacy',
+  Przyjmujący: 'przyjmujacy',
+  Środkowy: 'srodkowi',
+  Libero: 'libero',
+};
+
+function groupByPosition(
+  players: Player[],
+): Array<{ position: PlayerPosition; players: Player[] }> {
+  return positionOrder
+    .map((position) => ({
+      position,
+      players: players
+        .filter((player) => player.position === position)
+        .sort((a, b) => a.number - b.number),
+    }))
+    .filter((group) => group.players.length > 0);
+}
+
 export function PlayersSection({ players }: PlayersSectionProps) {
+  const groups = groupByPosition(players);
+
   return (
     <section aria-labelledby="zawodnicy-heading" className={styles.section} id="zawodnicy">
       <div className={styles.heading}>
@@ -16,27 +55,42 @@ export function PlayersSection({ players }: PlayersSectionProps) {
         </h2>
       </div>
 
-      <ul className={styles.grid}>
-        {players.map((player) => (
-          <li className={styles.card} key={`${player.number}-${player.lastName}`}>
-            <img
-              alt={`Zdjęcie zawodnika nr ${player.number}, ${player.firstName} ${player.lastName}`}
-              className={styles.image}
-              loading="lazy"
-              src={player.photoSrc}
-            />
-            <span aria-hidden="true" className={styles.number}>
-              {player.number}
-            </span>
-            <div className={styles.meta}>
-              <p className={styles.position}>{player.position}</p>
-              <p className={styles.name}>
-                {player.firstName} {player.lastName}
-              </p>
+      <div className={styles.groups}>
+        {groups.map((group) => {
+          const headingId = `zawodnicy-${positionSlug[group.position]}`;
+
+          return (
+            <div className={styles.group} key={group.position}>
+              <div className={styles.groupHeading}>
+                <h3 className={styles.groupTitle} id={headingId}>
+                  {positionGroupLabel[group.position]}
+                </h3>
+              </div>
+
+              <ul aria-labelledby={headingId} className={styles.grid}>
+                {group.players.map((player) => (
+                  <li className={styles.card} key={`${player.number}-${player.lastName}`}>
+                    <img
+                      alt={`Zdjęcie zawodnika nr ${player.number}, ${player.firstName} ${player.lastName}`}
+                      className={styles.image}
+                      loading="lazy"
+                      src={player.photoSrc}
+                    />
+                    <span aria-hidden="true" className={styles.number}>
+                      {player.number}
+                    </span>
+                    <div className={styles.meta}>
+                      <p className={styles.name}>
+                        {player.firstName} {player.lastName}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </li>
-        ))}
-      </ul>
+          );
+        })}
+      </div>
     </section>
   );
 }

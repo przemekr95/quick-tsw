@@ -1,7 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { cleanup, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
 import type { Player, StaffMember } from '../../../shared/types/domain';
 import { TeamRoster } from './TeamRoster';
+
+afterEach(() => {
+  cleanup();
+});
 
 const players: Player[] = [
   {
@@ -37,5 +41,16 @@ describe('TeamRoster', () => {
     expect(screen.getByRole('heading', { name: 'Sztab' })).toBeInTheDocument();
     expect(screen.getByText('Anna Nowak')).toBeInTheDocument();
     expect(screen.getByText('Piotr Wiśniewski')).toBeInTheDocument();
+  });
+
+  it('ends with a roster PDF download section', () => {
+    render(<TeamRoster players={players} staff={staff} />);
+
+    expect(screen.getByRole('heading', { name: 'Składy zawodników' })).toBeInTheDocument();
+
+    const link = screen.getByRole('link', { name: /Pobierz skład - Seniorzy/ });
+
+    expect(link).toHaveAttribute('href', '/downloads/sklad-mezczyzni.pdf');
+    expect(link).toHaveAttribute('download');
   });
 });

@@ -1,4 +1,5 @@
 import type { Player, StaffMember } from '../../../shared/types/domain';
+import { RosterDownloadSection } from '../../media/RosterDownloadSection';
 import { PlayersSection } from '../PlayersSection';
 import { StaffSection } from '../StaffSection';
 import { TeamPhotoSection } from '../TeamPhotoSection';
@@ -16,6 +17,7 @@ export function TeamRoster({ players, staff }: TeamRosterProps) {
         <TeamPhotoSection />
         <PlayersSection players={players} />
         <StaffSection staff={staff} />
+        <RosterDownloadSection />
       </div>
     </section>
   );
