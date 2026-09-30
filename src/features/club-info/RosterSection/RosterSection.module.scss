@@ -37,7 +37,7 @@
 .card {
   position: relative;
   overflow: hidden;
-  min-height: 340px;
+  aspect-ratio: 4 / 5;
   border: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
 }
 
@@ -99,9 +99,5 @@
 @media (width >= 780px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .card {
-    min-height: 400px;
   }
 }

@@ -60,14 +60,14 @@
   display: grid;
   justify-content: start;
   gap: 0.85rem;
-  grid-template-columns: repeat(auto-fit, 16rem);
+  grid-template-columns: repeat(auto-fit, min(18rem, 100%));
 }
 
 .card {
   position: relative;
   overflow: hidden;
-  width: 16rem;
-  aspect-ratio: 3 / 4;
+  width: min(18rem, 100%);
+  aspect-ratio: 4 / 5;
   border: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
 }
 
