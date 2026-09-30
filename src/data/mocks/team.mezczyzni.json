@@ -11,7 +11,7 @@
     "lastName": "Chodur",
     "number": 6,
     "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/maciej_chodur.jpg"
   },
   {
     "firstName": "Wojciech",
@@ -25,7 +25,7 @@
     "lastName": "Florek",
     "number": 13,
     "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/michal_florek.jpg"
   },
   {
     "firstName": "Jacek",
@@ -39,14 +39,14 @@
     "lastName": "Gałczyński",
     "number": 80,
     "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/wiktor_galczynski.jpg"
   },
   {
     "firstName": "Wojciech",
     "lastName": "Kaspera",
     "number": 5,
     "position": "Rozgrywający",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/wojciech_kaspera.jpg"
   },
   {
     "firstName": "Szymon",
@@ -67,7 +67,7 @@
     "lastName": "Maksymowicz",
     "number": 23,
     "position": "Atakujący",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/kamil_maksymowicz.jpg"
   },
   {
     "firstName": "Łukasz",
@@ -88,7 +88,7 @@
     "lastName": "Rubacha",
     "number": 8,
     "position": "Atakujący",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/wojciech_rubacha.jpg"
   },
   {
     "firstName": "Przemysław",
@@ -109,7 +109,7 @@
     "lastName": "Stalmach",
     "number": 21,
     "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/krzysztof_stalmach.jpg"
   },
   {
     "firstName": "Patryk",
@@ -123,13 +123,13 @@
     "lastName": "Zych",
     "number": 99,
     "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/szymon_zych.jpg"
   },
   {
     "firstName": "Iwo",
     "lastName": "Żakowski",
     "number": 16,
     "position": "Libero",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/iwo_zakowski.jpg"
   }
 ]
