@@ -18,7 +18,7 @@
     "lastName": "Filarecki",
     "number": 7,
     "position": "Środkowy",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/wojciech_filarecki.jpg"
   },
   {
     "firstName": "Michał",
@@ -32,7 +32,7 @@
     "lastName": "Gackowski",
     "number": 15,
     "position": "Libero",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/jacek_gackowski.jpg"
   },
   {
     "firstName": "Wiktor",
@@ -60,7 +60,7 @@
     "lastName": "Łychowski",
     "number": 33,
     "position": "Atakujący",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/andrzej_lychowski.jpg"
   },
   {
     "firstName": "Kamil",
@@ -74,7 +74,7 @@
     "lastName": "Nalepa",
     "number": 2,
     "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/lukasz_nalepa.jpg"
   },
   {
     "firstName": "Grzegorz",
@@ -102,7 +102,7 @@
     "lastName": "Sala",
     "number": 11,
     "position": "Przyjmujący",
-    "photoSrc": "/images/backgrounds/avatar.png"
+    "photoSrc": "/images/team/karol_sala.jpg"
   },
   {
     "firstName": "Krzysztof",
