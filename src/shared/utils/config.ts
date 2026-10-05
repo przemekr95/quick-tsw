@@ -6,6 +6,8 @@ export const CLUB_BRAND_NAME = 'Towarzystwo Sportowe Wisła Kraków';
 
 export const CLUB_CREST_SRC = '/tsw-herb.png';
 
+export const CLUB_WEBSITE_URL = 'https://www.tswisla.pl/';
+
 export const SECTION_TAB_LINKS = [
   { label: 'Klub', path: 'klub' },
   { label: 'Drużyna', path: 'druzyna' },

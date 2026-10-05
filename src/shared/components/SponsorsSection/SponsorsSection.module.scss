@@ -8,7 +8,28 @@
   color: var(--color-text);
 }
 
+.crestLink {
+  display: flex;
+  transition: opacity 160ms ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.72;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+}
+
 .crest {
   width: clamp(92px, 10.5vw, 120px);
   height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crestLink {
+    transition: none;
+  }
 }
