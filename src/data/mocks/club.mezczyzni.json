@@ -10,16 +10,22 @@
       "websiteUrl": "https://www.facebook.com/profile.php?id=61590448276123"
     },
     {
-      "name": "Małopolski Związek Piłki Siatkowej",
+      "name": "Historia Wisły",
       "tier": 2,
-      "logoSrc": "/images/sponsors/mzps.png",
-      "websiteUrl": "https://mzps.pl/"
+      "logoSrc": "/images/sponsors/historia_wisly.jpg",
+      "websiteUrl": "https://historiawisly.pl/wiki/index.php?title=Strona_g%C5%82%C3%B3wna"
     },
     {
       "name": "Polski Związek Piłki Siatkowej",
       "tier": 2,
       "logoSrc": "/images/sponsors/pzps.png",
       "websiteUrl": "https://www.pzps.pl/"
+    },
+    {
+      "name": "Małopolski Związek Piłki Siatkowej",
+      "tier": 2,
+      "logoSrc": "/images/sponsors/mzps.png",
+      "websiteUrl": "https://mzps.pl/"
     }
   ]
 }
