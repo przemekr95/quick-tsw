@@ -34,6 +34,7 @@ export interface Player {
   number: number;
   position: PlayerPosition;
   photoSrc: string;
+  profileUrl?: string;
 }
 
 export type StaffRole = 'Trener' | 'Statystyk';
@@ -54,6 +55,7 @@ export interface SectionCoordinator {
   phone: string;
   email: string;
   photoSrc: string;
+  profileUrl?: string;
 }
 
 export interface TrainingSession {
