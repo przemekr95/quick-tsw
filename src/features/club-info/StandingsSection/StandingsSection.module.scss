@@ -5,6 +5,10 @@
 
   position: relative;
   z-index: 0;
+
+  // The podium watermark below bleeds past the right edge on purpose; clip it here
+  // so it doesn't widen the page and cause horizontal scrolling.
+  overflow-x: clip;
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--color-accent) 12%, transparent) 0%,
