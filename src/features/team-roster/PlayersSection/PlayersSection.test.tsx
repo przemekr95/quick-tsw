@@ -68,4 +68,24 @@ describe('PlayersSection', () => {
     expect(screen.getByRole('heading', { level: 3, name: 'Atakujący' })).toBeInTheDocument();
     expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(1);
   });
+
+  it('links the card to the external player profile in a new tab', () => {
+    const profileUrl = 'https://example.com/zawodnicy/jan-kowalski';
+
+    render(<PlayersSection players={[{ ...players[1], profileUrl }]} />);
+
+    const link = screen.getByRole('link', {
+      name: 'Profil zawodnika Jan Kowalski (otwiera się w nowej karcie)',
+    });
+
+    expect(link).toHaveAttribute('href', profileUrl);
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('renders the card without a link when the player has no profile URL', () => {
+    render(<PlayersSection players={[players[1]]} />);
+
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+  });
 });

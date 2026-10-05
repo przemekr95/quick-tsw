@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '../../../shared/components/ExternalLinkIcon';
 import type { Player, PlayerPosition } from '../../../shared/types/domain';
 import styles from './PlayersSection.module.scss';
 
@@ -69,7 +70,12 @@ export function PlayersSection({ players }: PlayersSectionProps) {
 
               <ul aria-labelledby={headingId} className={styles.grid}>
                 {group.players.map((player) => (
-                  <li className={styles.card} key={`${player.number}-${player.lastName}`}>
+                  <li
+                    className={
+                      player.profileUrl ? `${styles.card} ${styles.cardLinked}` : styles.card
+                    }
+                    key={`${player.number}-${player.lastName}`}
+                  >
                     <img
                       alt={`Zdjęcie zawodnika nr ${player.number}, ${player.firstName} ${player.lastName}`}
                       className={styles.image}
@@ -83,7 +89,21 @@ export function PlayersSection({ players }: PlayersSectionProps) {
                       <p className={styles.name}>
                         {player.firstName} {player.lastName}
                       </p>
+                      {player.profileUrl && <ExternalLinkIcon className={styles.externalIcon} />}
                     </div>
+                    {player.profileUrl && (
+                      <a
+                        className={styles.profileLink}
+                        href={player.profileUrl}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <span className={styles.srOnly}>
+                          Profil zawodnika {player.firstName} {player.lastName} (otwiera się w nowej
+                          karcie)
+                        </span>
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '../../../shared/components/ExternalLinkIcon';
 import type { SectionCoordinator } from '../../../shared/types/domain';
 import { toTelHref } from '../../../shared/utils/phone';
 import styles from './CoordinatorsSection.module.scss';
@@ -19,7 +20,22 @@ export function CoordinatorsSection({ coordinators }: CoordinatorsSectionProps) 
 
       <ul className={styles.grid}>
         {coordinators.map((coordinator) => (
-          <li className={styles.card} key={`${coordinator.role}-${coordinator.lastName}`}>
+          <li
+            className={coordinator.profileUrl ? `${styles.card} ${styles.cardLinked}` : styles.card}
+            key={`${coordinator.role}-${coordinator.lastName}`}
+          >
+            {coordinator.profileUrl && (
+              <a
+                className={styles.profileLink}
+                href={coordinator.profileUrl}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span className={styles.srOnly}>
+                  Profil {coordinator.firstName} {coordinator.lastName} (otwiera się w nowej karcie)
+                </span>
+              </a>
+            )}
             <img
               alt={`Zdjęcie ${coordinator.firstName} ${coordinator.lastName}`}
               className={styles.image}
@@ -28,9 +44,12 @@ export function CoordinatorsSection({ coordinators }: CoordinatorsSectionProps) 
             />
             <div className={styles.meta}>
               <p className={styles.role}>{coordinator.role}</p>
-              <p className={styles.name}>
-                {coordinator.firstName} {coordinator.lastName}
-              </p>
+              <div className={styles.nameRow}>
+                <p className={styles.name}>
+                  {coordinator.firstName} {coordinator.lastName}
+                </p>
+                {coordinator.profileUrl && <ExternalLinkIcon className={styles.externalIcon} />}
+              </div>
               <div className={styles.links}>
                 <a className={styles.link} href={toTelHref(coordinator.phone)}>
                   {coordinator.phone}

@@ -77,6 +77,12 @@
   height: 100%;
   object-fit: cover;
   filter: saturate(1.05) contrast(1.03);
+  transition: transform 420ms ease;
+
+  .cardLinked:hover &,
+  .cardLinked:focus-within & {
+    transform: scale(1.04);
+  }
 }
 
 .card::after {
@@ -84,6 +90,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, transparent 45%, rgb(0 0 0 / 78%) 100%);
+  pointer-events: none;
 }
 
 .card::before {
@@ -112,6 +119,10 @@
   right: 0;
   bottom: 0;
   z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
   padding: 1rem;
 }
 
@@ -123,4 +134,47 @@
   text-transform: uppercase;
   letter-spacing: -0.01em;
   color: var(--color-background);
+}
+
+.externalIcon {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--color-background);
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+
+  .cardLinked:hover &,
+  .cardLinked:focus-within & {
+    color: var(--color-accent);
+    transform: translate(2px, -2px);
+  }
+}
+
+.profileLink {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image,
+  .externalIcon {
+    transition: none;
+  }
 }
