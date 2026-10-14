@@ -126,6 +126,11 @@
   padding: 1rem;
 }
 
+.metaText {
+  display: grid;
+  gap: 0.35rem;
+}
+
 .name {
   margin: 0;
   font-size: 1.1rem;
@@ -134,6 +139,13 @@
   text-transform: uppercase;
   letter-spacing: -0.01em;
   color: var(--color-background);
+}
+
+.description {
+  margin: 0;
+  color: var(--color-background);
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 
 .externalIcon {

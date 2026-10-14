@@ -1,10 +1,6 @@
 import type { Club, SectionId } from '../../shared/types/domain';
-import clubMezczyzni from '../mocks/club.mezczyzni.json';
-
-const clubBySection: Record<SectionId, Club> = {
-  mezczyzni: clubMezczyzni as Club,
-};
+import { getSectionContent } from './apiClient';
 
 export async function getClubData(section: SectionId): Promise<Club> {
-  return Promise.resolve(clubBySection[section]);
+  return getSectionContent<Club>(section, 'club');
 }

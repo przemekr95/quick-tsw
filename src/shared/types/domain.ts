@@ -29,11 +29,13 @@ export interface Patron {
 export type PlayerPosition = 'Rozgrywający' | 'Atakujący' | 'Przyjmujący' | 'Środkowy' | 'Libero';
 
 export interface Player {
+  id?: string;
   firstName: string;
   lastName: string;
   number: number;
   position: PlayerPosition;
   photoSrc: string;
+  description?: string | null;
   profileUrl?: string;
 }
 
@@ -112,6 +114,7 @@ export interface MatchResult {
 }
 
 export interface UpcomingMatch {
+  id?: string;
   round?: number;
   opponent: string;
   competition: string;

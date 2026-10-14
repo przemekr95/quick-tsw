@@ -86,9 +86,14 @@ export function PlayersSection({ players }: PlayersSectionProps) {
                       {player.number}
                     </span>
                     <div className={styles.meta}>
-                      <p className={styles.name}>
-                        {player.firstName} {player.lastName}
-                      </p>
+                      <div className={styles.metaText}>
+                        <p className={styles.name}>
+                          {player.firstName} {player.lastName}
+                        </p>
+                        {player.description && (
+                          <p className={styles.description}>{player.description}</p>
+                        )}
+                      </div>
                       {player.profileUrl && <ExternalLinkIcon className={styles.externalIcon} />}
                     </div>
                     {player.profileUrl && (
