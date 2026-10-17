@@ -60,7 +60,9 @@ describe('app routing', () => {
     render(<RouterProvider router={router} />);
 
     expect(await screen.findByRole('heading', { level: 2, name: 'Zawodnicy' })).toBeInTheDocument();
-    expect(await screen.findByRole('heading', { level: 2, name: 'Sztab' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { level: 2, name: 'Sztab szkoleniowy' }),
+    ).toBeInTheDocument();
     expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
 

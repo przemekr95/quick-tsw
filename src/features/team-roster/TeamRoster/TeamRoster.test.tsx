@@ -38,7 +38,7 @@ describe('TeamRoster', () => {
 
     expect(screen.getByRole('heading', { name: 'Zawodnicy' })).toBeInTheDocument();
     expect(screen.getByText('Jan Kowalski')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Sztab' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Sztab szkoleniowy' })).toBeInTheDocument();
     expect(screen.getByText('Anna Nowak')).toBeInTheDocument();
     expect(screen.getByText('Piotr Wiśniewski')).toBeInTheDocument();
   });

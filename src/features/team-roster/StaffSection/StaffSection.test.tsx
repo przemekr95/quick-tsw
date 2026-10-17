@@ -22,7 +22,7 @@ describe('StaffSection', () => {
   it('renders a card for the coach and the stats analyst', () => {
     render(<StaffSection staff={staff} />);
 
-    expect(screen.getByRole('heading', { name: 'Sztab' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Sztab szkoleniowy' })).toBeInTheDocument();
     expect(screen.getByText('Anna Nowak')).toBeInTheDocument();
     expect(screen.getByText('Trener')).toBeInTheDocument();
     expect(screen.getByText('Piotr Wiśniewski')).toBeInTheDocument();

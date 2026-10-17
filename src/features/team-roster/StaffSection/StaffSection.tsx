@@ -15,7 +15,7 @@ export function StaffSection({ staff }: StaffSectionProps) {
     <section aria-labelledby="sztab-heading" className={styles.section} id="sztab">
       <div className={styles.heading}>
         <h2 className={styles.title} id="sztab-heading">
-          Sztab
+          Sztab szkoleniowy
         </h2>
       </div>
 
