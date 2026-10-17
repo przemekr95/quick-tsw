@@ -150,6 +150,83 @@ describe('app routing', () => {
     );
   });
 
+  it('sets a page-specific title for each tab', async () => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/druzyna'] });
+
+    render(<RouterProvider router={router} />);
+
+    expect(
+      await screen.findByRole('heading', {
+        level: 1,
+        name: 'Drużyna siatkówki mężczyzn TS Wisła Kraków',
+      }),
+    ).toBeInTheDocument();
+    expect(document.title).toBe('Drużyna | Siatkówka mężczyzn TS Wisła Kraków');
+  });
+
+  it('renders a noindex not-found page for unknown URLs', async () => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/nie-ma-takiej-strony'] });
+
+    render(<RouterProvider router={router} />);
+
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Nie znaleziono strony' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /wróć na stronę klubu/i })).toHaveAttribute(
+      'href',
+      '/klub',
+    );
+    expect(document.head.querySelector('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'noindex',
+    );
+  });
+
+  it.each(['/DRUZYNA', '/%64ruzyna'])(
+    'keeps the tab meta for %s, which the router matches to /druzyna',
+    async (path) => {
+      const router = createMemoryRouter(appRoutes, { initialEntries: [path] });
+
+      render(<RouterProvider router={router} />);
+
+      expect(
+        await screen.findByRole('heading', {
+          level: 1,
+          name: 'Drużyna siatkówki mężczyzn TS Wisła Kraków',
+        }),
+      ).toBeInTheDocument();
+      expect(document.title).toBe('Drużyna | Siatkówka mężczyzn TS Wisła Kraków');
+      expect(document.head.querySelector('meta[name="robots"]')).toBeNull();
+    },
+  );
+
+  it.each(['/constructor', '/__proto__', '/toString'])(
+    'treats %s as an unknown, noindex page',
+    async (path) => {
+      const router = createMemoryRouter(appRoutes, { initialEntries: [path] });
+
+      render(<RouterProvider router={router} />);
+
+      expect(
+        await screen.findByRole('heading', { level: 1, name: 'Nie znaleziono strony' }),
+      ).toBeInTheDocument();
+      expect(document.title).toBe('Nie znaleziono strony | Siatkówka mężczyzn TS Wisła Kraków');
+      expect(document.head.querySelector('meta[name="robots"]')).toHaveAttribute(
+        'content',
+        'noindex',
+      );
+    },
+  );
+
+  it('gives every section route its own page meta', () => {
+    const sectionRoutes = appRoutes.find((route) => route.children)?.children ?? [];
+
+    expect(sectionRoutes.length).toBeGreaterThan(0);
+    for (const route of sectionRoutes) {
+      expect(route.handle).toHaveProperty('pageMeta.title');
+    }
+  });
+
   it('renders the media tab directly for mezczyzni', async () => {
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/media'] });
 

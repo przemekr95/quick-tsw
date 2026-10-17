@@ -68,9 +68,7 @@ export function PatronsWallSection({ patrons }: PatronsWallSectionProps) {
         <div className={styles.row}>
           <h3 className={styles.rowTitle}>Dołącz</h3>
           <div className={styles.join}>
-            <p className={styles.joinText}>
-              Dołączyć może każdy: kibic, rodzic, absolwent czy lokalna firma.
-            </p>
+            <p className={styles.joinText}>Dołączyć może każdy: kibic, rodzic czy lokalna firma.</p>
             <ArrowLink to="../kontakt">Napisz do nas</ArrowLink>
           </div>
         </div>

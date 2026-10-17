@@ -7,6 +7,12 @@ import MezczyzniPrzyjacieleRoute from './routes/mezczyzni/przyjaciele';
 import MezczyzniZostanPartneremRoute from './routes/mezczyzni/zostan-partnerem';
 import MezczyzniMediaRoute from './routes/mezczyzni/media';
 import MezczyzniLayoutRoute from './routes/mezczyzni/layout';
+import MezczyzniNotFoundRoute from './routes/mezczyzni/not-found';
+import { PAGE_META, type PageMeta, type PageMetaHandle } from '../shared/utils/pageMeta';
+
+function pageMeta(meta: PageMeta): PageMetaHandle {
+  return { pageMeta: meta };
+}
 
 export const appRoutes: RouteObject[] = [
   {
@@ -21,12 +27,29 @@ export const appRoutes: RouteObject[] = [
   {
     element: <MezczyzniLayoutRoute />,
     children: [
-      { path: 'klub', element: <MezczyzniKlubRoute /> },
-      { path: 'druzyna', element: <MezczyzniDruzynaRoute /> },
-      { path: 'kontakt', element: <MezczyzniKontaktRoute /> },
-      { path: 'przyjaciele', element: <MezczyzniPrzyjacieleRoute /> },
-      { path: 'zostan-partnerem', element: <MezczyzniZostanPartneremRoute /> },
-      { path: 'media', element: <MezczyzniMediaRoute /> },
+      { path: 'klub', element: <MezczyzniKlubRoute />, handle: pageMeta(PAGE_META.klub) },
+      {
+        path: 'druzyna',
+        element: <MezczyzniDruzynaRoute />,
+        handle: pageMeta(PAGE_META.druzyna),
+      },
+      {
+        path: 'kontakt',
+        element: <MezczyzniKontaktRoute />,
+        handle: pageMeta(PAGE_META.kontakt),
+      },
+      {
+        path: 'przyjaciele',
+        element: <MezczyzniPrzyjacieleRoute />,
+        handle: pageMeta(PAGE_META.przyjaciele),
+      },
+      {
+        path: 'zostan-partnerem',
+        element: <MezczyzniZostanPartneremRoute />,
+        handle: pageMeta(PAGE_META.zostanPartnerem),
+      },
+      { path: 'media', element: <MezczyzniMediaRoute />, handle: pageMeta(PAGE_META.media) },
+      { path: '*', element: <MezczyzniNotFoundRoute />, handle: pageMeta(PAGE_META.notFound) },
     ],
   },
 ];
