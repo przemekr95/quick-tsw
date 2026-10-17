@@ -78,6 +78,50 @@ describe('SectionLayout', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Sekcja Mężczyzn' })).toBeInTheDocument();
   });
 
+  it('renders the page heading as the only h1 outside the home route', () => {
+    render(
+      <MemoryRouter initialEntries={['/kontakt']}>
+        <SectionLayout
+          clubName="MKS Siatkówka"
+          heroHeading="Sekcja Mężczyzn"
+          heroSlides={mockHeroSlides}
+          pageHeading="Kontakt z sekcją"
+          sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
+          sectionPath=""
+          sponsors={mockSponsors}
+        >
+          <p>Zawartość</p>
+        </SectionLayout>
+      </MemoryRouter>,
+    );
+
+    expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1);
+    expect(screen.getByRole('heading', { level: 1, name: 'Kontakt z sekcją' })).toBeInTheDocument();
+  });
+
+  it('keeps the hero heading as the h1 on the home route', () => {
+    render(
+      <MemoryRouter initialEntries={['/klub']}>
+        <SectionLayout
+          clubName="MKS Siatkówka"
+          heroHeading="Sekcja Mężczyzn"
+          heroSlides={mockHeroSlides}
+          pageHeading="Ukryty nagłówek"
+          sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
+          sectionPath=""
+          sponsors={mockSponsors}
+        >
+          <p>Zawartość</p>
+        </SectionLayout>
+      </MemoryRouter>,
+    );
+
+    expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1);
+    expect(screen.getByRole('heading', { level: 1, name: 'Sekcja Mężczyzn' })).toBeInTheDocument();
+  });
+
   it('does not render cta outside section home route', () => {
     render(
       <MemoryRouter initialEntries={['/kontakt']}>

@@ -150,6 +150,20 @@ describe('app routing', () => {
     );
   });
 
+  it('sets a page-specific title for each tab', async () => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/druzyna'] });
+
+    render(<RouterProvider router={router} />);
+
+    expect(
+      await screen.findByRole('heading', {
+        level: 1,
+        name: 'Drużyna siatkówki mężczyzn TS Wisła Kraków',
+      }),
+    ).toBeInTheDocument();
+    expect(document.title).toBe('Drużyna | Siatkówka mężczyzn TS Wisła Kraków');
+  });
+
   it('renders the media tab directly for mezczyzni', async () => {
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/media'] });
 

@@ -4,6 +4,7 @@ export { useContactInfo } from './useContactInfo';
 export { useHeroSlider } from './useHeroSlider';
 export { useMatchCountdown } from './useMatchCountdown';
 export { useMenuFocusTrap } from './useMenuFocusTrap';
+export { usePageMeta } from './usePageMeta';
 export { usePartnershipContent } from './usePartnershipContent';
 export { usePatrons } from './usePatrons';
 export { useScrollToTop } from './useScrollToTop';

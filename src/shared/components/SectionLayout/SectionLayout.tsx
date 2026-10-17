@@ -15,6 +15,7 @@ interface SectionLayoutProps extends PropsWithChildren {
   sectionName: string;
   sectionPath: SectionPath;
   heroHeading: string;
+  pageHeading?: string;
   heroSlides: HeroSlide[];
   clubName: string;
   sponsors: Sponsor[];
@@ -29,6 +30,7 @@ export function SectionLayout({
   sectionName,
   sectionPath,
   heroHeading,
+  pageHeading,
   heroSlides,
   clubName,
   sponsors,
@@ -106,6 +108,7 @@ export function SectionLayout({
       )}
 
       <main className={styles.main} id="section-content" tabIndex={-1}>
+        {!isSectionHome && pageHeading && <h1 className={styles.pageHeading}>{pageHeading}</h1>}
         <div className={styles.mainInner}>{children}</div>
       </main>
 
