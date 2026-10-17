@@ -37,6 +37,10 @@ const aboutImageBySection: Record<SectionId, { src: string; alt: string }> = {
   },
 };
 
+const historyUrlBySection: Record<SectionId, string> = {
+  mezczyzni: 'https://historiawisly.pl/wiki/index.php?title=Pi%C5%82ka_siatkowa_m%C4%99%C5%BCczyzn',
+};
+
 export function ClubInfo({
   club,
   landingContent,
@@ -58,6 +62,7 @@ export function ClubInfo({
           <AboutSection
             clubName={club.name}
             history={club.history}
+            historyUrl={historyUrlBySection[section]}
             imageAlt={aboutImage.alt}
             imageSrc={aboutImage.src}
           />
