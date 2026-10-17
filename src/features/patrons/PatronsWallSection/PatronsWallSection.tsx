@@ -36,8 +36,7 @@ export function PatronsWallSection({ patrons }: PatronsWallSectionProps) {
           Przyjaciele Białej Gwiazdy
         </h2>
         <p className={styles.lead}>
-          Dziękujemy każdej osobie i firmie, która zdecydowała się pomóc naszemu klubowi. Nie ma tu
-          wsparcia zbyt małego - liczy się każda złotówka i każdy gest.
+          Dziękujemy każdej osobie i firmie, która zdecydowała się pomóc naszej sekcji.
         </p>
       </div>
 

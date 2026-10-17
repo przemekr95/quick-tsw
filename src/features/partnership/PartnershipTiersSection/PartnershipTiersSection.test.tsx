@@ -8,7 +8,7 @@ const tiers: PartnershipTier[] = [
     key: 'primary',
     name: 'Partner Główny',
     description: 'Opis pakietu głównego.',
-    perks: ['Logo na strojach meczowych obu sekcji'],
+    perks: ['Logo na strojach meczowych'],
   },
   {
     key: 'secondary',
