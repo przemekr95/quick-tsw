@@ -4,21 +4,12 @@
   display: grid;
   gap: 1.4rem;
   padding-block: clamp(3rem, 9vw, 5.5rem);
-  counter-increment: section;
 }
 
 .heading {
   @include sh.heading;
 
   padding-inline: clamp(1.25rem, 5vw, 3rem);
-}
-
-.index {
-  @include sh.index;
-}
-
-.eyebrow {
-  @include sh.eyebrow;
 }
 
 .title {

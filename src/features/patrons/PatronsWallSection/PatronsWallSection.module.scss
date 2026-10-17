@@ -10,14 +10,6 @@
   max-width: 52ch;
 }
 
-.index {
-  @include sh.index;
-}
-
-.eyebrow {
-  @include sh.eyebrow;
-}
-
 .title {
   @include sh.title;
 

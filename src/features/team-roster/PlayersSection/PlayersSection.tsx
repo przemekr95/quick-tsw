@@ -49,8 +49,6 @@ export function PlayersSection({ players }: PlayersSectionProps) {
   return (
     <section aria-labelledby="zawodnicy-heading" className={styles.section} id="zawodnicy">
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Skład</p>
         <h2 className={styles.title} id="zawodnicy-heading">
           Zawodnicy
         </h2>

@@ -11,8 +11,6 @@ export function BrandBookSection() {
 
       <div className={styles.copy}>
         <div className={styles.heading}>
-          <p aria-hidden="true" className={styles.index} />
-          <p className={styles.eyebrow}>Media</p>
           <h2 className={styles.title} id="ksiega-znakow-heading">
             Księga znaków
           </h2>

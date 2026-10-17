@@ -20,8 +20,6 @@ export function AboutSection({
     <section aria-labelledby="o-klubie-heading" className={styles.section} id="o-klubie">
       <div className={styles.copy}>
         <div className={styles.heading}>
-          <p aria-hidden="true" className={styles.index} />
-          <p className={styles.eyebrow}>O klubie</p>
           <h2 className={styles.title} id="o-klubie-heading">
             {clubName}
           </h2>

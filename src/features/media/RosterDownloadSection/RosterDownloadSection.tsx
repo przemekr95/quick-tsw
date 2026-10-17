@@ -19,8 +19,6 @@ export function RosterDownloadSection() {
       id="sklady-zawodnikow"
     >
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Do pobrania</p>
         <h2 className={styles.title} id="sklady-zawodnikow-heading">
           Składy zawodników
         </h2>

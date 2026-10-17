@@ -19,8 +19,6 @@ export function PartnershipTiersSection({ tiers }: PartnershipTiersSectionProps)
       id="pakiety-partnerskie"
     >
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Oferta</p>
         <h2 className={styles.title} id="pakiety-partnerskie-heading">
           Pakiety partnerskie
         </h2>

@@ -32,8 +32,6 @@ export function PatronsWallSection({ patrons }: PatronsWallSectionProps) {
   return (
     <section aria-labelledby="przyjaciele-heading" className={styles.section} id="przyjaciele">
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Wsparcie klubu</p>
         <h2 className={styles.title} id="przyjaciele-heading">
           Przyjaciele Białej Gwiazdy
         </h2>

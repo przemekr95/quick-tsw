@@ -58,8 +58,6 @@
 
 @mixin surface($secondary-glow: true) {
   @include glow-layer($secondary-glow);
-
-  counter-reset: section;
 }
 
 @mixin glow-blob($top: null, $right: null, $bottom: null, $left: null) {

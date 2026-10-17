@@ -11,8 +11,6 @@ export function RosterSection({ players }: RosterSectionProps) {
     <section aria-labelledby="nasza-druzyna-heading" className={styles.section} id="nasza-druzyna">
       <div className={styles.header}>
         <div className={styles.heading}>
-          <p aria-hidden="true" className={styles.index} />
-          <p className={styles.eyebrow}>Skład</p>
           <h2 className={styles.title} id="nasza-druzyna-heading">
             Poznaj drużynę
           </h2>

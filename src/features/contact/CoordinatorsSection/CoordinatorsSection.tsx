@@ -11,8 +11,6 @@ export function CoordinatorsSection({ coordinators }: CoordinatorsSectionProps) 
   return (
     <section aria-labelledby="koordynatorzy-heading" className={styles.section} id="koordynatorzy">
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Kontakt do sekcji</p>
         <h2 className={styles.title} id="koordynatorzy-heading">
           Koordynatorzy
         </h2>

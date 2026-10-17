@@ -14,8 +14,6 @@ export function UpcomingMatchesSection({ matches }: UpcomingMatchesSectionProps)
   return (
     <section aria-labelledby="kolejne-mecze-heading" className={styles.section} id="kolejne-mecze">
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Terminarz</p>
         <h2 className={styles.title} id="kolejne-mecze-heading">
           Kolejne mecze
         </h2>

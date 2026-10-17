@@ -61,8 +61,6 @@ export function ClubColorsSection() {
   return (
     <section aria-labelledby="kolory-klubu-heading" className={styles.section} id="kolory-klubu">
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Identyfikacja wizualna</p>
         <h2 className={styles.title} id="kolory-klubu-heading">
           Kolory klubu
         </h2>
