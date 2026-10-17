@@ -14,7 +14,7 @@ export default function MezczyzniKlubRoute() {
   const { data: standings, loading: standingsLoading } = useStandings('mezczyzni');
 
   if (playersLoading || matchesLoading || standingsLoading || !club || !landingContent) {
-    return <LoadingState label="Ładowanie danych klubu..." />;
+    return <LoadingState label="Ładowanie danych klubu..." withNavOffset={false} />;
   }
 
   return (

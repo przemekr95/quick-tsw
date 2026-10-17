@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CLUB_BRAND_NAME, CLUB_CREST_SRC } from '../../utils/config';
+import { CLUB_BRAND_NAME } from '../../utils/config';
+import { CrestLoader } from '../CrestLoader';
 import styles from './LoadingScreen.module.scss';
 
 export const LOADING_SCREEN_REDIRECT_PATH = '/klub';
@@ -19,12 +20,7 @@ export function LoadingScreen() {
 
   return (
     <main aria-label={CLUB_BRAND_NAME} className={styles.root}>
-      <div className={styles.crestWrap}>
-        <div aria-hidden="true" className={styles.crestGlow} />
-        <div aria-hidden="true" className={styles.crest}>
-          <img alt="" className={styles.crestImage} src={CLUB_CREST_SRC} />
-        </div>
-      </div>
+      <CrestLoader />
       <p className={styles.status} role="status">
         Ładowanie…
       </p>
