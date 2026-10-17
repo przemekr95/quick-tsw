@@ -1,35 +1,34 @@
 import { describe, expect, it } from 'vitest';
-import { getPageMeta, NOT_FOUND_PAGE_META } from './pageMeta';
+import { getRoutePageMeta, PAGE_META } from './pageMeta';
 
-describe('getPageMeta', () => {
-  it('returns the meta of a known tab', () => {
-    const meta = getPageMeta('/druzyna', '');
+describe('getRoutePageMeta', () => {
+  it('returns the meta of the deepest matched route that has one', () => {
+    const meta = getRoutePageMeta([
+      { handle: undefined },
+      { handle: { pageMeta: PAGE_META.klub } },
+      { handle: { pageMeta: PAGE_META.druzyna } },
+    ]);
 
-    expect(meta.title).toBe('Drużyna | Siatkówka mężczyzn TS Wisła Kraków');
-    expect(meta.heading).toBe('Drużyna siatkówki mężczyzn TS Wisła Kraków');
+    expect(meta).toBe(PAGE_META.druzyna);
+  });
+
+  it('falls back to the indexable site meta when no route has a handle', () => {
+    const meta = getRoutePageMeta([{ handle: undefined }, { handle: { other: true } }]);
+
+    expect(meta).toBe(PAGE_META.klub);
     expect(meta.noindex).toBeUndefined();
   });
 
-  it('ignores a trailing slash and the section prefix', () => {
-    expect(getPageMeta('/kontakt/', '').title).toBe('Kontakt | Siatkówka mężczyzn TS Wisła Kraków');
-    expect(getPageMeta('/mezczyzni/media', '/mezczyzni').title).toBe(
-      'Media | Siatkówka mężczyzn TS Wisła Kraków',
-    );
-  });
+  it('marks only the not-found page as noindex', () => {
+    const noindexPages = Object.entries(PAGE_META)
+      .filter(([, meta]) => 'noindex' in meta && meta.noindex)
+      .map(([key]) => key);
 
-  it('falls back to the noindex not-found meta for unknown paths', () => {
-    expect(getPageMeta('/nie-ma-takiej-strony', '')).toBe(NOT_FOUND_PAGE_META);
-    expect(getPageMeta('/druzyna/123', '')).toBe(NOT_FOUND_PAGE_META);
-    expect(NOT_FOUND_PAGE_META.noindex).toBe(true);
+    expect(noindexPages).toEqual(['notFound']);
   });
 
   it('keeps every description within the length search engines display', () => {
-    const slugs = ['klub', 'druzyna', 'kontakt', 'przyjaciele', 'zostan-partnerem', 'media'];
-
-    for (const slug of slugs) {
-      const { description } = getPageMeta(`/${slug}`, '');
-
-      expect(description).not.toBe(NOT_FOUND_PAGE_META.description);
+    for (const { description } of Object.values(PAGE_META)) {
       expect(description.length).toBeLessThanOrEqual(160);
     }
   });

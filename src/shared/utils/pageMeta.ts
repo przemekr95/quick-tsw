@@ -6,9 +6,15 @@ export interface PageMeta {
   noindex?: boolean;
 }
 
+// Attached to routes as `handle` so metadata follows the route React Router
+// actually matched (case-insensitive, percent-decoded), not the raw URL.
+export interface PageMetaHandle {
+  pageMeta: PageMeta;
+}
+
 const SITE_NAME = 'Siatkówka mężczyzn TS Wisła Kraków';
 
-const SECTION_PAGE_META: Partial<Record<string, PageMeta>> = {
+export const PAGE_META = {
   klub: {
     title: 'Siatkówka mężczyzn – TS Wisła Kraków',
     description:
@@ -32,7 +38,7 @@ const SECTION_PAGE_META: Partial<Record<string, PageMeta>> = {
       'Przyjaciele Białej Gwiazdy – osoby i firmy, które wspierają sekcję siatkówki mężczyzn TS Wisła Kraków. Dołącz do grona wspierających.',
     heading: 'Przyjaciele Białej Gwiazdy – wspierający siatkówkę mężczyzn TS Wisła Kraków',
   },
-  'zostan-partnerem': {
+  zostanPartnerem: {
     title: `Zostań Partnerem | ${SITE_NAME}`,
     description:
       'Zostań partnerem sekcji siatkówki mężczyzn TS Wisła Kraków – pakiety partnerskie, ekspozycja marki podczas meczów i elastyczne formy współpracy.',
@@ -44,16 +50,21 @@ const SECTION_PAGE_META: Partial<Record<string, PageMeta>> = {
       'Materiały dla mediów i partnerów: księga znaku TS Wisła Kraków, kolory klubu i skład drużyny siatkówki mężczyzn do pobrania.',
     heading: 'Materiały dla mediów – siatkówka mężczyzn TS Wisła Kraków',
   },
-};
+  notFound: {
+    title: `Nie znaleziono strony | ${SITE_NAME}`,
+    description: 'Strona, której szukasz, nie istnieje albo została przeniesiona.',
+    noindex: true,
+  },
+} satisfies Record<string, PageMeta>;
 
-export const NOT_FOUND_PAGE_META: PageMeta = {
-  title: `Nie znaleziono strony | ${SITE_NAME}`,
-  description: 'Strona, której szukasz, nie istnieje albo została przeniesiona.',
-  noindex: true,
-};
+function isPageMetaHandle(handle: unknown): handle is PageMetaHandle {
+  return typeof handle === 'object' && handle !== null && 'pageMeta' in handle;
+}
 
-export function getPageMeta(pathname: string, sectionPath: string): PageMeta {
-  const slug = pathname.slice(sectionPath.length).replace(/^\/+|\/+$/g, '');
+// A route without a handle falls back to the indexable site defaults rather
+// than to the noindex not-found meta, so a forgotten handle cannot hide a page.
+export function getRoutePageMeta(matches: readonly { handle: unknown }[]): PageMeta {
+  const handle = matches.findLast((match) => isPageMetaHandle(match.handle))?.handle;
 
-  return SECTION_PAGE_META[slug] ?? NOT_FOUND_PAGE_META;
+  return isPageMetaHandle(handle) ? handle.pageMeta : PAGE_META.klub;
 }

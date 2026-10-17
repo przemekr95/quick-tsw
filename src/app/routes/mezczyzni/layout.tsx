@@ -1,16 +1,13 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useMatches } from 'react-router-dom';
 import { ThemeProvider } from '../../providers/ThemeProvider';
 import { useClubData, useClubLandingContent, usePageMeta } from '../../../shared/hooks';
 import { SectionLayout } from '../../../shared/components/SectionLayout';
-import { getPageMeta } from '../../../shared/utils/pageMeta';
-
-const SECTION_PATH = '';
+import { getRoutePageMeta } from '../../../shared/utils/pageMeta';
 
 export default function MezczyzniLayoutRoute() {
   const { data } = useClubLandingContent('mezczyzni');
   const { data: club } = useClubData('mezczyzni');
-  const { pathname } = useLocation();
-  const pageMeta = getPageMeta(pathname, SECTION_PATH);
+  const pageMeta = getRoutePageMeta(useMatches());
 
   usePageMeta(pageMeta);
 
@@ -23,7 +20,7 @@ export default function MezczyzniLayoutRoute() {
         pageHeading={pageMeta.heading}
         sectionLabel="Mężczyźni"
         sectionName="Siatkówka mężczyzn"
-        sectionPath={SECTION_PATH}
+        sectionPath=""
         sponsors={club?.sponsors ?? []}
       >
         <Outlet context={{ club, landingContent: data }} />
