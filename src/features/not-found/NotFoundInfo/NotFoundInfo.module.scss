@@ -1,0 +1,29 @@
+@use '../../../shared/theme/darkSectionRoot' as dsr;
+@use '../../../shared/theme/sectionHeading' as sh;
+
+.root {
+  @include dsr.root;
+}
+
+.stack {
+  @include dsr.surface($secondary-glow: false);
+}
+
+.section {
+  @include sh.shell($gap: 1.2rem, $divider: false);
+
+  min-height: 60vh;
+  align-content: center;
+  justify-items: start;
+}
+
+.title {
+  @include sh.title;
+}
+
+.lead {
+  margin: 0;
+  max-width: 50ch;
+  line-height: 1.7;
+  color: color-mix(in srgb, currentcolor 74%, transparent);
+}

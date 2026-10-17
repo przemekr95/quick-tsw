@@ -164,6 +164,24 @@ describe('app routing', () => {
     expect(document.title).toBe('Drużyna | Siatkówka mężczyzn TS Wisła Kraków');
   });
 
+  it('renders a noindex not-found page for unknown URLs', async () => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/nie-ma-takiej-strony'] });
+
+    render(<RouterProvider router={router} />);
+
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Nie znaleziono strony' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /wróć na stronę klubu/i })).toHaveAttribute(
+      'href',
+      '/klub',
+    );
+    expect(document.head.querySelector('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'noindex',
+    );
+  });
+
   it('renders the media tab directly for mezczyzni', async () => {
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/media'] });
 

@@ -1,0 +1,1 @@
+export { NotFoundInfo } from './NotFoundInfo';

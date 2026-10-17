@@ -7,6 +7,7 @@ import MezczyzniPrzyjacieleRoute from './routes/mezczyzni/przyjaciele';
 import MezczyzniZostanPartneremRoute from './routes/mezczyzni/zostan-partnerem';
 import MezczyzniMediaRoute from './routes/mezczyzni/media';
 import MezczyzniLayoutRoute from './routes/mezczyzni/layout';
+import MezczyzniNotFoundRoute from './routes/mezczyzni/not-found';
 
 export const appRoutes: RouteObject[] = [
   {
@@ -27,6 +28,7 @@ export const appRoutes: RouteObject[] = [
       { path: 'przyjaciele', element: <MezczyzniPrzyjacieleRoute /> },
       { path: 'zostan-partnerem', element: <MezczyzniZostanPartneremRoute /> },
       { path: 'media', element: <MezczyzniMediaRoute /> },
+      { path: '*', element: <MezczyzniNotFoundRoute /> },
     ],
   },
 ];
