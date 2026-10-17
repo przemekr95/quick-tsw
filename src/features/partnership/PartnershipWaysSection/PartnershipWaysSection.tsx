@@ -15,8 +15,6 @@ export function PartnershipWaysSection({ leadText, ways }: PartnershipWaysSectio
     >
       <div className={styles.copy}>
         <div className={styles.heading}>
-          <p aria-hidden="true" className={styles.index} />
-          <p className={styles.eyebrow}>Elastyczna współpraca</p>
           <h2 className={styles.title} id="formy-wspolpracy-heading">
             Formy współpracy
           </h2>

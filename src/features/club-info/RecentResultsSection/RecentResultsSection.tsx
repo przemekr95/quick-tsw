@@ -15,8 +15,6 @@ export function RecentResultsSection({ results }: RecentResultsSectionProps) {
   return (
     <section aria-labelledby="ostatnie-wyniki-heading" className={styles.section} id="ostatnie-wyniki">
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Wyniki</p>
         <h2 className={styles.title} id="ostatnie-wyniki-heading">
           Ostatnie wyniki
         </h2>

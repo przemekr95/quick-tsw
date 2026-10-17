@@ -13,14 +13,6 @@
   @include sh.heading;
 }
 
-.index {
-  @include sh.index;
-}
-
-.eyebrow {
-  @include sh.eyebrow;
-}
-
 .title {
   @include sh.title;
 
@@ -32,6 +24,10 @@
   max-width: 60ch;
   line-height: 1.7;
   color: color-mix(in srgb, currentcolor 74%, transparent);
+}
+
+.actions {
+  margin-top: 0.6rem;
 }
 
 .figure {

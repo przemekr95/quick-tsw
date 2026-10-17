@@ -9,8 +9,6 @@ export function StandingsSection({ standings }: StandingsSectionProps) {
   return (
     <section aria-labelledby="tabela-ligowa-heading" className={styles.section} id="tabela-ligowa">
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Klasyfikacja</p>
         <h2 className={styles.title} id="tabela-ligowa-heading">
           Tabela ligowa
         </h2>

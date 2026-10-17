@@ -9,8 +9,6 @@ export function TrainingScheduleSection({ trainingGroups }: TrainingScheduleSect
   return (
     <section aria-labelledby="treningi-heading" className={styles.section} id="treningi">
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Harmonogram</p>
         <h2 className={styles.title} id="treningi-heading">
           Treningi
         </h2>

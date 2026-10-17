@@ -30,7 +30,6 @@ export function NextMatchSection({ match, form }: NextMatchSectionProps) {
     >
       <div className={styles.copy}>
         <div className={styles.heading}>
-          <p aria-hidden="true" className={styles.index} />
           <p className={styles.eyebrow}>{formatCompetitionLabel(match)}</p>
           <h2 className={styles.title} id="najblizszy-mecz-heading">
             {match.opponent}

@@ -8,6 +8,7 @@ describe('AboutSection', () => {
       <AboutSection
         clubName="TS Wisła Kraków"
         history="Historia klubu opisana w kilku zdaniach."
+        historyUrl="https://historiawisly.pl/wiki/"
         imageAlt="Zdjęcie klubowe"
         imageSrc="/images/backgrounds/hero-m.jpg"
       />,
@@ -16,5 +17,9 @@ describe('AboutSection', () => {
     expect(screen.getByRole('heading', { name: 'TS Wisła Kraków' })).toBeInTheDocument();
     expect(screen.getByText('Historia klubu opisana w kilku zdaniach.')).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Zdjęcie klubowe' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /pełna historia sekcji/i })).toHaveAttribute(
+      'href',
+      'https://historiawisly.pl/wiki/',
+    );
   });
 });

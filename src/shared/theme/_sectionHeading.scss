@@ -2,7 +2,6 @@
   display: grid;
   gap: $gap;
   padding: clamp(3rem, 9vw, 5.5rem) clamp(1.25rem, 5vw, 3rem);
-  counter-increment: section;
 
   @if $divider {
     border-top: 1px solid color-mix(in srgb, currentcolor 14%, transparent);
@@ -12,18 +11,6 @@
 @mixin heading {
   display: grid;
   gap: 0.5rem;
-}
-
-@mixin index {
-  margin: 0;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: color-mix(in srgb, currentcolor 38%, transparent);
-
-  &::before {
-    content: counter(section, decimal-leading-zero);
-  }
 }
 
 @mixin eyebrow {

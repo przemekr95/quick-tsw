@@ -10,8 +10,6 @@ export function JoinSection({ recruitmentPaths }: JoinSectionProps) {
     <section aria-labelledby="dolacz-do-nas-heading" className={styles.section} id="dolacz-do-nas">
       <div className={styles.copy}>
         <div className={styles.heading}>
-          <p aria-hidden="true" className={styles.index} />
-          <p className={styles.eyebrow}>Dołącz do nas</p>
           <h2 className={styles.title} id="dolacz-do-nas-heading">
             Twoje miejsce jest na boisku
           </h2>

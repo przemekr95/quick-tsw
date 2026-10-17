@@ -13,8 +13,6 @@ export function ContactDetailsSection({ contact }: ContactDetailsSectionProps) {
       id="dane-kontaktowe"
     >
       <div className={styles.heading}>
-        <p aria-hidden="true" className={styles.index} />
-        <p className={styles.eyebrow}>Organizacja</p>
         <h2 className={styles.title} id="dane-kontaktowe-heading">
           Dane kontaktowe
         </h2>

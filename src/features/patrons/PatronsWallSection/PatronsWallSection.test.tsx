@@ -23,13 +23,13 @@ function renderWall(list: Patron[] = patrons) {
 }
 
 describe('PatronsWallSection', () => {
-  it('thanks supporters and says that every contribution counts', () => {
+  it('thanks everyone who supports the section', () => {
     renderWall();
 
     expect(
       screen.getByRole('heading', { level: 2, name: 'Przyjaciele Białej Gwiazdy' }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Nie ma tu wsparcia zbyt małego/)).toBeInTheDocument();
+    expect(screen.getByText(/zdecydowała się pomóc naszej sekcji/)).toBeInTheDocument();
   });
 
   it('groups patrons under one heading per tier, from the highest tier down', () => {
