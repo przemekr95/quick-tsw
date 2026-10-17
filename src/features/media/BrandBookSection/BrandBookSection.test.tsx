@@ -11,5 +11,6 @@ describe('BrandBookSection', () => {
 
     const link = screen.getByRole('link', { name: /Pobierz księgę znaków/ });
     expect(link).toHaveAttribute('download');
+    expect(link).toHaveAttribute('href', '/downloads/Ksiega-Znaku-TS-Wisla-Krakow.pdf');
   });
 });

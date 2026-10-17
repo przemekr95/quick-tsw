@@ -22,6 +22,6 @@ export const FOOTER_LINKS = [
 ] as const;
 
 export const MEDIA_DOWNLOADS = {
-  brandBook: CLUB_CREST_SRC,
-  rosterMezczyzni: '/downloads/sklad-mezczyzni.pdf',
+  brandBook: '/downloads/Ksiega-Znaku-TS-Wisla-Krakow.pdf',
+  rosterMezczyzni: '/downloads/sklad-seniorzy2627.pdf',
 } as const;

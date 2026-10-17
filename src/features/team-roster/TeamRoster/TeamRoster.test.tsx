@@ -50,7 +50,7 @@ describe('TeamRoster', () => {
 
     const link = screen.getByRole('link', { name: /Pobierz skład - Seniorzy/ });
 
-    expect(link).toHaveAttribute('href', '/downloads/sklad-mezczyzni.pdf');
+    expect(link).toHaveAttribute('href', '/downloads/sklad-seniorzy2627.pdf');
     expect(link).toHaveAttribute('download');
   });
 });

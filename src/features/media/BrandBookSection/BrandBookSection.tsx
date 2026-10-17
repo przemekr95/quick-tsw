@@ -1,4 +1,4 @@
-import { CLUB_BRAND_NAME, MEDIA_DOWNLOADS } from '../../../shared/utils/config';
+import { CLUB_BRAND_NAME, CLUB_CREST_SRC, MEDIA_DOWNLOADS } from '../../../shared/utils/config';
 import { DownloadLink } from '../DownloadLink';
 import styles from './BrandBookSection.module.scss';
 
@@ -6,11 +6,7 @@ export function BrandBookSection() {
   return (
     <section aria-labelledby="ksiega-znakow-heading" className={styles.section} id="ksiega-znakow">
       <figure className={styles.figure}>
-        <img
-          alt={`Herb klubu ${CLUB_BRAND_NAME}`}
-          className={styles.crest}
-          src={MEDIA_DOWNLOADS.brandBook}
-        />
+        <img alt={`Herb klubu ${CLUB_BRAND_NAME}`} className={styles.crest} src={CLUB_CREST_SRC} />
       </figure>
 
       <div className={styles.copy}>
