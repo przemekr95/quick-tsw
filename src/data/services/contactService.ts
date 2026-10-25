@@ -1,6 +1,6 @@
 import type { ContactInfo, SectionId } from '../../shared/types/domain';
-import { getSectionContent } from './apiClient';
+import contactData from '../mocks/contact.mezczyzni.json';
 
-export async function getContactData(section: SectionId): Promise<ContactInfo> {
-  return getSectionContent<ContactInfo>(section, 'contact');
+export async function getContactData(_section: SectionId): Promise<ContactInfo> {
+  return contactData as unknown as ContactInfo;
 }

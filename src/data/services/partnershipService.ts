@@ -1,6 +1,6 @@
 import type { PartnershipContent, SectionId } from '../../shared/types/domain';
-import { getSectionContent } from './apiClient';
+import partnershipContent from '../mocks/partnership.mezczyzni.json';
 
-export async function getPartnershipContent(section: SectionId): Promise<PartnershipContent> {
-  return getSectionContent<PartnershipContent>(section, 'partnership');
+export async function getPartnershipContent(_section: SectionId): Promise<PartnershipContent> {
+  return partnershipContent as unknown as PartnershipContent;
 }

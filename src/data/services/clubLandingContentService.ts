@@ -1,6 +1,6 @@
 import type { ClubLandingContent, SectionId } from '../../shared/types/domain';
-import { getSectionContent } from './apiClient';
+import clubLandingContent from '../mocks/club-landing.mezczyzni.json';
 
-export async function getClubLandingContent(section: SectionId): Promise<ClubLandingContent> {
-  return getSectionContent<ClubLandingContent>(section, 'club-landing');
+export async function getClubLandingContent(_section: SectionId): Promise<ClubLandingContent> {
+  return clubLandingContent as unknown as ClubLandingContent;
 }
