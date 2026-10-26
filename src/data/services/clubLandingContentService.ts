@@ -1,6 +1,10 @@
 import type { ClubLandingContent, SectionId } from '../../shared/types/domain';
-import clubLandingContent from '../mocks/club-landing.mezczyzni.json';
+import clubLandingMezczyzni from '../mocks/club-landing.mezczyzni.json';
 
-export async function getClubLandingContent(_section: SectionId): Promise<ClubLandingContent> {
-  return clubLandingContent as unknown as ClubLandingContent;
+const clubLandingContentBySection: Record<SectionId, ClubLandingContent> = {
+  mezczyzni: clubLandingMezczyzni as ClubLandingContent,
+};
+
+export async function getClubLandingContent(section: SectionId): Promise<ClubLandingContent> {
+  return Promise.resolve(clubLandingContentBySection[section]);
 }
