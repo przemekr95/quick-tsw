@@ -40,7 +40,7 @@
     {
       "name": "Kadeci",
       "venue": "Szkoła Podstawowa nr 93",
-      "address": "ul. Szlachtowskiego, Kraków",
+      "address": "ul. Szlachtowskiego 31, Kraków",
       "mapUrl": "https://www.google.com/maps/search/?api=1&query=Szko%C5%82a+Podstawowa+nr+93%2C+ul.+Szlachtowskiego%2C+Krak%C3%B3w",
       "sessions": [
         { "day": "Wtorek", "time": "19:15 - 20:45" },
