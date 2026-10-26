@@ -24,6 +24,7 @@
   max-width: 60ch;
   line-height: 1.7;
   color: color-mix(in srgb, currentcolor 74%, transparent);
+  overflow-wrap: anywhere;
 }
 
 .actions {

@@ -52,12 +52,14 @@
   text-transform: uppercase;
   letter-spacing: 0.01em;
   color: inherit;
+  overflow-wrap: anywhere;
 }
 
 .tierDescription {
   margin: 0;
   line-height: 1.6;
   color: color-mix(in srgb, currentcolor 74%, transparent);
+  overflow-wrap: anywhere;
 }
 
 .perks {
@@ -74,6 +76,7 @@
   font-size: 0.88rem;
   line-height: 1.5;
   color: color-mix(in srgb, currentcolor 82%, transparent);
+  overflow-wrap: anywhere;
 }
 
 .perks li::before {

@@ -20,12 +20,13 @@
 
 @media (width >= 720px) {
   .groups {
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
   }
 }
 
 .group {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.9rem;
   align-content: start;
   padding: 1.4rem 1.5rem;
@@ -56,6 +57,7 @@
   margin: 0;
   line-height: 1.6;
   color: color-mix(in srgb, currentcolor 74%, transparent);
+  overflow-wrap: anywhere;
 }
 
 .grid {
@@ -64,7 +66,7 @@
   padding: 0;
   display: grid;
   gap: 0.6rem;
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(8.5rem, 100%), 1fr));
 }
 
 .cell {
@@ -96,12 +98,14 @@
   align-items: center;
   gap: 0.5rem;
   width: fit-content;
+  max-width: 100%;
   color: inherit;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
+  overflow-wrap: anywhere;
   border-bottom: 1px solid color-mix(in srgb, currentcolor 35%, transparent);
   padding-bottom: 0.2rem;
   transition:
