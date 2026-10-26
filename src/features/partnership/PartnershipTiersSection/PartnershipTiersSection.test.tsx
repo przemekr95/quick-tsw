@@ -25,7 +25,7 @@ const tiers: PartnershipTier[] = [
 ];
 
 describe('PartnershipTiersSection', () => {
-  it('renders every partnership tier passed in props with its perks', () => {
+  it('renders every partnership tier passed in props with its perks and the closing note', () => {
     render(<PartnershipTiersSection tiers={tiers} />);
 
     expect(screen.getByRole('heading', { name: 'Pakiety partnerskie' })).toBeInTheDocument();
@@ -35,6 +35,9 @@ describe('PartnershipTiersSection', () => {
     expect(screen.getByText('Polecane')).toBeInTheDocument();
     expect(
       screen.getByText('Podziękowanie w gronie Przyjaciół Białej Gwiazdy'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Każdy pakiet możemy dopasować do potrzeb i możliwości Twojej firmy\./),
     ).toBeInTheDocument();
   });
 });

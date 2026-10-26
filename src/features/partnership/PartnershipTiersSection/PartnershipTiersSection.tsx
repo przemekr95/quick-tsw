@@ -38,6 +38,11 @@ export function PartnershipTiersSection({ tiers }: PartnershipTiersSectionProps)
           </li>
         ))}
       </ul>
+
+      <p className={styles.note}>
+        Każdy pakiet możemy dopasować do potrzeb i możliwości Twojej firmy. Chętnie przygotujemy
+        indywidualną propozycję współpracy.
+      </p>
     </section>
   );
 }

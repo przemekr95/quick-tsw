@@ -1,7 +1,7 @@
 {
-  "leadText": "Siatkówka to widowisko, które gromadzi kibiców na trybunach i przed ekranami przez cały sezon. Partnerstwo z Towarzystwem Sportowym Wisła Kraków to realna obecność Twojej marki przy każdym secie - na hali, w mediach klubowych i w sercu lokalnej społeczności.",
+  "leadText": "Siatkówka to w Polsce coś więcej niż sport - to dyscyplina, która od lat daje kibicom powody do dumy i gromadzi całe rodziny. Partnerstwo z Towarzystwem Sportowym Wisła Kraków to realna obecność Twojej marki przy każdym secie - w hali, w mediach klubowych i w sercu lokalnej społeczności.",
   "benefits": [
-    "Stała ekspozycja marki podczas meczów obu sekcji",
+    "Stała ekspozycja marki podczas meczów sekcji",
     "Obecność w materiałach klubowych i mediach społecznościowych",
     "Współtworzenie historii klubu założonego w 1906 roku",
     "Warunki dopasowane do możliwości Twojej firmy"
@@ -10,31 +10,35 @@
     {
       "key": "primary",
       "name": "Partner Główny",
-      "description": "Twoja marka towarzyszy nam przez cały sezon - na strojach, na hali i we wszystkich materiałach klubu.",
+      "description": "Twoja marka towarzyszy nam przez cały sezon: na strojach, w hali i we wszystkich materiałach sekcji.",
       "perks": [
-        "Logo na strojach meczowych",
-        "Ekspozycja na hali podczas każdego meczu",
-        "Wyróżnione miejsce w materiałach i mediach klubu"
+        "Logo na przodzie koszulek meczowych",
+        "Baner w hali podczas każdego meczu domowego",
+        "Wyróżnione miejsce w materiałach i mediach społecznościowych sekcji",
+        "Możliwość nadania nazwy turniejowi lub wydarzeniu sekcji",
+        "Firmowy trening siatkówki dla pracowników"
       ]
     },
     {
       "key": "secondary",
       "name": "Partner",
-      "description": "Obecność podczas wybranych meczów i wydarzeń oraz stałe miejsce w komunikacji cyfrowej klubu.",
+      "description": "Obecność podczas wybranych meczów i wydarzeń oraz stałe miejsce w komunikacji cyfrowej sekcji.",
       "perks": [
-        "Logo na banerach podczas wybranych meczów",
-        "Wzmianki w mediach społecznościowych klubu",
-        "Zaproszenia na wydarzenia klubowe"
+        "Logo na strojach treningowych lub rozgrzewkowych",
+        "Baner podczas wybranych meczów domowych",
+        "Regularne wzmianki w mediach społecznościowych",
+        "Zaproszenia na mecze i wydarzenia klubowe"
       ]
     },
     {
       "key": "tertiary",
       "name": "Partner Wspierający",
-      "description": "Wsparcie jednorazowe lub rzeczowe z podziękowaniem widocznym dla całej społeczności klubu.",
+      "description": "Wsparcie jednorazowe lub rzeczowe (np. sprzęt, transport, catering) z podziękowaniem widocznym dla całej społeczności klubu.",
       "perks": [
         "Podziękowanie w gronie Przyjaciół Białej Gwiazdy",
-        "Wzmianka w podsumowaniu sezonu",
-        "Możliwość rozwoju współpracy w przyszłości"
+        "Wzmianka w mediach społecznościowych i w podsumowaniu sezonu",
+        "Certyfikat partnera sekcji",
+        "Możliwość rozwoju współpracy w kolejnych sezonach"
       ]
     }
   ],

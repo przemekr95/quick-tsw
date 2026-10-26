@@ -6,7 +6,7 @@ describe('PartnershipIntroSection', () => {
   it('renders the pitch heading, lead text and benefits from props', () => {
     render(
       <PartnershipIntroSection
-        benefits={['Stała ekspozycja marki podczas meczów obu sekcji']}
+        benefits={['Stała ekspozycja marki podczas meczów sekcji']}
         leadText="Partnerstwo z klubem to realna obecność Twojej marki."
       />,
     );
@@ -15,8 +15,6 @@ describe('PartnershipIntroSection', () => {
     expect(
       screen.getByText('Partnerstwo z klubem to realna obecność Twojej marki.'),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText('Stała ekspozycja marki podczas meczów obu sekcji'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Stała ekspozycja marki podczas meczów sekcji')).toBeInTheDocument();
   });
 });
