@@ -9,9 +9,12 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
+  overflow-wrap: anywhere;
   border-bottom: 1px solid color-mix(in srgb, currentcolor 35%, transparent);
   padding-bottom: 0.2rem;
-  transition: color 160ms ease, border-color 160ms ease;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
 
   &:hover,
   &:focus-visible {
@@ -40,7 +43,10 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: opacity 160ms ease, transform 160ms ease;
+  overflow-wrap: anywhere;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
 
   &:hover,
   &:focus-visible {

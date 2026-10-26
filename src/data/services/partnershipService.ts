@@ -1,6 +1,10 @@
 import type { PartnershipContent, SectionId } from '../../shared/types/domain';
-import partnershipContent from '../mocks/partnership.mezczyzni.json';
+import partnershipMezczyzni from '../mocks/partnership.mezczyzni.json';
 
-export async function getPartnershipContent(_section: SectionId): Promise<PartnershipContent> {
-  return partnershipContent as unknown as PartnershipContent;
+const partnershipContentBySection: Record<SectionId, PartnershipContent> = {
+  mezczyzni: partnershipMezczyzni as PartnershipContent,
+};
+
+export async function getPartnershipContent(section: SectionId): Promise<PartnershipContent> {
+  return Promise.resolve(partnershipContentBySection[section]);
 }

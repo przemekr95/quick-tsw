@@ -6,7 +6,7 @@ import { PartnershipInfo } from './PartnershipInfo';
 
 const content: PartnershipContent = {
   leadText: 'Partnerstwo z klubem to realna obecność Twojej marki.',
-  benefits: ['Stała ekspozycja marki podczas meczów obu sekcji'],
+  benefits: ['Stała ekspozycja marki podczas meczów sekcji'],
   tiers: [
     {
       key: 'primary',

@@ -132,13 +132,20 @@
 }
 
 @media (width >= 780px) {
-  .row {
+  .list {
     grid-template-columns: 7rem minmax(0, 1fr) auto auto;
+    column-gap: 1rem;
+  }
+
+  .row {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     grid-template-areas: 'date opponent location result';
     gap: 1rem;
   }
 
   .location {
-    justify-self: start;
+    justify-self: stretch;
+    text-align: center;
   }
 }

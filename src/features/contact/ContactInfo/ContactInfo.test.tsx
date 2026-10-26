@@ -13,7 +13,7 @@ const contact: ContactInfoType = {
   mapUrl: 'https://example.com',
   nip: '000-000-00-00',
   krs: '0000000000',
-  bankAccountNumber: '00 0000 0000 0000 0000 0000 0000',
+  bankAccountNumber: '45 2490 0005 0000 4600 0041 3030',
   bankAccountHolder: 'Towarzystwo Sportowe Wisła Kraków',
   coordinators: [
     {

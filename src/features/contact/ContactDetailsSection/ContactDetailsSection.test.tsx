@@ -9,7 +9,7 @@ const contact: Omit<ContactInfo, 'coordinators' | 'trainingGroups'> = {
   mapUrl: 'https://example.com',
   nip: '000-000-00-00',
   krs: '0000000000',
-  bankAccountNumber: '00 0000 0000 0000 0000 0000 0000',
+  bankAccountNumber: '45 2490 0005 0000 4600 0041 3030',
   bankAccountHolder: 'Towarzystwo Sportowe Wisła Kraków',
 };
 
@@ -21,7 +21,7 @@ describe('ContactDetailsSection', () => {
     expect(screen.getByText('ul. Sportowa 1, 00-000 Miasto')).toBeInTheDocument();
     expect(screen.getByText('000-000-00-00')).toBeInTheDocument();
     expect(screen.getByText('0000000000')).toBeInTheDocument();
-    expect(screen.getByText('00 0000 0000 0000 0000 0000 0000')).toBeInTheDocument();
+    expect(screen.getByText('45 2490 0005 0000 4600 0041 3030')).toBeInTheDocument();
     expect(screen.getByText('Towarzystwo Sportowe Wisła Kraków')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'test@klub.pl' })).toHaveAttribute(
       'href',

@@ -17,7 +17,7 @@ const trainingGroups: TrainingGroup[] = [
   {
     name: 'Kadeci',
     venue: 'Szkoła Podstawowa nr 93',
-    address: 'ul. Szlachtowskiego, Kraków',
+    address: 'ul. Szlachtowskiego 31, Kraków',
     mapUrl: 'https://maps.example.com/kadeci',
     sessions: [
       { day: 'Wtorek', time: '19:15 - 20:45' },

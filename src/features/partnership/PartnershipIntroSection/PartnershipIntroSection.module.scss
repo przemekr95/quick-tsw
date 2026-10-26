@@ -39,6 +39,7 @@
   padding-left: 1.1rem;
   line-height: 1.5;
   color: color-mix(in srgb, currentcolor 78%, transparent);
+  overflow-wrap: anywhere;
 }
 
 .list li::before {
