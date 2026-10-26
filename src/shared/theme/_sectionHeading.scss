@@ -24,9 +24,11 @@
 
 @mixin title {
   margin: 0;
-  font-size: min(clamp(2.1rem, 5.4vw, 4rem), 9vw);
+  font-size: clamp(2.1rem, 5.4vw, 4rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
