@@ -10,6 +10,7 @@
   display: grid;
   grid-template-rows: auto auto auto auto;
   background-color: var(--color-background);
+  overflow-x: clip;
 }
 
 .heroInner {
