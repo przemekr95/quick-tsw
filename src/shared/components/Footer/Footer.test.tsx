@@ -22,16 +22,20 @@ describe('Footer', () => {
     expect(screen.getByText('Siatkówka mężczyzn')).toBeInTheDocument();
   });
 
-  it('links to Media and then Kontakt, scoped to the current section', () => {
+  it('links to Media, Kontakt and the separate player zone app', () => {
     renderFooter();
 
     const nav = screen.getByRole('navigation', { name: 'Nawigacja w stopce' });
     const links = within(nav).getAllByRole('link');
 
-    expect(links.map((link) => link.textContent)).toEqual(['Media', 'Kontakt']);
+    expect(links.map((link) => link.textContent)).toEqual(['Media', 'Kontakt', 'Strefa zawodnika']);
 
     expect(within(nav).getByRole('link', { name: 'Kontakt' })).toHaveAttribute('href', '/kontakt');
     expect(within(nav).getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
+    expect(within(nav).getByRole('link', { name: 'Strefa zawodnika' })).toHaveAttribute(
+      'href',
+      '/konto/',
+    );
   });
 
   it('does not repeat the primary tabs already in the fixed nav bar', () => {
@@ -39,7 +43,7 @@ describe('Footer', () => {
 
     const nav = screen.getByRole('navigation', { name: 'Nawigacja w stopce' });
 
-    expect(within(nav).getAllByRole('link')).toHaveLength(2);
+    expect(within(nav).getAllByRole('link')).toHaveLength(3);
     expect(within(nav).queryByRole('link', { name: 'Drużyna' })).not.toBeInTheDocument();
   });
 

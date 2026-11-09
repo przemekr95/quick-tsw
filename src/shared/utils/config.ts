@@ -21,6 +21,9 @@ export const FOOTER_LINKS = [
   { label: 'Kontakt', path: 'kontakt' },
 ] as const;
 
+// Strefa zawodnika to osobna aplikacja (repo quick-tsw-konto) na tej samej domenie.
+export const ACCOUNT_URL = '/konto/';
+
 export const MEDIA_DOWNLOADS = {
   brandBook: '/downloads/Ksiega-Znaku-TS-Wisla-Krakow.pdf',
   rosterMezczyzni: '/downloads/sklad-seniorzy2627.pdf',
