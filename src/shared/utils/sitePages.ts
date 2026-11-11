@@ -44,7 +44,23 @@ export const SITE_PAGES: SitePage[] = [
 // /MEZCZYZNI/KLUB/ shows the same page as /mezczyzni/klub; this is the one
 // address search engines should index.
 export function canonicalPath(pathname: string): string {
-  return pathname.toLowerCase().replace(/\/+$/, '') || '/';
+  const normalize = (path: string) => path.toLowerCase().replace(/\/+$/, '') || '/';
+  const normalized = normalize(pathname);
+
+  try {
+    // Encoded slashes must not introduce route segments.
+    const decoded = normalize(
+      pathname
+        .split('/')
+        .map((segment) => decodeURIComponent(segment).replaceAll('/', '%2F'))
+        .join('/'),
+    );
+
+    // Unknown paths are also used as redirect targets; leave their escapes intact.
+    return SITE_PAGES.find((page) => page.path === decoded)?.path ?? normalized;
+  } catch {
+    return normalized;
+  }
 }
 
 export function absoluteUrl(path: string, siteUrl: string): string {
