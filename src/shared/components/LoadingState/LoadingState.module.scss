@@ -3,7 +3,8 @@
 
 @mixin loader-layout {
   display: grid;
-  min-height: 70vh;
+  min-height: 100vh;
+  grid-template-rows: 70vh;
   place-items: center;
   overflow: hidden;
 }
