@@ -2,11 +2,23 @@ import type { SectionPath } from '../types/domain';
 
 export const MEN_SECTION_PATH = '/mezczyzni' satisfies SectionPath;
 
+// Publiczny adres serwisu (bez końcowego „/”) z VITE_SITE_URL; pusty, gdy build nie zna domeny.
+export const SITE_URL = (import.meta.env.VITE_SITE_URL ?? '').replace(/\/+$/, '');
+
 export const FACEBOOK_NEWS_URL = 'https://www.facebook.com/Tswsiatkowkamezczyzn';
 
 export const INSTAGRAM_URL = 'https://www.instagram.com/tswisla_siatkowkamezczyzn/';
 
 export const CLUB_BRAND_NAME = 'Towarzystwo Sportowe Wisła Kraków';
+
+export const CLUB_SHORT_NAME = 'TS Wisła Kraków';
+
+// Nazwa całego serwisu (ekran wyboru, ścieżki nawigacji, tytuły bez sekcji).
+export const SITE_BRAND_NAME = `Siatkówka ${CLUB_SHORT_NAME}`;
+
+// Id głównej treści sekcji (`<main>` w SectionLayout); fokus wraca tu, gdy
+// znika przycisk, który go miał (np. „Spróbuj ponownie”).
+export const MAIN_CONTENT_ID = 'section-content';
 
 export const CLUB_CREST_SRC = '/tsw-herb.png';
 

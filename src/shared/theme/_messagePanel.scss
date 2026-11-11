@@ -1,0 +1,20 @@
+@use './darkSectionRoot' as dsr;
+@use './sectionHeading' as sh;
+
+@mixin stack {
+  @include dsr.surface($secondary-glow: false);
+}
+
+@mixin section {
+  @include sh.shell($gap: 1.2rem, $divider: false);
+
+  min-height: 60vh;
+  align-content: center;
+  justify-items: start;
+}
+
+@mixin lead {
+  max-width: 50ch;
+  line-height: 1.7;
+  color: color-mix(in srgb, currentcolor 74%, transparent);
+}

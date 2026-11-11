@@ -9,12 +9,23 @@ import MezczyzniMediaRoute from './routes/mezczyzni/media';
 import MezczyzniLayoutRoute from './routes/mezczyzni/layout';
 import MezczyzniNotFoundRoute from './routes/mezczyzni/not-found';
 import { ExternalRedirect } from '../shared/components/ExternalRedirect';
+import { HtmlFileRedirect } from '../shared/components/HtmlFileRedirect';
 import { PathRedirect } from '../shared/components/PathRedirect';
 import { MEN_SECTION_PATH, WOMEN_SECTION_URL } from '../shared/utils/config';
 import { PAGE_META, type PageMeta, type PageMetaHandle } from '../shared/utils/pageMeta';
+import { pathFromHtmlFile } from '../shared/utils/sitePages';
 
 function pageMeta(meta: PageMeta): PageMetaHandle {
   return { pageMeta: meta };
+}
+
+// Any root address outside the section continues under it (tabs lived at the
+// root before the section chooser returned). File addresses lose their .html
+// first, so /klub.html and /index.html need one redirect, not two.
+function sectionAddress(pathname: string): string {
+  const path = pathFromHtmlFile(pathname) ?? pathname;
+
+  return path === '/' ? '/' : `${MEN_SECTION_PATH}${path}`;
 }
 
 export const appRoutes: RouteObject[] = [
@@ -30,6 +41,7 @@ export const appRoutes: RouteObject[] = [
   },
   {
     path: MEN_SECTION_PATH,
+    element: <HtmlFileRedirect />,
     children: [
       // Redirects sit outside the layout so it never renders before they run.
       { index: true, element: <PathRedirect pathname={`${MEN_SECTION_PATH}/klub`} /> },
@@ -72,12 +84,10 @@ export const appRoutes: RouteObject[] = [
       },
     ],
   },
-  // Tabs lived at the root (/klub, /druzyna...) before the section chooser
-  // returned to /. Every other root address continues under the section, which
-  // shows its own not-found page for unknown ones.
+  // Unknown addresses end on the section's own not-found page.
   {
     path: '*',
-    element: <PathRedirect pathname={(current) => `${MEN_SECTION_PATH}${current}`} />,
+    element: <PathRedirect pathname={sectionAddress} />,
   },
 ];
 

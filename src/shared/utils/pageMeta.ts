@@ -1,3 +1,5 @@
+import { SITE_BRAND_NAME } from './config';
+
 export interface PageMeta {
   title: string;
   description: string;
@@ -38,7 +40,9 @@ export const PAGE_META = {
     heading: 'Kontakt z sekcją siatkówki mężczyzn TS Wisła Kraków',
   },
   przyjaciele: {
-    title: `Przyjaciele Białej Gwiazdy | ${SITE_NAME}`,
+    // The full site name would push this past the ~60 characters search
+    // results show.
+    title: `Przyjaciele Białej Gwiazdy | ${SITE_BRAND_NAME}`,
     description:
       'Przyjaciele Białej Gwiazdy – osoby i firmy, które wspierają sekcję siatkówki mężczyzn TS Wisła Kraków. Dołącz do grona wspierających.',
     heading: 'Przyjaciele Białej Gwiazdy – wspierający siatkówkę mężczyzn TS Wisła Kraków',

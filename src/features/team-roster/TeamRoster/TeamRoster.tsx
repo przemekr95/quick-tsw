@@ -7,7 +7,8 @@ import styles from './TeamRoster.module.scss';
 
 interface TeamRosterProps {
   players: Player[];
-  staff: StaffMember[];
+  // `null` when the staff request failed: the section is left out.
+  staff: StaffMember[] | null;
 }
 
 export function TeamRoster({ players, staff }: TeamRosterProps) {
@@ -16,7 +17,7 @@ export function TeamRoster({ players, staff }: TeamRosterProps) {
       <div className={styles.stack}>
         <TeamPhotoSection />
         <PlayersSection players={players} />
-        <StaffSection staff={staff} />
+        {staff && <StaffSection staff={staff} />}
         <RosterDownloadSection />
       </div>
     </section>

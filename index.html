@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Siatkówka – TS Wisła Kraków</title>
     <meta
@@ -25,6 +27,27 @@
       content="Drużyna siatkówki mężczyzn TS Wisła Kraków na wspólnym zdjęciu w hali"
     />
     <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Siatkówka TS Wisła Kraków",
+            "url": "%VITE_SITE_URL%/",
+            "inLanguage": "pl-PL"
+          },
+          {
+            "@type": "SportsOrganization",
+            "name": "TS Wisła Kraków",
+            "legalName": "Towarzystwo Sportowe Wisła Kraków",
+            "url": "https://www.tswisla.pl/",
+            "logo": "%VITE_SITE_URL%/tsw-herb.png",
+            "foundingDate": "1906"
+          }
+        ]
+      }
+    </script>
     <style>
       #root:empty {
         display: flex;

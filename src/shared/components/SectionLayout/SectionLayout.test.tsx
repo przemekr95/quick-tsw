@@ -127,6 +127,28 @@ describe('SectionLayout', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Sekcja Mężczyzn' })).toBeInTheDocument();
   });
 
+  it('leaves out the hero heading and button until the hero content is there', () => {
+    render(
+      <MemoryRouter initialEntries={['/mezczyzni/klub']}>
+        <SectionLayout
+          clubName=""
+          heroHeading=""
+          heroSlides={[]}
+          sectionLabel="Mężczyźni"
+          sectionName="Siatkówka mężczyzn"
+          sectionPath="/mezczyzni"
+          sponsors={[]}
+        >
+          <p>Zawartość</p>
+        </SectionLayout>
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByRole('heading', { level: 1 })).not.toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: '' })).not.toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Sponsorzy klubu' })).toBeInTheDocument();
+  });
+
   it('does not render cta outside section home route', () => {
     render(
       <MemoryRouter initialEntries={['/mezczyzni/kontakt']}>

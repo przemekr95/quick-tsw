@@ -27,6 +27,12 @@ describe('getRoutePageMeta', () => {
     expect(noindexPages).toEqual(['notFound']);
   });
 
+  it('keeps every title within the length search results show', () => {
+    for (const { title } of Object.values(PAGE_META)) {
+      expect(title.length).toBeLessThanOrEqual(60);
+    }
+  });
+
   it('keeps every description within the length search engines display', () => {
     for (const { description } of Object.values(PAGE_META)) {
       expect(description.length).toBeLessThanOrEqual(160);

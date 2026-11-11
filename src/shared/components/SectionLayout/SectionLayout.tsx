@@ -3,6 +3,7 @@ import { useMatch } from 'react-router-dom';
 import type { HeroSlide, SectionPath, Sponsor } from '../../types/domain';
 import { useHeroSlider } from '../../hooks/useHeroSlider';
 import { useScrollToTop } from '../../hooks/useScrollToTop';
+import { MAIN_CONTENT_ID } from '../../utils/config';
 import { Footer } from '../Footer';
 import { HeroBackground } from '../HeroBackground';
 import { HeroCtaButton } from '../HeroCtaButton';
@@ -57,17 +58,20 @@ export function SectionLayout({
 
             <div className={styles.heroContent}>
               <div className={styles.heroCopy} key={activeIndex}>
-                <h1 className={styles.sectionLabel}>{heroHeading}</h1>
+                {/* No empty heading or nameless button before the hero content loads. */}
+                {heroHeading && <h1 className={styles.sectionLabel}>{heroHeading}</h1>}
                 <p className={styles.heroTitle}>{currentSlide?.title}</p>
                 <p className={styles.heroText}>{currentSlide?.text}</p>
               </div>
 
               <div className={styles.heroActions}>
-                <HeroCtaButton
-                  href={currentSlide?.ctaHref ?? '#section-content'}
-                  label={currentSlide?.ctaLabel ?? ''}
-                  relativeTo={sectionHomePath}
-                />
+                {currentSlide && (
+                  <HeroCtaButton
+                    href={currentSlide.ctaHref}
+                    label={currentSlide.ctaLabel}
+                    relativeTo={sectionHomePath}
+                  />
+                )}
               </div>
 
               {heroSlides.length > 1 && (
@@ -110,7 +114,7 @@ export function SectionLayout({
         </header>
       )}
 
-      <main className={styles.main} id="section-content" tabIndex={-1}>
+      <main className={styles.main} id={MAIN_CONTENT_ID} tabIndex={-1}>
         {!isSectionHome && pageHeading && <h1 className={styles.pageHeading}>{pageHeading}</h1>}
         <div className={styles.mainInner}>{children}</div>
       </main>

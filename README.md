@@ -26,7 +26,7 @@ npm run dev
 
 ```bash
 npm run dev
-npm run build
+npm run build   # dist/ + HTML każdej strony, robots.txt i sitemap.xml (wymaga VITE_SITE_URL w .env)
 npm run preview
 npm run lint
 npm run lint:fix

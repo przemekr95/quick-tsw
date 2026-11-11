@@ -1,20 +1,10 @@
-import { useEffect, useState } from 'react';
 import { getPatronsData } from '../../data/services/patronService';
 import type { Patron, SectionId } from '../types/domain';
+import { type SectionDataState, useSectionData } from './useSectionData';
 
-interface UsePatronsState {
-  data: Patron[];
-  loading: boolean;
-}
+// One shared empty list, so `data` keeps its identity while loading or after an error.
+const NO_PATRONS: Patron[] = [];
 
-export function usePatrons(section: SectionId): UsePatronsState {
-  const [state, setState] = useState<UsePatronsState>({ data: [], loading: true });
-
-  useEffect(() => {
-    void getPatronsData(section).then((data) => {
-      setState({ data, loading: false });
-    });
-  }, [section]);
-
-  return state;
+export function usePatrons(section: SectionId): SectionDataState<Patron[]> {
+  return useSectionData<Patron[]>(section, getPatronsData, NO_PATRONS);
 }

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import type {
@@ -114,6 +114,7 @@ describe('ClubInfo', () => {
           landingContent={landingContent}
           matches={matches}
           players={players}
+          onRetry={() => {}}
           section="mezczyzni"
           standings={standings}
         />
@@ -131,7 +132,9 @@ describe('ClubInfo', () => {
     expect(
       screen.getByRole('heading', { name: 'Twoje miejsce jest na boisku' }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'MKS Set Nowa Wieś' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Najbliższy mecz: MKS Set Nowa Wieś' }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Kolejne mecze' })).toBeInTheDocument();
     expect(screen.getByText('UKS Set Kraków')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Ostatnie wyniki' })).toBeInTheDocument();
@@ -150,6 +153,7 @@ describe('ClubInfo', () => {
           landingContent={landingContent}
           matches={[]}
           players={players}
+          onRetry={() => {}}
           section="mezczyzni"
           standings={[]}
         />
@@ -162,5 +166,33 @@ describe('ClubInfo', () => {
       screen.getByText('Tabela ligowa pojawi się po rozpoczęciu sezonu.'),
     ).toBeInTheDocument();
     expect(screen.getByText('Brak rozegranych meczów w tym sezonie.')).toBeInTheDocument();
+  });
+
+  it('replaces the sections whose data failed to load with a retry notice', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <ClubInfo
+          club={club}
+          landingContent={landingContent}
+          matches={null}
+          onRetry={() => {}}
+          players={null}
+          section="mezczyzni"
+          standings={null}
+        />
+      </MemoryRouter>,
+    );
+    const page = within(container);
+
+    expect(page.getByRole('heading', { name: 'Twoje miejsce jest na boisku' })).toBeInTheDocument();
+    expect(page.queryByRole('heading', { name: 'Poznaj drużynę' })).not.toBeInTheDocument();
+    expect(container.querySelector('#najblizszy-mecz')).not.toBeInTheDocument();
+    expect(page.queryByRole('heading', { name: 'Kolejne mecze' })).not.toBeInTheDocument();
+    expect(page.queryByRole('heading', { name: 'Ostatnie wyniki' })).not.toBeInTheDocument();
+    expect(page.queryByRole('heading', { name: 'Tabela ligowa' })).not.toBeInTheDocument();
+    expect(page.getByRole('alert')).toHaveTextContent(
+      'Nie udało się wczytać składu drużyny, meczów i tabeli ligowej.',
+    );
+    expect(page.getByRole('button', { name: 'Spróbuj ponownie' })).toBeInTheDocument();
   });
 });

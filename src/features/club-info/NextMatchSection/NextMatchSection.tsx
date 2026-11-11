@@ -32,6 +32,7 @@ export function NextMatchSection({ match, form }: NextMatchSectionProps) {
         <div className={styles.heading}>
           <p className={styles.eyebrow}>{formatCompetitionLabel(match)}</p>
           <h2 className={styles.title} id="najblizszy-mecz-heading">
+            <span className={styles.titlePrefix}>{'Najbliższy mecz: '}</span>
             {match.opponent}
           </h2>
         </div>

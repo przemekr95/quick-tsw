@@ -1,0 +1,32 @@
+@mixin solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.6rem;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.86;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@mixin solid-button {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  transition: opacity 160ms ease;
+
+  @include solid;
+}

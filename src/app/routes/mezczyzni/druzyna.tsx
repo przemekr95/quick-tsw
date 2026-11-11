@@ -1,14 +1,39 @@
 import { TeamRoster } from '../../../features/team-roster/TeamRoster';
+import { ErrorState } from '../../../shared/components/ErrorState';
 import { LoadingState } from '../../../shared/components/LoadingState';
+import { StructuredData } from '../../../shared/components/StructuredData';
 import { useStaffRoster, useTeamRoster } from '../../../shared/hooks';
+import { siteBaseUrl } from '../../../shared/utils/sitePages';
+import { menTeamJsonLd } from '../../../shared/utils/structuredData';
 
 export default function MezczyzniDruzynaRoute() {
-  const { data: players, loading: playersLoading } = useTeamRoster('mezczyzni');
-  const { data: staff, loading: staffLoading } = useStaffRoster('mezczyzni');
+  const players = useTeamRoster('mezczyzni');
+  const staff = useStaffRoster('mezczyzni');
 
-  if (playersLoading || staffLoading) {
+  // The player list is what the tab is for; without it there is nothing to show.
+  if (players.error) {
+    return (
+      <ErrorState
+        onRetry={() => {
+          players.retry();
+          if (staff.error) staff.retry();
+        }}
+      />
+    );
+  }
+
+  if (players.loading || staff.loading) {
     return <LoadingState label="Ładowanie składu..." />;
   }
 
-  return <TeamRoster players={players} staff={staff} />;
+  const shownStaff = staff.error ? null : staff.data;
+
+  return (
+    <>
+      <TeamRoster players={players.data} staff={shownStaff} />
+      <StructuredData
+        data={menTeamJsonLd(siteBaseUrl(), { players: players.data, staff: shownStaff ?? [] })}
+      />
+    </>
+  );
 }
