@@ -1,20 +1,10 @@
-import { useEffect, useState } from 'react';
 import { getStaffData } from '../../data/services/staffService';
 import type { SectionId, StaffMember } from '../types/domain';
+import { type SectionDataState, useSectionData } from './useSectionData';
 
-interface UseStaffRosterState {
-  data: StaffMember[];
-  loading: boolean;
-}
+// One shared empty list, so `data` keeps its identity while loading or after an error.
+const NO_STAFF: StaffMember[] = [];
 
-export function useStaffRoster(section: SectionId): UseStaffRosterState {
-  const [state, setState] = useState<UseStaffRosterState>({ data: [], loading: true });
-
-  useEffect(() => {
-    void getStaffData(section).then((data) => {
-      setState({ data, loading: false });
-    });
-  }, [section]);
-
-  return state;
+export function useStaffRoster(section: SectionId): SectionDataState<StaffMember[]> {
+  return useSectionData<StaffMember[]>(section, getStaffData, NO_STAFF);
 }

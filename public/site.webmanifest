@@ -1,0 +1,11 @@
+{
+  "name": "Siatkówka TS Wisła Kraków",
+  "short_name": "TS Wisła",
+  "lang": "pl",
+  "start_url": ".",
+  "display": "browser",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "favicon.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

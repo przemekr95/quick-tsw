@@ -29,7 +29,8 @@ const WARSAW_WALL_CLOCK_FORMATTER = new Intl.DateTimeFormat('en-US', {
 
 function getWarsawWallClock(instant: Date): WarsawWallClock {
   const parts = WARSAW_WALL_CLOCK_FORMATTER.formatToParts(instant);
-  const get = (type: string): number => Number(parts.find((part) => part.type === type)?.value ?? 0);
+  const get = (type: string): number =>
+    Number(parts.find((part) => part.type === type)?.value ?? 0);
 
   return {
     year: get('year'),
@@ -121,17 +122,26 @@ function hasKickedOff(match: UpcomingMatch, now: Date): boolean {
   return match.matchDate < toWarsawDateString(now);
 }
 
-export function getSeasonSchedule(matches: UpcomingMatch[], now: Date = new Date()): UpcomingMatch[] {
+export function getSeasonSchedule(
+  matches: UpcomingMatch[],
+  now: Date = new Date(),
+): UpcomingMatch[] {
   return [...matches]
     .filter((match) => !hasKickedOff(match, now))
     .sort((a, b) => a.matchDate.localeCompare(b.matchDate));
 }
 
-export function getNextMatch(matches: UpcomingMatch[], now: Date = new Date()): UpcomingMatch | null {
+export function getNextMatch(
+  matches: UpcomingMatch[],
+  now: Date = new Date(),
+): UpcomingMatch | null {
   return getSeasonSchedule(matches, now)[0] ?? null;
 }
 
-export function getRemainingMatches(matches: UpcomingMatch[], now: Date = new Date()): UpcomingMatch[] {
+export function getRemainingMatches(
+  matches: UpcomingMatch[],
+  now: Date = new Date(),
+): UpcomingMatch[] {
   return getSeasonSchedule(matches, now).slice(1);
 }
 
@@ -187,5 +197,7 @@ export function formatRoundLabel(match: UpcomingMatch): string {
 }
 
 export function formatCompetitionLabel(match: UpcomingMatch): string {
-  return match.round !== undefined ? `${match.competition} · Kolejka ${match.round}` : match.competition;
+  return match.round !== undefined
+    ? `${match.competition} · Kolejka ${match.round}`
+    : match.competition;
 }

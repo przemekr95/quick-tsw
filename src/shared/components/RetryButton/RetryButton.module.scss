@@ -1,0 +1,11 @@
+@use '../../theme/buttons';
+
+.button {
+  @include buttons.solid-button;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

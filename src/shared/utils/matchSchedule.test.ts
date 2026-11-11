@@ -143,7 +143,9 @@ describe('getSeasonSchedule', () => {
   });
 
   it('keeps a same-day TBD match upcoming for the whole day, since no exact time is known', () => {
-    const matches = [buildMatch({ opponent: 'TBD today', matchDate: '2026-11-07', kickoffTime: null })];
+    const matches = [
+      buildMatch({ opponent: 'TBD today', matchDate: '2026-11-07', kickoffTime: null }),
+    ];
     const lateInTheDay = new Date('2026-11-07T23:59:00+01:00');
 
     expect(getSeasonSchedule(matches, lateInTheDay).map((match) => match.opponent)).toEqual([

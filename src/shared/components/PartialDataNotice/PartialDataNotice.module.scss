@@ -1,0 +1,14 @@
+@use '../../theme/messagePanel' as panel;
+@use '../../theme/sectionHeading' as sh;
+
+.section {
+  @include sh.shell($gap: 1rem);
+
+  justify-items: start;
+}
+
+.message {
+  margin: 0;
+
+  @include panel.lead;
+}

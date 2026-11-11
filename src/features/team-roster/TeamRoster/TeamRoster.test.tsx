@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import type { Player, StaffMember } from '../../../shared/types/domain';
 import { TeamRoster } from './TeamRoster';
@@ -52,5 +52,13 @@ describe('TeamRoster', () => {
 
     expect(link).toHaveAttribute('href', '/downloads/sklad-seniorzy2627.pdf');
     expect(link).toHaveAttribute('download');
+  });
+
+  it('leaves out the section whose data failed to load', () => {
+    const { container } = render(<TeamRoster players={players} staff={null} />);
+    const page = within(container);
+
+    expect(page.getByRole('heading', { name: 'Zawodnicy' })).toBeInTheDocument();
+    expect(page.queryByRole('heading', { name: 'Sztab szkoleniowy' })).not.toBeInTheDocument();
   });
 });

@@ -7,9 +7,13 @@ import type {
   StandingsRow,
   UpcomingMatch,
 } from '../../../shared/types/domain';
+import { PartialDataNotice } from '../../../shared/components/PartialDataNotice';
+import { StructuredData } from '../../../shared/components/StructuredData';
 import { useSeasonSchedule } from '../../../shared/hooks';
 import { getRecentResults } from '../../../shared/utils/matchSchedule';
 import { pickRandomItems } from '../../../shared/utils/random';
+import { siteBaseUrl } from '../../../shared/utils/sitePages';
+import { nextMatchJsonLd } from '../../../shared/utils/structuredData';
 import { AboutSection } from '../AboutSection';
 import { JoinSection } from '../JoinSection';
 import { NextMatchSection } from '../NextMatchSection';
@@ -21,13 +25,30 @@ import styles from './ClubInfo.module.scss';
 
 const ROSTER_PREVIEW_SIZE = 4;
 
+// `null` means the request for that data failed: the sections built from it
+// are left out, and a notice with a retry button takes their place.
 interface ClubInfoProps {
   club: Pick<Club, 'name' | 'history'>;
   landingContent: ClubLandingContent;
-  players: Player[];
-  matches: UpcomingMatch[];
-  standings: StandingsRow[];
+  players: Player[] | null;
+  matches: UpcomingMatch[] | null;
+  standings: StandingsRow[] | null;
   section: SectionId;
+  onRetry: () => void;
+}
+
+function joinWithAnd(items: string[]): string {
+  return items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} i ${items.at(-1)}`;
+}
+
+function missingDataMessage({ players, matches, standings }: ClubInfoProps): string | null {
+  const missing = [
+    players === null && 'składu drużyny',
+    matches === null && 'meczów',
+    standings === null && 'tabeli ligowej',
+  ].filter((item): item is string => item !== false);
+
+  return missing.length > 0 ? `Nie udało się wczytać ${joinWithAnd(missing)}.` : null;
 }
 
 const aboutImageBySection: Record<SectionId, { src: string; alt: string }> = {
@@ -41,19 +62,18 @@ const historyUrlBySection: Record<SectionId, string> = {
   mezczyzni: 'https://historiawisly.pl/wiki/index.php?title=Pi%C5%82ka_siatkowa_m%C4%99%C5%BCczyzn',
 };
 
-export function ClubInfo({
-  club,
-  landingContent,
-  players,
-  matches,
-  standings,
-  section,
-}: ClubInfoProps) {
+export function ClubInfo(props: ClubInfoProps) {
+  const { club, landingContent, players, matches, standings, section, onRetry } = props;
   const aboutImage = aboutImageBySection[section];
-  const rosterPreview = useMemo(() => pickRandomItems(players, ROSTER_PREVIEW_SIZE), [players]);
+  const rosterPreview = useMemo(
+    () => pickRandomItems(players ?? [], ROSTER_PREVIEW_SIZE),
+    [players],
+  );
   const schedule = useSeasonSchedule(matches);
   const [nextMatch, ...remainingMatches] = schedule;
-  const recentResults = useMemo(() => getRecentResults(matches), [matches]);
+  const recentResults = useMemo(() => getRecentResults(matches ?? []), [matches]);
+  const nextMatchEvent = nextMatchJsonLd(siteBaseUrl(), nextMatch);
+  const missingMessage = missingDataMessage(props);
 
   return (
     <section aria-label="Zakładka Klub" className={styles.root}>
@@ -67,18 +87,25 @@ export function ClubInfo({
             imageSrc={aboutImage.src}
           />
 
-          <RosterSection players={rosterPreview} />
+          {players && <RosterSection players={rosterPreview} />}
 
           <JoinSection recruitmentPaths={landingContent.recruitmentPaths} />
         </div>
 
-        {nextMatch && <NextMatchSection form={landingContent.matchForm} match={nextMatch} />}
+        {missingMessage && <PartialDataNotice message={missingMessage} onRetry={onRetry} />}
 
-        <UpcomingMatchesSection matches={remainingMatches} />
+        {matches && (
+          <>
+            {nextMatch && <NextMatchSection form={landingContent.matchForm} match={nextMatch} />}
+            {nextMatchEvent && <StructuredData data={nextMatchEvent} />}
 
-        <RecentResultsSection results={recentResults} />
+            <UpcomingMatchesSection matches={remainingMatches} />
 
-        <StandingsSection standings={standings} />
+            <RecentResultsSection results={recentResults} />
+          </>
+        )}
+
+        {standings && <StandingsSection standings={standings} />}
       </div>
     </section>
   );

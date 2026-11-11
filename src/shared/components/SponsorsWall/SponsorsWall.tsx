@@ -71,7 +71,7 @@ export function SponsorsWall({ sponsors }: SponsorsWallProps) {
                       aria-label={`Odwiedź stronę sponsora ${sponsor.name}`}
                       className={styles.logoLink}
                       href={sponsor.websiteUrl}
-                      rel="noopener noreferrer"
+                      rel="sponsored noopener noreferrer"
                       target="_blank"
                     >
                       {logoContent}

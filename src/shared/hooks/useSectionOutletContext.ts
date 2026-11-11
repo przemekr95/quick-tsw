@@ -4,6 +4,9 @@ import type { Club, ClubLandingContent } from '../types/domain';
 export interface SectionOutletContext {
   club: Club | null;
   landingContent: ClubLandingContent | null;
+  // The layout's own requests (club, landing content) failed.
+  loadError: boolean;
+  retryLoad: () => void;
 }
 
 export function useSectionOutletContext(): SectionOutletContext {

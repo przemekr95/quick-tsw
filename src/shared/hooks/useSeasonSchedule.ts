@@ -3,11 +3,13 @@ import type { UpcomingMatch } from '../types/domain';
 import { getScheduleCutoff, getSeasonSchedule } from '../utils/matchSchedule';
 
 const MAX_TIMEOUT_MS = 24 * 60 * 60 * 1000;
+const NO_MATCHES: UpcomingMatch[] = [];
 
-export function useSeasonSchedule(matches: UpcomingMatch[]): UpcomingMatch[] {
+// `null` (matches that failed to load) gives an empty schedule.
+export function useSeasonSchedule(matches: UpcomingMatch[] | null): UpcomingMatch[] {
   const [now, setNow] = useState(() => new Date());
 
-  const schedule = useMemo(() => getSeasonSchedule(matches, now), [matches, now]);
+  const schedule = useMemo(() => getSeasonSchedule(matches ?? NO_MATCHES, now), [matches, now]);
 
   useEffect(() => {
     const cutoff = getScheduleCutoff(schedule, now);

@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -60,6 +60,90 @@ describe('app routing', () => {
       await screen.findByRole('heading', { level: 2, name: 'Dane kontaktowe' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'siatkowkamezczyzn@tswisla.pl' })).toBeInTheDocument();
+  });
+
+  // Makes the API fail for the given endpoints while the rest still comes
+  // from the fixtures; returns a function that restores the fixtures.
+  function failRequests(...failingKeys: string[]): () => void {
+    const mockedFetch = vi.mocked(fetch);
+    const loadFixture = mockedFetch.getMockImplementation() as typeof fetch;
+    const errorLog = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    mockedFetch.mockImplementation(async (input, init) =>
+      failingKeys.some((key) => String(input).endsWith(key))
+        ? ({ ok: false, status: 503 } as Response)
+        : loadFixture(input, init),
+    );
+
+    return () => {
+      mockedFetch.mockImplementation(loadFixture);
+      errorLog.mockRestore();
+    };
+  }
+
+  it('replaces only the failed sections on klub with a notice, and loads them on retry', async () => {
+    const restore = failRequests('/standings', '/players');
+
+    try {
+      const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/klub'] });
+      render(<RouterProvider router={router} />);
+
+      expect(await screen.findByRole('heading', { name: 'Kolejne mecze' })).toBeInTheDocument();
+      expect(screen.queryByRole('heading', { name: 'Tabela ligowa' })).not.toBeInTheDocument();
+      expect(screen.queryByRole('heading', { name: 'Poznaj drużynę' })).not.toBeInTheDocument();
+      expect(screen.getByRole('alert')).toHaveTextContent(
+        'Nie udało się wczytać składu drużyny i tabeli ligowej.',
+      );
+
+      restore();
+      await userEvent.setup().click(screen.getByRole('button', { name: 'Spróbuj ponownie' }));
+
+      expect(await screen.findByRole('heading', { name: 'Tabela ligowa' })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: 'Poznaj drużynę' })).toBeInTheDocument();
+      expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    } finally {
+      restore();
+    }
+  });
+
+  // Only matches, patrons, standings and players come from the API so far;
+  // the other services still read local mocks and cannot fail.
+  it.each([
+    ['/mezczyzni/przyjaciele', '/patrons', 'Przyjaciele Białej Gwiazdy'],
+    ['/mezczyzni/druzyna', '/players', 'Zawodnicy'],
+  ])(
+    'shows a retry message on %s when its main data fails, and loads it on retry',
+    async (path, failingKey, heading) => {
+      const restore = failRequests(failingKey);
+
+      try {
+        const router = createMemoryRouter(appRoutes, { initialEntries: [path] });
+        render(<RouterProvider router={router} />);
+
+        expect(await screen.findByRole('alert')).toHaveTextContent('Nie udało się wczytać danych');
+
+        restore();
+        await userEvent.setup().click(screen.getByRole('button', { name: 'Spróbuj ponownie' }));
+
+        expect(await screen.findByRole('heading', { level: 2, name: heading })).toBeInTheDocument();
+        expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+      } finally {
+        restore();
+      }
+    },
+  );
+
+  it('describes the team and the breadcrumb trail as structured data on druzyna', async () => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: ['/mezczyzni/druzyna'] });
+
+    const { container } = render(<RouterProvider router={router} />);
+
+    await screen.findByRole('heading', { level: 2, name: 'Zawodnicy' });
+    const types = Array.from(container.querySelectorAll('script[type="application/ld+json"]')).map(
+      (script) => (JSON.parse(script.textContent ?? '{}') as { '@type': string })['@type'],
+    );
+
+    expect(types).toEqual(expect.arrayContaining(['SportsTeam', 'BreadcrumbList']));
   });
 
   it('renders druzyna for mezczyzni', async () => {
@@ -142,6 +226,21 @@ describe('app routing', () => {
       pathname: '/mezczyzni/kontakt',
       search: '?fbclid=abc',
       hash: '#dane',
+    });
+  });
+
+  it.each([
+    ['/mezczyzni/druzyna.html', '/mezczyzni/druzyna'],
+    ['/mezczyzni/index.html', '/mezczyzni/klub'],
+    ['/index.html', '/'],
+    ['/klub.html', '/mezczyzni/klub'],
+  ])('sends the file address %s to %s', async (path, expected) => {
+    const router = createMemoryRouter(appRoutes, { initialEntries: [path] });
+
+    render(<RouterProvider router={router} />);
+
+    await waitFor(() => {
+      expect(router.state.location.pathname).toBe(expected);
     });
   });
 

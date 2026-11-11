@@ -44,14 +44,14 @@ describe('SponsorsWall', () => {
     expect(screen.getByRole('img', { name: 'Logotyp sponsora Sponsor D' })).toBeInTheDocument();
   });
 
-  it('renders clickable sponsor links with external target', () => {
+  it('renders clickable sponsor links with external target, marked as sponsored', () => {
     render(<SponsorsWall sponsors={sponsors} />);
 
     const sponsorLink = screen.getByRole('link', { name: 'Odwiedź stronę sponsora Sponsor A' });
 
     expect(sponsorLink).toHaveAttribute('href', 'https://example.com/a');
     expect(sponsorLink).toHaveAttribute('target', '_blank');
-    expect(sponsorLink).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(sponsorLink).toHaveAttribute('rel', 'sponsored noopener noreferrer');
   });
 
   it('renders a non-clickable logo when websiteUrl is missing and falls back to initials without a logo', () => {

@@ -39,7 +39,9 @@ describe('NextMatchSection', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: 'MKS Set Nowa Wieś' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Najbliższy mecz: MKS Set Nowa Wieś' }),
+    ).toBeInTheDocument();
     expect(screen.getByText('I liga mężczyzn · Kolejka 1')).toBeInTheDocument();
     expect(screen.getByText(/15 sierpnia 2026, 19:00/)).toBeInTheDocument();
     expect(screen.getByText(/Wyjazd/)).toBeInTheDocument();
@@ -101,10 +103,10 @@ describe('NextMatchSection', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: 'UKS Set Kraków' })).toBeInTheDocument();
-    expect(screen.getByText(/15 sierpnia 2026, godzina TBD/)).toBeInTheDocument();
     expect(
-      screen.getByText('Godzina meczu zostanie ogłoszona wkrótce.'),
+      screen.getByRole('heading', { name: 'Najbliższy mecz: UKS Set Kraków' }),
     ).toBeInTheDocument();
+    expect(screen.getByText(/15 sierpnia 2026, godzina TBD/)).toBeInTheDocument();
+    expect(screen.getByText('Godzina meczu zostanie ogłoszona wkrótce.')).toBeInTheDocument();
   });
 });

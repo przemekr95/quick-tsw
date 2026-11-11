@@ -1,3 +1,5 @@
+@use '../../../shared/theme/buttons';
+
 .link {
   display: inline-flex;
   align-items: center;
@@ -29,34 +31,15 @@
 }
 
 .solid {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   gap: 0.55rem;
   width: fit-content;
-  min-height: 3rem;
-  padding: 0.75rem 1.6rem;
-  background-color: var(--color-primary);
-  color: var(--color-background);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   text-decoration: none;
   overflow-wrap: anywhere;
   transition:
     opacity 160ms ease,
     transform 160ms ease;
 
-  &:hover,
-  &:focus-visible {
-    opacity: 0.86;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-  }
+  @include buttons.solid;
 }
 
 .arrow {

@@ -1,0 +1,32 @@
+@use '../../theme/darkSectionRoot' as dsr;
+@use '../../theme/messagePanel' as panel;
+@use '../../theme/sectionHeading' as sh;
+
+.root {
+  @include dsr.root;
+}
+
+.rootFlush {
+  @include dsr.root($with-nav-offset: false);
+}
+
+.stack {
+  @include panel.stack;
+
+  min-height: 100vh;
+  align-content: start;
+}
+
+.section {
+  @include panel.section;
+}
+
+.title {
+  @include sh.title;
+}
+
+.lead {
+  margin: 0.8rem 0 0;
+
+  @include panel.lead;
+}
