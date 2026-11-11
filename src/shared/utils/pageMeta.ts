@@ -15,6 +15,11 @@ export interface PageMetaHandle {
 const SITE_NAME = 'Siatkówka mężczyzn TS Wisła Kraków';
 
 export const PAGE_META = {
+  home: {
+    title: 'Siatkówka – TS Wisła Kraków',
+    description:
+      'Siatkówka w TS Wisła Kraków – sekcje kobiet i mężczyzn Białej Gwiazdy. Mecze, wyniki i skład drużyny, kontakt oraz współpraca z klubem.',
+  },
   klub: {
     title: 'Siatkówka mężczyzn – TS Wisła Kraków',
     description:

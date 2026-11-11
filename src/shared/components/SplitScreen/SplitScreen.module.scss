@@ -1,0 +1,226 @@
+@use '../../theme/a11y';
+@use '../../theme/crest';
+
+.root {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  grid-template-columns: 1fr;
+  background-color: var(--color-surface-start);
+
+  @media (width >= 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.heading {
+  @include a11y.visually-hidden;
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  min-height: 50svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  isolation: isolate;
+
+  &::before {
+    position: absolute;
+    inset: -4%;
+    z-index: -3;
+    content: '';
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: grayscale(45%) brightness(0.7) contrast(1.05);
+    transition: transform 500ms ease;
+  }
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    content: '';
+    opacity: 0.55;
+    mix-blend-mode: color;
+  }
+
+  &[data-variant='kobiety']::before {
+    background-image: url('/images/backgrounds/split-kobiety.jpg');
+  }
+
+  &[data-variant='mezczyzni']::before {
+    background-image: url('/images/backgrounds/split-mezczyzni.jpg');
+  }
+
+  &[data-variant='kobiety']::after {
+    background: var(--color-club-red);
+  }
+
+  &[data-variant='mezczyzni']::after {
+    background: var(--color-club-blue);
+  }
+
+  &:hover::before,
+  &:focus-visible::before {
+    transform: scale(1.06);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -6px;
+  }
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgb(0 0 0 / 15%) 0%, rgb(0 0 0 / 65%) 100%);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.label {
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-background);
+  text-shadow: 0 2px 20px rgb(0 0 0 / 35%);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-background) 35%, transparent);
+  color: color-mix(in srgb, var(--color-background) 78%, transparent);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+
+  .panel:hover &,
+  .panel:focus-visible & {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 160ms ease;
+
+  .panel:hover &,
+  .panel:focus-visible & {
+    transform: translateX(3px);
+  }
+}
+
+.crestGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 15rem;
+  height: 15rem;
+
+  @include crest.star-glow(38px);
+
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1;
+  display: none;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-accent) 45%, transparent) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+
+  @media (width >= 768px) {
+    display: block;
+  }
+}
+
+.crest {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 4.5rem;
+  height: 4.5rem;
+
+  @include crest.crest-badge;
+
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.crestImage {
+  width: 2.4rem;
+  height: auto;
+}
+
+@media (width >= 768px) {
+  .crestGlow {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .crest {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .crestImage {
+    width: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel::before,
+  .cta,
+  .arrow {
+    transition: none;
+  }
+
+  .panel:hover::before,
+  .panel:focus-visible::before,
+  .panel:hover .arrow,
+  .panel:focus-visible .arrow {
+    transform: none;
+  }
+}

@@ -1,0 +1,1 @@
+export { PathRedirect } from './PathRedirect';

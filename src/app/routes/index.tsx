@@ -1,10 +1,9 @@
-import { LoadingScreen } from '../../shared/components/LoadingScreen';
-import { ThemeProvider } from '../providers/ThemeProvider';
+import { SplitScreen } from '../../shared/components/SplitScreen';
+import { usePageMeta } from '../../shared/hooks';
+import { PAGE_META } from '../../shared/utils/pageMeta';
 
 export default function HomeRoute() {
-  return (
-    <ThemeProvider theme="mezczyzni">
-      <LoadingScreen />
-    </ThemeProvider>
-  );
+  usePageMeta(PAGE_META.home);
+
+  return <SplitScreen />;
 }

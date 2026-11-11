@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import type { HeroSlide, SectionPath, Sponsor } from '../../types/domain';
 import { useHeroSlider } from '../../hooks/useHeroSlider';
 import { useScrollToTop } from '../../hooks/useScrollToTop';
@@ -35,8 +35,10 @@ export function SectionLayout({
   clubName,
   sponsors,
 }: SectionLayoutProps) {
-  const { pathname } = useLocation();
-  const isSectionHome = pathname === `${sectionPath}/klub`;
+  const sectionHomePath = `${sectionPath}/klub`;
+  // Matched like the router matches routes, so a trailing slash or different
+  // letter case still shows the hero on the klub tab.
+  const isSectionHome = useMatch(sectionHomePath) !== null;
 
   useScrollToTop();
 
@@ -64,6 +66,7 @@ export function SectionLayout({
                 <HeroCtaButton
                   href={currentSlide?.ctaHref ?? '#section-content'}
                   label={currentSlide?.ctaLabel ?? ''}
+                  relativeTo={sectionHomePath}
                 />
               </div>
 

@@ -3,6 +3,8 @@
 // Keeping this in one place means the shared visual language changes in one
 // file instead of N hand-copied ones.
 
+@use './crest';
+
 @mixin root($with-nav-offset: true) {
   display: block;
   width: 100vw;
@@ -90,18 +92,9 @@
         color-mix(in srgb, var(--color-primary) 8%, transparent) 0%,
         transparent 100%
       );
-      clip-path: polygon(
-        50% 0%,
-        61.23% 34.55%,
-        97.55% 34.55%,
-        68.17% 55.9%,
-        79.39% 90.45%,
-        50% 69.1%,
-        20.61% 90.45%,
-        31.83% 55.9%,
-        2.45% 34.55%,
-        38.77% 34.55%
-      );
+
+      @include crest.star-clip-path;
+
       filter: blur(95px);
     }
   }
