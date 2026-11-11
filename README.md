@@ -99,7 +99,7 @@ redir @legacy /mezczyzni{uri} 301
 redir /strefa-przyjaciol /mezczyzni/przyjaciele 301
 ```
 
-Długie cache'owanie plików z hashem w nazwie (`/assets/*`), krótkie dla HTML:
+Długie cache'owanie plików z hashem w nazwie (`/assets/*`) i kompresja odpowiedzi:
 
 ```caddy
 @hashed path /assets/*
