@@ -18,7 +18,7 @@ describe('NavBar', () => {
 
     expect(screen.getByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' })).toHaveAttribute(
       'href',
-      '/mezczyzni/klub',
+      '/',
     );
     expect(screen.getByRole('link', { name: 'Klub' })).toHaveAttribute('href', '/mezczyzni/klub');
     expect(screen.getByRole('link', { name: 'Drużyna' })).toHaveAttribute(

@@ -1,8 +1,7 @@
-import { act, cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { LOADING_SCREEN_REDIRECT_DELAY_MS } from '../shared/components/LoadingScreen';
 import { MEN_SECTION_PATH, WOMEN_SECTION_URL } from '../shared/utils/config';
 import { appRoutes } from './router';
 
@@ -13,27 +12,28 @@ vi.mock('../shared/components/ExternalRedirect', () => ({
 }));
 
 afterEach(() => {
-  vi.useRealTimers();
   cleanup();
 });
 
 describe('app routing', () => {
-  it('shows a loading screen at / and redirects to the klub tab', () => {
-    vi.useFakeTimers();
+  it('lets the visitor pick a section at /', async () => {
+    const user = userEvent.setup();
     const router = createMemoryRouter(appRoutes, { initialEntries: ['/'] });
 
     render(<RouterProvider router={router} />);
 
-    expect(screen.getByRole('status')).toHaveTextContent('Ładowanie');
+    expect(document.title).toBe('Siatkówka – TS Wisła Kraków');
+    expect(screen.getByRole('link', { name: 'Sekcja siatkówki kobiet' })).toHaveAttribute(
+      'href',
+      WOMEN_SECTION_URL,
+    );
 
-    act(() => {
-      vi.advanceTimersByTime(LOADING_SCREEN_REDIRECT_DELAY_MS);
-    });
+    await user.click(screen.getByRole('link', { name: 'Sekcja siatkówki mężczyzn' }));
 
-    expect(
-      screen.getByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' }),
-    ).toBeInTheDocument();
     expect(router.state.location.pathname).toBe('/mezczyzni/klub');
+    expect(
+      await screen.findByRole('link', { name: 'Towarzystwo Sportowe Wisła Kraków' }),
+    ).toBeInTheDocument();
   });
 
   it('switches tabs inside section', async () => {
