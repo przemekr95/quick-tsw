@@ -1,13 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, resolvePath } from 'react-router-dom';
 import styles from './HeroCtaButton.module.scss';
 
 interface HeroCtaButtonProps {
   href: string;
   label: string;
+  // The page URL that relative slide hrefs (e.g. ../kontakt) are written against.
+  relativeTo: string;
 }
 
 function isExternalHref(href: string): boolean {
-  return /^https?:\/\//iu.test(href);
+  return /^(?:https?:)?\/\//iu.test(href);
+}
+
+function isNonRouteHref(href: string): boolean {
+  return href.startsWith('#') || /^[a-z][a-z0-9+.-]*:/iu.test(href);
 }
 
 function CtaContent({ label }: { label: string }) {
@@ -42,7 +48,7 @@ function CtaContent({ label }: { label: string }) {
   );
 }
 
-export function HeroCtaButton({ href, label }: HeroCtaButtonProps) {
+export function HeroCtaButton({ href, label, relativeTo }: HeroCtaButtonProps) {
   if (isExternalHref(href)) {
     return (
       <a className={styles.ctaButton} href={href} rel="noopener noreferrer" target="_blank">
@@ -51,7 +57,7 @@ export function HeroCtaButton({ href, label }: HeroCtaButtonProps) {
     );
   }
 
-  if (href.startsWith('#')) {
+  if (isNonRouteHref(href)) {
     return (
       <a className={styles.ctaButton} href={href}>
         <CtaContent label={label} />
@@ -59,8 +65,10 @@ export function HeroCtaButton({ href, label }: HeroCtaButtonProps) {
     );
   }
 
+  // The button renders in the section layout route, so a plain <Link> would
+  // resolve ../kontakt from /mezczyzni and drop the section prefix.
   return (
-    <Link className={styles.ctaButton} to={href}>
+    <Link className={styles.ctaButton} to={resolvePath(href, relativeTo)}>
       <CtaContent label={label} />
     </Link>
   );

@@ -37,14 +37,14 @@ const mockSponsors: Sponsor[] = [
 describe('SectionLayout', () => {
   it('renders cta on section home route', () => {
     render(
-      <MemoryRouter initialEntries={['/klub']}>
+      <MemoryRouter initialEntries={['/mezczyzni/klub']}>
         <SectionLayout
           clubName="MKS Siatkówka"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
           sectionName="Siatkówka mężczyzn"
-          sectionPath=""
+          sectionPath="/mezczyzni"
           sponsors={mockSponsors}
         >
           <p>Zawartość</p>
@@ -58,29 +58,34 @@ describe('SectionLayout', () => {
     );
   });
 
-  it('renders section heading as h1 on the home route', () => {
-    render(
-      <MemoryRouter initialEntries={['/klub']}>
-        <SectionLayout
-          clubName="MKS Siatkówka"
-          heroHeading="Sekcja Mężczyzn"
-          heroSlides={mockHeroSlides}
-          sectionLabel="Mężczyźni"
-          sectionName="Siatkówka mężczyzn"
-          sectionPath=""
-          sponsors={mockSponsors}
-        >
-          <p>Zawartość</p>
-        </SectionLayout>
-      </MemoryRouter>,
-    );
+  it.each(['/mezczyzni/klub', '/mezczyzni/klub/', '/MEZCZYZNI/KLUB'])(
+    'renders section heading as h1 on the home route at %s',
+    (path) => {
+      render(
+        <MemoryRouter initialEntries={[path]}>
+          <SectionLayout
+            clubName="MKS Siatkówka"
+            heroHeading="Sekcja Mężczyzn"
+            heroSlides={mockHeroSlides}
+            sectionLabel="Mężczyźni"
+            sectionName="Siatkówka mężczyzn"
+            sectionPath="/mezczyzni"
+            sponsors={mockSponsors}
+          >
+            <p>Zawartość</p>
+          </SectionLayout>
+        </MemoryRouter>,
+      );
 
-    expect(screen.getByRole('heading', { level: 1, name: 'Sekcja Mężczyzn' })).toBeInTheDocument();
-  });
+      expect(
+        screen.getByRole('heading', { level: 1, name: 'Sekcja Mężczyzn' }),
+      ).toBeInTheDocument();
+    },
+  );
 
   it('renders the page heading as the only h1 outside the home route', () => {
     render(
-      <MemoryRouter initialEntries={['/kontakt']}>
+      <MemoryRouter initialEntries={['/mezczyzni/kontakt']}>
         <SectionLayout
           clubName="MKS Siatkówka"
           heroHeading="Sekcja Mężczyzn"
@@ -88,7 +93,7 @@ describe('SectionLayout', () => {
           pageHeading="Kontakt z sekcją"
           sectionLabel="Mężczyźni"
           sectionName="Siatkówka mężczyzn"
-          sectionPath=""
+          sectionPath="/mezczyzni"
           sponsors={mockSponsors}
         >
           <p>Zawartość</p>
@@ -102,7 +107,7 @@ describe('SectionLayout', () => {
 
   it('keeps the hero heading as the h1 on the home route', () => {
     render(
-      <MemoryRouter initialEntries={['/klub']}>
+      <MemoryRouter initialEntries={['/mezczyzni/klub']}>
         <SectionLayout
           clubName="MKS Siatkówka"
           heroHeading="Sekcja Mężczyzn"
@@ -110,7 +115,7 @@ describe('SectionLayout', () => {
           pageHeading="Ukryty nagłówek"
           sectionLabel="Mężczyźni"
           sectionName="Siatkówka mężczyzn"
-          sectionPath=""
+          sectionPath="/mezczyzni"
           sponsors={mockSponsors}
         >
           <p>Zawartość</p>
@@ -124,14 +129,14 @@ describe('SectionLayout', () => {
 
   it('does not render cta outside section home route', () => {
     render(
-      <MemoryRouter initialEntries={['/kontakt']}>
+      <MemoryRouter initialEntries={['/mezczyzni/kontakt']}>
         <SectionLayout
           clubName="MKS Siatkówka"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
           sectionName="Siatkówka mężczyzn"
-          sectionPath=""
+          sectionPath="/mezczyzni"
           sponsors={mockSponsors}
         >
           <p>Zawartość</p>
@@ -144,14 +149,14 @@ describe('SectionLayout', () => {
 
   it('renders pagination dots on section home route', () => {
     render(
-      <MemoryRouter initialEntries={['/klub']}>
+      <MemoryRouter initialEntries={['/mezczyzni/klub']}>
         <SectionLayout
           clubName="MKS Siatkówka"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
           sectionName="Siatkówka mężczyzn"
-          sectionPath=""
+          sectionPath="/mezczyzni"
           sponsors={mockSponsors}
         >
           <p>Zawartość</p>
@@ -165,14 +170,14 @@ describe('SectionLayout', () => {
 
   it('clicking a dot changes active slide', async () => {
     render(
-      <MemoryRouter initialEntries={['/klub']}>
+      <MemoryRouter initialEntries={['/mezczyzni/klub']}>
         <SectionLayout
           clubName="MKS Siatkówka"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
           sectionName="Siatkówka mężczyzn"
-          sectionPath=""
+          sectionPath="/mezczyzni"
           sponsors={mockSponsors}
         >
           <p>Zawartość</p>
@@ -193,14 +198,14 @@ describe('SectionLayout', () => {
 
   it('renders the club sponsors wall above the footer on every tab', () => {
     render(
-      <MemoryRouter initialEntries={['/kontakt']}>
+      <MemoryRouter initialEntries={['/mezczyzni/kontakt']}>
         <SectionLayout
           clubName="MKS Siatkówka"
           heroHeading="Sekcja Mężczyzn"
           heroSlides={mockHeroSlides}
           sectionLabel="Mężczyźni"
           sectionName="Siatkówka mężczyzn"
-          sectionPath=""
+          sectionPath="/mezczyzni"
           sponsors={mockSponsors}
         >
           <p>Zawartość</p>

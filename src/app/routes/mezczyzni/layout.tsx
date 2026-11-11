@@ -2,6 +2,7 @@ import { Outlet, useMatches } from 'react-router-dom';
 import { ThemeProvider } from '../../providers/ThemeProvider';
 import { useClubData, useClubLandingContent, usePageMeta } from '../../../shared/hooks';
 import { SectionLayout } from '../../../shared/components/SectionLayout';
+import { MEN_SECTION_PATH } from '../../../shared/utils/config';
 import { getRoutePageMeta } from '../../../shared/utils/pageMeta';
 
 export default function MezczyzniLayoutRoute() {
@@ -20,7 +21,7 @@ export default function MezczyzniLayoutRoute() {
         pageHeading={pageMeta.heading}
         sectionLabel="Mężczyźni"
         sectionName="Siatkówka mężczyzn"
-        sectionPath=""
+        sectionPath={MEN_SECTION_PATH}
         sponsors={club?.sponsors ?? []}
       >
         <Outlet context={{ club, landingContent: data }} />

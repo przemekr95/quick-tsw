@@ -7,10 +7,10 @@ afterEach(() => {
   cleanup();
 });
 
-function renderFooter(initialEntry = '/klub') {
+function renderFooter(initialEntry = '/mezczyzni/klub') {
   render(
     <MemoryRouter initialEntries={[initialEntry]}>
-      <Footer sectionName="Siatkówka mężczyzn" sectionPath="" />
+      <Footer sectionName="Siatkówka mężczyzn" sectionPath="/mezczyzni" />
     </MemoryRouter>,
   );
 }
@@ -30,8 +30,14 @@ describe('Footer', () => {
 
     expect(links.map((link) => link.textContent)).toEqual(['Media', 'Kontakt', 'Strefa zawodnika']);
 
-    expect(within(nav).getByRole('link', { name: 'Kontakt' })).toHaveAttribute('href', '/kontakt');
-    expect(within(nav).getByRole('link', { name: 'Media' })).toHaveAttribute('href', '/media');
+    expect(within(nav).getByRole('link', { name: 'Kontakt' })).toHaveAttribute(
+      'href',
+      '/mezczyzni/kontakt',
+    );
+    expect(within(nav).getByRole('link', { name: 'Media' })).toHaveAttribute(
+      'href',
+      '/mezczyzni/media',
+    );
     expect(within(nav).getByRole('link', { name: 'Strefa zawodnika' })).toHaveAttribute(
       'href',
       '/konto/',
@@ -71,7 +77,7 @@ describe('Footer', () => {
   });
 
   it('marks the Media link as the current page on the Media tab', () => {
-    renderFooter('/media');
+    renderFooter('/mezczyzni/media');
 
     expect(screen.getByRole('link', { name: 'Media' })).toHaveAttribute('aria-current', 'page');
     expect(screen.getByRole('link', { name: 'Kontakt' })).not.toHaveAttribute('aria-current');
