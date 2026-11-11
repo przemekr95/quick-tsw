@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import type { SectionPath } from '../../types/domain';
 import {
+  ACCOUNT_URL,
   CLUB_BRAND_NAME,
   FACEBOOK_NEWS_URL,
   FOOTER_LINKS,
@@ -57,6 +58,11 @@ export function Footer({ sectionName, sectionPath }: FooterProps) {
                     </NavLink>
                   </li>
                 ))}
+                <li>
+                  <a className={styles.link} href={ACCOUNT_URL}>
+                    <span className={styles.label}>Strefa zawodnika</span>
+                  </a>
+                </li>
               </ul>
             </nav>
 
