@@ -40,6 +40,9 @@ export const FOOTER_LINKS = [
   { label: 'Kontakt', path: 'kontakt' },
 ] as const;
 
+// Tabela ligowa pochodzi z MZPS (backend pobiera ją sam); link pod tabelą podaje źródło.
+export const STANDINGS_SOURCE_URL = 'https://www.mzps.pl/strefa-rozgrywek/ii-liga-mezczyzn/';
+
 // Strefa zawodnika to osobna aplikacja (repo quick-tsw-konto) na tej samej domenie.
 export const ACCOUNT_URL = '/konto/';
 

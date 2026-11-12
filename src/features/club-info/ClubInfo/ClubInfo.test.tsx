@@ -86,21 +86,21 @@ const standings: StandingsRow[] = [
     position: 1,
     team: 'MUKS ISKIERKA Tarnów',
     played: 4,
-    wins: 4,
-    losses: 0,
+    points: 12,
     setsWon: 12,
     setsLost: 2,
-    points: 12,
+    smallPointsWon: 340,
+    smallPointsLost: 250,
   },
   {
     position: 6,
     team: 'TS WISŁA Kraków',
     played: 4,
-    wins: 2,
-    losses: 2,
+    points: 6,
     setsWon: 8,
     setsLost: 7,
-    points: 6,
+    smallPointsWon: 330,
+    smallPointsLost: 321,
     isOwnTeam: true,
   },
 ];
@@ -162,9 +162,7 @@ describe('ClubInfo', () => {
 
     expect(container.querySelector('#najblizszy-mecz')).not.toBeInTheDocument();
     expect(screen.getByText('Brak kolejnych meczów w terminarzu.')).toBeInTheDocument();
-    expect(
-      screen.getByText('Tabela ligowa pojawi się po rozpoczęciu sezonu.'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Tabela ligowa pojawi się po rozpoczęciu sezonu.')).toBeInTheDocument();
     expect(screen.getByText('Brak rozegranych meczów w tym sezonie.')).toBeInTheDocument();
   });
 
