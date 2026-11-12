@@ -10,39 +10,60 @@ const standings: StandingsRow[] = [
     position: 1,
     team: 'MUKS ISKIERKA Tarnów',
     played: 4,
-    wins: 4,
-    losses: 0,
+    points: 12,
     setsWon: 12,
     setsLost: 2,
-    points: 12,
+    smallPointsWon: 340,
+    smallPointsLost: 250,
   },
   {
     position: 6,
     team: 'TS WISŁA Kraków',
     played: 4,
-    wins: 2,
-    losses: 2,
+    points: 6,
     setsWon: 8,
     setsLost: 7,
-    points: 6,
+    smallPointsWon: 330,
+    smallPointsLost: 321,
     isOwnTeam: true,
   },
 ];
 
 describe('StandingsSection', () => {
-  it('renders every row with its position, team, matches played, record, sets and points', () => {
+  it('renders every row with its position, team, matches played, sets, small points and points', () => {
     render(<StandingsSection standings={standings} />);
 
     expect(screen.getByRole('heading', { name: 'Tabela ligowa' })).toBeInTheDocument();
     expect(screen.getByRole('table')).toBeInTheDocument();
 
     expect(screen.getByText('MUKS ISKIERKA Tarnów')).toBeInTheDocument();
-    expect(screen.getByText('4-0')).toBeInTheDocument();
     expect(screen.getByText('12:2')).toBeInTheDocument();
+    expect(screen.getByText('340:250')).toBeInTheDocument();
 
     expect(screen.getByText('TS WISŁA Kraków')).toBeInTheDocument();
-    expect(screen.getByText('2-2')).toBeInTheDocument();
     expect(screen.getByText('8:7')).toBeInTheDocument();
+    expect(screen.getByText('330:321')).toBeInTheDocument();
+
+    expect(screen.getAllByRole('columnheader').map((header) => header.textContent)).toEqual([
+      'Lp.',
+      'Drużyna',
+      'Pkt',
+      'M',
+      'Sety',
+      'Małe pkt',
+    ]);
+  });
+
+  it('names MZPS as the source of the table and opens it in a new tab', () => {
+    render(<StandingsSection standings={standings} />);
+
+    const source = screen.getByRole('link', { name: /Małopolski Związek Piłki Siatkowej/ });
+    expect(source).toHaveAttribute(
+      'href',
+      'https://www.mzps.pl/strefa-rozgrywek/ii-liga-mezczyzn/',
+    );
+    expect(source).toHaveAttribute('target', '_blank');
+    expect(source).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
   it('visually distinguishes the own team row', () => {
@@ -70,5 +91,6 @@ describe('StandingsSection', () => {
     render(<StandingsSection standings={[]} />);
 
     expect(screen.getByText('Tabela ligowa pojawi się po rozpoczęciu sezonu.')).toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: /Małopolski Związek/ })).not.toBeInTheDocument();
   });
 });

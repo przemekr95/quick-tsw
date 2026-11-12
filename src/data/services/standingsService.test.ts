@@ -18,11 +18,11 @@ function standingsRow(position: number, team: string): StandingsRow {
     position,
     team,
     played: 0,
-    wins: 0,
-    losses: 0,
+    points: 0,
     setsWon: 0,
     setsLost: 0,
-    points: 0,
+    smallPointsWon: 0,
+    smallPointsLost: 0,
   };
 }
 
@@ -55,16 +55,16 @@ describe('standingsService', () => {
     expect(data.map((row) => row.position)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 
-  it('starts every team at zero played/wins/losses/sets/points before the season begins', async () => {
+  it('starts every team at zero played/points/sets/small points before the season begins', async () => {
     const data = await getStandings('mezczyzni');
 
     data.forEach((row) => {
       expect(row.played).toBe(0);
-      expect(row.wins).toBe(0);
-      expect(row.losses).toBe(0);
       expect(row.setsWon).toBe(0);
       expect(row.setsLost).toBe(0);
       expect(row.points).toBe(0);
+      expect(row.smallPointsWon).toBe(0);
+      expect(row.smallPointsLost).toBe(0);
     });
   });
 

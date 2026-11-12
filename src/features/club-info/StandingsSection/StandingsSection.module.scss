@@ -113,6 +113,11 @@
   color: color-mix(in srgb, currentcolor 74%, transparent);
 }
 
+.pointsHeader,
+.points {
+  width: 3rem;
+}
+
 .points {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
@@ -129,4 +134,34 @@
 
 .ownTeam .team {
   color: var(--color-accent);
+}
+
+.table abbr {
+  text-decoration: none;
+}
+
+.source {
+  margin: 0;
+  font-size: 0.75rem;
+  color: color-mix(in srgb, currentcolor 68%, transparent);
+}
+
+.source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.source a:hover,
+.source a:focus-visible {
+  color: var(--color-accent);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

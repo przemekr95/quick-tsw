@@ -1,4 +1,5 @@
 import type { StandingsRow } from '../../../shared/types/domain';
+import { STANDINGS_SOURCE_URL } from '../../../shared/utils/config';
 import styles from './StandingsSection.module.scss';
 
 interface StandingsSectionProps {
@@ -33,17 +34,17 @@ export function StandingsSection({ standings }: StandingsSectionProps) {
                 <th className={styles.team} scope="col">
                   Drużyna
                 </th>
-                <th className={styles.stat} scope="col">
-                  M
+                <th className={styles.pointsHeader} scope="col">
+                  Pkt
                 </th>
                 <th className={styles.stat} scope="col">
-                  Bilans
+                  M
                 </th>
                 <th className={styles.stat} scope="col">
                   Sety
                 </th>
                 <th className={styles.stat} scope="col">
-                  Pkt
+                  <abbr title="Małe punkty">Małe pkt</abbr>
                 </th>
               </tr>
             </thead>
@@ -54,19 +55,29 @@ export function StandingsSection({ standings }: StandingsSectionProps) {
                     {row.position}
                   </th>
                   <td className={styles.team}>{row.team}</td>
+                  <td className={styles.points}>{row.points}</td>
                   <td className={styles.stat}>{row.played}</td>
-                  <td className={styles.stat}>
-                    {row.wins}-{row.losses}
-                  </td>
                   <td className={styles.stat}>
                     {row.setsWon}:{row.setsLost}
                   </td>
-                  <td className={styles.points}>{row.points}</td>
+                  <td className={styles.stat}>
+                    {row.smallPointsWon}:{row.smallPointsLost}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+      )}
+
+      {standings.length > 0 && (
+        <p className={styles.source}>
+          Źródło:{' '}
+          <a href={STANDINGS_SOURCE_URL} rel="noopener noreferrer" target="_blank">
+            Małopolski Związek Piłki Siatkowej
+            <span className={styles.srOnly}> (otwiera się w nowej karcie)</span>
+          </a>
+        </p>
       )}
     </section>
   );

@@ -133,11 +133,11 @@ export interface StandingsRow {
   position: number;
   team: string;
   played: number;
-  wins: number;
-  losses: number;
+  points: number;
   setsWon: number;
   setsLost: number;
-  points: number;
+  smallPointsWon: number;
+  smallPointsLost: number;
   isOwnTeam?: boolean;
 }
 
