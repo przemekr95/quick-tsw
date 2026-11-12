@@ -175,6 +175,7 @@ Pre-commit (Husky + lint-staged): `eslint --fix`, `stylelint --fix`, `prettier -
 - Branch naming: `feature/...`, `fix/...`, `chore/...`; `archive/...` dla gałęzi-snapshotów zachowujących stan repo do wglądu/wznowienia w przyszłości (np. `archive/kobiety-mezczyzni`) — nie są to gałęzie robocze i nie powinny być mergowane
 - Commit messages: Conventional Commits (`feat:`, `fix:`, `chore:`, `test:`, `docs:`...)
 - Każdy PR zawiera opis i checklistę: testy przechodzą, coverage ≥80%, lint czysty
+- `CHANGELOG.md`: zmiany widoczne na stronie dopisujemy pod datą wdrożenia na produkcję (Dodane / Zmienione / Naprawione), po polsku
 
 ## 11. Czego agent NIE powinien robić bez pytania
 
