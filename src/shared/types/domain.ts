@@ -139,6 +139,8 @@ export interface StandingsRow {
   smallPointsWon: number;
   smallPointsLost: number;
   isOwnTeam?: boolean;
+  /** Ostatnie mecze od najstarszego, wpisywane ręcznie w panelu admina. */
+  form?: MatchFormResult[];
 }
 
 export interface ClubLandingContent {

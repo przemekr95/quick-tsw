@@ -12,6 +12,7 @@ import { StructuredData } from '../../../shared/components/StructuredData';
 import { useSeasonSchedule } from '../../../shared/hooks';
 import { getRecentResults } from '../../../shared/utils/matchSchedule';
 import { pickRandomItems } from '../../../shared/utils/random';
+import { ownTeamForm } from '../../../shared/utils/standings';
 import { siteBaseUrl } from '../../../shared/utils/sitePages';
 import { nextMatchJsonLd } from '../../../shared/utils/structuredData';
 import { AboutSection } from '../AboutSection';
@@ -96,7 +97,12 @@ export function ClubInfo(props: ClubInfoProps) {
 
         {matches && (
           <>
-            {nextMatch && <NextMatchSection form={landingContent.matchForm} match={nextMatch} />}
+            {nextMatch && (
+              <NextMatchSection
+                form={ownTeamForm(standings, landingContent.matchForm)}
+                match={nextMatch}
+              />
+            )}
             {nextMatchEvent && <StructuredData data={nextMatchEvent} />}
 
             <UpcomingMatchesSection matches={remainingMatches} />

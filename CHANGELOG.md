@@ -2,6 +2,12 @@
 
 Zmiany na publicznej stronie, najnowsze na górze. Data to dzień wdrożenia na produkcję (https://siatkowka.tswisla.pl). Historia od 6.11.2026, wcześniejsze zmiany są w `git log`.
 
+## 2026-11-24
+
+### Zmienione
+
+- Najbliższy mecz: „Forma” pokazuje wyniki wpisane w panelu admina dla naszej drużyny (tabela wyników). Gdy forma nie jest wpisana, zostają kreski jak dotąd.
+
 ## 2026-11-12
 
 ### Zmienione
