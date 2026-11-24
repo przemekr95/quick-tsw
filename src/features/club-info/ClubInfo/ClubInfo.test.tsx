@@ -145,6 +145,33 @@ describe('ClubInfo', () => {
     expect(screen.getByText('MUKS ISKIERKA Tarnów')).toBeInTheDocument();
   });
 
+  it('shows the form of our team from the standings next to the next match', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <ClubInfo
+          club={club}
+          landingContent={landingContent}
+          matches={matches}
+          players={players}
+          onRetry={() => {}}
+          section="mezczyzni"
+          standings={standings.map((row) =>
+            row.isOwnTeam ? { ...row, form: ['P', 'W', 'W'] } : row,
+          )}
+        />
+      </MemoryRouter>,
+    );
+    const nextMatch = container.querySelector<HTMLElement>('#najblizszy-mecz');
+
+    expect(nextMatch).not.toBeNull();
+    expect(
+      within(nextMatch as HTMLElement)
+        .getAllByRole('listitem')
+        .slice(-3)
+        .map((item) => item.textContent),
+    ).toEqual(['P', 'W', 'W']);
+  });
+
   it('hides the next-match hero once the season has no fixtures left', () => {
     const { container } = render(
       <MemoryRouter>
