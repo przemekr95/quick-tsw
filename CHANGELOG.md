@@ -2,6 +2,12 @@
 
 Zmiany na publicznej stronie, najnowsze na górze. Data to dzień wdrożenia na produkcję (https://siatkowka.tswisla.pl). Historia od 6.11.2026, wcześniejsze zmiany są w `git log`.
 
+## 2026-11-26
+
+### Zmienione
+
+- Najbliższy mecz: zamiast formy Wisły pokazujemy formę rywala z tabeli (wpisaną w panelu admina). Etykieta zmieniona na „Forma rywala”. Gdy rywal nie ma wpisanej formy, zostają kreski.
+
 ## 2026-11-24
 
 ### Zmienione
