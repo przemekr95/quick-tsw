@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import type {
   Club,
   ClubLandingContent,
+  MatchFormResult,
   Player,
   StandingsRow,
   UpcomingMatch,
@@ -145,7 +146,8 @@ describe('ClubInfo', () => {
     expect(screen.getByText('MUKS ISKIERKA Tarnów')).toBeInTheDocument();
   });
 
-  it('shows the form of our team from the standings next to the next match', () => {
+  it('shows the form of the next opponent from the standings', () => {
+    const ownForm: MatchFormResult[] = ['W', 'W', 'W', 'W', 'W'];
     const { container } = render(
       <MemoryRouter>
         <ClubInfo
@@ -155,9 +157,10 @@ describe('ClubInfo', () => {
           players={players}
           onRetry={() => {}}
           section="mezczyzni"
-          standings={standings.map((row) =>
-            row.isOwnTeam ? { ...row, form: ['P', 'W', 'W'] } : row,
-          )}
+          standings={[
+            ...standings.map((row) => (row.isOwnTeam ? { ...row, form: ownForm } : row)),
+            { ...standings[0], position: 3, team: 'MKS Set Nowa Wieś', form: ['P', 'W', 'W'] },
+          ]}
         />
       </MemoryRouter>,
     );

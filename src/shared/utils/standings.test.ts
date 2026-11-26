@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { MatchFormResult, StandingsRow } from '../types/domain';
-import { ownTeamForm } from './standings';
+import { opponentForm } from './standings';
 
 const fallback: MatchFormResult[] = ['-', '-', '-', '-', '-'];
 
@@ -18,22 +18,54 @@ function row(team: string, extra: Partial<StandingsRow> = {}): StandingsRow {
   };
 }
 
-describe('ownTeamForm', () => {
-  it('takes the form of our team from the standings', () => {
-    const standings = [
-      row('Rywal', { form: ['P', 'P'] }),
-      row('TS WISŁA Kraków', { isOwnTeam: true, form: ['W', 'P', 'W', '-', '-'] }),
-    ];
+describe('opponentForm', () => {
+  const standings = [
+    row('TS WISŁA Kraków', { isOwnTeam: true, form: ['W', 'W', 'W'] }),
+    row('HUTNIK Kraków', { form: ['W', 'P'] }),
+    row('KS HUTNIK Kraków II', { form: ['P', 'P'] }),
+    row('KS DALIN Myślenice', { form: ['W', 'W', 'P', '-', '-'] }),
+  ];
 
-    expect(ownTeamForm(standings, fallback)).toEqual(['W', 'P', 'W', '-', '-']);
+  it('takes the form of the opponent from the standings', () => {
+    expect(opponentForm(standings, 'KS DALIN Myślenice', fallback)).toEqual([
+      'W',
+      'W',
+      'P',
+      '-',
+      '-',
+    ]);
+    expect(opponentForm(standings, '  ks dalin   myślenice ', fallback)).toEqual([
+      'W',
+      'W',
+      'P',
+      '-',
+      '-',
+    ]);
   });
 
-  it('falls back when the standings failed to load or our team has no form', () => {
-    expect(ownTeamForm(null, fallback)).toBe(fallback);
-    expect(ownTeamForm([row('TS WISŁA Kraków', { isOwnTeam: true })], fallback)).toBe(fallback);
-    expect(ownTeamForm([row('TS WISŁA Kraków', { isOwnTeam: true, form: [] })], fallback)).toBe(
+  it('prefers the exact name and accepts a reserve-team suffix in the standings', () => {
+    expect(opponentForm(standings, 'HUTNIK Kraków', fallback)).toEqual(['W', 'P']);
+    expect(opponentForm(standings, 'KS HUTNIK Kraków', fallback)).toEqual(['P', 'P']);
+  });
+
+  it('never shows our own form', () => {
+    expect(opponentForm(standings, 'TS WISŁA Kraków', fallback)).toBe(fallback);
+  });
+
+  it('falls back when the standings failed, the opponent is missing or has no form', () => {
+    expect(opponentForm(null, 'KS DALIN Myślenice', fallback)).toBe(fallback);
+    expect(opponentForm(standings, 'MKS Gryf Brzesko', fallback)).toBe(fallback);
+    expect(opponentForm([row('KS DALIN Myślenice')], 'KS DALIN Myślenice', fallback)).toBe(
       fallback,
     );
-    expect(ownTeamForm([row('Rywal', { form: ['W'] })], fallback)).toBe(fallback);
+    expect(
+      opponentForm([row('KS DALIN Myślenice', { form: [] })], 'KS DALIN Myślenice', fallback),
+    ).toBe(fallback);
+  });
+
+  it('falls back when the name prefix is ambiguous', () => {
+    const ambiguous = [row('AZS Kraków I', { form: ['W'] }), row('AZS Kraków II', { form: ['P'] })];
+
+    expect(opponentForm(ambiguous, 'AZS Kraków', fallback)).toBe(fallback);
   });
 });

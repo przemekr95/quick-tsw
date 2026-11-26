@@ -56,7 +56,7 @@ export function NextMatchSection({ match, form }: NextMatchSectionProps) {
         )}
 
         <div className={styles.form}>
-          <p className={styles.formLabel}>Forma</p>
+          <p className={styles.formLabel}>Forma rywala</p>
           <ul className={styles.formList}>
             {form.map((result, index) => (
               <li className={formResultClassName[result]} key={`${result}-${index}`}>

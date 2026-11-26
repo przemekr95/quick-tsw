@@ -12,7 +12,7 @@ import { StructuredData } from '../../../shared/components/StructuredData';
 import { useSeasonSchedule } from '../../../shared/hooks';
 import { getRecentResults } from '../../../shared/utils/matchSchedule';
 import { pickRandomItems } from '../../../shared/utils/random';
-import { ownTeamForm } from '../../../shared/utils/standings';
+import { opponentForm } from '../../../shared/utils/standings';
 import { siteBaseUrl } from '../../../shared/utils/sitePages';
 import { nextMatchJsonLd } from '../../../shared/utils/structuredData';
 import { AboutSection } from '../AboutSection';
@@ -99,7 +99,7 @@ export function ClubInfo(props: ClubInfoProps) {
           <>
             {nextMatch && (
               <NextMatchSection
-                form={ownTeamForm(standings, landingContent.matchForm)}
+                form={opponentForm(standings, nextMatch.opponent, landingContent.matchForm)}
                 match={nextMatch}
               />
             )}
